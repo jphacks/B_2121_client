@@ -11,8 +11,9 @@ import ReactorKit
 final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
 
     struct Const {
+        static let largeImageSize: CGFloat = (DeviceSize.screenWidth - 32 - 4) / 2
         static let cellWidth: CGFloat = DeviceSize.screenWidth - 32
-        static let cellHeight: CGFloat = 320
+        static let cellHeight: CGFloat = largeImageSize + 60
         static let itemSize: CGSize = CGSize(width: cellWidth, height: cellHeight)
     }
 
@@ -56,7 +57,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
     func setupViewConstraints() {
         imagesView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
-            $0.height.equalTo(280)
+            $0.height.equalTo(Const.largeImageSize)
         }
         groupNameLabel.snp.makeConstraints {
             $0.top.equalTo(imagesView.snp.bottom).offset(8)
