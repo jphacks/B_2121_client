@@ -1,0 +1,20 @@
+# 無効にするルール
+disabled_rules:
+# xcodeでviolation warningが表示されたり違反でXcodeがビルドできないルールを差し込んでいきます。
+
+# デフォルトルール以外でopt-inから適用させるルールの設定
+opt_in_rules:
+# ここに採用したいルールを追加していく #
+
+
+# SwiftLintの適用から外すディレクトリ
+# (UnitTestやUITestもある場合は修正されますので入れます)
+excluded:
+# cocoapodsを使っている場合#
+- Pods/
+
+
+# 1行あたりの文字数制限を300に変更
+line_length: 300
+
+# etc
