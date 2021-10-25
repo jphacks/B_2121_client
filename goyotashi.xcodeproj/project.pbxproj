@@ -308,6 +308,7 @@
 			buildConfigurationList = 84AFC39C2725D40800B9244E /* Build configuration list for PBXNativeTarget "goyotashi" */;
 			buildPhases = (
 				D38244F0AD7B2B3F53CE81B3 /* [CP] Check Pods Manifest.lock */,
+				84AFC3CF2726A0F000B9244E /* ShellScript */,
 				84AFC36E2725D40600B9244E /* Sources */,
 				84AFC36F2725D40600B9244E /* Frameworks */,
 				84AFC3702725D40600B9244E /* Resources */,
@@ -451,6 +452,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    ${PODS_ROOT}/SwiftLint/swiftlint autocorrect --format\n    ${PODS_ROOT}/SwiftLint/swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		84AFC3CF2726A0F000B9244E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		968EBFCC6729C56D2AD36E35 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
