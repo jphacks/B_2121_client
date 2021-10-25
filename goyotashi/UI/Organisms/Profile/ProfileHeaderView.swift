@@ -11,7 +11,7 @@ import ReactorKit
 final class ProfileHeaderView: UIView, View, ViewConstructor {
     struct Const {
         static let profileImageSize: CGFloat = 84
-        static let height: CGFloat = 148
+        static let height: CGFloat = 232
     }
 
     // MARK: - Variables
@@ -26,6 +26,10 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
 
     private let userNameLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
+    }
+
+    private let editProfileButton = RoundBorderButton().then {
+        $0.set(title: "プロフィールを編集")
     }
 
     // MARK: - Initializers
@@ -44,6 +48,7 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
     func setupViews() {
         addSubview(profileImageView)
         addSubview(userNameLabel)
+        addSubview(editProfileButton)
     }
 
     func setupViewConstraints() {
@@ -55,6 +60,10 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
         userNameLabel.snp.makeConstraints {
             $0.top.equalTo(profileImageView.snp.bottom).offset(24)
             $0.left.right.equalToSuperview().inset(16)
+        }
+        editProfileButton.snp.makeConstraints {
+            $0.top.equalTo(userNameLabel.snp.bottom).offset(16)
+            $0.left.equalToSuperview().inset(16)
         }
     }
 
