@@ -18,6 +18,12 @@ struct TestData {
         )
     }
 
+    static func homeGroups(count: Int) -> [HomeGroup] {
+        return (0 ..< count).map { _ in
+            homeGroup()
+        }
+    }
+
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)
