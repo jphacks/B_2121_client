@@ -26,7 +26,6 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
     private let imagesView = UIView().then {
         $0.layer.cornerRadius = 16
         $0.layer.masksToBounds = true
-        $0.backgroundColor = Color.gray06
     }
 
     private let largeImageView = UIImageView().then {
