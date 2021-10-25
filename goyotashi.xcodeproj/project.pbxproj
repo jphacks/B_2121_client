@@ -195,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				84AFC3A827266C9900B9244E /* DevelopingViewController.swift */,
+				84AFC3C72726868800B9244E /* Template */,
 			);
 			path = Developing;
 			sourceTree = "<group>";
@@ -273,6 +274,13 @@
 				84AFC3BF272681A800B9244E /* NotoSansJP-Regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		84AFC3C72726868800B9244E /* Template */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Template;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
