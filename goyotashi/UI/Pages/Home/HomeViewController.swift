@@ -60,6 +60,7 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: HomeReactor) {
         // Action
+        reactor.action.onNext(.refresh)
 
         // State
         reactor.state.map { $0.groupCellReactors }
