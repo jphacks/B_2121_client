@@ -141,6 +141,7 @@
 		84AFC3742725D40600B9244E /* goyotashi */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3AA27266EFB00B9244E /* Utilities */,
 				84AFC3A727266C5C00B9244E /* Developing */,
 				84AFC3752725D40600B9244E /* AppDelegate.swift */,
 				84AFC3772725D40600B9244E /* SceneDelegate.swift */,
@@ -177,6 +178,13 @@
 				84AFC3A827266C9900B9244E /* DevelopingViewController.swift */,
 			);
 			path = Developing;
+			sourceTree = "<group>";
+		};
+		84AFC3AA27266EFB00B9244E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
