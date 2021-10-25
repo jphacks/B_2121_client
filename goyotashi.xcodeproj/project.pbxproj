@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -101,7 +101,6 @@
 				E389DE2A3AEF77328A5FA225 /* Pods-goyotashiTests.debug.xcconfig */,
 				78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,6 +139,7 @@
 		84AFC3742725D40600B9244E /* goyotashi */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3A727266C5C00B9244E /* Developing */,
 				84AFC3752725D40600B9244E /* AppDelegate.swift */,
 				84AFC3772725D40600B9244E /* SceneDelegate.swift */,
 				84AFC3792725D40600B9244E /* ViewController.swift */,
@@ -167,6 +167,13 @@
 				84AFC3992725D40800B9244E /* Info.plist */,
 			);
 			path = goyotashiUITests;
+			sourceTree = "<group>";
+		};
+		84AFC3A727266C5C00B9244E /* Developing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Developing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
