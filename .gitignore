@@ -19,3 +19,6 @@ xcuserdata/
 
 #CocoaPod
 Pods/
+
+#R.swift
+R.generated.swift
