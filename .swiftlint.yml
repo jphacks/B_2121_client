@@ -12,6 +12,8 @@ opt_in_rules:
 excluded:
 # cocoapodsを使っている場合#
 - Pods/
+# R.swiftが生成したファイルは無視
+- goyotashi/Resources/Rswift/R.generated.swift
 
 
 # 1行あたりの文字数制限を300に変更

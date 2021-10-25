@@ -27,6 +27,8 @@
 		84AFC3C6272682F900B9244E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3C5272682F900B9244E /* UILabel+Extension.swift */; };
 		84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3C8272686BD00B9244E /* TemplateViewController.swift */; };
 		84AFC3CB272686DC00B9244E /* TemplateReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3CA272686DC00B9244E /* TemplateReactor.swift */; };
+		84AFC3CE27269A2E00B9244E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3CD27269A2E00B9244E /* TabBarController.swift */; };
+		84AFC3D42726A4EF00B9244E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3D32726A4EF00B9244E /* R.generated.swift */; };
 		C9E235DF076AE0453284CE2A /* Pods_goyotashiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */; };
 		F70D3ADA7A6F72E7AB99F70D /* Pods_goyotashi_goyotashiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,8 @@
 		84AFC3C5272682F900B9244E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		84AFC3C8272686BD00B9244E /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		84AFC3CA272686DC00B9244E /* TemplateReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateReactor.swift; sourceTree = "<group>"; };
+		84AFC3CD27269A2E00B9244E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		84AFC3D32726A4EF00B9244E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		AA95625A967B92EE36331243 /* Pods-goyotashi-goyotashiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.release.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B707DF8E2402CEF9A2130B10 /* Pods-goyotashi-goyotashiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +253,7 @@
 		84AFC3B62726730D00B9244E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3CC27269A0100B9244E /* TabBar */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 		84AFC3BD2726814F00B9244E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3D02726A1BB00B9244E /* Rswift */,
 				84AFC3BE2726816700B9244E /* Fonts */,
 			);
 			path = Resources;
@@ -289,6 +295,22 @@
 			path = Template;
 			sourceTree = "<group>";
 		};
+		84AFC3CC27269A0100B9244E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3CD27269A2E00B9244E /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		84AFC3D02726A1BB00B9244E /* Rswift */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3D32726A4EF00B9244E /* R.generated.swift */,
+			);
+			path = Rswift;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -297,6 +319,7 @@
 			buildConfigurationList = 84AFC39C2725D40800B9244E /* Build configuration list for PBXNativeTarget "goyotashi" */;
 			buildPhases = (
 				D38244F0AD7B2B3F53CE81B3 /* [CP] Check Pods Manifest.lock */,
+				84AFC3CF2726A0F000B9244E /* ShellScript */,
 				84AFC36E2725D40600B9244E /* Sources */,
 				84AFC36F2725D40600B9244E /* Frameworks */,
 				84AFC3702725D40600B9244E /* Resources */,
@@ -441,6 +464,25 @@
 			shellPath = /bin/sh;
 			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    ${PODS_ROOT}/SwiftLint/swiftlint autocorrect --format\n    ${PODS_ROOT}/SwiftLint/swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		84AFC3CF2726A0F000B9244E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/goyotashi/Resources/Rswift/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/goyotashi/Resources/Rswift/R.generated.swift\"\n";
+		};
 		968EBFCC6729C56D2AD36E35 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -554,9 +596,11 @@
 				84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */,
 				84AFC3CB272686DC00B9244E /* TemplateReactor.swift in Sources */,
 				84AFC3AE27266F5100B9244E /* ViewConstructor.swift in Sources */,
+				84AFC3D42726A4EF00B9244E /* R.generated.swift in Sources */,
 				84AFC3BB272676AE00B9244E /* Color.swift in Sources */,
 				84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */,
 				84AFC3AC27266F2100B9244E /* DeviceSize.swift in Sources */,
+				84AFC3CE27269A2E00B9244E /* TabBarController.swift in Sources */,
 				84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */,
 				84AFC3C6272682F900B9244E /* UILabel+Extension.swift in Sources */,
 			);
@@ -664,7 +708,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -719,7 +763,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

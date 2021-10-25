@@ -11,6 +11,7 @@ target 'goyotashi' do
   pod 'ReactorKit'
   pod 'ReusableKit/RxSwift'
   pod 'SwiftLint'
+  pod 'R.swift'
 
   target 'goyotashiTests' do
     inherit! :search_paths

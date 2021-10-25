@@ -1,4 +1,7 @@
 PODS:
+  - R.swift (5.4.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
   - ReactorKit (2.1.1):
     - RxSwift (~> 5.0)
     - WeakMapTable (~> 1.1)
@@ -19,6 +22,7 @@ PODS:
   - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
+  - R.swift
   - ReactorKit
   - ReusableKit/RxSwift
   - SnapKit (~> 5.0.0)
@@ -27,6 +31,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - R.swift
+    - R.swift.Library
     - ReactorKit
     - ReusableKit
     - RxCocoa
@@ -38,6 +44,8 @@ SPEC REPOS:
     - WeakMapTable
 
 SPEC CHECKSUMS:
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   ReactorKit: 6d894a20c3d508344320901cd8e386fde92df4b6
   ReusableKit: e5f853ad4652e411f96b6119b2488afa12929be6
   RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
@@ -48,6 +56,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 6323668a3cd31a6d2f5e1b8b351c7c7a4a21cd1c
+PODFILE CHECKSUM: 57c8122b5b958e7c84898444817d47b908e66936
 
 COCOAPODS: 1.10.1
