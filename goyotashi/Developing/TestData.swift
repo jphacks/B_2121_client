@@ -14,7 +14,7 @@ struct TestData {
             groupName: "CAMPHOR-",
             restaurantCount: Int.random(in: 4 ..< 16),
             memberCount: Int.random(in: 4 ..< 32),
-            imageUrls: []
+            imageUrls: restaurantImageUrlStrings()
         )
     }
 
@@ -24,6 +24,7 @@ struct TestData {
         }
     }
 
+    // MARK: - Private Functions
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)
@@ -35,5 +36,17 @@ struct TestData {
             randomString += NSString(characters: &nextChar, length: 1) as String
         }
         return randomString
+    }
+
+    private static func restaurantImageUrlString() -> String {
+        let urlStrings = [
+            "https://tabelog.com/imgview/original?id=r65552151702596"
+        ]
+        return urlStrings[Int.random(in: 0 ..< urlStrings.count)]
+    }
+
+    private static func restaurantImageUrlStrings() -> [String] {
+        let size = Int.random(in: 3 ..< 6)
+        return (0 ..< size).map { _ in restaurantImageUrlString() }
     }
 }
