@@ -30,12 +30,14 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
 
     private let largeImageView = UIImageView().then {
         $0.contentMode = .scaleToFill
+        $0.image = R.image.dish()
     }
 
     private let smallImageViews: [UIImageView] = {
         var imageViews: [UIImageView] = (0 ..< 4).map { _ in
             let imageView = UIImageView().then {
                 $0.contentMode = .scaleAspectFill
+                $0.image = R.image.dish()
             }
             return imageView
         }
@@ -116,6 +118,20 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         // Action
 
         // State
+        reactor.state.map { $0.homeGroup.imageUrls }
+            .distinctUntilChanged()
+            .bind { [weak self] imageUrls in
+                let max = min(imageUrls.count, 5)
+                for index in 0 ..< max {
+                    if index == 0 {
+                        self?.largeImageView.kf.setImage(with: URL(string: imageUrls[0]), placeholder: R.image.dish())
+                    } else {
+                        self?.smallImageViews[index-1].kf.setImage(with: URL(string: imageUrls[index]), placeholder: R.image.dish())
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+
         reactor.state.map { $0.homeGroup.groupName }
             .distinctUntilChanged()
             .bind(to: groupNameLabel.rx.text)
