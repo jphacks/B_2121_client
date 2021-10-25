@@ -175,6 +175,7 @@
 		84AFC3742725D40600B9244E /* goyotashi */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3E42726E5C500B9244E /* BusinessLogic */,
 				84AFC3BD2726814F00B9244E /* Resources */,
 				84AFC3B72726745F00B9244E /* Extensions */,
 				84AFC3B22726729B00B9244E /* UI */,
@@ -340,6 +341,13 @@
 				84AFC3E02726D7A300B9244E /* HomeGroupCellReactor.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		84AFC3E42726E5C500B9244E /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessLogic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
