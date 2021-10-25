@@ -12,7 +12,7 @@ final class ProfileReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        let user: User = TestData.user()
     }
 
     let initialState: State = State()
