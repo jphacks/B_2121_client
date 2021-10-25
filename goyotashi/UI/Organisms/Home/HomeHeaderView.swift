@@ -19,6 +19,11 @@ final class HomeHeaderView: UIView, ViewConstructor {
         $0.layer.cornerRadius = 24
     }
 
+    private let mapIconView = UIImageView().then {
+        $0.image = R.image.location()
+        $0.contentMode = .scaleAspectFit
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -35,6 +40,7 @@ final class HomeHeaderView: UIView, ViewConstructor {
     func setupViews() {
         addSubview(titleLabel)
         addSubview(mapIconBackgroundView)
+        mapIconBackgroundView.addSubview(mapIconView)
     }
 
     func setupViewConstraints() {
@@ -46,6 +52,10 @@ final class HomeHeaderView: UIView, ViewConstructor {
             $0.top.equalTo(titleLabel.snp.bottom).offset(24)
             $0.left.equalToSuperview().inset(16)
             $0.size.equalTo(64)
+        }
+        mapIconView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(24)
         }
     }
 }
