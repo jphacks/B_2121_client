@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
     private struct Const {
         static let tabBarTitles: [String] = ["ホーム", "プロフィール"]
         static let tabBarImages: [UIImage?] = [R.image.home_empty(), R.image.user_empty()]
@@ -24,7 +24,11 @@ class TabBarController: UITabBarController {
     // MARK: - Setup Methods
     private func setupViewControllers() {
         viewControllers = [
-            DevelopingViewController(),
+            UINavigationController(
+                rootViewController: HomeViewController().then {
+                    $0.reactor = HomeReactor()
+                }
+            ),
             DevelopingViewController()
         ]
 

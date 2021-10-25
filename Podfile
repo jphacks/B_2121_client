@@ -12,6 +12,7 @@ target 'goyotashi' do
   pod 'ReusableKit/RxSwift'
   pod 'SwiftLint'
   pod 'R.swift'
+  pod 'Kingfisher', '~> 7.0'
 
   target 'goyotashiTests' do
     inherit! :search_paths
