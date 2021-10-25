@@ -10,8 +10,8 @@ import UIKit
 class TabBarController: UITabBarController {
     private struct Const {
         static let tabBarTitles: [String] = ["ホーム", "プロフィール"]
-        static let tabBarImages: [UIImage] = [#imageLiteral(resourceName: "home_empty"), #imageLiteral(resourceName: "user_empty")]
-        static let tabBarSelectedImages: [UIImage] = [#imageLiteral(resourceName: "home_filled"), #imageLiteral(resourceName: "user_filled")]
+        static let tabBarImages: [UIImage?] = [R.image.home_empty(), R.image.user_empty()]
+        static let tabBarSelectedImages: [UIImage?] = [R.image.home_filled(), R.image.user_filled()]
     }
 
     // MARK: - Life Cycle
