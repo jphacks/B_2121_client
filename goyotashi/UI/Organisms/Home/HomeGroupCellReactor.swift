@@ -12,7 +12,7 @@ final class HomeGroupCellReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        let homeGroup: HomeGroup = TestData.homeGroup()
     }
 
     let initialState: State = State()
@@ -20,6 +20,6 @@ final class HomeGroupCellReactor: Reactor {
 
 extension HomeGroupCellReactor: Equatable {
     static func == (lhs: HomeGroupCellReactor, rhs: HomeGroupCellReactor) -> Bool {
-        return lhs.currentState.property == rhs.currentState.property
+        return lhs.currentState.homeGroup.groupId == rhs.currentState.homeGroup.groupId
     }
 }
