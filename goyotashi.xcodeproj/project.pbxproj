@@ -396,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				84AFC3F02727173100B9244E /* ProfileHeaderView.swift */,
+				84AFC3FD272734C000B9244E /* ProfileGroupList */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -405,6 +406,13 @@
 			children = (
 				84AFC3F9272733F800B9244E /* ProfileGroupListViewController.swift */,
 				84AFC3FB2727340000B9244E /* ProfileGroupListReactor.swift */,
+			);
+			path = ProfileGroupList;
+			sourceTree = "<group>";
+		};
+		84AFC3FD272734C000B9244E /* ProfileGroupList */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = ProfileGroupList;
 			sourceTree = "<group>";
