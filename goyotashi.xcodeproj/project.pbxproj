@@ -253,6 +253,7 @@
 		84AFC3B62726730D00B9244E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3D62726CE5000B9244E /* Home */,
 				84AFC3CC27269A0100B9244E /* TabBar */,
 			);
 			path = Pages;
@@ -309,6 +310,13 @@
 				84AFC3D32726A4EF00B9244E /* R.generated.swift */,
 			);
 			path = Rswift;
+			sourceTree = "<group>";
+		};
+		84AFC3D62726CE5000B9244E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
