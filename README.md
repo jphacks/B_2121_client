@@ -20,7 +20,7 @@ $ cd B_2121_client
 Install `cocoapods`:
 
 ```zsh
-$ sudo gem install cocoapods -v 1.10.1
+$ gem install cocoapods -v 1.10.1
 ```
 
 Install Dependencies:
