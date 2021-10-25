@@ -24,6 +24,22 @@ struct TestData {
         }
     }
 
+    static func profileGroup() -> ProfileGroup {
+        return ProfileGroup(
+            groupId: randomString(length: 8),
+            groupName: "CAMPHOR-",
+            restaurantCount: Int.random(in: 4 ..< 16),
+            memberCount: Int.random(in: 4 ..< 32),
+            imageUrls: restaurantImageUrlStrings()
+        )
+    }
+
+    static func profileGroups(count: Int) -> [ProfileGroup] {
+        return (0 ..< count).map { _ in
+            profileGroup()
+        }
+    }
+
     static func user() -> User {
         return User(
             userId: randomString(length: 8),
