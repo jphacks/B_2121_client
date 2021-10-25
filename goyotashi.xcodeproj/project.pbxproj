@@ -251,8 +251,16 @@
 		84AFC3BD2726814F00B9244E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3BE2726816700B9244E /* Fonts */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		84AFC3BE2726816700B9244E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
