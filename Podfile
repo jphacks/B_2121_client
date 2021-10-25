@@ -10,6 +10,7 @@ target 'goyotashi' do
   pod 'Then'
   pod 'ReactorKit'
   pod 'ReusableKit/RxSwift'
+  pod 'SwiftLint'
 
   target 'goyotashiTests' do
     inherit! :search_paths

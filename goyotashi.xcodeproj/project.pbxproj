@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,17 @@
 		84AFC3822725D40800B9244E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AFC3802725D40800B9244E /* LaunchScreen.storyboard */; };
 		84AFC38D2725D40800B9244E /* goyotashiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC38C2725D40800B9244E /* goyotashiTests.swift */; };
 		84AFC3982725D40800B9244E /* goyotashiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3972725D40800B9244E /* goyotashiUITests.swift */; };
+		84AFC3A927266C9900B9244E /* DevelopingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3A827266C9900B9244E /* DevelopingViewController.swift */; };
+		84AFC3AC27266F2100B9244E /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3AB27266F2100B9244E /* DeviceSize.swift */; };
+		84AFC3AE27266F5100B9244E /* ViewConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3AD27266F5100B9244E /* ViewConstructor.swift */; };
+		84AFC3B9272674A800B9244E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3B8272674A800B9244E /* UIColor+Extension.swift */; };
+		84AFC3BB272676AE00B9244E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3BA272676AE00B9244E /* Color.swift */; };
+		84AFC3C2272681A800B9244E /* NotoSansJP-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84AFC3BF272681A800B9244E /* NotoSansJP-Regular.otf */; };
+		84AFC3C3272681A800B9244E /* NotoSansJP-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84AFC3C0272681A800B9244E /* NotoSansJP-Bold.otf */; };
+		84AFC3C4272681A800B9244E /* NotoSansJP-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84AFC3C1272681A800B9244E /* NotoSansJP-Medium.otf */; };
+		84AFC3C6272682F900B9244E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3C5272682F900B9244E /* UILabel+Extension.swift */; };
+		84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3C8272686BD00B9244E /* TemplateViewController.swift */; };
+		84AFC3CB272686DC00B9244E /* TemplateReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3CA272686DC00B9244E /* TemplateReactor.swift */; };
 		C9E235DF076AE0453284CE2A /* Pods_goyotashiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */; };
 		F70D3ADA7A6F72E7AB99F70D /* Pods_goyotashi_goyotashiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +67,17 @@
 		84AFC3932725D40800B9244E /* goyotashiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = goyotashiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3972725D40800B9244E /* goyotashiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goyotashiUITests.swift; sourceTree = "<group>"; };
 		84AFC3992725D40800B9244E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84AFC3A827266C9900B9244E /* DevelopingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopingViewController.swift; sourceTree = "<group>"; };
+		84AFC3AB27266F2100B9244E /* DeviceSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
+		84AFC3AD27266F5100B9244E /* ViewConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstructor.swift; sourceTree = "<group>"; };
+		84AFC3B8272674A800B9244E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		84AFC3BA272676AE00B9244E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		84AFC3BF272681A800B9244E /* NotoSansJP-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Regular.otf"; sourceTree = "<group>"; };
+		84AFC3C0272681A800B9244E /* NotoSansJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Bold.otf"; sourceTree = "<group>"; };
+		84AFC3C1272681A800B9244E /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
+		84AFC3C5272682F900B9244E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		84AFC3C8272686BD00B9244E /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
+		84AFC3CA272686DC00B9244E /* TemplateReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateReactor.swift; sourceTree = "<group>"; };
 		AA95625A967B92EE36331243 /* Pods-goyotashi-goyotashiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.release.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B707DF8E2402CEF9A2130B10 /* Pods-goyotashi-goyotashiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,7 +123,6 @@
 				E389DE2A3AEF77328A5FA225 /* Pods-goyotashiTests.debug.xcconfig */,
 				78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,6 +161,11 @@
 		84AFC3742725D40600B9244E /* goyotashi */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3BD2726814F00B9244E /* Resources */,
+				84AFC3B72726745F00B9244E /* Extensions */,
+				84AFC3B22726729B00B9244E /* UI */,
+				84AFC3AA27266EFB00B9244E /* Utilities */,
+				84AFC3A727266C5C00B9244E /* Developing */,
 				84AFC3752725D40600B9244E /* AppDelegate.swift */,
 				84AFC3772725D40600B9244E /* SceneDelegate.swift */,
 				84AFC3792725D40600B9244E /* ViewController.swift */,
@@ -169,6 +195,100 @@
 			path = goyotashiUITests;
 			sourceTree = "<group>";
 		};
+		84AFC3A727266C5C00B9244E /* Developing */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3A827266C9900B9244E /* DevelopingViewController.swift */,
+				84AFC3C72726868800B9244E /* Template */,
+			);
+			path = Developing;
+			sourceTree = "<group>";
+		};
+		84AFC3AA27266EFB00B9244E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3AB27266F2100B9244E /* DeviceSize.swift */,
+				84AFC3AD27266F5100B9244E /* ViewConstructor.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		84AFC3B22726729B00B9244E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3B3272672BD00B9244E /* Atoms */,
+				84AFC3B4272672D000B9244E /* Molecules */,
+				84AFC3B5272672EE00B9244E /* Organisms */,
+				84AFC3B62726730D00B9244E /* Pages */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		84AFC3B3272672BD00B9244E /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3BA272676AE00B9244E /* Color.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		84AFC3B4272672D000B9244E /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Molecules;
+			sourceTree = "<group>";
+		};
+		84AFC3B5272672EE00B9244E /* Organisms */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Organisms;
+			sourceTree = "<group>";
+		};
+		84AFC3B62726730D00B9244E /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		84AFC3B72726745F00B9244E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3B8272674A800B9244E /* UIColor+Extension.swift */,
+				84AFC3C5272682F900B9244E /* UILabel+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		84AFC3BD2726814F00B9244E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3BE2726816700B9244E /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		84AFC3BE2726816700B9244E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3C0272681A800B9244E /* NotoSansJP-Bold.otf */,
+				84AFC3C1272681A800B9244E /* NotoSansJP-Medium.otf */,
+				84AFC3BF272681A800B9244E /* NotoSansJP-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		84AFC3C72726868800B9244E /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				84AFC3C8272686BD00B9244E /* TemplateViewController.swift */,
+				84AFC3CA272686DC00B9244E /* TemplateReactor.swift */,
+			);
+			path = Template;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,6 +301,7 @@
 				84AFC36F2725D40600B9244E /* Frameworks */,
 				84AFC3702725D40600B9244E /* Resources */,
 				E372254BCE863D0435DFEBCD /* [CP] Embed Pods Frameworks */,
+				84AFC3BC27267AD800B9244E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -279,7 +400,10 @@
 			files = (
 				84AFC3822725D40800B9244E /* LaunchScreen.storyboard in Resources */,
 				84AFC37F2725D40800B9244E /* Assets.xcassets in Resources */,
+				84AFC3C3272681A800B9244E /* NotoSansJP-Bold.otf in Resources */,
+				84AFC3C4272681A800B9244E /* NotoSansJP-Medium.otf in Resources */,
 				84AFC37D2725D40600B9244E /* Main.storyboard in Resources */,
+				84AFC3C2272681A800B9244E /* NotoSansJP-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +424,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		84AFC3BC27267AD800B9244E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    ${PODS_ROOT}/SwiftLint/swiftlint autocorrect --format\n    ${PODS_ROOT}/SwiftLint/swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		968EBFCC6729C56D2AD36E35 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,9 +548,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AFC3B9272674A800B9244E /* UIColor+Extension.swift in Sources */,
 				84AFC37A2725D40600B9244E /* ViewController.swift in Sources */,
+				84AFC3A927266C9900B9244E /* DevelopingViewController.swift in Sources */,
 				84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */,
+				84AFC3CB272686DC00B9244E /* TemplateReactor.swift in Sources */,
+				84AFC3AE27266F5100B9244E /* ViewConstructor.swift in Sources */,
+				84AFC3BB272676AE00B9244E /* Color.swift in Sources */,
+				84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */,
+				84AFC3AC27266F2100B9244E /* DeviceSize.swift in Sources */,
 				84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */,
+				84AFC3C6272682F900B9244E /* UILabel+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
