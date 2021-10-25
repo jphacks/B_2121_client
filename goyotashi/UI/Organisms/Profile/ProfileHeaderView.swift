@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import ReactorKit
 
-final class ProfileHeaderView: UIView, ViewConstructor {
+final class ProfileHeaderView: UIView, View, ViewConstructor {
     struct Const {
         static let profileImageSize: CGFloat = 84
         static let height: CGFloat = 148
     }
+
+    // MARK: - Variables
+    var disposeBag = DisposeBag()
 
     // MARK: - Views
     private let profileImageView = UIImageView().then {
@@ -52,5 +56,12 @@ final class ProfileHeaderView: UIView, ViewConstructor {
             $0.top.equalTo(profileImageView.snp.bottom).offset(24)
             $0.left.right.equalToSuperview().inset(16)
         }
+    }
+
+    // MARK: - Bind Method
+    func bind(reactor: ProfileReactor) {
+        // Action
+
+        // State
     }
 }
