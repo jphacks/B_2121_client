@@ -12,7 +12,7 @@ final class HomeReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        let groupCellReactors: [HomeGroupCellReactor] = []
     }
 
     let initialState: State = State()
