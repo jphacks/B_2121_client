@@ -1,5 +1,6 @@
-# B_2121_1
+# B_2121_client
 
+サーバサイドは[こちら](https://github.com/jphacks/B_2121_server)
 
 ## Required Dependency
 
@@ -19,7 +20,7 @@ $ cd B_2121_client
 Install `cocoapods`:
 
 ```zsh
-$ sudo gem install cocoapods
+$ gem install cocoapods -v 1.10.1
 ```
 
 Install Dependencies:
