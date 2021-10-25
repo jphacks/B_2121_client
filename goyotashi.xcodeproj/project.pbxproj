@@ -383,6 +383,7 @@
 			children = (
 				84AFC3EB272714D700B9244E /* ProfileViewController.swift */,
 				84AFC3ED2727150E00B9244E /* ProfileReactor.swift */,
+				84AFC3F8272733B500B9244E /* ProfileGroupList */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -393,6 +394,13 @@
 				84AFC3F02727173100B9244E /* ProfileHeaderView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		84AFC3F8272733B500B9244E /* ProfileGroupList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfileGroupList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
