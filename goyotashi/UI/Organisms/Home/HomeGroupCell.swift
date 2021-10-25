@@ -26,6 +26,10 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         $0.backgroundColor = Color.gray06
     }
 
+    private let groupNameLabel = UILabel().then {
+        $0.apply(fontStyle: .bold, size: 16, color: Color.gray01)
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -41,12 +45,17 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         contentView.addSubview(imagesView)
+        contentView.addSubview(groupNameLabel)
     }
 
     func setupViewConstraints() {
         imagesView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.height.equalTo(280)
+        }
+        groupNameLabel.snp.makeConstraints {
+            $0.top.equalTo(imagesView.snp.bottom).offset(8)
+            $0.left.equalToSuperview().inset(8)
         }
     }
 
@@ -55,6 +64,10 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         // Action
 
         // State
+        reactor.state.map { $0.homeGroup.groupName }
+            .distinctUntilChanged()
+            .bind(to: groupNameLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 
     override func prepareForReuse() {
