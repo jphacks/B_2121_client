@@ -13,6 +13,9 @@ final class HomeGroupCellReactor: Reactor {
 
     struct State {
         let homeGroup: HomeGroup = TestData.homeGroup()
+        var description: String {
+            return "\(homeGroup.restaurantCount)件のお店 / \(homeGroup.memberCount)人のメンバー"
+        }
     }
 
     let initialState: State = State()
