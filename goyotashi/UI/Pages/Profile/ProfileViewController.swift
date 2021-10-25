@@ -7,35 +7,73 @@
 
 import UIKit
 import ReactorKit
+import SegementSlide
 
-final class ProfileViewController: UIViewController, View, ViewConstructor {
+final class ProfileViewController: SegementSlideDefaultViewController, View, ViewConstructor {
 
     // MARK: - Variables
     var disposeBag = DisposeBag()
 
+    // MARK: - Override Variables
+    override var titlesInSwitcher: [String] {
+        return ["参加", "保存"]
+    }
+
+    override var switcherConfig: SegementSlideDefaultSwitcherConfig {
+        var config = super.switcherConfig
+        if let normalFont = UIFont(name: FontStyle.medium.rawValue, size: 13) {
+            config.normalTitleFont = normalFont
+        }
+        if let selectedFont = UIFont(name: FontStyle.bold.rawValue, size: 13) {
+            config.selectedTitleFont = selectedFont
+        }
+        config.normalTitleColor = Color.gray03
+        config.selectedTitleColor = Color.gray01
+        config.horizontalMargin = 16
+        config.horizontalSpace = 24
+        return config
+    }
+
     // MARK: - Views
+    private let header = ProfileHeaderView()
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupViews()
-        setupViewConstraints()
+        reloadData()
+        defaultSelectedIndex = 0
     }
 
     // MARK: - Setup Methods
-    func setupViews() {
+    func setupViews() {}
 
-    }
-
-    func setupViewConstraints() {
-
-    }
+    func setupViewConstraints() {}
 
     // MARK: - Bind Method
     func bind(reactor: ProfileReactor) {
+        header.reactor = reactor
+
         // Action
 
         // State
+    }
+
+    // MARK: - Override Functions
+    override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
+        switch index {
+        case 0:
+            return ProfileGroupListViewController().then {
+                $0.reactor = ProfileGroupListReactor()
+            }
+        default:
+            return ProfileGroupListViewController().then {
+                $0.reactor = ProfileGroupListReactor()
+            }
+        }
+    }
+
+    override func segementSlideHeaderView() -> UIView? {
+        return header
     }
 }
