@@ -52,6 +52,9 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
     }
 
     func setupViewConstraints() {
+        snp.makeConstraints {
+            $0.height.equalTo(Const.height)
+        }
         profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(32)
             $0.left.equalToSuperview().inset(16)
