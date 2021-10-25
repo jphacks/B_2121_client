@@ -12,25 +12,25 @@ final class ProfileGroupListCellReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let homeGroup: HomeGroup
+        let profileGroup: ProfileGroup
         var description: String {
-            return "\(homeGroup.restaurantCount)件のお店 / \(homeGroup.memberCount)人のメンバー"
+            return "\(profileGroup.restaurantCount)件のお店 / \(profileGroup.memberCount)人のメンバー"
         }
 
-        init(homeGroup: HomeGroup) {
-            self.homeGroup = homeGroup
+        init(profileGroup: ProfileGroup) {
+            self.profileGroup = profileGroup
         }
     }
 
     let initialState: State
 
-    init(homeGroup: HomeGroup) {
-        initialState = State(homeGroup: homeGroup)
+    init(profileGroup: ProfileGroup) {
+        initialState = State(profileGroup: profileGroup)
     }
 }
 
 extension ProfileGroupListCellReactor: Equatable {
     static func == (lhs: ProfileGroupListCellReactor, rhs: ProfileGroupListCellReactor) -> Bool {
-        return lhs.currentState.homeGroup.groupId == rhs.currentState.homeGroup.groupId
+        return lhs.currentState.profileGroup.groupId == rhs.currentState.profileGroup.groupId
     }
 }
