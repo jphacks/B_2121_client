@@ -250,6 +250,7 @@
 		84AFC3B5272672EE00B9244E /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3DB2726CF0900B9244E /* Home */,
 			);
 			path = Organisms;
 			sourceTree = "<group>";
@@ -321,6 +322,13 @@
 			children = (
 				84AFC3D72726CE7800B9244E /* HomeViewController.swift */,
 				84AFC3D92726CE8300B9244E /* HomeReactor.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		84AFC3DB2726CF0900B9244E /* Home */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Home;
 			sourceTree = "<group>";
