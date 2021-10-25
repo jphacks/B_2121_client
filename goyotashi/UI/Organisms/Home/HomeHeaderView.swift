@@ -14,6 +14,11 @@ final class HomeHeaderView: UIView, ViewConstructor {
         $0.text = "グループ"
     }
 
+    private let mapIconBackgroundView = UIView().then {
+        $0.backgroundColor = Color.gray06
+        $0.layer.cornerRadius = 24
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -29,12 +34,18 @@ final class HomeHeaderView: UIView, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         addSubview(titleLabel)
+        addSubview(mapIconBackgroundView)
     }
 
     func setupViewConstraints() {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(24)
             $0.left.equalToSuperview().inset(16)
+        }
+        mapIconBackgroundView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(24)
+            $0.left.equalToSuperview().inset(16)
+            $0.size.equalTo(64)
         }
     }
 }
