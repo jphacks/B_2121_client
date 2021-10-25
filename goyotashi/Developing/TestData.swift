@@ -24,6 +24,14 @@ struct TestData {
         }
     }
 
+    static func user() -> User {
+        return User(
+            userId: randomString(length: 8),
+            userName: "KoukiNAGATA",
+            profileImageUrl: "https://avatars.githubusercontent.com/u/38304075?v=4"
+        )
+    }
+
     // MARK: - Private Functions
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
