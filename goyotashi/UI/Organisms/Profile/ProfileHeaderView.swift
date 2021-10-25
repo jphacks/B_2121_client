@@ -11,7 +11,7 @@ import ReactorKit
 final class ProfileHeaderView: UIView, View, ViewConstructor {
     struct Const {
         static let profileImageSize: CGFloat = 84
-        static let height: CGFloat = 232
+        static let height: CGFloat = 264
     }
 
     // MARK: - Variables
