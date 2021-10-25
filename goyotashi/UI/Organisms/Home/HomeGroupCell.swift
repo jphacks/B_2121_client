@@ -30,6 +30,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
 
     private let largeImageView = UIImageView().then {
         $0.contentMode = .scaleToFill
+        $0.clipsToBounds = true
         $0.image = R.image.dish()
     }
 
@@ -37,6 +38,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         var imageViews: [UIImageView] = (0 ..< 4).map { _ in
             let imageView = UIImageView().then {
                 $0.contentMode = .scaleAspectFill
+                $0.clipsToBounds = true
                 $0.image = R.image.dish()
             }
             return imageView
