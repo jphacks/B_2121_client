@@ -12,7 +12,7 @@ final class ProfileGroupListReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        let groupCellReactors: [ProfileGroupListCellReactor] = TestData.homeGroups(count: 6).map { ProfileGroupListCellReactor(homeGroup: $0) }
     }
 
     let initialState: State = State()
