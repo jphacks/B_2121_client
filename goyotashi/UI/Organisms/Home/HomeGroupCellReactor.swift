@@ -17,3 +17,9 @@ final class HomeGroupCellReactor: Reactor {
 
     let initialState: State = State()
 }
+
+extension HomeGroupCellReactor: Equatable {
+    static func == (lhs: HomeGroupCellReactor, rhs: HomeGroupCellReactor) -> Bool {
+        return lhs.currentState.property == rhs.currentState.property
+    }
+}
