@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41E0CE0BB1D29594A4F51D47 /* Pods_goyotashi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */; };
 		84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3752725D40600B9244E /* AppDelegate.swift */; };
 		84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3772725D40600B9244E /* SceneDelegate.swift */; };
 		84AFC37A2725D40600B9244E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3792725D40600B9244E /* ViewController.swift */; };
@@ -15,6 +16,8 @@
 		84AFC3822725D40800B9244E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AFC3802725D40800B9244E /* LaunchScreen.storyboard */; };
 		84AFC38D2725D40800B9244E /* goyotashiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC38C2725D40800B9244E /* goyotashiTests.swift */; };
 		84AFC3982725D40800B9244E /* goyotashiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3972725D40800B9244E /* goyotashiUITests.swift */; };
+		C9E235DF076AE0453284CE2A /* Pods_goyotashiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */; };
+		F70D3ADA7A6F72E7AB99F70D /* Pods_goyotashi_goyotashiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A2510B4727F1FAB74093E2D /* Pods-goyotashi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi/Pods-goyotashi.debug.xcconfig"; sourceTree = "<group>"; };
+		6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi_goyotashiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashiTests.release.xcconfig"; path = "Target Support Files/Pods-goyotashiTests/Pods-goyotashiTests.release.xcconfig"; sourceTree = "<group>"; };
 		84AFC3722725D40600B9244E /* goyotashi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goyotashi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3752725D40600B9244E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AFC3772725D40600B9244E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +56,11 @@
 		84AFC3932725D40800B9244E /* goyotashiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = goyotashiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3972725D40800B9244E /* goyotashiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goyotashiUITests.swift; sourceTree = "<group>"; };
 		84AFC3992725D40800B9244E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA95625A967B92EE36331243 /* Pods-goyotashi-goyotashiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.release.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B707DF8E2402CEF9A2130B10 /* Pods-goyotashi-goyotashiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E389DE2A3AEF77328A5FA225 /* Pods-goyotashiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashiTests.debug.xcconfig"; path = "Target Support Files/Pods-goyotashiTests/Pods-goyotashiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8DDF477CEA6C07373B17BDE /* Pods-goyotashi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi.release.xcconfig"; path = "Target Support Files/Pods-goyotashi/Pods-goyotashi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41E0CE0BB1D29594A4F51D47 /* Pods_goyotashi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9E235DF076AE0453284CE2A /* Pods_goyotashiTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F70D3ADA7A6F72E7AB99F70D /* Pods_goyotashi_goyotashiUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FAA579DAC6576C52B192EE4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5A2510B4727F1FAB74093E2D /* Pods-goyotashi.debug.xcconfig */,
+				F8DDF477CEA6C07373B17BDE /* Pods-goyotashi.release.xcconfig */,
+				B707DF8E2402CEF9A2130B10 /* Pods-goyotashi-goyotashiUITests.debug.xcconfig */,
+				AA95625A967B92EE36331243 /* Pods-goyotashi-goyotashiUITests.release.xcconfig */,
+				E389DE2A3AEF77328A5FA225 /* Pods-goyotashiTests.debug.xcconfig */,
+				78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		707C92D549B2E71F8A6A20F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */,
+				6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */,
+				38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +122,8 @@
 				84AFC38B2725D40800B9244E /* goyotashiTests */,
 				84AFC3962725D40800B9244E /* goyotashiUITests */,
 				84AFC3732725D40600B9244E /* Products */,
+				2FAA579DAC6576C52B192EE4 /* Pods */,
+				707C92D549B2E71F8A6A20F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84AFC39C2725D40800B9244E /* Build configuration list for PBXNativeTarget "goyotashi" */;
 			buildPhases = (
+				D38244F0AD7B2B3F53CE81B3 /* [CP] Check Pods Manifest.lock */,
 				84AFC36E2725D40600B9244E /* Sources */,
 				84AFC36F2725D40600B9244E /* Frameworks */,
 				84AFC3702725D40600B9244E /* Resources */,
+				E372254BCE863D0435DFEBCD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84AFC39F2725D40800B9244E /* Build configuration list for PBXNativeTarget "goyotashiTests" */;
 			buildPhases = (
+				968EBFCC6729C56D2AD36E35 /* [CP] Check Pods Manifest.lock */,
 				84AFC3842725D40800B9244E /* Sources */,
 				84AFC3852725D40800B9244E /* Frameworks */,
 				84AFC3862725D40800B9244E /* Resources */,
@@ -170,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84AFC3A22725D40800B9244E /* Build configuration list for PBXNativeTarget "goyotashiUITests" */;
 			buildPhases = (
+				B82BF4B62167D6E3F76FE4D0 /* [CP] Check Pods Manifest.lock */,
 				84AFC38F2725D40800B9244E /* Sources */,
 				84AFC3902725D40800B9244E /* Frameworks */,
 				84AFC3912725D40800B9244E /* Resources */,
+				CF86C222A46D4F2D4B052258 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +298,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		968EBFCC6729C56D2AD36E35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-goyotashiTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B82BF4B62167D6E3F76FE4D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-goyotashi-goyotashiUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF86C222A46D4F2D4B052258 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D38244F0AD7B2B3F53CE81B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-goyotashi-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E372254BCE863D0435DFEBCD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goyotashi/Pods-goyotashi-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goyotashi/Pods-goyotashi-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goyotashi/Pods-goyotashi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84AFC36E2725D40600B9244E /* Sources */ = {
@@ -433,6 +582,7 @@
 		};
 		84AFC39D2725D40800B9244E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A2510B4727F1FAB74093E2D /* Pods-goyotashi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +602,7 @@
 		};
 		84AFC39E2725D40800B9244E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8DDF477CEA6C07373B17BDE /* Pods-goyotashi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +622,7 @@
 		};
 		84AFC3A02725D40800B9244E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E389DE2A3AEF77328A5FA225 /* Pods-goyotashiTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +645,7 @@
 		};
 		84AFC3A12725D40800B9244E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +668,7 @@
 		};
 		84AFC3A32725D40800B9244E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B707DF8E2402CEF9A2130B10 /* Pods-goyotashi-goyotashiUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +689,7 @@
 		};
 		84AFC3A42725D40800B9244E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA95625A967B92EE36331243 /* Pods-goyotashi-goyotashiUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
