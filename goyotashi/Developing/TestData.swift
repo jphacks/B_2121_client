@@ -40,7 +40,13 @@ struct TestData {
 
     private static func restaurantImageUrlString() -> String {
         let urlStrings = [
-            "https://tabelog.com/imgview/original?id=r65552151702596"
+            "https://tabelog.com/imgview/original?id=r65552151702596",
+            "https://tabelog.com/imgview/original?id=r11654158141187",
+            "https://tabelog.com/imgview/original?id=r4602762283989",
+            "https://tabelog.com/imgview/original?id=r0603049448770",
+            "https://tabelog.com/imgview/original?id=r95060153709981",
+            "https://tabelog.com/imgview/original?id=r20765157345324",
+            "https://tabelog.com/imgview/original?id=r40533131033962"
         ]
         return urlStrings[Int.random(in: 0 ..< urlStrings.count)]
     }
