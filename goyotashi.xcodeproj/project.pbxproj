@@ -346,8 +346,16 @@
 		84AFC3E42726E5C500B9244E /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3E52726E5DB00B9244E /* Entities */,
 			);
 			path = BusinessLogic;
+			sourceTree = "<group>";
+		};
+		84AFC3E52726E5DB00B9244E /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
