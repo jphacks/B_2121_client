@@ -27,6 +27,7 @@
 		84AFC3C6272682F900B9244E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3C5272682F900B9244E /* UILabel+Extension.swift */; };
 		84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3C8272686BD00B9244E /* TemplateViewController.swift */; };
 		84AFC3CB272686DC00B9244E /* TemplateReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3CA272686DC00B9244E /* TemplateReactor.swift */; };
+		84AFC3CE27269A2E00B9244E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3CD27269A2E00B9244E /* TabBarController.swift */; };
 		C9E235DF076AE0453284CE2A /* Pods_goyotashiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */; };
 		F70D3ADA7A6F72E7AB99F70D /* Pods_goyotashi_goyotashiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		84AFC3C5272682F900B9244E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		84AFC3C8272686BD00B9244E /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		84AFC3CA272686DC00B9244E /* TemplateReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateReactor.swift; sourceTree = "<group>"; };
+		84AFC3CD27269A2E00B9244E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AA95625A967B92EE36331243 /* Pods-goyotashi-goyotashiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.release.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B707DF8E2402CEF9A2130B10 /* Pods-goyotashi-goyotashiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +295,7 @@
 		84AFC3CC27269A0100B9244E /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3CD27269A2E00B9244E /* TabBarController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				84AFC3BB272676AE00B9244E /* Color.swift in Sources */,
 				84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */,
 				84AFC3AC27266F2100B9244E /* DeviceSize.swift in Sources */,
+				84AFC3CE27269A2E00B9244E /* TabBarController.swift in Sources */,
 				84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */,
 				84AFC3C6272682F900B9244E /* UILabel+Extension.swift in Sources */,
 			);
