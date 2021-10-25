@@ -198,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				84AFC3B3272672BD00B9244E /* Atoms */,
+				84AFC3B4272672D000B9244E /* Molecules */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -207,6 +208,13 @@
 			children = (
 			);
 			path = Atoms;
+			sourceTree = "<group>";
+		};
+		84AFC3B4272672D000B9244E /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Molecules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
