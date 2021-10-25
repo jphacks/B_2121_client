@@ -7,6 +7,7 @@
 
 import UIKit
 import ReactorKit
+import Kingfisher
 
 final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
 
@@ -25,6 +26,10 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         $0.layer.cornerRadius = 16
         $0.layer.masksToBounds = true
         $0.backgroundColor = Color.gray06
+    }
+
+    private let largeImageView = UIImageView().then {
+        $0.contentMode = .scaleToFill
     }
 
     private let groupNameLabel = UILabel().then {
@@ -49,6 +54,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
+        imagesView.addSubview(largeImageView)
         contentView.addSubview(imagesView)
         contentView.addSubview(groupNameLabel)
         contentView.addSubview(descriptionLabel)
@@ -58,6 +64,10 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         imagesView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
             $0.height.equalTo(Const.largeImageSize)
+        }
+        largeImageView.snp.makeConstraints {
+            $0.top.left.bottom.equalToSuperview()
+            $0.size.equalTo(Const.largeImageSize)
         }
         groupNameLabel.snp.makeConstraints {
             $0.top.equalTo(imagesView.snp.bottom).offset(8)
