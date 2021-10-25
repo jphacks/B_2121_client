@@ -11,6 +11,7 @@ final class HomeHeaderView: UIView, ViewConstructor {
     // MARK: - Views
     private let titleLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
+        $0.text = "グループ"
     }
 
     // MARK: - Initializers
