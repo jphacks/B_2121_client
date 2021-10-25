@@ -34,6 +34,8 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
 
     private let moreButton = RoundBorderDotsButton()
 
+    private let plusButton = PlusButton()
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -52,6 +54,7 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
         addSubview(userNameLabel)
         addSubview(editProfileButton)
         addSubview(moreButton)
+        addSubview(plusButton)
     }
 
     func setupViewConstraints() {
@@ -74,6 +77,10 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
         moreButton.snp.makeConstraints {
             $0.centerY.equalTo(editProfileButton)
             $0.left.equalTo(editProfileButton.snp.right).offset(16)
+        }
+        plusButton.snp.makeConstraints {
+            $0.centerY.equalTo(editProfileButton)
+            $0.right.equalToSuperview().inset(16)
         }
     }
 
