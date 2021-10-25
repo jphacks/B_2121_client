@@ -249,6 +249,7 @@
 		84AFC3B62726730D00B9244E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC3CC27269A0100B9244E /* TabBar */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -287,6 +288,13 @@
 				84AFC3CA272686DC00B9244E /* TemplateReactor.swift */,
 			);
 			path = Template;
+			sourceTree = "<group>";
+		};
+		84AFC3CC27269A0100B9244E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
