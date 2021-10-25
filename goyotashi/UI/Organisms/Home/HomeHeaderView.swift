@@ -29,6 +29,8 @@ final class HomeHeaderView: UIView, ViewConstructor {
         $0.text = "近くを検索する"
     }
 
+    private let searchAroundHereSwitch = UISwitch()
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -47,6 +49,7 @@ final class HomeHeaderView: UIView, ViewConstructor {
         addSubview(mapIconBackgroundView)
         mapIconBackgroundView.addSubview(mapIconView)
         addSubview(searchLabel)
+        addSubview(searchAroundHereSwitch)
     }
 
     func setupViewConstraints() {
@@ -66,6 +69,10 @@ final class HomeHeaderView: UIView, ViewConstructor {
         searchLabel.snp.makeConstraints {
             $0.centerY.equalTo(mapIconBackgroundView)
             $0.left.equalTo(mapIconBackgroundView.snp.right).offset(8)
+        }
+        searchAroundHereSwitch.snp.makeConstraints {
+            $0.centerY.equalTo(mapIconBackgroundView)
+            $0.right.equalToSuperview().inset(16)
         }
     }
 }
