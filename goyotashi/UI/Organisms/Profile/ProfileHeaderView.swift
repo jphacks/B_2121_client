@@ -32,6 +32,8 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
         $0.set(title: "プロフィールを編集")
     }
 
+    private let moreButton = RoundBorderDotsButton()
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -49,6 +51,7 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
         addSubview(profileImageView)
         addSubview(userNameLabel)
         addSubview(editProfileButton)
+        addSubview(moreButton)
     }
 
     func setupViewConstraints() {
@@ -67,6 +70,10 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
         editProfileButton.snp.makeConstraints {
             $0.top.equalTo(userNameLabel.snp.bottom).offset(16)
             $0.left.equalToSuperview().inset(16)
+        }
+        moreButton.snp.makeConstraints {
+            $0.centerY.equalTo(editProfileButton)
+            $0.left.equalTo(editProfileButton.snp.right).offset(16)
         }
     }
 
