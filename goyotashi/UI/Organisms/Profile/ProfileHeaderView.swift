@@ -20,6 +20,10 @@ final class ProfileHeaderView: UIView, ViewConstructor {
         $0.layer.masksToBounds = true
     }
 
+    private let userNameLabel = UILabel().then {
+        $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -35,6 +39,7 @@ final class ProfileHeaderView: UIView, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         addSubview(profileImageView)
+        addSubview(userNameLabel)
     }
 
     func setupViewConstraints() {
@@ -42,6 +47,10 @@ final class ProfileHeaderView: UIView, ViewConstructor {
             $0.top.equalToSuperview().inset(32)
             $0.left.equalToSuperview().inset(16)
             $0.size.equalTo(Const.profileImageSize)
+        }
+        userNameLabel.snp.makeConstraints {
+            $0.top.equalTo(profileImageView.snp.bottom).offset(24)
+            $0.left.right.equalToSuperview().inset(16)
         }
     }
 }
