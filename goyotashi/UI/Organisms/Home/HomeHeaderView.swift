@@ -8,6 +8,10 @@
 import UIKit
 
 final class HomeHeaderView: UIView, ViewConstructor {
+    struct Const {
+        static let height: CGFloat = 148
+    }
+
     // MARK: - Views
     private let titleLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
