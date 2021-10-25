@@ -8,6 +8,7 @@
 import UIKit
 import ReactorKit
 import ReusableKit
+import SegementSlide
 
 final class ProfileGroupListViewController: UIViewController, View, ViewConstructor {
 
@@ -60,5 +61,11 @@ final class ProfileGroupListViewController: UIViewController, View, ViewConstruc
                 cell.reactor = reactor
             }
             .disposed(by: disposeBag)
+    }
+}
+
+extension ProfileGroupListViewController: SegementSlideContentScrollViewDelegate {
+    @objc var scrollView: UIScrollView {
+        return collectionView
     }
 }
