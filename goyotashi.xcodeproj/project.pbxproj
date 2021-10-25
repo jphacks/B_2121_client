@@ -24,6 +24,7 @@
 		84AFC3C2272681A800B9244E /* NotoSansJP-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84AFC3BF272681A800B9244E /* NotoSansJP-Regular.otf */; };
 		84AFC3C3272681A800B9244E /* NotoSansJP-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84AFC3C0272681A800B9244E /* NotoSansJP-Bold.otf */; };
 		84AFC3C4272681A800B9244E /* NotoSansJP-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 84AFC3C1272681A800B9244E /* NotoSansJP-Medium.otf */; };
+		84AFC3C6272682F900B9244E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3C5272682F900B9244E /* UILabel+Extension.swift */; };
 		C9E235DF076AE0453284CE2A /* Pods_goyotashiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */; };
 		F70D3ADA7A6F72E7AB99F70D /* Pods_goyotashi_goyotashiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		84AFC3BF272681A800B9244E /* NotoSansJP-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Regular.otf"; sourceTree = "<group>"; };
 		84AFC3C0272681A800B9244E /* NotoSansJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Bold.otf"; sourceTree = "<group>"; };
 		84AFC3C1272681A800B9244E /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
+		84AFC3C5272682F900B9244E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		AA95625A967B92EE36331243 /* Pods-goyotashi-goyotashiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.release.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B707DF8E2402CEF9A2130B10 /* Pods-goyotashi-goyotashiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				84AFC3B8272674A800B9244E /* UIColor+Extension.swift */,
+				84AFC3C5272682F900B9244E /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				84AFC3BB272676AE00B9244E /* Color.swift in Sources */,
 				84AFC3AC27266F2100B9244E /* DeviceSize.swift in Sources */,
 				84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */,
+				84AFC3C6272682F900B9244E /* UILabel+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
