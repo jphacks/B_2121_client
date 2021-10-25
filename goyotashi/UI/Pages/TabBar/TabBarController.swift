@@ -29,7 +29,11 @@ final class TabBarController: UITabBarController {
                     $0.reactor = HomeReactor()
                 }
             ),
-            DevelopingViewController()
+            UINavigationController(
+                rootViewController: ProfileViewController().then {
+                    $0.reactor = ProfileReactor()
+                }
+            )
         ]
 
         tabBar.do {
