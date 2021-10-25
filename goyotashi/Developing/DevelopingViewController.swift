@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-final class DevelopingViewController: UIViewController {
+final class DevelopingViewController: UIViewController, ViewConstructor {
     private let developingLabel = UILabel().then {
         $0.text = "Developing ViewController"
         $0.textAlignment = .center
@@ -18,7 +18,15 @@ final class DevelopingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupViews()
+        setupViewConstraints()
+    }
+    
+    func setupViews() {
         view.addSubview(developingLabel)
+    }
+    
+    func setupViewConstraints() {
         developingLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
