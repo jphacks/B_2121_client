@@ -24,7 +24,7 @@ final class HomeHeaderView: UIView, ViewConstructor {
         $0.contentMode = .scaleAspectFit
     }
 
-    private let searchLabel = UILabel().then {
+    private let searchAroundHereLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 16, color: Color.gray02)
         $0.text = "近くを検索する"
     }
@@ -48,7 +48,7 @@ final class HomeHeaderView: UIView, ViewConstructor {
         addSubview(titleLabel)
         addSubview(mapIconBackgroundView)
         mapIconBackgroundView.addSubview(mapIconView)
-        addSubview(searchLabel)
+        addSubview(searchAroundHereLabel)
         addSubview(searchAroundHereSwitch)
     }
 
@@ -66,7 +66,7 @@ final class HomeHeaderView: UIView, ViewConstructor {
             $0.center.equalToSuperview()
             $0.size.equalTo(24)
         }
-        searchLabel.snp.makeConstraints {
+        searchAroundHereLabel.snp.makeConstraints {
             $0.centerY.equalTo(mapIconBackgroundView)
             $0.left.equalTo(mapIconBackgroundView.snp.right).offset(8)
         }
