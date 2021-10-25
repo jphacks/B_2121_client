@@ -271,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				84AFC3D62726CE5000B9244E /* Home */,
+				84AFC3EA2727135E00B9244E /* Profile */,
 				84AFC3CC27269A0100B9244E /* TabBar */,
 			);
 			path = Pages;
@@ -362,6 +363,13 @@
 				84AFC3E62726E64400B9244E /* HomeGroup.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		84AFC3EA2727135E00B9244E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
