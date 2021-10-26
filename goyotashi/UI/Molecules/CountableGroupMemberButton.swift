@@ -79,6 +79,11 @@ fileprivate final class MemberIconView: UIView, ViewConstructor {
         $0.layer.masksToBounds = true
     }
 
+    let countLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 15, color: Color.gray01)
+        $0.text = "2"
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -98,6 +103,7 @@ fileprivate final class MemberIconView: UIView, ViewConstructor {
         layer.masksToBounds = true
 
         addSubview(imageView)
+        addSubview(countLabel)
     }
 
     func setupViewConstraints() {
@@ -107,6 +113,9 @@ fileprivate final class MemberIconView: UIView, ViewConstructor {
         imageView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.size.equalTo(Const.imageViewSize)
+        }
+        countLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 }
