@@ -17,7 +17,9 @@ final class RestaurantInformationView: UIView, ViewConstructor {
         $0.text = "お店情報"
     }
 
-    private let row = RestaurantInformationRow()
+    private let row = RestaurantInformationRow(informationType: .restaurantName).then {
+        $0.configure(description: "和洋キッチン松之助")
+    }
 
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -75,21 +77,20 @@ fileprivate final class RestaurantInformationRow: UIView, ViewConstructor {
     // MARK: - Views
     private let titleLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 14, color: Color.gray01)
-        $0.text = "店名"
     }
 
     private let descriptionLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 14, color: Color.gray01)
         $0.numberOfLines = 0
-        $0.text = "和洋キッチン松之助"
     }
 
     // MARK: - Initializers
-    override init(frame: CGRect) {
+    init(informationType: InformationType) {
         super.init(frame: .zero)
 
         setupViews()
         setupViewConstraints()
+        configure(informationType: informationType)
     }
 
     required init?(coder: NSCoder) {
@@ -113,5 +114,14 @@ fileprivate final class RestaurantInformationRow: UIView, ViewConstructor {
             $0.right.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview()
         }
+    }
+
+    // MARK: - Configure Methods
+    private func configure(informationType: InformationType) {
+        titleLabel.text = informationType.title
+    }
+
+    func configure(description: String) {
+        descriptionLabel.text = description
     }
 }
