@@ -344,6 +344,7 @@
 		84AFC3B62726730D00B9244E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				84B88DEF27283776004EB87D /* CreateGroup */,
 				84AFC4082727A53400B9244E /* Group */,
 				84AFC3D62726CE5000B9244E /* Home */,
 				84AFC3EA2727135E00B9244E /* Profile */,
@@ -522,6 +523,13 @@
 				84B88DE5272816EA004EB87D /* RestaurantOtherGroupCellReactor.swift */,
 			);
 			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		84B88DEF27283776004EB87D /* CreateGroup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CreateGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
