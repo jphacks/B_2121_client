@@ -55,6 +55,17 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
         header.reactor = reactor
 
         // Action
+        header.plusButton.rx.tap
+            .bind { [weak self] _ in
+                let viewController = CreateGroupViewController().then {
+                    $0.reactor = reactor.createCreateGroupReactor()
+                }
+                let navController = UINavigationController(rootViewController: viewController).then {
+                    $0.modalPresentationStyle = .fullScreen
+                }
+                self?.present(navController, animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
 
         // State
     }
