@@ -31,6 +31,7 @@ final class GroupHeaderView: UIView, ViewConstructor {
     private let descriptionLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 13, color: Color.gray02)
         $0.numberOfLines = 0
+        $0.text = "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。"
     }
 
     private let groupActionButton = GroupActionButton(actionType: .organize)
@@ -52,6 +53,7 @@ final class GroupHeaderView: UIView, ViewConstructor {
         addSubview(groupNameLabel)
         addSubview(groupMemberButton)
         addSubview(descriptionLabel)
+        addSubview(groupActionButton)
     }
 
     func setupViewConstraints() {
@@ -68,6 +70,10 @@ final class GroupHeaderView: UIView, ViewConstructor {
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(groupMemberButton.snp.bottom).offset(16)
             $0.left.right.equalToSuperview().inset(16)
+        }
+        groupActionButton.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(32)
+            $0.left.equalToSuperview().offset(16)
         }
     }
 }
