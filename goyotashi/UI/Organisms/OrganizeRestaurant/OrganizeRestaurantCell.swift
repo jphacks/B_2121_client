@@ -101,6 +101,12 @@ final class OrganizeRestaurantCell: UICollectionViewCell, View, ViewConstructor 
             .distinctUntilChanged()
             .bind(to: restaurantNameLabel.rx.text)
             .disposed(by: disposeBag)
+
+        reactor.state.map { $0.isRemovable }
+            .distinctUntilChanged()
+            .map { !$0 }
+            .bind(to: overlayView.rx.isHidden)
+            .disposed(by: disposeBag)
     }
 
     override func prepareForReuse() {

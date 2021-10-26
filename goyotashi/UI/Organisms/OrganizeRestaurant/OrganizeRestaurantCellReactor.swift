@@ -13,6 +13,7 @@ final class OrganizeRestaurantCellReactor: Reactor {
 
     struct State {
         let groupRestaurant: GroupRestaurant
+        var isRemovable: Bool = false
 
         init(groupRestaurant: GroupRestaurant) {
             self.groupRestaurant = groupRestaurant
