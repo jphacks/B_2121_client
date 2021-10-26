@@ -44,6 +44,10 @@ final class GroupHeaderView: UIView, ViewConstructor {
     private let addMemberButton = GroupActionButton(actionType: .addMember)
     private let bookmarkButton = GroupActionButton(actionType: .bookmark)
 
+    private let restaurantCountLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -66,6 +70,7 @@ final class GroupHeaderView: UIView, ViewConstructor {
         actionButtonStackView.addArrangedSubview(editButton)
         actionButtonStackView.addArrangedSubview(addMemberButton)
         actionButtonStackView.addArrangedSubview(bookmarkButton)
+        addSubview(restaurantCountLabel)
     }
 
     func setupViewConstraints() {
@@ -87,6 +92,11 @@ final class GroupHeaderView: UIView, ViewConstructor {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(32)
             $0.left.equalToSuperview().inset(16)
             $0.right.lessThanOrEqualToSuperview().inset(16)
+        }
+        restaurantCountLabel.snp.makeConstraints {
+            $0.top.equalTo(actionButtonStackView.snp.bottom).offset(48)
+            $0.left.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(16)
         }
     }
 }
