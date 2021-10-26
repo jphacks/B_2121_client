@@ -21,15 +21,7 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
         $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
     }
 
-    private let groupMemberButton = GroupMemberButton().then {
-        let urlStrings: [String] = (0 ..< 2).map { _ in
-            "https://avatars.githubusercontent.com/u/38304075?v=4"
-        }
-        $0.configure(
-            imageUrlStrings: urlStrings,
-            memberCount: 5
-        )
-    }
+    private let groupMemberButton = GroupMemberButton()
 
     private let descriptionLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 13, color: Color.gray02)
@@ -117,6 +109,13 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
         reactor.state.map { $0.group.name }
             .distinctUntilChanged()
             .bind(to: groupNameLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { ($0.group.members, $0.group.memberCount) }
+            .bind { [weak self] (members, memberCount) in
+                let imageUrlStrings = members.map { $0.profileImageUrl }
+                self?.groupMemberButton.configure(imageUrlStrings: imageUrlStrings, memberCount: memberCount)
+            }
             .disposed(by: disposeBag)
 
         reactor.state.map { $0.isMember }
