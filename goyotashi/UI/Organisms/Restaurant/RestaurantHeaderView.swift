@@ -30,6 +30,11 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         $0.text = "和洋キッチン松之助"
     }
 
+    private let restaurantDescriptionLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 13, color: Color.gray03)
+        $0.text = "定食・食堂・ハンバーグ・洋食"
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -46,6 +51,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
     func setupViews() {
         addSubview(imageView)
         addSubview(restaurantNameLabel)
+        addSubview(restaurantDescriptionLabel)
     }
 
     func setupViewConstraints() {
@@ -59,6 +65,10 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         }
         restaurantNameLabel.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(16)
+            $0.left.equalToSuperview().inset(16)
+        }
+        restaurantDescriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(restaurantNameLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview().inset(16)
         }
     }
