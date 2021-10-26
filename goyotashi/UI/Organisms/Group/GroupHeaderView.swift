@@ -31,7 +31,7 @@ final class GroupHeaderView: UIView, ViewConstructor {
     private let descriptionLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 13, color: Color.gray02)
         $0.numberOfLines = 0
-        $0.text = "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。"
+        $0.text = "CAMPHOR-カンファーは京都のIT系学生コミュニティです。\nエンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。"
     }
 
     private let actionButtonStackView = UIStackView().then {
@@ -46,6 +46,7 @@ final class GroupHeaderView: UIView, ViewConstructor {
 
     private let restaurantCountLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
+        $0.text = "10件のお店"
     }
 
     private let plusButton = PlusButton()
