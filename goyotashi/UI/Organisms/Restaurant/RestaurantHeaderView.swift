@@ -61,8 +61,6 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
 
         setupViews()
         setupViewConstraints()
-        let location: (latitude: Double, longitude: Double) = (35.020669, 135.77871)
-        setMap(latitude: location.latitude, longitude: location.longitude)
     }
 
     required init?(coder: NSCoder) {
@@ -164,6 +162,13 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
                     phoneNumber: restaurant.phoneNumber,
                     openingHours: restaurant.openingHours
                 )
+            }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.restaurant.location }
+            .distinctUntilChanged()
+            .bind { [weak self] location in
+                self?.setMap(latitude: location.latitude, longitude: location.longitude)
             }
             .disposed(by: disposeBag)
     }
