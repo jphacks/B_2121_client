@@ -9,7 +9,6 @@ import UIKit
 
 final class GroupHeaderView: UIView, ViewConstructor {
     struct Const {
-        static let height: CGFloat = 400
         static let plusButtonSize: CGFloat = 32
     }
 
@@ -78,9 +77,6 @@ final class GroupHeaderView: UIView, ViewConstructor {
     }
 
     func setupViewConstraints() {
-        snp.makeConstraints {
-            $0.height.equalTo(Const.height)
-        }
         groupNameLabel.snp.makeConstraints {
             $0.top.left.equalToSuperview().inset(16)
         }
