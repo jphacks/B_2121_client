@@ -12,25 +12,25 @@ final class RestaurantOtherGroupCellReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let profileGroup: ProfileGroup
+        let restaurantOtherGroup: RestaurantOtherGroup
         var description: String {
-            return "\(profileGroup.restaurantCount)件のお店 / \(profileGroup.memberCount)人のメンバー"
+            return "\(restaurantOtherGroup.restaurantCount)件のお店 / \(restaurantOtherGroup.memberCount)人のメンバー"
         }
 
-        init(profileGroup: ProfileGroup) {
-            self.profileGroup = profileGroup
+        init(restaurantOtherGroup: RestaurantOtherGroup) {
+            self.restaurantOtherGroup = restaurantOtherGroup
         }
     }
 
     let initialState: State
 
-    init(profileGroup: ProfileGroup) {
-        initialState = State(profileGroup: profileGroup)
+    init(restaurantOtherGroup: RestaurantOtherGroup) {
+        initialState = State(restaurantOtherGroup: restaurantOtherGroup)
     }
 }
 
 extension RestaurantOtherGroupCellReactor: Equatable {
     static func == (lhs: RestaurantOtherGroupCellReactor, rhs: RestaurantOtherGroupCellReactor) -> Bool {
-        return lhs.currentState.profileGroup.groupId == rhs.currentState.profileGroup.groupId
+        return lhs.currentState.restaurantOtherGroup.groupId == rhs.currentState.restaurantOtherGroup.groupId
     }
 }
