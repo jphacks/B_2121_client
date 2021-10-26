@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		41E0CE0BB1D29594A4F51D47 /* Pods_goyotashi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */; };
+		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3752725D40600B9244E /* AppDelegate.swift */; };
 		84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3772725D40600B9244E /* SceneDelegate.swift */; };
 		84AFC37A2725D40600B9244E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3792725D40600B9244E /* ViewController.swift */; };
@@ -96,6 +97,7 @@
 		5A2510B4727F1FAB74093E2D /* Pods-goyotashi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi/Pods-goyotashi.debug.xcconfig"; sourceTree = "<group>"; };
 		6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi_goyotashiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashiTests.release.xcconfig"; path = "Target Support Files/Pods-goyotashiTests/Pods-goyotashiTests.release.xcconfig"; sourceTree = "<group>"; };
+		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		84AFC3722725D40600B9244E /* goyotashi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goyotashi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3752725D40600B9244E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AFC3772725D40600B9244E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				84AFC4122727BC0600B9244E /* GroupActionButton.swift */,
 				84AFC4242728030800B9244E /* AddRestaurantButton.swift */,
 				84B88DE1272810B9004EB87D /* OpenMapButton.swift */,
+				8477770E272847E90054E15D /* CountableGroupMemberButton.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -819,6 +822,7 @@
 			files = (
 				84AFC4152727D59400B9244E /* GroupRestaurantCell.swift in Sources */,
 				84AFC3B9272674A800B9244E /* UIColor+Extension.swift in Sources */,
+				8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */,
 				84AFC401272734FD00B9244E /* ProfileGroupListCellReactor.swift in Sources */,
 				84AFC37A2725D40600B9244E /* ViewController.swift in Sources */,
 				84AFC4112727A84400B9244E /* GroupMemberButton.swift in Sources */,
