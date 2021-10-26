@@ -19,6 +19,10 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let removeButton = UIBarButtonItem(title: "削除", style: .done, target: nil, action: nil).then {
+        $0.tintColor = Color.gray01
+    }
+
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.estimatedItemSize =  OrganizeRestaurantCell.Const.itemSize
         $0.minimumLineSpacing = 24
@@ -42,6 +46,8 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
     // MARK: - Setup Methods
     func setupViews() {
         title = "お店を整理する"
+        navigationItem.rightBarButtonItem = removeButton
+
         view.addSubview(collectionView)
     }
 
