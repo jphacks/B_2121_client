@@ -34,7 +34,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.text = "グループのメンバー"
     }
 
-    private let privacyLabel = UILabel().then {
+    private let privacyTitleLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
         $0.text = "公開／非公開"
     }
@@ -58,7 +58,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         scrollView.addSubview(groupNameLabel)
         scrollView.addSubview(groupNameTextField)
         scrollView.addSubview(groupMemberLabel)
-        scrollView.addSubview(privacyLabel)
+        scrollView.addSubview(privacyTitleLabel)
         scrollView.addSubview(privacyStateLabel)
     }
 
@@ -79,12 +79,12 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
             $0.top.equalTo(groupNameTextField.snp.bottom).offset(40)
             $0.left.equalToSuperview().inset(16)
         }
-        privacyLabel.snp.makeConstraints {
+        privacyTitleLabel.snp.makeConstraints {
             $0.top.equalTo(groupMemberLabel.snp.bottom).offset(40)
             $0.left.equalToSuperview().inset(16)
         }
         privacyStateLabel.snp.makeConstraints {
-            $0.top.equalTo(privacyLabel.snp.bottom).offset(8)
+            $0.top.equalTo(privacyTitleLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview().inset(16)
         }
     }
