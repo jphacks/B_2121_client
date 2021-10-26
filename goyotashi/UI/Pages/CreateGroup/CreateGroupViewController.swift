@@ -128,5 +128,10 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
             .distinctUntilChanged()
             .bind(to: countableGroupMemberButton.rx.members)
             .disposed(by: disposeBag)
+
+        reactor.state.map { $0.isPublic }
+            .distinctUntilChanged()
+            .bind(to: privacySwitch.rx.isOn)
+            .disposed(by: disposeBag)
     }
 }
