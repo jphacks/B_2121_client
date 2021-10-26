@@ -60,6 +60,10 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
     // MARK: - Bind Method
     func bind(reactor: OrganizeRestaurantReactor) {
         // Action
+        collectionView.rx.itemSelected
+            .map { Reactor.Action.didSelectItem($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
 
         // State
         reactor.state.map { $0.restaurantCellReactors }
