@@ -7,12 +7,14 @@
 
 import UIKit
 import ReactorKit
+import MapKit
 
 final class RestaurantHeaderView: UIView, View, ViewConstructor {
     struct Const {
         static let aspectRatio: CGFloat = 1.42
         static let imageWidth: CGFloat = DeviceSize.screenWidth
         static let imageHeight: CGFloat = imageWidth / aspectRatio
+        static let mapViewHeight: CGFloat = 120
     }
 
     // MARK: - Variables
@@ -41,12 +43,16 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
 
     private let restaurantInformationView = RestaurantInformationView()
 
+    private let mapView = MKMapView()
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
         setupViews()
         setupViewConstraints()
+        let location: (latitude: Double, longitude: Double) = (35.020669, 135.77871)
+        setMap(latitude: location.latitude, longitude: location.longitude)
     }
 
     required init?(coder: NSCoder) {
@@ -60,6 +66,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         addSubview(restaurantDescriptionLabel)
         addSubview(addRestaurantButton)
         addSubview(restaurantInformationView)
+        addSubview(mapView)
     }
 
     func setupViewConstraints() {
@@ -86,6 +93,11 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
             $0.top.greaterThanOrEqualTo(restaurantDescriptionLabel.snp.bottom).offset(32)
             $0.top.greaterThanOrEqualTo(addRestaurantButton.snp.bottom).offset(32)
             $0.left.right.equalToSuperview()
+        }
+        mapView.snp.makeConstraints {
+            $0.top.equalTo(restaurantInformationView.snp.bottom).offset(32)
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(Const.mapViewHeight)
             $0.bottom.equalToSuperview()
         }
     }
@@ -95,5 +107,19 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         // Action
 
         // State
+    }
+
+    private func setMap(latitude: Double?, longitude: Double?) {
+        guard let latitude = latitude, let longitude = longitude else {
+            return
+        }
+        let center: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+        mapView.setCenter(center, animated: false)
+        let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: center, span: span)
+        mapView.region = region
+        let pointAnnotation: MKPointAnnotation = MKPointAnnotation()
+        pointAnnotation.coordinate = center
+        mapView.addAnnotation(pointAnnotation)
     }
 }
