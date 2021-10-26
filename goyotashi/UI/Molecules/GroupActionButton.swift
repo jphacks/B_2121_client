@@ -47,9 +47,6 @@ final class GroupActionButton: UIButton {
         static let actionImageSize: CGFloat = 32
     }
 
-    // MARK: - Variables
-    private let actionType: ActionType
-
     // MARK: - Override Variables
     override var isHighlighted: Bool {
         didSet {
@@ -82,12 +79,11 @@ final class GroupActionButton: UIButton {
 
     // MARK: - Initializers
     init(actionType: ActionType) {
-        self.actionType = actionType
         super.init(frame: .zero)
 
         setupViews()
         setupViewConstraints()
-        configure()
+        configure(actionType: actionType)
     }
 
     required init?(coder: NSCoder) {
@@ -121,7 +117,7 @@ final class GroupActionButton: UIButton {
     }
 
     // MARK: - Configure Methods
-    private func configure() {
+    private func configure(actionType: ActionType) {
         actionImageView.image = actionType.image?.withRenderingMode(.alwaysTemplate)
         actionNameLabel.text = actionType.name
     }
