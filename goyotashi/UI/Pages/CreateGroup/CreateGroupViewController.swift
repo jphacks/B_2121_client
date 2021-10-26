@@ -14,6 +14,10 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let closeButton = UIButton().then {
+        $0.setImage(R.image.close(), for: .normal)
+    }
+
     private let scrollView = UIScrollView().then {
         $0.alwaysBounceVertical = true
     }
@@ -62,6 +66,8 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+
         view.addSubview(scrollView)
         scrollView.addSubview(groupNameLabel)
         scrollView.addSubview(groupNameTextField)
