@@ -17,8 +17,8 @@ final class RestaurantInformationView: UIView, ViewConstructor {
         $0.text = "お店情報"
     }
 
-    private let row = RestaurantInformationRow(informationType: .restaurantName).then {
-        $0.configure(description: "和洋キッチン松之助")
+    private let informationRowStackView = UIStackView().then {
+        $0.axis = .vertical
     }
 
     // MARK: - Initializers
@@ -36,7 +36,7 @@ final class RestaurantInformationView: UIView, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         addSubview(titleLabel)
-        addSubview(row)
+        addSubview(informationRowStackView)
     }
 
     func setupViewConstraints() {
@@ -44,7 +44,7 @@ final class RestaurantInformationView: UIView, ViewConstructor {
             $0.top.equalToSuperview()
             $0.left.equalToSuperview().inset(16)
         }
-        row.snp.makeConstraints {
+        informationRowStackView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(16)
             $0.left.right.equalToSuperview()
             $0.bottom.equalToSuperview()
