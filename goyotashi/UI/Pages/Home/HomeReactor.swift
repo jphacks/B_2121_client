@@ -37,4 +37,9 @@ final class HomeReactor: Reactor {
         }
         return state
     }
+
+    // MARK: Create Reactor Methods
+    func createGroupReactor(indexPath: IndexPath) -> GroupReactor {
+        return GroupReactor()
+    }
 }
