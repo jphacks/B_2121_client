@@ -8,6 +8,40 @@
 import UIKit
 
 final class GroupActionButton: UIButton {
+
+    enum ActionType {
+        case organize
+        case edit
+        case addMember
+        case bookmark
+
+        var name: String {
+            switch self {
+            case .organize:
+                return "整理する"
+            case .edit:
+                return "編集する"
+            case .addMember:
+                return "メンバー追加"
+            case .bookmark:
+                return "保存する"
+            }
+        }
+
+        var image: UIImage? {
+            switch self {
+            case .organize:
+                return R.image.photo_library()
+            case .edit:
+                return R.image.notes()
+            case .addMember:
+                return R.image.person_add()
+            case .bookmark:
+                return R.image.bookmark_filled()
+            }
+        }
+    }
+
     struct Const {
         static let imageBackgroundViewSize: CGFloat = 72
         static let actionImageSize: CGFloat = 32
