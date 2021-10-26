@@ -60,6 +60,14 @@ final class RestaurantInformationView: UIView, ViewConstructor {
             $0.bottom.equalToSuperview()
         }
     }
+
+    // MARK: - Configure Methods
+    func configure(restaurantName: String, address: String, phoneNumber: String, openingHours: String) {
+        restaurantNameRow.configure(description: restaurantName)
+        addressRow.configure(description: address)
+        phoneNumberRow.configure(description: phoneNumber)
+        openingHoursRow.configure(description: openingHours)
+    }
 }
 
 fileprivate final class RestaurantInformationRow: UIView, ViewConstructor {
