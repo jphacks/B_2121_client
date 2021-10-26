@@ -68,7 +68,7 @@ struct TestData {
         return Group(
             id: randomString(length: 8),
             name: "CAMPHOR-",
-            description: "",
+            description: "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。",
             memberCount: memberCount,
             restaurantCount: Int.random(in: 3 ..< 16),
             members: members
