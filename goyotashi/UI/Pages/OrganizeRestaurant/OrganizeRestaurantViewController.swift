@@ -26,7 +26,7 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
         $0.scrollDirection = .vertical
     }).then {
         $0.register(Reusable.restaurantCell)
-        $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 56, right: 16)
+        $0.contentInset = UIEdgeInsets(top: 24, left: 16, bottom: 56, right: 16)
         $0.backgroundColor = Color.white
         $0.alwaysBounceVertical = true
     }
