@@ -298,6 +298,7 @@
 		84AFC3B62726730D00B9244E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC4082727A53400B9244E /* Group */,
 				84AFC3D62726CE5000B9244E /* Home */,
 				84AFC3EA2727135E00B9244E /* Profile */,
 				84AFC3CC27269A0100B9244E /* TabBar */,
@@ -430,6 +431,13 @@
 				84AFC400272734FD00B9244E /* ProfileGroupListCellReactor.swift */,
 			);
 			path = ProfileGroupList;
+			sourceTree = "<group>";
+		};
+		84AFC4082727A53400B9244E /* Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
