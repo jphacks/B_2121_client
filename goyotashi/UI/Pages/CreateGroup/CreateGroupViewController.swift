@@ -44,6 +44,8 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.text = "公開する"
     }
 
+    private let privacySwitch = UISwitch()
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +62,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         scrollView.addSubview(groupMemberLabel)
         scrollView.addSubview(privacyTitleLabel)
         scrollView.addSubview(privacyStateLabel)
+        scrollView.addSubview(privacySwitch)
     }
 
     func setupViewConstraints() {
@@ -86,6 +89,10 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         privacyStateLabel.snp.makeConstraints {
             $0.top.equalTo(privacyTitleLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview().inset(16)
+        }
+        privacySwitch.snp.makeConstraints {
+            $0.centerY.equalTo(privacyStateLabel)
+            $0.right.equalTo(groupNameTextField)
         }
     }
 
