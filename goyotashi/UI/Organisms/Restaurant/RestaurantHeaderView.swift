@@ -25,6 +25,10 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         $0.image = R.image.dish()
     }
 
+    private let restaurantNameLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -40,6 +44,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         addSubview(imageView)
+        addSubview(restaurantNameLabel)
     }
 
     func setupViewConstraints() {
@@ -50,6 +55,10 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
             $0.top.left.right.equalToSuperview()
             $0.width.equalTo(Const.imageWidth)
             $0.height.equalTo(Const.imageHeight)
+        }
+        restaurantNameLabel.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.bottom).offset(16)
+            $0.left.equalToSuperview().inset(16)
         }
     }
 
