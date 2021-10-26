@@ -12,7 +12,7 @@ final class CreateGroupReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        let members: [User] = []
     }
 
     let initialState: State = State()
