@@ -8,7 +8,9 @@
 import ReactorKit
 
 final class OrganizeRestaurantReactor: Reactor {
-    enum Action {}
+    enum Action {
+        case didSelectItem(IndexPath)
+    }
     enum Mutation {}
 
     struct State {
@@ -16,4 +18,12 @@ final class OrganizeRestaurantReactor: Reactor {
     }
 
     let initialState: State = State()
+
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case let .didSelectItem(indexPath):
+            currentState.restaurantCellReactors[indexPath.row].action.onNext(.toggleIsRemovable)
+            return .empty()
+        }
+    }
 }
