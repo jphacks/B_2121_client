@@ -37,6 +37,8 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
 
     private let addRestaurantButton = AddRestaurantButton()
 
+    private let restaurantInformationView = RestaurantInformationView()
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -55,6 +57,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         addSubview(restaurantNameLabel)
         addSubview(restaurantDescriptionLabel)
         addSubview(addRestaurantButton)
+        addSubview(restaurantInformationView)
     }
 
     func setupViewConstraints() {
@@ -74,6 +77,11 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         addRestaurantButton.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(16)
             $0.right.equalToSuperview().inset(16)
+        }
+        restaurantInformationView.snp.makeConstraints {
+            $0.top.greaterThanOrEqualTo(restaurantDescriptionLabel.snp.bottom).offset(32)
+            $0.top.greaterThanOrEqualTo(addRestaurantButton.snp.bottom).offset(32)
+            $0.left.right.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
     }
