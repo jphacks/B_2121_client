@@ -31,6 +31,8 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
         $0.alwaysBounceVertical = true
     }
 
+    private let header = GroupHeaderView()
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +41,32 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
         setupViewConstraints()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let height = header.frame.height
+        collectionView.contentInset.top = height
+        header.snp.remakeConstraints {
+            $0.top.equalToSuperview().offset(-height)
+            $0.left.right.equalTo(view)
+        }
+
+        let topInset = collectionView.adjustedContentInset.top
+        collectionView.setContentOffset(CGPoint(x: -16, y: -topInset), animated: false)
+    }
+
     // MARK: - Setup Methods
     func setupViews() {
         view.addSubview(collectionView)
+        collectionView.addSubview(header)
     }
 
     func setupViewConstraints() {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        header.snp.makeConstraints {
+            $0.left.right.equalTo(view)
         }
     }
 
