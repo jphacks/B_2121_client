@@ -54,6 +54,7 @@ final class ProfileGroupListViewController: UIViewController, View, ViewConstruc
     // MARK: - Bind Method
     func bind(reactor: ProfileGroupListReactor) {
         // Action
+        reactor.action.onNext(.refresh)
 
         // State
         reactor.state.map { $0.groupCellReactors }
