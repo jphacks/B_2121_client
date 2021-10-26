@@ -31,6 +31,11 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         $0.layer.masksToBounds = true
     }
 
+    private let restaurantNameLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 14, color: Color.gray01)
+        $0.text = "和洋キッチン松之助"
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -46,6 +51,7 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         contentView.addSubview(imageView)
+        contentView.addSubview(restaurantNameLabel)
     }
 
     func setupViewConstraints() {
@@ -53,6 +59,10 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
             $0.top.left.right.equalToSuperview()
             $0.height.equalTo(Const.imageViewHeight)
             $0.width.equalTo(Const.imageViewWidth)
+        }
+        restaurantNameLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview()
         }
     }
 
