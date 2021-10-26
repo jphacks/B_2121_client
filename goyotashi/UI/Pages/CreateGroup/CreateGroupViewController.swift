@@ -43,7 +43,6 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
 
     private let privacyStateLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 19, color: Color.gray01)
-        $0.text = "公開する"
     }
 
     private let privacySwitch = UISwitch()
@@ -51,7 +50,6 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
     private let privacyDescriptionLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 15, color: Color.gray04)
         $0.numberOfLines = 0
-        $0.text = "すべてのユーザがグループの内容を見ることができます。"
     }
 
     // MARK: - Lify Cycles
