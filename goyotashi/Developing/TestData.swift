@@ -48,6 +48,14 @@ struct TestData {
         )
     }
 
+    static func groupRestaurant() -> GroupRestaurant {
+        return GroupRestaurant(
+            restaurantId: randomString(length: 8),
+            imageUrl: restaurantImageUrlString(),
+            restaurantName: "和洋キッチン松之助"
+        )
+    }
+
     // MARK: - Private Functions
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
