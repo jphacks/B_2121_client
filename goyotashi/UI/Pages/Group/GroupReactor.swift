@@ -18,6 +18,7 @@ final class GroupReactor: Reactor {
 
     struct State {
         var restaurantCellReactors: [GroupRestaurantCellReactor] = []
+        let isMember: Bool = true
     }
 
     let initialState: State = State()
