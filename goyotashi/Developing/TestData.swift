@@ -24,6 +24,30 @@ struct TestData {
         }
     }
 
+    static func profileGroup() -> ProfileGroup {
+        return ProfileGroup(
+            groupId: randomString(length: 8),
+            groupName: "CAMPHOR-",
+            restaurantCount: Int.random(in: 4 ..< 16),
+            memberCount: Int.random(in: 4 ..< 32),
+            imageUrls: restaurantImageUrlStrings()
+        )
+    }
+
+    static func profileGroups(count: Int) -> [ProfileGroup] {
+        return (0 ..< count).map { _ in
+            profileGroup()
+        }
+    }
+
+    static func user() -> User {
+        return User(
+            userId: randomString(length: 8),
+            userName: "KoukiNAGATA",
+            profileImageUrl: "https://avatars.githubusercontent.com/u/38304075?v=4"
+        )
+    }
+
     // MARK: - Private Functions
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -52,7 +76,7 @@ struct TestData {
     }
 
     private static func restaurantImageUrlStrings() -> [String] {
-        let size = Int.random(in: 3 ..< 6)
+        let size = Int.random(in: 3 ..< 7)
         return (0 ..< size).map { _ in restaurantImageUrlString() }
     }
 }

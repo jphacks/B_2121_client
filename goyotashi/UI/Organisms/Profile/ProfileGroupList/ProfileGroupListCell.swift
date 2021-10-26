@@ -1,21 +1,26 @@
 //
-//  HomeGroupCell.swift
+//  ProfileGroupListCell.swift
 //  goyotashi
 //
-//  Created by Akihiro Kokubo on 2021/10/25.
+//  Created by Akihiro Kokubo on 2021/10/26.
 //
 
 import UIKit
 import ReactorKit
 import Kingfisher
 
-final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
+final class ProfileGroupListCell: UICollectionViewCell, View, ViewConstructor {
 
     struct Const {
-        static let largeImageSize: CGFloat = (DeviceSize.screenWidth - 32 - 4) / 2
-        static let smallImageSize: CGFloat = (largeImageSize - 4) / 2
+        static let aspectRatio: CGFloat = 1.35
+        static let smallImageWidth: CGFloat = (DeviceSize.screenWidth - 32 - 8) / 3
+        static let smallImageHeight: CGFloat = smallImageWidth / aspectRatio
+        static let smallImageSize: CGSize = CGSize(width: smallImageWidth, height: smallImageHeight)
+        static let largeImageWidth: CGFloat = smallImageWidth * 2 + 4
+        static let largeImageHeight: CGFloat = smallImageHeight * 2 + 4
+        static let imagesViewHeight: CGFloat = smallImageHeight * 3 + 8
         static let cellWidth: CGFloat = DeviceSize.screenWidth - 32
-        static let cellHeight: CGFloat = largeImageSize + 60
+        static let cellHeight: CGFloat = smallImageHeight * 3 + 8 + 60
         static let itemSize: CGSize = CGSize(width: cellWidth, height: cellHeight)
     }
 
@@ -35,7 +40,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
     }
 
     private let smallImageViews: [UIImageView] = {
-        var imageViews: [UIImageView] = (0 ..< 4).map { _ in
+        var imageViews: [UIImageView] = (0 ..< 5).map { _ in
             let imageView = UIImageView().then {
                 $0.contentMode = .scaleAspectFill
                 $0.clipsToBounds = true
@@ -80,28 +85,32 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
     func setupViewConstraints() {
         imagesView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
-            $0.height.equalTo(Const.largeImageSize)
+            $0.height.equalTo(Const.imagesViewHeight)
         }
         largeImageView.snp.makeConstraints {
-            $0.top.left.bottom.equalToSuperview()
-            $0.size.equalTo(Const.largeImageSize)
+            $0.top.left.equalToSuperview()
+            $0.width.equalTo(Const.largeImageWidth)
+            $0.height.equalTo(Const.largeImageHeight)
         }
         smallImageViews[0].snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.left.equalTo(largeImageView.snp.right).offset(4)
+            $0.top.right.equalToSuperview()
             $0.size.equalTo(Const.smallImageSize)
         }
         smallImageViews[1].snp.makeConstraints {
-            $0.top.equalToSuperview()
             $0.right.equalToSuperview()
+            $0.bottom.equalTo(largeImageView)
             $0.size.equalTo(Const.smallImageSize)
         }
         smallImageViews[2].snp.makeConstraints {
-            $0.left.equalTo(largeImageView.snp.right).offset(4)
-            $0.bottom.equalToSuperview()
+            $0.left.bottom.equalToSuperview()
             $0.size.equalTo(Const.smallImageSize)
         }
         smallImageViews[3].snp.makeConstraints {
+            $0.left.equalTo(smallImageViews[2].snp.right).offset(4)
+            $0.bottom.equalToSuperview()
+            $0.size.equalTo(Const.smallImageSize)
+        }
+        smallImageViews[4].snp.makeConstraints {
             $0.right.bottom.equalToSuperview()
             $0.size.equalTo(Const.smallImageSize)
         }
@@ -116,14 +125,14 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
     }
 
     // MARK: - Bind Method
-    func bind(reactor: HomeGroupCellReactor) {
+    func bind(reactor: ProfileGroupListCellReactor) {
         // Action
 
         // State
-        reactor.state.map { $0.homeGroup.imageUrls }
+        reactor.state.map { $0.profileGroup.imageUrls }
             .distinctUntilChanged()
             .bind { [weak self] imageUrls in
-                let max = min(imageUrls.count, 5)
+                let max = min(imageUrls.count, 6)
                 for index in 0 ..< max {
                     if index == 0 {
                         self?.largeImageView.kf.setImage(with: URL(string: imageUrls[0]), placeholder: R.image.dish())
@@ -134,7 +143,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.homeGroup.groupName }
+        reactor.state.map { $0.profileGroup.groupName }
             .distinctUntilChanged()
             .bind(to: groupNameLabel.rx.text)
             .disposed(by: disposeBag)

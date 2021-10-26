@@ -13,6 +13,7 @@ target 'goyotashi' do
   pod 'SwiftLint'
   pod 'R.swift'
   pod 'Kingfisher', '~> 7.0'
+  pod 'SegementSlide', '3.0.1'
 
   target 'goyotashiTests' do
     inherit! :search_paths
