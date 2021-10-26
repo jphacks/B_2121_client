@@ -123,6 +123,13 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        privacySwitch.rx.isOn
+            .distinctUntilChanged()
+            .bind { isOn in
+                print("isOn: \(isOn)")
+            }
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.members }
             .distinctUntilChanged()

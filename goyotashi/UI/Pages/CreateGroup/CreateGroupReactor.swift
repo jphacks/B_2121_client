@@ -10,9 +10,11 @@ import ReactorKit
 final class CreateGroupReactor: Reactor {
     enum Action {
         case updateGroupName(String?)
+        case updateIsOnPrivacySwitch(Bool)
     }
     enum Mutation {
         case setGroupName(String)
+        case setIsPublic(Bool)
     }
 
     struct State {
@@ -28,6 +30,8 @@ final class CreateGroupReactor: Reactor {
         case let .updateGroupName(name):
             guard let name = name else { return .empty() }
             return .just(Mutation.setGroupName(name))
+        case let .updateIsOnPrivacySwitch(isOn):
+            return .just(Mutation.setIsPublic(isOn))
         }
     }
 
@@ -36,6 +40,8 @@ final class CreateGroupReactor: Reactor {
         switch mutation {
         case let .setGroupName(name):
             state.groupName = name
+        case let .setIsPublic(isPublic):
+            state.isPublic = isPublic
         }
         return state
     }
