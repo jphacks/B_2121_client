@@ -131,6 +131,12 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: CreateGroupReactor) {
         // Action
+        closeButton.rx.tap
+            .bind { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
         groupNameTextField.rx.text
             .distinctUntilChanged()
             .map { Reactor.Action.updateGroupName($0) }
