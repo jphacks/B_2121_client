@@ -71,6 +71,8 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Bind Method
     func bind(reactor: RestaurantReactor) {
+        header.reactor = reactor
+
         // Action
 
         // State
