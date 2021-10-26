@@ -1,5 +1,5 @@
 //
-//  GroupViewController.swift
+//  RestaurantViewController.swift
 //  goyotashi
 //
 //  Created by Akihiro Kokubo on 2021/10/26.
@@ -9,29 +9,30 @@ import UIKit
 import ReactorKit
 import ReusableKit
 
-final class GroupViewController: UIViewController, View, ViewConstructor {
+final class RestaurantViewController: UIViewController, View, ViewConstructor {
 
     struct Reusable {
-        static let restaurantCell = ReusableCell<GroupRestaurantCell>()
+        static let groupCell = ReusableCell<RestaurantOtherGroupCell>()
     }
 
     // MARK: - Variables
     var disposeBag = DisposeBag()
 
+    var didConfigureHeader: Bool = false
+
     // MARK: - Views
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
-        $0.estimatedItemSize =  GroupRestaurantCell.Const.itemSize
-        $0.minimumLineSpacing = 24
-        $0.minimumInteritemSpacing = 8
+        $0.estimatedItemSize =  ProfileGroupListCell.Const.itemSize
+        $0.minimumLineSpacing = 32
         $0.scrollDirection = .vertical
     }).then {
-        $0.register(Reusable.restaurantCell)
+        $0.register(Reusable.groupCell)
         $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 56, right: 16)
         $0.backgroundColor = Color.white
         $0.alwaysBounceVertical = true
     }
 
-    private let header = GroupHeaderView()
+    private let header = RestaurantHeaderView()
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -44,13 +45,19 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
+        if didConfigureHeader { return }
         let height = header.frame.height
+        if height == 0 { return }
+        configureHeader(height: height)
+    }
+
+    private func configureHeader(height: CGFloat) {
+        didConfigureHeader = true
         collectionView.contentInset.top = height
         header.snp.remakeConstraints {
             $0.top.equalToSuperview().offset(-height)
             $0.left.right.equalTo(view)
         }
-
         let topInset = collectionView.adjustedContentInset.top
         collectionView.setContentOffset(CGPoint(x: -16, y: -topInset), animated: false)
     }
@@ -71,25 +78,16 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
     }
 
     // MARK: - Bind Method
-    func bind(reactor: GroupReactor) {
+    func bind(reactor: RestaurantReactor) {
         header.reactor = reactor
 
         // Action
         reactor.action.onNext(.refresh)
 
-        collectionView.rx.itemSelected
-            .bind { [weak self] indexPath in
-                let viewController = RestaurantViewController().then {
-                    $0.reactor = reactor.createRestaurantReactor(indexPath: indexPath)
-                }
-                self?.navigationController?.pushViewController(viewController, animated: true)
-            }
-            .disposed(by: disposeBag)
-
         // State
-        reactor.state.map { $0.restaurantCellReactors }
+        reactor.state.map { $0.groupCellReactors }
             .distinctUntilChanged()
-            .bind(to: collectionView.rx.items(Reusable.restaurantCell)) { _, reactor, cell in
+            .bind(to: collectionView.rx.items(Reusable.groupCell)) { _, reactor, cell in
                 cell.reactor = reactor
             }
             .disposed(by: disposeBag)
