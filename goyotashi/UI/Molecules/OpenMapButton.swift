@@ -46,11 +46,12 @@ final class OpenMapButton: UIButton {
     }
 
     // MARK: - Initializers
-    override init(frame: CGRect) {
+    init(mapAppType: MapAppType) {
         super.init(frame: .zero)
 
         setupViews()
         setupViewConstraints()
+        configure(mapAppType: mapAppType)
     }
 
     required init?(coder: NSCoder) {
@@ -80,5 +81,10 @@ final class OpenMapButton: UIButton {
             $0.left.equalTo(iconView.snp.right).offset(4)
             $0.right.equalToSuperview().inset(16)
         }
+    }
+
+    // MARK: - Configure Methods
+    private func configure(mapAppType: MapAppType) {
+        actionNameLabel.text = mapAppType.actionName
     }
 }
