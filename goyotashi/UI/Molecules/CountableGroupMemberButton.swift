@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class CountableGroupMemberButton: UIButton {
 
@@ -61,6 +63,35 @@ final class CountableGroupMemberButton: UIButton {
         }
         overlayView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+    }
+
+    func configure(imageUrlStrings: [String]) {
+        let imageUrls: [URL?] = (0 ..< 3).map { index in
+            if imageUrlStrings.indices.contains(index) {
+                let urlString = imageUrlStrings[index]
+                return URL(string: urlString)
+            } else {
+                return nil
+            }
+        }
+        _ = imageUrls.enumerated().map {
+            if let url = $0.element {
+                memberIconViews[$0.offset].isHidden = false
+                memberIconViews[$0.offset].imageView.kf.setImage(with: url, placeholder: R.image.dish())
+            } else {
+                memberIconViews[$0.offset].isHidden = true
+            }
+        }
+    }
+}
+
+extension Reactive where Base: CountableGroupMemberButton {
+    var members: Binder<[User]> {
+        return Binder(base) { view, members in
+            if members.count < 4 {
+                view.configure(imageUrlStrings: members.map { $0.profileImageUrl })
+            }
         }
     }
 }
