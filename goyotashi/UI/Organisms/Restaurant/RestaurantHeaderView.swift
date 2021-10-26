@@ -27,6 +27,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
 
     private let restaurantNameLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
+        $0.numberOfLines = 0
         $0.text = "和洋キッチン松之助"
     }
 
@@ -70,6 +71,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         restaurantNameLabel.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(16)
             $0.left.equalToSuperview().inset(16)
+            $0.right.equalTo(addRestaurantButton.snp.left).offset(-16)
         }
         restaurantDescriptionLabel.snp.makeConstraints {
             $0.top.equalTo(restaurantNameLabel.snp.bottom).offset(8)
