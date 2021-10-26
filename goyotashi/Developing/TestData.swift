@@ -63,12 +63,15 @@ struct TestData {
     }
 
     static func group() -> Group {
+        let memberCount = Int.random(in: 1 ..< 5)
+        let members = (0 ..< memberCount).map { _ in user() }
         return Group(
             id: randomString(length: 8),
             name: "CAMPHOR-",
             description: "",
-            memberCount: Int.random(in: 0 ..< 16),
-            restaurantCount: Int.random(in: 3 ..< 16)
+            memberCount: memberCount,
+            restaurantCount: Int.random(in: 3 ..< 16),
+            members: members
         )
     }
 
