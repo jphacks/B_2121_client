@@ -58,6 +58,26 @@ final class GroupMemberButton: UIButton {
             $0.right.lessThanOrEqualToSuperview()
         }
     }
+
+    func setMember(imageUrlStrings: [String], memberCount: Int) {
+        let imageUrls: [URL?] = (0 ..< 3).map { index in
+            if imageUrlStrings.indices.contains(index) {
+                let urlString = imageUrlStrings[index]
+                return URL(string: urlString)
+            } else {
+                return nil
+            }
+        }
+        _ = imageUrls.enumerated().map {
+            if let url = $0.element {
+                memberIconViews[$0.offset].isHidden = false
+                memberIconViews[$0.offset].imageView.kf.setImage(with: url, placeholder: R.image.dish())
+            } else {
+                memberIconViews[$0.offset].isHidden = true
+            }
+        }
+        memberCountLalbel.text = "\(memberCount)人のメンバー"
+    }
 }
 
 fileprivate final class MemberIconView: UIView, ViewConstructor {
