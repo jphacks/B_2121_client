@@ -34,7 +34,7 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
 
     private let moreButton = RoundBorderDotsButton()
 
-    private let plusButton = PlusButton()
+    let plusButton = PlusButton()
 
     // MARK: - Initializers
     override init(frame: CGRect) {
