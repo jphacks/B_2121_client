@@ -48,6 +48,10 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
     private let openNativeMapButton = OpenMapButton(mapAppType: .nativeMap)
     private let openGoogleMapButton = OpenMapButton(mapAppType: .googleMap)
 
+    private let separator = UIView().then {
+        $0.backgroundColor = Color.gray06
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -72,6 +76,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         addSubview(mapView)
         addSubview(openNativeMapButton)
         addSubview(openGoogleMapButton)
+        addSubview(separator)
     }
 
     func setupViewConstraints() {
@@ -107,11 +112,16 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         openNativeMapButton.snp.makeConstraints {
             $0.top.equalTo(mapView.snp.bottom).offset(16)
             $0.left.equalToSuperview().inset(16)
-            $0.bottom.equalToSuperview()
         }
         openGoogleMapButton.snp.makeConstraints {
             $0.top.equalTo(mapView.snp.bottom).offset(16)
             $0.left.equalTo(openNativeMapButton.snp.right).offset(16)
+        }
+        separator.snp.makeConstraints {
+            $0.top.equalTo(openNativeMapButton.snp.bottom).offset(48)
+            $0.left.right.equalToSuperview().inset(16)
+            $0.height.equalTo(1)
+            $0.bottom.equalToSuperview()
         }
     }
 
