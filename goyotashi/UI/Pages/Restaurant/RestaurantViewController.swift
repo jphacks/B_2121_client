@@ -18,6 +18,8 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
     // MARK: - Variables
     var disposeBag = DisposeBag()
 
+    var didConfigureHeader: Bool = false
+
     // MARK: - Views
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.estimatedItemSize =  ProfileGroupListCell.Const.itemSize
@@ -43,13 +45,19 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
+        if didConfigureHeader { return }
         let height = header.frame.height
+        if height == 0 { return }
+        configureHeader(height: height)
+    }
+
+    private func configureHeader(height: CGFloat) {
+        didConfigureHeader = true
         collectionView.contentInset.top = height
         header.snp.remakeConstraints {
             $0.top.equalToSuperview().offset(-height)
             $0.left.right.equalTo(view)
         }
-
         let topInset = collectionView.adjustedContentInset.top
         collectionView.setContentOffset(CGPoint(x: -16, y: -topInset), animated: false)
     }
