@@ -19,7 +19,13 @@ final class RestaurantInformationView: UIView, ViewConstructor {
 
     private let informationRowStackView = UIStackView().then {
         $0.axis = .vertical
+        $0.spacing = 16
     }
+
+    private let restaurantNameRow = RestaurantInformationRow(informationType: .restaurantName)
+    private let addressRow = RestaurantInformationRow(informationType: .address)
+    private let phoneNumberRow = RestaurantInformationRow(informationType: .phoneNumber)
+    private let openingHoursRow = RestaurantInformationRow(informationType: .openingHours)
 
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -37,6 +43,10 @@ final class RestaurantInformationView: UIView, ViewConstructor {
     func setupViews() {
         addSubview(titleLabel)
         addSubview(informationRowStackView)
+        informationRowStackView.addArrangedSubview(restaurantNameRow)
+        informationRowStackView.addArrangedSubview(addressRow)
+        informationRowStackView.addArrangedSubview(phoneNumberRow)
+        informationRowStackView.addArrangedSubview(openingHoursRow)
     }
 
     func setupViewConstraints() {
