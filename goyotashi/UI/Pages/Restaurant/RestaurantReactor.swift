@@ -12,7 +12,7 @@ final class RestaurantReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        var groupCellReactors: [RestaurantOtherGroupCellReactor] = TestData.restaurantOtherGroups(count: 9).map { RestaurantOtherGroupCellReactor(restaurantOtherGroup: $0) }
     }
 
     let initialState: State = State()
