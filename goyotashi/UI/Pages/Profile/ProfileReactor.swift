@@ -16,4 +16,9 @@ final class ProfileReactor: Reactor {
     }
 
     let initialState: State = State()
+
+    // MARK: - Create Reactor Methods
+    func createCreateGroupReactor() -> CreateGroupReactor {
+        return CreateGroupReactor()
+    }
 }
