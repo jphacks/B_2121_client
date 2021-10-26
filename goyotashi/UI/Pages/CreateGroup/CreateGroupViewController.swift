@@ -14,6 +14,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let scrollView = UIScrollView()
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -25,11 +26,13 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
-
+        view.addSubview(scrollView)
     }
 
     func setupViewConstraints() {
-
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
     // MARK: - Bind Method
