@@ -30,7 +30,6 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
     private let restaurantNameLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
         $0.numberOfLines = 0
-        $0.text = "和洋キッチン松之助"
     }
 
     private let restaurantDescriptionLabel = UILabel().then {
@@ -145,6 +144,11 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
             .bind { [weak self] urlString in
                 self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
             }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.restaurant.name }
+            .distinctUntilChanged()
+            .bind(to: restaurantNameLabel.rx.text)
             .disposed(by: disposeBag)
     }
 
