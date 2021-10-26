@@ -73,6 +73,7 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: GroupReactor) {
         // Action
+        reactor.action.onNext(.refresh)
 
         // State
         reactor.state.map { $0.restaurantCellReactors }
