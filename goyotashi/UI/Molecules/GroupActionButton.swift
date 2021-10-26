@@ -22,6 +22,8 @@ final class GroupActionButton: UIButton {
     // MARK: - Views
     private let imageBackgroundView = UIView().then {
         $0.backgroundColor = Color.gray06
+        $0.layer.cornerRadius = 24
+        $0.layer.masksToBounds = true
         $0.isUserInteractionEnabled = false
     }
 
