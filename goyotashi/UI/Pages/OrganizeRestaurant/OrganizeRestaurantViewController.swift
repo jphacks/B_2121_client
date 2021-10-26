@@ -41,6 +41,7 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
 
     // MARK: - Setup Methods
     func setupViews() {
+        title = "お店を整理する"
         view.addSubview(collectionView)
     }
 
