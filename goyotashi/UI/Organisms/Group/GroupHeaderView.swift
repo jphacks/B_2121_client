@@ -10,6 +10,7 @@ import UIKit
 final class GroupHeaderView: UIView, ViewConstructor {
     struct Const {
         static let height: CGFloat = 400
+        static let plusButtonSize: CGFloat = 32
     }
 
     // MARK: - Views
@@ -48,6 +49,8 @@ final class GroupHeaderView: UIView, ViewConstructor {
         $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
     }
 
+    private let plusButton = PlusButton()
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -71,6 +74,7 @@ final class GroupHeaderView: UIView, ViewConstructor {
         actionButtonStackView.addArrangedSubview(addMemberButton)
         actionButtonStackView.addArrangedSubview(bookmarkButton)
         addSubview(restaurantCountLabel)
+        addSubview(plusButton)
     }
 
     func setupViewConstraints() {
@@ -97,6 +101,11 @@ final class GroupHeaderView: UIView, ViewConstructor {
             $0.top.equalTo(actionButtonStackView.snp.bottom).offset(48)
             $0.left.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview().inset(16)
+        }
+        plusButton.snp.makeConstraints {
+            $0.centerY.equalTo(restaurantCountLabel)
+            $0.right.equalToSuperview().inset(16)
+            $0.size.equalTo(Const.plusButtonSize)
         }
     }
 }
