@@ -55,6 +55,7 @@
 		84AFC4132727BC0600B9244E /* GroupActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC4122727BC0600B9244E /* GroupActionButton.swift */; };
 		84AFC4152727D59400B9244E /* GroupRestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC4142727D59400B9244E /* GroupRestaurantCell.swift */; };
 		84AFC4172727D59D00B9244E /* GroupRestaurantCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC4162727D59D00B9244E /* GroupRestaurantCellReactor.swift */; };
+		84AFC4192727E39400B9244E /* GroupRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC4182727E39400B9244E /* GroupRestaurant.swift */; };
 		C9E235DF076AE0453284CE2A /* Pods_goyotashiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */; };
 		F70D3ADA7A6F72E7AB99F70D /* Pods_goyotashi_goyotashiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */; };
 /* End PBXBuildFile section */
@@ -134,6 +135,7 @@
 		84AFC4122727BC0600B9244E /* GroupActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupActionButton.swift; sourceTree = "<group>"; };
 		84AFC4142727D59400B9244E /* GroupRestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRestaurantCell.swift; sourceTree = "<group>"; };
 		84AFC4162727D59D00B9244E /* GroupRestaurantCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRestaurantCellReactor.swift; sourceTree = "<group>"; };
+		84AFC4182727E39400B9244E /* GroupRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRestaurant.swift; sourceTree = "<group>"; };
 		AA95625A967B92EE36331243 /* Pods-goyotashi-goyotashiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.release.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B707DF8E2402CEF9A2130B10 /* Pods-goyotashi-goyotashiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,6 +411,7 @@
 				84AFC3E62726E64400B9244E /* HomeGroup.swift */,
 				84AFC4062727474100B9244E /* ProfileGroup.swift */,
 				84AFC3F227271AA200B9244E /* User.swift */,
+				84AFC4182727E39400B9244E /* GroupRestaurant.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				84AFC3E12726D7A300B9244E /* HomeGroupCellReactor.swift in Sources */,
 				84AFC4052727419700B9244E /* PlusButton.swift in Sources */,
 				84AFC3CB272686DC00B9244E /* TemplateReactor.swift in Sources */,
+				84AFC4192727E39400B9244E /* GroupRestaurant.swift in Sources */,
 				84AFC4072727474100B9244E /* ProfileGroup.swift in Sources */,
 				84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */,
 				84AFC3D82726CE7800B9244E /* HomeViewController.swift in Sources */,
