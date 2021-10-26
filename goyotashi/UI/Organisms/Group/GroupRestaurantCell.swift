@@ -24,7 +24,7 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
-    private let imagesView = UIView().then {
+    private let imageView = UIView().then {
         $0.layer.cornerRadius = 16
         $0.layer.masksToBounds = true
     }
@@ -43,11 +43,11 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
-        contentView.addSubview(imagesView)
+        contentView.addSubview(imageView)
     }
 
     func setupViewConstraints() {
-        imagesView.snp.makeConstraints {
+        imageView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
             $0.height.equalTo(Const.imageViewHeight)
         }
