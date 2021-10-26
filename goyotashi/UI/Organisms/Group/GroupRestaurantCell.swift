@@ -71,6 +71,17 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         // Action
 
         // State
+        reactor.state.map { $0.groupRestaurant.imageUrl }
+            .distinctUntilChanged()
+            .bind { [weak self] urlString in
+                self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
+            }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.groupRestaurant.restaurantName }
+            .distinctUntilChanged()
+            .bind(to: restaurantNameLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 
     override func prepareForReuse() {
