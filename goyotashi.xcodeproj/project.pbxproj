@@ -293,6 +293,7 @@
 		84AFC3B5272672EE00B9244E /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				84AFC40D2727A69F00B9244E /* Group */,
 				84AFC3DB2726CF0900B9244E /* Home */,
 				84AFC3EF2727170600B9244E /* Profile */,
 			);
@@ -442,6 +443,13 @@
 			children = (
 				84AFC4092727A62A00B9244E /* GroupViewController.swift */,
 				84AFC40B2727A63500B9244E /* GroupReactor.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		84AFC40D2727A69F00B9244E /* Group */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Group;
 			sourceTree = "<group>";
