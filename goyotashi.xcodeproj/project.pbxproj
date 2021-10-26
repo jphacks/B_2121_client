@@ -10,6 +10,8 @@
 		41E0CE0BB1D29594A4F51D47 /* Pods_goyotashi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
+		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
+		84777716272861930054E15D /* OrganizeRestaurantReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84777715272861930054E15D /* OrganizeRestaurantReactor.swift */; };
 		84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3752725D40600B9244E /* AppDelegate.swift */; };
 		84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3772725D40600B9244E /* SceneDelegate.swift */; };
 		84AFC37A2725D40600B9244E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3792725D40600B9244E /* ViewController.swift */; };
@@ -100,6 +102,8 @@
 		78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashiTests.release.xcconfig"; path = "Target Support Files/Pods-goyotashiTests/Pods-goyotashiTests.release.xcconfig"; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
+		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
+		84777715272861930054E15D /* OrganizeRestaurantReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantReactor.swift; sourceTree = "<group>"; };
 		84AFC3722725D40600B9244E /* goyotashi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goyotashi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3752725D40600B9244E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AFC3772725D40600B9244E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 		84777712272861600054E15D /* OrganizeRestaurant */ = {
 			isa = PBXGroup;
 			children = (
+				847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */,
+				84777715272861930054E15D /* OrganizeRestaurantReactor.swift */,
 			);
 			path = OrganizeRestaurant;
 			sourceTree = "<group>";
@@ -847,11 +853,13 @@
 				84AFC3DF2726D79700B9244E /* HomeGroupCell.swift in Sources */,
 				84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */,
 				84AFC3E12726D7A300B9244E /* HomeGroupCellReactor.swift in Sources */,
+				84777716272861930054E15D /* OrganizeRestaurantReactor.swift in Sources */,
 				84B88DEA27281B67004EB87D /* Restaurant.swift in Sources */,
 				84AFC4052727419700B9244E /* PlusButton.swift in Sources */,
 				84AFC3CB272686DC00B9244E /* TemplateReactor.swift in Sources */,
 				84AFC4192727E39400B9244E /* GroupRestaurant.swift in Sources */,
 				84B88DE4272816E1004EB87D /* RestaurantOtherGroupCell.swift in Sources */,
+				847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */,
 				84AFC4072727474100B9244E /* ProfileGroup.swift in Sources */,
 				84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */,
 				84AFC3D82726CE7800B9244E /* HomeViewController.swift in Sources */,
