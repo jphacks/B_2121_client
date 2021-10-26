@@ -119,5 +119,9 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         // Action
 
         // State
+        reactor.state.map { $0.members }
+            .distinctUntilChanged()
+            .bind(to: countableGroupMemberButton.rx.members)
+            .disposed(by: disposeBag)
     }
 }
