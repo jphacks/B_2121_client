@@ -23,6 +23,10 @@ final class GroupMemberButton: UIButton {
         return MemberIconView()
     }
 
+    private let memberCountLalbel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 16, color: Color.gray01)
+    }
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
@@ -36,6 +40,7 @@ final class GroupMemberButton: UIButton {
 
     func setupViews() {
         _ = memberIconViews.map { addSubview($0) }
+        addSubview(memberCountLalbel)
         backgroundColor = Color.gray01
     }
 
@@ -54,6 +59,12 @@ final class GroupMemberButton: UIButton {
         memberIconViews[2].snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.left.equalTo(memberIconViews[1]).offset(30)
+            $0.right.lessThanOrEqualToSuperview()
+        }
+        memberCountLalbel.snp.makeConstraints {
+            $0.top.equalTo(memberIconViews[0]).offset(8)
+            $0.left.bottom.equalToSuperview()
+            $0.right.lessThanOrEqualToSuperview()
         }
     }
 }
