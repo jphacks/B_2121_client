@@ -28,6 +28,11 @@ final class GroupHeaderView: UIView, ViewConstructor {
         )
     }
 
+    private let descriptionLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 13, color: Color.gray02)
+        $0.numberOfLines = 0
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -44,6 +49,7 @@ final class GroupHeaderView: UIView, ViewConstructor {
     func setupViews() {
         addSubview(groupNameLabel)
         addSubview(groupMemberButton)
+        addSubview(descriptionLabel)
     }
 
     func setupViewConstraints() {
@@ -56,6 +62,10 @@ final class GroupHeaderView: UIView, ViewConstructor {
         groupMemberButton.snp.makeConstraints {
             $0.top.equalTo(groupNameLabel.snp.bottom).offset(24)
             $0.left.equalToSuperview().inset(16)
+        }
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(groupMemberButton.snp.bottom).offset(16)
+            $0.left.right.equalToSuperview().inset(16)
         }
     }
 }
