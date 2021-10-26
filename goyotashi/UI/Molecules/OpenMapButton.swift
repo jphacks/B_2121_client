@@ -8,12 +8,27 @@
 import UIKit
 
 final class OpenMapButton: UIButton {
+    enum MapAppType {
+        case nativeApp
+        case googleMap
+
+        var actionName: String {
+            switch self {
+            case .nativeApp:
+                return "マップで開く"
+            case .googleMap:
+                return "Google Mapsで開く"
+            }
+        }
+    }
+
     struct Const {
         static let height: CGFloat = 40
         static let cornerRadius: CGFloat =  8
         static let iconSize: CGFloat = 16
     }
 
+    // MARK: - Override Variables
     override var isHighlighted: Bool {
         didSet {
         }
@@ -30,6 +45,7 @@ final class OpenMapButton: UIButton {
         $0.text = "マップで開く"
     }
 
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
@@ -41,6 +57,7 @@ final class OpenMapButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Setup Methods
     func setupViews() {
         layer.cornerRadius = Const.cornerRadius
         backgroundColor = Color.gray06
