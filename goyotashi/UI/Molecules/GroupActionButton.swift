@@ -16,8 +16,7 @@ final class GroupActionButton: UIButton {
     // MARK: - Override Variables
     override var isHighlighted: Bool {
         didSet {
-            imageBackgroundView.backgroundColor = isHighlighted ? Color.gray06.withAlphaComponent(0.4) : Color.gray06
-            actionImageView.tintColor = isHighlighted ? Color.gray03 : Color.gray01
+            overlayView.isHidden = !isHighlighted
         }
     }
 
@@ -37,6 +36,13 @@ final class GroupActionButton: UIButton {
 
     private let actionNameLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 11, color: Color.gray01)
+        $0.text = "整理する"
+    }
+
+    private let overlayView = UIView().then {
+        $0.backgroundColor = Color.white.withAlphaComponent(0.8)
+        $0.isUserInteractionEnabled = false
+        $0.isHidden = true
     }
 
     // MARK: - Initializers
@@ -56,6 +62,7 @@ final class GroupActionButton: UIButton {
         addSubview(imageBackgroundView)
         imageBackgroundView.addSubview(actionImageView)
         addSubview(actionNameLabel)
+        addSubview(overlayView)
     }
 
     func setupViewConstraints() {
@@ -70,6 +77,9 @@ final class GroupActionButton: UIButton {
         actionNameLabel.snp.makeConstraints {
             $0.top.equalTo(imageBackgroundView.snp.bottom).offset(8)
             $0.centerX.bottom.equalToSuperview()
+        }
+        overlayView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }
