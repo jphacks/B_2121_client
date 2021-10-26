@@ -22,6 +22,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
     private let imageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
+        $0.image = R.image.dish()
     }
 
     // MARK: - Initializers
