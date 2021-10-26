@@ -76,7 +76,7 @@ struct TestData {
     }
 
     private static func restaurantImageUrlStrings() -> [String] {
-        let size = Int.random(in: 3 ..< 6)
+        let size = Int.random(in: 3 ..< 7)
         return (0 ..< size).map { _ in restaurantImageUrlString() }
     }
 }
