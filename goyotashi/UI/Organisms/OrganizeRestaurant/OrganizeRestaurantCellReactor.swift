@@ -8,8 +8,12 @@
 import ReactorKit
 
 final class OrganizeRestaurantCellReactor: Reactor {
-    enum Action {}
-    enum Mutation {}
+    enum Action {
+        case toggleIsRemovable
+    }
+    enum Mutation {
+        case setIsRemovable(Bool)
+    }
 
     struct State {
         let groupRestaurant: GroupRestaurant
@@ -24,6 +28,23 @@ final class OrganizeRestaurantCellReactor: Reactor {
 
     init(groupRestaurant: GroupRestaurant) {
         initialState = State(groupRestaurant: groupRestaurant)
+    }
+
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .toggleIsRemovable:
+            let isRemovable = !currentState.isRemovable
+            return .just(.setIsRemovable(isRemovable))
+        }
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setIsRemovable(isRemovable):
+            state.isRemovable = isRemovable
+        }
+        return state
     }
 }
 
