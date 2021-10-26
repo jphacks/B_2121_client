@@ -12,11 +12,11 @@ final class CreateGroupReactor: Reactor {
         case updateGroupName(String?)
     }
     enum Mutation {
-        case setGroupName(String?)
+        case setGroupName(String)
     }
 
     struct State {
-        var groupName: String?
+        var groupName: String = ""
         let members: [User] = (0 ..< 4).map { _ in TestData.user() }
     }
 
@@ -25,6 +25,7 @@ final class CreateGroupReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .updateGroupName(name):
+            guard let name = name else { return .empty() }
             return .just(Mutation.setGroupName(name))
         }
     }
