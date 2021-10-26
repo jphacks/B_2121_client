@@ -19,7 +19,9 @@ final class GroupMemberButton: UIButton {
     }
 
     // MARK: - Views
-    private let memberIconView = MemberIconView()
+    private let memberIconViews: [MemberIconView] = (0 ..< 3).map { _ in
+        return MemberIconView()
+    }
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -33,7 +35,7 @@ final class GroupMemberButton: UIButton {
     }
 
     func setupViews() {
-        addSubview(memberIconView)
+        _ = memberIconViews.map { addSubview($0) }
         backgroundColor = Color.gray01
     }
 
@@ -42,8 +44,16 @@ final class GroupMemberButton: UIButton {
             $0.width.equalTo(Const.width)
             $0.height.equalTo(Const.height)
         }
-        memberIconView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+        memberIconViews[0].snp.makeConstraints {
+            $0.top.left.equalToSuperview()
+        }
+        memberIconViews[1].snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.left.equalTo(memberIconViews[0]).offset(30)
+        }
+        memberIconViews[2].snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.left.equalTo(memberIconViews[1]).offset(30)
         }
     }
 }
