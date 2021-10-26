@@ -76,6 +76,8 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: createButton)
 
+        view.backgroundColor = Color.white
+
         view.addSubview(scrollView)
         scrollView.addSubview(groupNameLabel)
         scrollView.addSubview(groupNameTextField)
