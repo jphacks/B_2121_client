@@ -12,14 +12,22 @@ final class GroupRestaurantCellReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        let groupRestaurant: GroupRestaurant
+
+        init(groupRestaurant: GroupRestaurant) {
+            self.groupRestaurant = groupRestaurant
+        }
     }
 
-    let initialState: State = State()
+    let initialState: State
+
+    init(groupRestaurant: GroupRestaurant) {
+        initialState = State(groupRestaurant: groupRestaurant)
+    }
 }
 
 extension GroupRestaurantCellReactor: Equatable {
     static func == (lhs: GroupRestaurantCellReactor, rhs: GroupRestaurantCellReactor) -> Bool {
-        return lhs.currentState.property == rhs.currentState.property
+        return lhs.currentState.groupRestaurant.restaurantId == rhs.currentState.groupRestaurant.restaurantId
     }
 }

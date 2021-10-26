@@ -12,8 +12,8 @@ final class GroupReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let restaurantCellReactors: [GroupRestaurantCellReactor] = (0 ..< 5).map { _ in
-            GroupRestaurantCellReactor()
+        let restaurantCellReactors: [GroupRestaurantCellReactor] = (0 ..< 10).map { _ in
+            GroupRestaurantCellReactor(groupRestaurant: TestData.groupRestaurant())
         }
     }
 
