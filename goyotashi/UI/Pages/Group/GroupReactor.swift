@@ -42,6 +42,10 @@ final class GroupReactor: Reactor {
     }
 
     // MARK: - Create Reactor Methods
+    func createOrganizeRestaurantReactor() -> OrganizeRestaurantReactor {
+        return OrganizeRestaurantReactor()
+    }
+
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {
         return RestaurantReactor()
     }
