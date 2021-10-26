@@ -57,6 +57,9 @@ final class HomeHeaderView: UIView, ViewConstructor {
     }
 
     func setupViewConstraints() {
+        snp.makeConstraints {
+            $0.height.equalTo(Const.height)
+        }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(24)
             $0.left.equalToSuperview().inset(16)
