@@ -115,5 +115,14 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
         // Action
 
         // State
+        reactor.state.map { $0.isMember }
+            .distinctUntilChanged()
+            .bind { [weak self] isMember in
+                self?.organizeButton.isHidden = !isMember
+                self?.editButton.isHidden = !isMember
+                self?.addMemberButton.isHidden = !isMember
+                self?.bookmarkButton.isHidden = isMember
+            }
+            .disposed(by: disposeBag)
     }
 }
