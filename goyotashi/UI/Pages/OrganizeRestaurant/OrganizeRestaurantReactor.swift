@@ -10,6 +10,7 @@ import ReactorKit
 final class OrganizeRestaurantReactor: Reactor {
     enum Action {
         case didSelectItem(IndexPath)
+        case remove
     }
     enum Mutation {}
 
@@ -23,6 +24,13 @@ final class OrganizeRestaurantReactor: Reactor {
         switch action {
         case let .didSelectItem(indexPath):
             currentState.restaurantCellReactors[indexPath.row].action.onNext(.toggleIsRemovable)
+            return .empty()
+        case .remove:
+            let restaurants: [GroupRestaurant] = currentState.restaurantCellReactors
+                .filter {
+                    $0.currentState.isRemovable == true
+                }
+                .map { $0.currentState.groupRestaurant }
             return .empty()
         }
     }
