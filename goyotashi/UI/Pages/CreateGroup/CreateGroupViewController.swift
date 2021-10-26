@@ -29,6 +29,11 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.adjustsFontSizeToFitWidth = true
     }
 
+    private let groupMemberLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
+        $0.text = "グループのメンバー"
+    }
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +47,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         view.addSubview(scrollView)
         scrollView.addSubview(groupNameLabel)
         scrollView.addSubview(groupNameTextField)
+        scrollView.addSubview(groupMemberLabel)
     }
 
     func setupViewConstraints() {
@@ -56,6 +62,10 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
             $0.top.equalTo(groupNameLabel.snp.bottom).offset(8)
             $0.left.right.equalToSuperview().inset(16)
             $0.width.equalTo(DeviceSize.screenWidth - 32)
+        }
+        groupMemberLabel.snp.makeConstraints {
+            $0.top.equalTo(groupNameTextField.snp.bottom).offset(40)
+            $0.left.equalToSuperview().inset(16)
         }
     }
 
