@@ -35,7 +35,6 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
     private let restaurantDescriptionLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 13, color: Color.gray03)
         $0.numberOfLines = 0
-        $0.text = "定食・食堂・ハンバーグ・洋食"
     }
 
     private let addRestaurantButton = AddRestaurantButton()
@@ -149,6 +148,11 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         reactor.state.map { $0.restaurant.name }
             .distinctUntilChanged()
             .bind(to: restaurantNameLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.restaurant.description }
+            .distinctUntilChanged()
+            .bind(to: restaurantDescriptionLabel.rx.text)
             .disposed(by: disposeBag)
     }
 
