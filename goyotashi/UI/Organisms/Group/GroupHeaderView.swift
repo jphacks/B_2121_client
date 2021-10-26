@@ -38,6 +38,11 @@ final class GroupHeaderView: UIView, ViewConstructor {
         $0.axis = .horizontal
     }
 
+    private let organizeButton = GroupActionButton(actionType: .organize)
+    private let editButton = GroupActionButton(actionType: .edit)
+    private let addMemberButton = GroupActionButton(actionType: .addMember)
+    private let bookmarkButton = GroupActionButton(actionType: .bookmark)
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -56,6 +61,10 @@ final class GroupHeaderView: UIView, ViewConstructor {
         addSubview(groupMemberButton)
         addSubview(descriptionLabel)
         addSubview(actionButtonStackView)
+        actionButtonStackView.addArrangedSubview(organizeButton)
+        actionButtonStackView.addArrangedSubview(editButton)
+        actionButtonStackView.addArrangedSubview(addMemberButton)
+        actionButtonStackView.addArrangedSubview(bookmarkButton)
     }
 
     func setupViewConstraints() {
