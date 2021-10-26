@@ -23,6 +23,7 @@ final class GroupMemberButton: UIButton {
         $0.apply(fontStyle: .medium, size: 16, color: Color.gray01)
     }
 
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
@@ -34,6 +35,7 @@ final class GroupMemberButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Setup Methods
     func setupViews() {
         _ = memberIconViews.map { addSubview($0) }
         addSubview(memberCountLalbel)
@@ -59,7 +61,8 @@ final class GroupMemberButton: UIButton {
         }
     }
 
-    func setMember(imageUrlStrings: [String], memberCount: Int) {
+    // MARK: Configure Methods
+    func configure(imageUrlStrings: [String], memberCount: Int) {
         let imageUrls: [URL?] = (0 ..< 3).map { index in
             if imageUrlStrings.indices.contains(index) {
                 let urlString = imageUrlStrings[index]
