@@ -26,7 +26,6 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
     private let descriptionLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 13, color: Color.gray02)
         $0.numberOfLines = 0
-        $0.text = "CAMPHOR-カンファーは京都のIT系学生コミュニティです。\nエンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。"
     }
 
     private let actionButtonStackView = UIStackView().then {
@@ -116,6 +115,11 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
                 let imageUrlStrings = members.map { $0.profileImageUrl }
                 self?.groupMemberButton.configure(imageUrlStrings: imageUrlStrings, memberCount: memberCount)
             }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.group.description }
+            .distinctUntilChanged()
+            .bind(to: descriptionLabel.rx.text)
             .disposed(by: disposeBag)
 
         reactor.state.map { $0.isMember }
