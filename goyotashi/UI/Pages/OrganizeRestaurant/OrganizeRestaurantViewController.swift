@@ -20,7 +20,7 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
 
     // MARK: - Views
     private let removeButton = UIBarButtonItem(title: "削除", style: .done, target: nil, action: nil).then {
-        $0.tintColor = Color.gray01
+        $0.tintColor = Color.red
     }
 
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
