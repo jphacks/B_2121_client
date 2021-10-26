@@ -31,6 +31,11 @@ final class OrganizeRestaurantCell: UICollectionViewCell, View, ViewConstructor 
         $0.layer.masksToBounds = true
     }
 
+    private let overlayView = UIView().then {
+        $0.backgroundColor = Color.white.withAlphaComponent(0.8)
+        $0.isHidden = true
+    }
+
     private let restaurantNameLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 14, color: Color.gray01)
     }
@@ -50,6 +55,7 @@ final class OrganizeRestaurantCell: UICollectionViewCell, View, ViewConstructor 
     // MARK: - Setup Methods
     func setupViews() {
         contentView.addSubview(imageView)
+        imageView.addSubview(overlayView)
         contentView.addSubview(restaurantNameLabel)
     }
 
@@ -58,6 +64,9 @@ final class OrganizeRestaurantCell: UICollectionViewCell, View, ViewConstructor 
             $0.top.left.right.equalToSuperview()
             $0.height.equalTo(Const.imageViewHeight)
             $0.width.equalTo(Const.imageViewWidth)
+        }
+        overlayView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         restaurantNameLabel.snp.makeConstraints {
             $0.left.equalToSuperview().inset(8)
