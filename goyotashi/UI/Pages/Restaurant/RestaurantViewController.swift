@@ -74,6 +74,7 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
         header.reactor = reactor
 
         // Action
+        reactor.action.onNext(.refresh)
 
         // State
         reactor.state.map { $0.groupCellReactors }
