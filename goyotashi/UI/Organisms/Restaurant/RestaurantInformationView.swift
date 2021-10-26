@@ -12,6 +12,10 @@ final class RestaurantInformationView: UIView, ViewConstructor {
     }
 
     // MARK: - Views
+    private let titleLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 18, color: Color.gray01)
+        $0.text = "お店情報"
+    }
 
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -27,8 +31,14 @@ final class RestaurantInformationView: UIView, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
+        addSubview(titleLabel)
     }
 
     func setupViewConstraints() {
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.left.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview()
+        }
     }
 }
