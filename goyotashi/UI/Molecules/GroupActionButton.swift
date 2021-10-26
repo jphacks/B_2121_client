@@ -10,12 +10,14 @@ import UIKit
 final class GroupActionButton: UIButton {
     struct Const {
         static let size: CGFloat = 72
+        static let actionImageSize: CGFloat = 32
     }
 
     // MARK: - Override Variables
     override var isHighlighted: Bool {
         didSet {
             imageBackgroundView.backgroundColor = isHighlighted ? Color.gray06.withAlphaComponent(0.4) : Color.gray06
+            actionImageView.tintColor = isHighlighted ? Color.gray03 : Color.gray01
         }
     }
 
@@ -25,6 +27,12 @@ final class GroupActionButton: UIButton {
         $0.layer.cornerRadius = 24
         $0.layer.masksToBounds = true
         $0.isUserInteractionEnabled = false
+    }
+
+    private let actionImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+        $0.tintColor = Color.gray01
+        $0.image = R.image.photo_library()?.withRenderingMode(.alwaysTemplate)
     }
 
     // MARK: - Initializers
@@ -42,6 +50,7 @@ final class GroupActionButton: UIButton {
     // MARK: - Setup Methods
     func setupViews() {
         addSubview(imageBackgroundView)
+        imageBackgroundView.addSubview(actionImageView)
     }
 
     func setupViewConstraints() {
@@ -50,6 +59,10 @@ final class GroupActionButton: UIButton {
         }
         imageBackgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        actionImageView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(Const.actionImageSize)
         }
     }
 }
