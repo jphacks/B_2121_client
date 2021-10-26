@@ -23,13 +23,14 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
         $0.estimatedItemSize =  ProfileGroupListCell.Const.itemSize
         $0.minimumLineSpacing = 32
         $0.scrollDirection = .vertical
-        $0.headerReferenceSize = CGSize(width: DeviceSize.screenWidth, height: 24)
     }).then {
         $0.register(Reusable.groupCell)
         $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 56, right: 16)
         $0.backgroundColor = Color.white
         $0.alwaysBounceVertical = true
     }
+
+    private let header = RestaurantHeaderView()
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -39,14 +40,32 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
         setupViewConstraints()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let height = header.frame.height
+        collectionView.contentInset.top = height
+        header.snp.remakeConstraints {
+            $0.top.equalToSuperview().offset(-height)
+            $0.left.right.equalTo(view)
+        }
+
+        let topInset = collectionView.adjustedContentInset.top
+        collectionView.setContentOffset(CGPoint(x: -16, y: -topInset), animated: false)
+    }
+
     // MARK: - Setup Methods
     func setupViews() {
         view.addSubview(collectionView)
+        collectionView.addSubview(header)
     }
 
     func setupViewConstraints() {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        header.snp.makeConstraints {
+            $0.left.right.equalTo(view)
         }
     }
 
