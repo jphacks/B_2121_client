@@ -128,6 +128,7 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
                 self?.editButton.isHidden = !isMember
                 self?.addMemberButton.isHidden = !isMember
                 self?.bookmarkButton.isHidden = isMember
+                self?.plusButton.isHidden = !isMember
             }
             .disposed(by: disposeBag)
 
