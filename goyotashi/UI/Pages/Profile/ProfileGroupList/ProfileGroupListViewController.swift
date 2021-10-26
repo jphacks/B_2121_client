@@ -56,6 +56,15 @@ final class ProfileGroupListViewController: UIViewController, View, ViewConstruc
         // Action
         reactor.action.onNext(.refresh)
 
+        collectionView.rx.itemSelected
+            .bind { [weak self] indexPath in
+                let viewController = GroupViewController().then {
+                    $0.reactor = reactor.createGroupReactor(indexPath: indexPath)
+                }
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.groupCellReactors }
             .distinctUntilChanged()
