@@ -140,6 +140,12 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         // Action
 
         // State
+        reactor.state.map { $0.restaurant.imageUrl }
+            .distinctUntilChanged()
+            .bind { [weak self] urlString in
+                self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
+            }
+            .disposed(by: disposeBag)
     }
 
     private func setMap(latitude: Double?, longitude: Double?) {
