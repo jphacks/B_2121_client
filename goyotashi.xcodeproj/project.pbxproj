@@ -322,6 +322,7 @@
 				84AFC4082727A53400B9244E /* Group */,
 				84AFC3D62726CE5000B9244E /* Home */,
 				84AFC3EA2727135E00B9244E /* Profile */,
+				84AFC41C2727FEBC00B9244E /* Restaurant */,
 				84AFC3CC27269A0100B9244E /* TabBar */,
 			);
 			path = Pages;
@@ -473,6 +474,13 @@
 				84AFC4162727D59D00B9244E /* GroupRestaurantCellReactor.swift */,
 			);
 			path = Group;
+			sourceTree = "<group>";
+		};
+		84AFC41C2727FEBC00B9244E /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Restaurant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
