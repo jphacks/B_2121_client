@@ -39,6 +39,11 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.text = "公開／非公開"
     }
 
+    private let privacyStateLabel = UILabel().then {
+        $0.apply(fontStyle: .bold, size: 19, color: Color.gray01)
+        $0.text = "公開する"
+    }
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +59,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         scrollView.addSubview(groupNameTextField)
         scrollView.addSubview(groupMemberLabel)
         scrollView.addSubview(privacyLabel)
+        scrollView.addSubview(privacyStateLabel)
     }
 
     func setupViewConstraints() {
@@ -75,6 +81,10 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         }
         privacyLabel.snp.makeConstraints {
             $0.top.equalTo(groupMemberLabel.snp.bottom).offset(40)
+            $0.left.equalToSuperview().inset(16)
+        }
+        privacyStateLabel.snp.makeConstraints {
+            $0.top.equalTo(privacyLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview().inset(16)
         }
     }
