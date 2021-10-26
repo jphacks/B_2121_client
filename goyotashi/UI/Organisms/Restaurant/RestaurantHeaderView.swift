@@ -52,6 +52,11 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         $0.backgroundColor = Color.gray06
     }
 
+    private let otherGroupTitleLabel = UILabel().then {
+        $0.apply(fontStyle: .bold, size: 18, color: Color.gray01)
+        $0.text = "このお店を含むほかのグループ"
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -77,6 +82,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         addSubview(openNativeMapButton)
         addSubview(openGoogleMapButton)
         addSubview(separator)
+        addSubview(otherGroupTitleLabel)
     }
 
     func setupViewConstraints() {
@@ -121,7 +127,11 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
             $0.top.equalTo(openNativeMapButton.snp.bottom).offset(48)
             $0.left.right.equalToSuperview().inset(16)
             $0.height.equalTo(1)
-            $0.bottom.equalToSuperview()
+        }
+        otherGroupTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(separator).offset(48)
+            $0.left.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(24)
         }
     }
 
