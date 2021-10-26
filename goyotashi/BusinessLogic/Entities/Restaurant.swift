@@ -15,3 +15,9 @@ struct Restaurant {
     let openingHours: String
     let location: Location
 }
+
+extension Restaurant: Equatable {
+    static func == (lhs: Restaurant, rhs: Restaurant) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
