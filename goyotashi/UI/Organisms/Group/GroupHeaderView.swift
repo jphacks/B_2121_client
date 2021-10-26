@@ -19,7 +19,6 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
     // MARK: - Views
     private let groupNameLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
-        $0.text = "グループ"
     }
 
     private let groupMemberButton = GroupMemberButton().then {
@@ -115,6 +114,11 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
         // Action
 
         // State
+        reactor.state.map { $0.group.name }
+            .distinctUntilChanged()
+            .bind(to: groupNameLabel.rx.text)
+            .disposed(by: disposeBag)
+
         reactor.state.map { $0.isMember }
             .distinctUntilChanged()
             .bind { [weak self] isMember in
