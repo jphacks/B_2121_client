@@ -34,7 +34,9 @@ final class GroupHeaderView: UIView, ViewConstructor {
         $0.text = "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。"
     }
 
-    private let groupActionButton = GroupActionButton(actionType: .organize)
+    private let actionButtonStackView = UIStackView().then {
+        $0.axis = .horizontal
+    }
 
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -53,7 +55,7 @@ final class GroupHeaderView: UIView, ViewConstructor {
         addSubview(groupNameLabel)
         addSubview(groupMemberButton)
         addSubview(descriptionLabel)
-        addSubview(groupActionButton)
+        addSubview(actionButtonStackView)
     }
 
     func setupViewConstraints() {
@@ -71,9 +73,10 @@ final class GroupHeaderView: UIView, ViewConstructor {
             $0.top.equalTo(groupMemberButton.snp.bottom).offset(16)
             $0.left.right.equalToSuperview().inset(16)
         }
-        groupActionButton.snp.makeConstraints {
+        actionButtonStackView.snp.makeConstraints {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(32)
-            $0.left.equalToSuperview().offset(16)
+            $0.left.equalToSuperview().inset(16)
+            $0.right.lessThanOrEqualToSuperview().inset(16)
         }
     }
 }
