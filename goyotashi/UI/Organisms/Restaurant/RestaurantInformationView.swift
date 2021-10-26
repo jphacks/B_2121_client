@@ -107,6 +107,7 @@ fileprivate final class RestaurantInformationRow: UIView, ViewConstructor {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.left.equalToSuperview().inset(16)
+            $0.bottom.lessThanOrEqualToSuperview()
         }
         descriptionLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
