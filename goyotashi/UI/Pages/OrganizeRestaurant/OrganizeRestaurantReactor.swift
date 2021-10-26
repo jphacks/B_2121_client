@@ -12,7 +12,7 @@ final class OrganizeRestaurantReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        var restaurantCellReactors: [OrganizeRestaurantCellReactor] = []
     }
 
     let initialState: State = State()
