@@ -95,6 +95,19 @@ struct TestData {
         return Location(latitude: 35.020669, longitude: 135.77871)
     }
 
+    static func restaurant() -> Restaurant {
+        return Restaurant(
+            id: randomString(length: 8),
+            imageUrl: restaurantImageUrlString(),
+            name: "とんかつおくだ",
+            description: "定食・食堂・ハンバーグ・洋食",
+            address: "京都府京都市左京区田中里ノ前町1西野ビル1F",
+            phoneNumber: "075-702-1724",
+            openingHours: "[月〜土]\n11:30〜14:30(L.O. 14:00)\n17:30〜22:30(L.O. 22:00)",
+            location: location()
+        )
+    }
+
     // MARK: - Private Functions
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
