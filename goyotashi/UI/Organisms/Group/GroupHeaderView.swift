@@ -18,6 +18,16 @@ final class GroupHeaderView: UIView, ViewConstructor {
         $0.text = "グループ"
     }
 
+    private let groupMemberButton = GroupMemberButton().then {
+        let urlStrings: [String] = (0 ..< 2).map { _ in
+            "https://avatars.githubusercontent.com/u/38304075?v=4"
+        }
+        $0.configure(
+            imageUrlStrings: urlStrings,
+            memberCount: 5
+        )
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -33,11 +43,19 @@ final class GroupHeaderView: UIView, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         addSubview(groupNameLabel)
+        addSubview(groupMemberButton)
     }
 
     func setupViewConstraints() {
+        snp.makeConstraints {
+            $0.height.equalTo(Const.height)
+        }
         groupNameLabel.snp.makeConstraints {
             $0.top.left.equalToSuperview().inset(16)
+        }
+        groupMemberButton.snp.makeConstraints {
+            $0.top.equalTo(groupNameLabel.snp.bottom).offset(24)
+            $0.left.equalToSuperview().inset(16)
         }
     }
 }
