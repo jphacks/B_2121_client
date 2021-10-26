@@ -58,9 +58,6 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
     }
 
     func setupViewConstraints() {
-        snp.makeConstraints {
-            $0.height.equalTo(Const.imageHeight)
-        }
         imageView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
             $0.width.equalTo(Const.imageWidth)
@@ -77,6 +74,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         addRestaurantButton.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(16)
             $0.right.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview()
         }
     }
 
