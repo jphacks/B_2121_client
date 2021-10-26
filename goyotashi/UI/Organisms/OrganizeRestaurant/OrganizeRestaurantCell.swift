@@ -18,6 +18,7 @@ final class OrganizeRestaurantCell: UICollectionViewCell, View, ViewConstructor 
         static let cellWidth: CGFloat = imageViewWidth
         static let cellHeight: CGFloat = imageViewHeight + 28
         static let itemSize: CGSize = CGSize(width: cellWidth, height: cellHeight)
+        static let removeIconViewSize: CGFloat = 32
     }
 
     // MARK: - Variables
@@ -34,6 +35,11 @@ final class OrganizeRestaurantCell: UICollectionViewCell, View, ViewConstructor 
     private let overlayView = UIView().then {
         $0.backgroundColor = Color.white.withAlphaComponent(0.8)
         $0.isHidden = true
+    }
+
+    private let removeIconView = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+        $0.image = R.image.remove()
     }
 
     private let restaurantNameLabel = UILabel().then {
@@ -56,6 +62,7 @@ final class OrganizeRestaurantCell: UICollectionViewCell, View, ViewConstructor 
     func setupViews() {
         contentView.addSubview(imageView)
         imageView.addSubview(overlayView)
+        overlayView.addSubview(removeIconView)
         contentView.addSubview(restaurantNameLabel)
     }
 
@@ -67,6 +74,10 @@ final class OrganizeRestaurantCell: UICollectionViewCell, View, ViewConstructor 
         }
         overlayView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        removeIconView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(Const.removeIconViewSize)
         }
         restaurantNameLabel.snp.makeConstraints {
             $0.left.equalToSuperview().inset(8)
