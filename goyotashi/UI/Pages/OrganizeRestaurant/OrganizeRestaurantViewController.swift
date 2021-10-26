@@ -19,6 +19,10 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let closeButton = UIButton().then {
+        $0.setImage(R.image.close(), for: .normal)
+    }
+
     private let removeButton = UIBarButtonItem(title: "削除", style: .done, target: nil, action: nil).then {
         $0.tintColor = Color.red
     }
@@ -46,6 +50,7 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
     // MARK: - Setup Methods
     func setupViews() {
         title = "お店を整理する"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         navigationItem.rightBarButtonItem = removeButton
 
         view.addSubview(collectionView)
@@ -60,6 +65,12 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
     // MARK: - Bind Method
     func bind(reactor: OrganizeRestaurantReactor) {
         // Action
+        closeButton.rx.tap
+            .bind { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
         removeButton.rx.tap
             .map { Reactor.Action.remove }
             .bind(to: reactor.action)
