@@ -11,16 +11,25 @@ final class GroupMemberButton: UIButton {
 
     override var isHighlighted: Bool {
         didSet {
+            overlayView.isHidden = !isHighlighted
         }
     }
 
     // MARK: - Views
     private let memberIconViews: [MemberIconView] = (0 ..< 3).map { _ in
-        return MemberIconView()
+        return MemberIconView().then {
+            $0.isUserInteractionEnabled = false
+        }
     }
 
     private let memberCountLalbel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 16, color: Color.gray01)
+    }
+
+    private let overlayView = UIView().then {
+        $0.backgroundColor = Color.white.withAlphaComponent(0.8)
+        $0.isUserInteractionEnabled = false
+        $0.isHidden = true
     }
 
     // MARK: - Initializers
@@ -39,6 +48,7 @@ final class GroupMemberButton: UIButton {
     func setupViews() {
         _ = memberIconViews.map { addSubview($0) }
         addSubview(memberCountLalbel)
+        addSubview(overlayView)
     }
 
     func setupViewConstraints() {
@@ -58,6 +68,9 @@ final class GroupMemberButton: UIButton {
             $0.top.equalTo(memberIconViews[0].snp.bottom).offset(8)
             $0.left.bottom.equalToSuperview()
             $0.right.lessThanOrEqualToSuperview()
+        }
+        overlayView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 
