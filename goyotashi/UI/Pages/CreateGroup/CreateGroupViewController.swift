@@ -77,6 +77,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: createButton)
 
         view.backgroundColor = Color.white
+        title = "新しいグループを作成"
 
         view.addSubview(scrollView)
         scrollView.addSubview(groupNameLabel)
