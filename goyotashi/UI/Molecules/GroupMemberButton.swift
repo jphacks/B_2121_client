@@ -41,7 +41,6 @@ final class GroupMemberButton: UIButton {
     func setupViews() {
         _ = memberIconViews.map { addSubview($0) }
         addSubview(memberCountLalbel)
-        backgroundColor = Color.gray01
     }
 
     func setupViewConstraints() {
