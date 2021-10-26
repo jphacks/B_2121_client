@@ -27,6 +27,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
 
     private let restaurantNameLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
+        $0.text = "和洋キッチン松之助"
     }
 
     // MARK: - Initializers
