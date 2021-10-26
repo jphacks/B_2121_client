@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import ReactorKit
 
-final class GroupHeaderView: UIView, ViewConstructor {
+final class GroupHeaderView: UIView, View, ViewConstructor {
     struct Const {
         static let plusButtonSize: CGFloat = 32
     }
+
+    // MARK: - Variables
+    var disposeBag = DisposeBag()
 
     // MARK: - Views
     private let groupNameLabel = UILabel().then {
@@ -104,5 +108,12 @@ final class GroupHeaderView: UIView, ViewConstructor {
             $0.right.equalToSuperview().inset(16)
             $0.size.equalTo(Const.plusButtonSize)
         }
+    }
+
+    // MARK: - Bind Method
+    func bind(reactor: GroupReactor) {
+        // Action
+
+        // State
     }
 }
