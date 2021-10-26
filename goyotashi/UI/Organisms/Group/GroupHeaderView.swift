@@ -40,7 +40,6 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
 
     private let restaurantCountLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
-        $0.text = "10件のお店"
     }
 
     private let plusButton = PlusButton()
@@ -130,6 +129,12 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
                 self?.addMemberButton.isHidden = !isMember
                 self?.bookmarkButton.isHidden = isMember
             }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.group.restaurantCount }
+            .distinctUntilChanged()
+            .map { "\($0)件のお店"}
+            .bind(to: restaurantCountLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }
