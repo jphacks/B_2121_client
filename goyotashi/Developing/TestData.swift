@@ -62,6 +62,16 @@ struct TestData {
         }
     }
 
+    static func group() -> Group {
+        return Group(
+            id: randomString(length: 8),
+            name: "CAMPHOR-",
+            description: "",
+            memberCount: Int.random(in: 0 ..< 16),
+            restaurantCount: Int.random(in: 3 ..< 16)
+        )
+    }
+
     // MARK: - Private Functions
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
