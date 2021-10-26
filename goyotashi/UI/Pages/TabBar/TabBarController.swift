@@ -19,6 +19,8 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = Color.white
         setupViewControllers()
+
+        UINavigationBar.appearance().tintColor = Color.gray01
     }
 
     // MARK: - Setup Methods

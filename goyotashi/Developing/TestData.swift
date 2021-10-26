@@ -48,6 +48,33 @@ struct TestData {
         )
     }
 
+    static func groupRestaurant() -> GroupRestaurant {
+        return GroupRestaurant(
+            restaurantId: randomString(length: 8),
+            imageUrl: restaurantImageUrlString(),
+            restaurantName: "和洋キッチン松之助"
+        )
+    }
+
+    static func groupRestaurants(count: Int) -> [GroupRestaurant] {
+        return (0 ..< count).map { _ in
+            groupRestaurant()
+        }
+    }
+
+    static func group() -> Group {
+        let memberCount = Int.random(in: 1 ..< 5)
+        let members = (0 ..< memberCount).map { _ in user() }
+        return Group(
+            id: randomString(length: 8),
+            name: "CAMPHOR-",
+            description: "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。",
+            memberCount: memberCount,
+            restaurantCount: Int.random(in: 3 ..< 16),
+            members: members
+        )
+    }
+
     // MARK: - Private Functions
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
