@@ -24,7 +24,9 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
-    private let imageView = UIView().then {
+    private let imageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.image = R.image.dish()
         $0.layer.cornerRadius = 16
         $0.layer.masksToBounds = true
     }
@@ -50,6 +52,7 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         imageView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
             $0.height.equalTo(Const.imageViewHeight)
+            $0.width.equalTo(Const.imageViewWidth)
         }
     }
 
