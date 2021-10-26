@@ -31,6 +31,7 @@ final class OpenMapButton: UIButton {
     // MARK: - Override Variables
     override var isHighlighted: Bool {
         didSet {
+            overlayView.isHidden = !isHighlighted
         }
     }
 
@@ -43,6 +44,12 @@ final class OpenMapButton: UIButton {
     private let actionNameLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 11, color: Color.gray01)
         $0.text = "マップで開く"
+    }
+
+    private let overlayView = UIView().then {
+        $0.backgroundColor = Color.white.withAlphaComponent(0.8)
+        $0.isUserInteractionEnabled = false
+        $0.isHidden = true
     }
 
     // MARK: - Initializers
@@ -65,6 +72,7 @@ final class OpenMapButton: UIButton {
 
         addSubview(iconView)
         addSubview(actionNameLabel)
+        addSubview(overlayView)
     }
 
     func setupViewConstraints() {
@@ -80,6 +88,9 @@ final class OpenMapButton: UIButton {
             $0.centerY.equalToSuperview()
             $0.left.equalTo(iconView.snp.right).offset(4)
             $0.right.equalToSuperview().inset(16)
+        }
+        overlayView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 
