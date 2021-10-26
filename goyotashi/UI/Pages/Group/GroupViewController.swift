@@ -77,6 +77,15 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
         // Action
         reactor.action.onNext(.refresh)
 
+        collectionView.rx.itemSelected
+            .bind { [weak self] indexPath in
+                let viewController = RestaurantViewController().then {
+                    $0.reactor = reactor.createRestaurantReactor(indexPath: indexPath)
+                }
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.restaurantCellReactors }
             .distinctUntilChanged()
