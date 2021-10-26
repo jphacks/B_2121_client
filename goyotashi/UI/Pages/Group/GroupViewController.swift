@@ -72,6 +72,8 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Bind Method
     func bind(reactor: GroupReactor) {
+        header.reactor = reactor
+
         // Action
         reactor.action.onNext(.refresh)
 
