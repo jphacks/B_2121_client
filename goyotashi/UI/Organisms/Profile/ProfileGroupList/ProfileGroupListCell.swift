@@ -132,7 +132,7 @@ final class ProfileGroupListCell: UICollectionViewCell, View, ViewConstructor {
         reactor.state.map { $0.profileGroup.imageUrls }
             .distinctUntilChanged()
             .bind { [weak self] imageUrls in
-                let max = min(imageUrls.count, 5)
+                let max = min(imageUrls.count, 6)
                 for index in 0 ..< max {
                     if index == 0 {
                         self?.largeImageView.kf.setImage(with: URL(string: imageUrls[0]), placeholder: R.image.dish())
