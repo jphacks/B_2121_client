@@ -9,7 +9,7 @@ import UIKit
 
 final class GroupActionButton: UIButton {
     struct Const {
-        static let size: CGFloat = 72
+        static let imageBackgroundViewSize: CGFloat = 72
         static let actionImageSize: CGFloat = 32
     }
 
@@ -35,6 +35,10 @@ final class GroupActionButton: UIButton {
         $0.image = R.image.photo_library()?.withRenderingMode(.alwaysTemplate)
     }
 
+    private let actionNameLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 11, color: Color.gray01)
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -51,18 +55,21 @@ final class GroupActionButton: UIButton {
     func setupViews() {
         addSubview(imageBackgroundView)
         imageBackgroundView.addSubview(actionImageView)
+        addSubview(actionNameLabel)
     }
 
     func setupViewConstraints() {
-        snp.makeConstraints {
-            $0.size.equalTo(Const.size)
-        }
         imageBackgroundView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.left.right.equalToSuperview()
+            $0.size.equalTo(Const.imageBackgroundViewSize)
         }
         actionImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.size.equalTo(Const.actionImageSize)
+        }
+        actionNameLabel.snp.makeConstraints {
+            $0.top.equalTo(imageBackgroundView.snp.bottom).offset(8)
+            $0.centerX.bottom.equalToSuperview()
         }
     }
 }
