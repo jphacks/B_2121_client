@@ -46,6 +46,12 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
 
     private let privacySwitch = UISwitch()
 
+    private let privacyDescriptionLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 15, color: Color.gray04)
+        $0.numberOfLines = 0
+        $0.text = "すべてのユーザがグループの内容を見ることができます。"
+    }
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +69,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         scrollView.addSubview(privacyTitleLabel)
         scrollView.addSubview(privacyStateLabel)
         scrollView.addSubview(privacySwitch)
+        scrollView.addSubview(privacyDescriptionLabel)
     }
 
     func setupViewConstraints() {
@@ -75,8 +82,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         }
         groupNameTextField.snp.makeConstraints {
             $0.top.equalTo(groupNameLabel.snp.bottom).offset(8)
-            $0.left.right.equalToSuperview().inset(16)
-            $0.width.equalTo(DeviceSize.screenWidth - 32)
+            $0.left.right.equalTo(view).inset(16)
         }
         groupMemberLabel.snp.makeConstraints {
             $0.top.equalTo(groupNameTextField.snp.bottom).offset(40)
@@ -92,7 +98,12 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         }
         privacySwitch.snp.makeConstraints {
             $0.centerY.equalTo(privacyStateLabel)
-            $0.right.equalTo(groupNameTextField)
+            $0.right.equalTo(view).inset(16)
+        }
+        privacyDescriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(privacyStateLabel.snp.bottom).offset(8)
+            $0.left.equalToSuperview().inset(16)
+            $0.right.equalTo(privacySwitch.snp.left).offset(-20)
         }
     }
 
