@@ -17,3 +17,9 @@ final class GroupRestaurantCellReactor: Reactor {
 
     let initialState: State = State()
 }
+
+extension GroupRestaurantCellReactor: Equatable {
+    static func == (lhs: GroupRestaurantCellReactor, rhs: GroupRestaurantCellReactor) -> Bool {
+        return lhs.currentState.property == rhs.currentState.property
+    }
+}
