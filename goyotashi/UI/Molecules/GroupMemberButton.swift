@@ -8,10 +8,6 @@
 import UIKit
 
 final class GroupMemberButton: UIButton {
-    struct Const {
-        static let width: CGFloat = 120
-        static let height: CGFloat = 78
-    }
 
     override var isHighlighted: Bool {
         didSet {
@@ -44,10 +40,6 @@ final class GroupMemberButton: UIButton {
     }
 
     func setupViewConstraints() {
-        snp.makeConstraints {
-            $0.width.equalTo(Const.width)
-            $0.height.equalTo(Const.height)
-        }
         memberIconViews[0].snp.makeConstraints {
             $0.top.left.equalToSuperview()
         }
