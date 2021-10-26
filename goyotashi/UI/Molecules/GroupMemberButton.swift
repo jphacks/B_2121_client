@@ -92,7 +92,6 @@ fileprivate final class MemberIconView: UIView, ViewConstructor {
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = Const.imageViewSize / 2
         $0.layer.masksToBounds = true
-        $0.backgroundColor = Color.gray02
     }
 
     // MARK: - Initializers
