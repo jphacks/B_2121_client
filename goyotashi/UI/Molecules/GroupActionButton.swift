@@ -47,6 +47,9 @@ final class GroupActionButton: UIButton {
         static let actionImageSize: CGFloat = 32
     }
 
+    // MARK: - Variables
+    private let actionType: ActionType
+
     // MARK: - Override Variables
     override var isHighlighted: Bool {
         didSet {
@@ -65,12 +68,10 @@ final class GroupActionButton: UIButton {
     private let actionImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
         $0.tintColor = Color.gray01
-        $0.image = R.image.photo_library()?.withRenderingMode(.alwaysTemplate)
     }
 
     private let actionNameLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 11, color: Color.gray01)
-        $0.text = "整理する"
     }
 
     private let overlayView = UIView().then {
@@ -80,11 +81,13 @@ final class GroupActionButton: UIButton {
     }
 
     // MARK: - Initializers
-    override init(frame: CGRect) {
+    init(actionType: ActionType) {
+        self.actionType = actionType
         super.init(frame: .zero)
 
         setupViews()
         setupViewConstraints()
+        configure()
     }
 
     required init?(coder: NSCoder) {
@@ -115,5 +118,11 @@ final class GroupActionButton: UIButton {
         overlayView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+
+    // MARK: - Configure Methods
+    private func configure() {
+        actionImageView.image = actionType.image?.withRenderingMode(.alwaysTemplate)
+        actionNameLabel.text = actionType.name
     }
 }

@@ -33,6 +33,8 @@ final class GroupHeaderView: UIView, ViewConstructor {
         $0.numberOfLines = 0
     }
 
+    private let groupActionButton = GroupActionButton(actionType: .organize)
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
