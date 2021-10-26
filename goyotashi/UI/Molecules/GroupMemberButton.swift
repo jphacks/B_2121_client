@@ -53,7 +53,7 @@ final class GroupMemberButton: UIButton {
             $0.right.lessThanOrEqualToSuperview()
         }
         memberCountLalbel.snp.makeConstraints {
-            $0.top.equalTo(memberIconViews[0]).offset(8)
+            $0.top.equalTo(memberIconViews[0].snp.bottom).offset(8)
             $0.left.bottom.equalToSuperview()
             $0.right.lessThanOrEqualToSuperview()
         }
