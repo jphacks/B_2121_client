@@ -18,6 +18,7 @@ final class CreateGroupReactor: Reactor {
     struct State {
         var groupName: String = ""
         let members: [User] = (0 ..< 4).map { _ in TestData.user() }
+        var isPublic: Bool = false
     }
 
     let initialState: State = State()
