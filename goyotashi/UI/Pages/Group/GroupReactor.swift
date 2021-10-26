@@ -8,14 +8,34 @@
 import ReactorKit
 
 final class GroupReactor: Reactor {
-    enum Action {}
-    enum Mutation {}
+    enum Action {
+        case refresh
+    }
+
+    enum Mutation {
+        case setRestaurantCellReactors([GroupRestaurant])
+    }
 
     struct State {
-        let restaurantCellReactors: [GroupRestaurantCellReactor] = (0 ..< 10).map { _ in
-            GroupRestaurantCellReactor(groupRestaurant: TestData.groupRestaurant())
-        }
+        var restaurantCellReactors: [GroupRestaurantCellReactor] = []
     }
 
     let initialState: State = State()
+
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .refresh:
+            let groupRestaurants = TestData.groupRestaurants(count: 9)
+            return .just(Mutation.setRestaurantCellReactors(groupRestaurants))
+        }
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setRestaurantCellReactors(groupRestaurants):
+            state.restaurantCellReactors = groupRestaurants.map { GroupRestaurantCellReactor(groupRestaurant: $0) }
+        }
+        return state
+    }
 }
