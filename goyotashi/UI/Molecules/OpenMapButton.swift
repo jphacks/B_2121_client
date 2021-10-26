@@ -9,12 +9,12 @@ import UIKit
 
 final class OpenMapButton: UIButton {
     enum MapAppType {
-        case nativeApp
+        case nativeMap
         case googleMap
 
         var actionName: String {
             switch self {
-            case .nativeApp:
+            case .nativeMap:
                 return "マップで開く"
             case .googleMap:
                 return "Google Mapsで開く"
