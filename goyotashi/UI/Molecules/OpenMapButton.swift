@@ -25,6 +25,11 @@ final class OpenMapButton: UIButton {
         $0.image = R.image.location()
     }
 
+    private let actionNameLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 11, color: Color.gray01)
+        $0.text = "マップで開く"
+    }
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
 
@@ -41,6 +46,7 @@ final class OpenMapButton: UIButton {
         backgroundColor = Color.gray06
 
         addSubview(iconView)
+        addSubview(actionNameLabel)
     }
 
     func setupViewConstraints() {
@@ -49,8 +55,13 @@ final class OpenMapButton: UIButton {
         }
         iconView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.left.right.equalToSuperview().inset(12)
+            $0.left.equalToSuperview().inset(12)
             $0.size.equalTo(Const.iconSize)
+        }
+        actionNameLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.left.equalTo(iconView.snp.right).offset(4)
+            $0.right.equalToSuperview().inset(16)
         }
     }
 }
