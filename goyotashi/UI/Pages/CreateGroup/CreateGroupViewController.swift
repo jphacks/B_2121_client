@@ -125,9 +125,8 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
 
         privacySwitch.rx.isOn
             .distinctUntilChanged()
-            .bind { isOn in
-                print("isOn: \(isOn)")
-            }
+            .map { Reactor.Action.updateIsOnPrivacySwitch($0) }
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
         // State
@@ -139,6 +138,14 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         reactor.state.map { $0.isPublic }
             .distinctUntilChanged()
             .bind(to: privacySwitch.rx.isOn)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.isPublic }
+            .distinctUntilChanged()
+            .bind { [weak self] isPublic in
+                self?.privacyStateLabel.text = isPublic ? "公開する" : "非公開にする"
+                self?.privacyDescriptionLabel.text = isPublic ? "すべてのユーザがグループの内容を見ることができます。" : "グループに参加しているメンバーだけがグループの内容を見ることができます。"
+            }
             .disposed(by: disposeBag)
     }
 }
