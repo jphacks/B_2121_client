@@ -11,4 +11,5 @@ struct Group {
     let description: String
     let memberCount: Int
     let restaurantCount: Int
+    let members: [User]
 }
