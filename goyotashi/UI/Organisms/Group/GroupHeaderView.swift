@@ -36,6 +36,7 @@ final class GroupHeaderView: UIView, ViewConstructor {
 
     private let actionButtonStackView = UIStackView().then {
         $0.axis = .horizontal
+        $0.spacing = 8
     }
 
     private let organizeButton = GroupActionButton(actionType: .organize)
