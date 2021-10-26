@@ -51,6 +51,27 @@ final class RestaurantInformationView: UIView, ViewConstructor {
 }
 
 fileprivate final class RestaurantInformationRow: UIView, ViewConstructor {
+
+    enum InformationType {
+        case restaurantName
+        case address
+        case phoneNumber
+        case openingHours
+
+        var title: String {
+            switch self {
+            case .restaurantName:
+                return "店名"
+            case .address:
+                return "住所"
+            case .phoneNumber:
+                return "電話"
+            case .openingHours:
+                return "営業時間"
+            }
+        }
+    }
+
     // MARK: - Views
     private let titleLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 14, color: Color.gray01)
