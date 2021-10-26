@@ -15,13 +15,14 @@ final class GroupActionButton: UIButton {
     // MARK: - Override Variables
     override var isHighlighted: Bool {
         didSet {
-            imageBackgroundView.tintColor = isHighlighted ? Color.gray06.withAlphaComponent(0.3) : Color.gray06
+            imageBackgroundView.backgroundColor = isHighlighted ? Color.gray06.withAlphaComponent(0.4) : Color.gray06
         }
     }
 
     // MARK: - Views
     private let imageBackgroundView = UIView().then {
         $0.backgroundColor = Color.gray06
+        $0.isUserInteractionEnabled = false
     }
 
     // MARK: - Initializers
