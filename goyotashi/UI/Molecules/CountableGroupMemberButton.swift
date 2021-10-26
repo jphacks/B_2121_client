@@ -84,6 +84,13 @@ final class CountableGroupMemberButton: UIButton {
             }
         }
     }
+
+    func configure(urlStringPair: (String, String), memberCount: Int) {
+        memberIconViews[0].imageView.kf.setImage(with: URL(string: urlStringPair.0), placeholder: R.image.dish())
+        memberIconViews[1].imageView.kf.setImage(with: URL(string: urlStringPair.1), placeholder: R.image.dish())
+        memberIconViews[2].imageView.image = nil
+        memberIconViews[2].countLabel.text = "\(memberCount - 2)"
+    }
 }
 
 extension Reactive where Base: CountableGroupMemberButton {
@@ -91,6 +98,9 @@ extension Reactive where Base: CountableGroupMemberButton {
         return Binder(base) { view, members in
             if members.count < 4 {
                 view.configure(imageUrlStrings: members.map { $0.profileImageUrl })
+            } else {
+                let urlStringPair = (members[0].profileImageUrl, members[1].profileImageUrl)
+                view.configure(urlStringPair: urlStringPair, memberCount: members.count)
             }
         }
     }
