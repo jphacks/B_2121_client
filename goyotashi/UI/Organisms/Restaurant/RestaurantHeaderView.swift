@@ -154,6 +154,18 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
             .distinctUntilChanged()
             .bind(to: restaurantDescriptionLabel.rx.text)
             .disposed(by: disposeBag)
+
+        reactor.state.map { $0.restaurant }
+            .distinctUntilChanged()
+            .bind { [weak self] restaurant in
+                self?.restaurantInformationView.configure(
+                    restaurantName: restaurant.name,
+                    address: restaurant.address,
+                    phoneNumber: restaurant.phoneNumber,
+                    openingHours: restaurant.openingHours
+                )
+            }
+            .disposed(by: disposeBag)
     }
 
     private func setMap(latitude: Double?, longitude: Double?) {
