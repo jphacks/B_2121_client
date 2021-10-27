@@ -83,6 +83,7 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(groupNameLabel)
         stackView.addArrangedSubview(groupDescriptionLabel)
+        stackView.setCustomSpacing(8, after: groupDescriptionLabel)
         stackView.addArrangedSubview(groupSummaryLabel)
     }
 
