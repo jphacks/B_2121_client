@@ -55,6 +55,7 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
 
     // MARK: - Setup Methods
     func setupViews() {
+        title = "メンバーを招待"
         view.backgroundColor = Color.white
 
         view.addSubview(searchBar)
