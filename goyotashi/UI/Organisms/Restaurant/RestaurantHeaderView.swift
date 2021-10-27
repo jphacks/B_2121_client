@@ -37,7 +37,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         $0.numberOfLines = 0
     }
 
-    private let addRestaurantButton = AddRestaurantButton()
+    let addRestaurantButton = AddRestaurantButton()
 
     private let restaurantInformationView = RestaurantInformationView()
 
