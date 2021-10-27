@@ -13,6 +13,7 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
 
     struct Const {
         static let imageViewSize: CGFloat = ((DeviceSize.screenWidth - 32 - 8) / 2 - 4) / 2
+        static let imagesViewWidth: CGFloat = imageViewSize * 2 + 4
         static let cellWidth: CGFloat = DeviceSize.screenWidth - 32
         static let cellHeight: CGFloat = imageViewSize * 2 + 4
         static let itemSize: CGSize = CGSize(width: cellWidth, height: cellHeight)
@@ -22,6 +23,11 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let imagesView = UIView().then {
+        $0.layer.cornerRadius = 16
+        $0.layer.masksToBounds = true
+    }
+
     private let imageViews: [UIImageView] = {
         var imageViews: [UIImageView] = (0 ..< 4).map { _ in
             let imageView = UIImageView().then {
@@ -49,11 +55,16 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
     // MARK: - Setup Methods
     func setupViews() {
         _ = imageViews.map {
-            contentView.addSubview($0)
+            imagesView.addSubview($0)
         }
+        contentView.addSubview(imagesView)
     }
 
     func setupViewConstraints() {
+        imagesView.snp.makeConstraints {
+            $0.top.left.bottom.equalToSuperview()
+            $0.width.equalTo(Const.imagesViewWidth)
+        }
         imageViews[0].snp.makeConstraints {
             $0.top.left.equalToSuperview()
             $0.size.equalTo(Const.imageViewSize)
