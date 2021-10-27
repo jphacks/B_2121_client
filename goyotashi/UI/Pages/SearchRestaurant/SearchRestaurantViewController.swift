@@ -44,6 +44,7 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
     // MARK: - Setup Methods
     func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+        title = "お店を探す"
 
         view.addSubview(searchBar)
     }
