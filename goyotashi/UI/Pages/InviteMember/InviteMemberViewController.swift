@@ -19,6 +19,10 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let doneButton = UIBarButtonItem(title: "完了", style: .done, target: nil, action: nil).then {
+        $0.tintColor = Color.gray01
+    }
+
     private let searchBar = UISearchBar().then {
         $0.placeholder = "キーワード"
         $0.backgroundImage = UIImage()
@@ -57,6 +61,7 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
     func setupViews() {
         title = "メンバーを招待"
         view.backgroundColor = Color.white
+        navigationItem.rightBarButtonItem = doneButton
 
         view.addSubview(searchBar)
         view.addSubview(collectionView)
