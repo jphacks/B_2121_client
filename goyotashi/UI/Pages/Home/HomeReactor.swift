@@ -17,6 +17,7 @@ final class HomeReactor: Reactor {
 
     struct State {
         var keyword: String = ""
+        var pageType: PageType = .recommendGroup
     }
 
     let initialState: State = State()
