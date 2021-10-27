@@ -119,6 +119,17 @@ struct TestData {
         return (0 ..< count).map { _ in restaurant() }
     }
 
+    static func groupSummary() -> GroupSummary {
+        return GroupSummary(
+            groupId: randomString(length: 8),
+            groupName: "CAMPHOR-",
+            groupDescription: "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。",
+            restaurantCount: Int.random(in: 2 ..< 16),
+            memberCount: Int.random(in: 4 ..< 16),
+            imageUrls: restaurantImageUrlStrings()
+        )
+    }
+
     // MARK: - Private Functions
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
