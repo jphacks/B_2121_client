@@ -94,5 +94,11 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
             .disposed(by: disposeBag)
 
         // State
+        reactor.state.map { $0.keyword }
+            .distinctUntilChanged()
+            .bind { [weak self] keyword in
+                self?.searchRestaurantResultViewController.reactor?.action.onNext(.search(keyword))
+            }
+            .disposed(by: disposeBag)
     }
 }
