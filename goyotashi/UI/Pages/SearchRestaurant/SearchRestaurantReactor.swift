@@ -12,7 +12,7 @@ final class SearchRestaurantReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        var keyword: String = ""
     }
 
     let initialState: State = State()
