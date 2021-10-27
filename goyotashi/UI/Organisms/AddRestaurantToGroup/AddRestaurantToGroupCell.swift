@@ -47,16 +47,19 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
     private let groupNameLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 18, color: Color.gray01)
         $0.numberOfLines = 0
+        $0.text = "CAMPHOR-"
     }
 
     private let groupDescriptionLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 11, color: Color.gray03)
         $0.numberOfLines = 0
+        $0.text = "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。"
     }
 
     private let groupSummaryLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 12, color: Color.gray02)
         $0.numberOfLines = 0
+        $0.text = "2 件のお店 / 3人のメンバー"
     }
 
     // MARK: - Initializers
