@@ -280,6 +280,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		840F19512729E9D2009BC1ED /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		84777712272861600054E15D /* OrganizeRestaurant */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				84AFC3E52726E5DB00B9244E /* Entities */,
+				840F19512729E9D2009BC1ED /* Service */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
