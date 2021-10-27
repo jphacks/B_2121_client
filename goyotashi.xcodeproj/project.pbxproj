@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		41E0CE0BB1D29594A4F51D47 /* Pods_goyotashi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */; };
+		840F19532729EA18009BC1ED /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19522729EA18009BC1ED /* ServiceProvider.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -125,6 +126,7 @@
 		5A2510B4727F1FAB74093E2D /* Pods-goyotashi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi/Pods-goyotashi.debug.xcconfig"; sourceTree = "<group>"; };
 		6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi_goyotashiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashiTests.release.xcconfig"; path = "Target Support Files/Pods-goyotashiTests/Pods-goyotashiTests.release.xcconfig"; sourceTree = "<group>"; };
+		840F19522729EA18009BC1ED /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		840F19512729E9D2009BC1ED /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				840F19522729EA18009BC1ED /* ServiceProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1104,6 +1107,7 @@
 				84AFC3FC2727340000B9244E /* ProfileGroupListReactor.swift in Sources */,
 				8477775F27298FAF0054E15D /* RestaurantMapViewController.swift in Sources */,
 				84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */,
+				840F19532729EA18009BC1ED /* ServiceProvider.swift in Sources */,
 				8477774A2729481F0054E15D /* AddRestaurantToGroupCellReactor.swift in Sources */,
 				84777754272977BE0054E15D /* SearchGroupResultHeaderView.swift in Sources */,
 				84AFC4232727FFD200B9244E /* RestaurantHeaderView.swift in Sources */,
