@@ -50,6 +50,7 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         title = "お店を探す"
         navigationItem.rightBarButtonItem = addButton
+        view.backgroundColor = Color.white
 
         view.addSubview(searchBar)
     }
