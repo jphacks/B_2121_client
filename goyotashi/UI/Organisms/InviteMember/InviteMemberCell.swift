@@ -31,6 +31,7 @@ final class InviteMemberCell: UICollectionViewCell, View, ViewConstructor {
 
     private let userNameLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 18, color: Color.gray01)
+        $0.numberOfLines = 0
     }
 
     // MARK: - Initializers
