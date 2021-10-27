@@ -103,7 +103,7 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
             $0.bottom.lessThanOrEqualToSuperview().inset(8)
             $0.centerY.equalToSuperview()
             $0.left.equalTo(imagesView.snp.right).offset(8)
-            $0.right.equalToSuperview().inset(16)
+            $0.right.equalToSuperview()
         }
     }
 
