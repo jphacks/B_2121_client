@@ -15,6 +15,12 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let searchBar = UISearchBar().then {
+        $0.placeholder = "キーワードでグループを検索"
+        $0.backgroundImage = UIImage()
+        $0.tintColor = Color.gray01
+    }
+
     private lazy var recommendGroupViewController = RecommendGroupViewController()
 
     // MARK: - Lify Cycles
@@ -27,6 +33,8 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
+        navigationItem.titleView = searchBar
+
         addChild()
     }
 
