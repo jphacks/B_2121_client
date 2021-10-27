@@ -12,4 +12,5 @@ struct Group {
     let memberCount: Int
     let restaurantCount: Int
     let members: [User]
+    let isPublic: Bool
 }
