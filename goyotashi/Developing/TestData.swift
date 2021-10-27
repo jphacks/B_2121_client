@@ -115,6 +115,10 @@ struct TestData {
         )
     }
 
+    static func restaurants(count: Int) -> [Restaurant] {
+        return (0 ..< count).map { _ in restaurant() }
+    }
+
     // MARK: - Private Functions
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
