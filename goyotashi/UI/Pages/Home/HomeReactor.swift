@@ -10,9 +10,11 @@ import ReactorKit
 final class HomeReactor: Reactor {
     enum Action {
         case updateKeyword(String?)
+        case didStartSearch
     }
     enum Mutation {
         case setKeyword(String)
+        case setPageType(PageType)
     }
 
     struct State {
@@ -27,6 +29,8 @@ final class HomeReactor: Reactor {
         case let .updateKeyword(keyword):
             guard let keyword = keyword else { return .empty() }
             return .just(.setKeyword(keyword))
+        case .didStartSearch:
+            return .just(.setPageType(.searchGroupResult))
         }
     }
 
@@ -35,6 +39,8 @@ final class HomeReactor: Reactor {
         switch mutation {
         case let .setKeyword(keyword):
             state.keyword = keyword
+        case let .setPageType(pageType):
+            state.pageType = pageType
         }
         return state
     }
