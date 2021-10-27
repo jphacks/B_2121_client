@@ -12,7 +12,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
 
     // MARK: - Variables
     private let location: Location
-    private let placeName: String
+    private let restaurantName: String
 
     // MARK: - Views
     private let mapView = MKMapView()
@@ -30,9 +30,9 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
     }
 
     // MARK: - Initializers
-    init(placeName: String, location: Location) {
+    init(restaurantName: String, location: Location) {
         self.location = location
-        self.placeName = placeName
+        self.restaurantName = restaurantName
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -51,7 +51,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
-        title = placeName
+        title = restaurantName
         view.addSubview(mapView)
         view.addSubview(openNativeMapButton)
         view.addSubview(openGoogleMapButton)
@@ -79,7 +79,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         mapView.region = region
         let pointAnnotation: MKPointAnnotation = MKPointAnnotation()
         pointAnnotation.coordinate = center
-        pointAnnotation.title = placeName
+        pointAnnotation.title = restaurantName
         mapView.addAnnotation(pointAnnotation)
     }
 }
