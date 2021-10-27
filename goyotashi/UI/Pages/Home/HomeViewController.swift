@@ -63,6 +63,7 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: HomeReactor) {
         recommendGroupViewController.reactor = reactor.createRecommendGroupReactor()
+        searchGroupResultViewController.reactor = reactor.createSearchGroupResultReactor()
 
         // Action
         searchBar.rx.text
