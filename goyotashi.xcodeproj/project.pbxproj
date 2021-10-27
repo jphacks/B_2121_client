@@ -372,6 +372,13 @@
 			path = SearchGroupResult;
 			sourceTree = "<group>";
 		};
+		847777522729778F0054E15D /* SearchGroupResult */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchGroupResult;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +595,7 @@
 				84AFC3DC2726CF4100B9244E /* HomeHeaderView.swift */,
 				84AFC3DE2726D79700B9244E /* HomeGroupCell.swift */,
 				84AFC3E02726D7A300B9244E /* HomeGroupCellReactor.swift */,
+				847777522729778F0054E15D /* SearchGroupResult */,
 			);
 			path = Home;
 			sourceTree = "<group>";
