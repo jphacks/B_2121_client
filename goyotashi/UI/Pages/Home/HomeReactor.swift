@@ -8,8 +8,12 @@
 import ReactorKit
 
 final class HomeReactor: Reactor {
-    enum Action {}
-    enum Mutation {}
+    enum Action {
+        case updateKeyword(String?)
+    }
+    enum Mutation {
+        case setKeyword(String)
+    }
 
     struct State {
         var keyword: String = ""
@@ -20,5 +24,22 @@ final class HomeReactor: Reactor {
     // MARK: - Create Reactor Methods
     func createRecommendGroupReactor() -> RecommendGroupReactor {
         return RecommendGroupReactor()
+    }
+
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case let .updateKeyword(keyword):
+            guard let keyword = keyword else { return .empty() }
+            return .just(.setKeyword(keyword))
+        }
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setKeyword(keyword):
+            state.keyword = keyword
+        }
+        return state
     }
 }
