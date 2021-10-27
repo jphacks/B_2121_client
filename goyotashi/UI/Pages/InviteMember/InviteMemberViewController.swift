@@ -49,7 +49,7 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
 
         searchBar.snp.remakeConstraints {
             $0.top.equalToSuperview().inset(view.safeAreaInsets.top)
-            $0.left.right.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(8)
         }
     }
 
