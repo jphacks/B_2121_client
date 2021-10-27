@@ -35,10 +35,14 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
 
     private let restaurantNameLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 16, color: Color.gray01)
+        $0.numberOfLines = 0
+        $0.text = "和洋キッチン松之助和洋キッチン松之助和洋キッチン松之助"
     }
 
     private let descriptionLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 13, color: Color.gray03)
+        $0.numberOfLines = 0
+        $0.text = "定食・食堂・ハンバーグ・洋食"
     }
 
     // MARK: - Initializers
