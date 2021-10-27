@@ -55,6 +55,12 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
         recommendGroupViewController.reactor = reactor.createRecommendGroupReactor()
 
         // Action
+        searchBar.rx.text
+            .distinctUntilChanged()
+            .bind { keyword in
+                reactor.action.onNext(.updateKeyword(keyword))
+            }
+            .disposed(by: disposeBag)
 
         // State
     }
