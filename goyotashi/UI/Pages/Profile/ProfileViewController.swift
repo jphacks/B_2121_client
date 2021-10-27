@@ -43,10 +43,14 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
 
         reloadData()
         defaultSelectedIndex = 0
+
+        setupViews()
     }
 
     // MARK: - Setup Methods
-    func setupViews() {}
+    func setupViews() {
+        title = "プロフィール"
+    }
 
     func setupViewConstraints() {}
 

@@ -64,6 +64,7 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
+        title = "お店"
         view.addSubview(collectionView)
         collectionView.addSubview(header)
     }

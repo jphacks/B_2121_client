@@ -57,6 +57,7 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
+        title = "グループ"
         view.addSubview(collectionView)
         collectionView.addSubview(header)
     }
