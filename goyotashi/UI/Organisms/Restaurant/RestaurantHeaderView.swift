@@ -41,7 +41,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
 
     private let restaurantInformationView = RestaurantInformationView()
 
-    private let mapView = MKMapView()
+    let mapView = MKMapView()
 
     private let openNativeMapButton = OpenMapButton(mapAppType: .nativeMap)
     private let openGoogleMapButton = OpenMapButton(mapAppType: .googleMap)
