@@ -55,7 +55,7 @@ final class InviteMemberCell: UICollectionViewCell, View, ViewConstructor {
     }
 
     // MARK: - Bind Method
-    func bind(reactor: OrganizeRestaurantCellReactor) {
+    func bind(reactor: InviteMemberCellReactor) {
         // Action
 
         // State
