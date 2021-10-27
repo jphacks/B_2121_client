@@ -16,8 +16,18 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
 
     // MARK: - Views
     private let mapView = MKMapView()
-    private let openNativeMapButton = OpenMapButton(mapAppType: .nativeMap)
-    private let openGoogleMapButton = OpenMapButton(mapAppType: .googleMap)
+    private let openNativeMapButton = OpenMapButton(mapAppType: .nativeMap).then {
+        $0.layer.shadowColor = Color.gray01.cgColor
+        $0.layer.shadowOffset = .zero
+        $0.layer.shadowOpacity = 0.6
+        $0.layer.shadowRadius = 4
+    }
+    private let openGoogleMapButton = OpenMapButton(mapAppType: .googleMap).then {
+        $0.layer.shadowColor = Color.gray01.cgColor
+        $0.layer.shadowOffset = .zero
+        $0.layer.shadowOpacity = 0.6
+        $0.layer.shadowRadius = 4
+    }
 
     // MARK: - Initializers
     init(placeName: String, location: Location) {
