@@ -33,9 +33,14 @@ final class AddRestaurantToGroupViewController: UIViewController, View, ViewCons
         $0.scrollDirection = .vertical
     }).then {
         $0.register(Reusable.groupCell)
-        $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 56, right: 16)
+        $0.contentInset = UIEdgeInsets(top: 64, left: 16, bottom: 56, right: 16)
         $0.backgroundColor = Color.white
         $0.alwaysBounceVertical = true
+    }
+
+    private let headerLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 15, color: Color.gray02)
+        $0.text = "参加してるグループ"
     }
 
     // MARK: - Lify Cycles
@@ -53,11 +58,16 @@ final class AddRestaurantToGroupViewController: UIViewController, View, ViewCons
         navigationItem.rightBarButtonItem = doneButton
 
         view.addSubview(collectionView)
+        collectionView.addSubview(headerLabel)
     }
 
     func setupViewConstraints() {
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        headerLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(-40)
+            $0.left.right.equalTo(view).inset(16)
         }
     }
 
