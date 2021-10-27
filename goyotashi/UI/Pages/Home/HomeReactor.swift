@@ -14,4 +14,9 @@ final class HomeReactor: Reactor {
     struct State {}
 
     let initialState: State = State()
+
+    // MARK: - Create Reactor Methods
+    func createRecommendGroupReactor() -> RecommendGroupReactor {
+        return RecommendGroupReactor()
+    }
 }
