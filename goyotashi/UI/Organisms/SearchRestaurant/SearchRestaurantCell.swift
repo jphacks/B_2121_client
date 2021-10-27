@@ -36,19 +36,16 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
     private let restaurantNameLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 16, color: Color.gray01)
         $0.numberOfLines = 0
-        $0.text = "和洋キッチン松之助"
     }
 
     private let descriptionLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 13, color: Color.gray03)
         $0.numberOfLines = 0
-        $0.text = "定食・食堂・ハンバーグ・洋食"
     }
 
     private let addressLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 12, color: Color.gray02)
         $0.numberOfLines = 0
-        $0.text = "京都府京都市左京区田中里ノ前町1西野ビル1F"
     }
 
     // MARK: - Initializers
