@@ -344,6 +344,13 @@
 			path = AddRestaurantToGroup;
 			sourceTree = "<group>";
 		};
+		84777746272947E20054E15D /* AddRestaurantToGroup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddRestaurantToGroup;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +468,7 @@
 		84AFC3B5272672EE00B9244E /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				84777746272947E20054E15D /* AddRestaurantToGroup */,
 				84AFC40D2727A69F00B9244E /* Group */,
 				84AFC3DB2726CF0900B9244E /* Home */,
 				84777726272905BF0054E15D /* InviteMember */,
