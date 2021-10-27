@@ -9,37 +9,58 @@ import ReactorKit
 
 final class HomeReactor: Reactor {
     enum Action {
-        case refresh
+        case updateKeyword(String?)
+        case didStartSearch
+        case didClickCancelButton
     }
     enum Mutation {
-        case setGroupCellReactors([HomeGroup])
+        case setKeyword(String)
+        case setPageType(PageType)
     }
 
     struct State {
-        var groupCellReactors: [HomeGroupCellReactor] = []
+        var keyword: String = ""
+        var pageType: PageType = .recommendGroup
     }
 
     let initialState: State = State()
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .refresh:
-            let homeGroups = TestData.homeGroups(count: 6)
-            return .just(Mutation.setGroupCellReactors(homeGroups))
+        case let .updateKeyword(keyword):
+            guard let keyword = keyword else { return .empty() }
+            return .just(.setKeyword(keyword))
+        case .didStartSearch:
+            return .just(.setPageType(.searchGroupResult))
+        case .didClickCancelButton:
+            return .just(.setPageType(.recommendGroup))
         }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case let .setGroupCellReactors(homeGroups):
-            state.groupCellReactors = homeGroups.map { HomeGroupCellReactor(homeGroup: $0) }
+        case let .setKeyword(keyword):
+            state.keyword = keyword
+        case let .setPageType(pageType):
+            state.pageType = pageType
         }
         return state
     }
 
-    // MARK: Create Reactor Methods
-    func createGroupReactor(indexPath: IndexPath) -> GroupReactor {
-        return GroupReactor()
+    // MARK: - Create Reactor Methods
+    func createRecommendGroupReactor() -> RecommendGroupReactor {
+        return RecommendGroupReactor()
+    }
+
+    func createSearchGroupResultReactor() -> SearchGroupResultReactor {
+        return SearchGroupResultReactor()
+    }
+}
+
+extension HomeReactor {
+    enum PageType {
+        case recommendGroup
+        case searchGroupResult
     }
 }

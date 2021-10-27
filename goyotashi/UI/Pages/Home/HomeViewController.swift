@@ -11,27 +11,18 @@ import ReusableKit
 
 final class HomeViewController: UIViewController, View, ViewConstructor {
 
-    struct Reusable {
-        static let groupCell = ReusableCell<HomeGroupCell>()
-    }
-
     // MARK: - Variables
     var disposeBag = DisposeBag()
 
     // MARK: - Views
-    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
-        $0.estimatedItemSize =  HomeGroupCell.Const.itemSize
-        $0.minimumLineSpacing = 32
-        $0.scrollDirection = .vertical
-        $0.sectionInset.top = HomeHeaderView.Const.height + 32
-    }).then {
-        $0.register(Reusable.groupCell)
-        $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 56, right: 16)
-        $0.backgroundColor = Color.white
-        $0.alwaysBounceVertical = true
+    private let searchBar = UISearchBar().then {
+        $0.placeholder = "キーワードでグループを検索"
+        $0.backgroundImage = UIImage()
+        $0.tintColor = Color.gray01
     }
 
-    private let header = HomeHeaderView()
+    private lazy var recommendGroupViewController = RecommendGroupViewController()
+    private lazy var searchGroupResultViewController = SearchGroupResultViewController()
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -43,39 +34,75 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
-        view.addSubview(collectionView)
-        collectionView.addSubview(header)
+        navigationItem.titleView = searchBar
+
+        addChild()
+    }
+
+    private func addChild() {
+        // RecommendGroupViewController
+        addChild(recommendGroupViewController)
+        view.addSubview(recommendGroupViewController.view)
+        recommendGroupViewController.didMove(toParent: self)
+
+        // SearchGroupResultViewController
+        addChild(searchGroupResultViewController)
+        view.addSubview(searchGroupResultViewController.view)
+        searchGroupResultViewController.didMove(toParent: self)
     }
 
     func setupViewConstraints() {
-        collectionView.snp.makeConstraints {
+        recommendGroupViewController.view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        header.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.left.right.equalTo(view)
+        searchGroupResultViewController.view.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 
     // MARK: - Bind Method
     func bind(reactor: HomeReactor) {
-        // Action
-        reactor.action.onNext(.refresh)
+        recommendGroupViewController.reactor = reactor.createRecommendGroupReactor()
+        searchGroupResultViewController.reactor = reactor.createSearchGroupResultReactor()
 
-        collectionView.rx.itemSelected
-            .bind { [weak self] indexPath in
-                let viewController = GroupViewController().then {
-                    $0.reactor = reactor.createGroupReactor(indexPath: indexPath)
-                }
-                self?.navigationController?.pushViewController(viewController, animated: true)
+        // Action
+        searchBar.rx.text
+            .distinctUntilChanged()
+            .bind { keyword in
+                reactor.action.onNext(.updateKeyword(keyword))
+            }
+            .disposed(by: disposeBag)
+
+        searchBar.rx.textDidBeginEditing
+            .bind { [weak self] in
+                self?.searchBar.setShowsCancelButton(true, animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        searchBar.rx.searchButtonClicked
+            .bind { [weak self] in
+                self?.searchBar.resignFirstResponder()
+                let keyword = reactor.currentState.keyword
+                self?.searchGroupResultViewController.reactor?.action.onNext(.search(keyword))
+                reactor.action.onNext(.didStartSearch)
+            }
+            .disposed(by: disposeBag)
+
+        searchBar.rx.cancelButtonClicked
+            .bind { [weak self] in
+                self?.searchBar.text = ""
+                self?.searchBar.resignFirstResponder()
+                self?.searchBar.setShowsCancelButton(false, animated: true)
+                reactor.action.onNext(.didClickCancelButton)
             }
             .disposed(by: disposeBag)
 
         // State
-        reactor.state.map { $0.groupCellReactors }
+        reactor.state.map { $0.pageType }
             .distinctUntilChanged()
-            .bind(to: collectionView.rx.items(Reusable.groupCell)) { _, reactor, cell in
-                cell.reactor = reactor
+            .bind { [weak self] pageType in
+                self?.recommendGroupViewController.view.isHidden = pageType != .recommendGroup
+                self?.searchGroupResultViewController.view.isHidden = pageType != .searchGroupResult
             }
             .disposed(by: disposeBag)
     }
