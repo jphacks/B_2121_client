@@ -54,6 +54,11 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
         $0.numberOfLines = 0
     }
 
+    private let groupSummaryLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 12, color: Color.gray02)
+        $0.numberOfLines = 0
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -75,6 +80,7 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(groupNameLabel)
         stackView.addArrangedSubview(groupDescriptionLabel)
+        stackView.addArrangedSubview(groupSummaryLabel)
     }
 
     func setupViewConstraints() {
