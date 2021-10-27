@@ -48,6 +48,12 @@ struct TestData {
         )
     }
 
+    static func users(count: Int) -> [User] {
+        return (0 ..< count).map { _ in
+            user()
+        }
+    }
+
     static func groupRestaurant() -> GroupRestaurant {
         return GroupRestaurant(
             restaurantId: randomString(length: 8),
