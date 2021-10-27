@@ -27,7 +27,7 @@ final class EditGroupReactor: Reactor {
             self.uneditedGroup = group
             self.groupName = group.name
             self.members = group.members
-            self.isPublic = false
+            self.isPublic = group.isPublic
         }
     }
 
