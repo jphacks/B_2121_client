@@ -38,10 +38,14 @@ final class HomeReactor: Reactor {
         }
         return state
     }
-    
+
     // MARK: - Create Reactor Methods
     func createRecommendGroupReactor() -> RecommendGroupReactor {
         return RecommendGroupReactor()
+    }
+
+    func createSearchGroupResultReactor() -> SearchGroupResultReactor {
+        return SearchGroupResultReactor()
     }
 }
 
