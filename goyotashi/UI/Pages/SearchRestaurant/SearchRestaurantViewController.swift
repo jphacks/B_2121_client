@@ -65,6 +65,11 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
     // MARK: - Bind Method
     func bind(reactor: SearchRestaurantReactor) {
         // Action
+        closeButton.rx.tap
+            .bind { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
 
         // State
     }
