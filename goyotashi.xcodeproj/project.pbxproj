@@ -300,8 +300,16 @@
 			children = (
 				8477772C27291CED0054E15D /* SearchRestaurantViewController.swift */,
 				8477772E27291CF30054E15D /* SearchRestaurantReactor.swift */,
+				847777302729283F0054E15D /* SearchRestaurantResult */,
 			);
 			path = SearchRestaurant;
+			sourceTree = "<group>";
+		};
+		847777302729283F0054E15D /* SearchRestaurantResult */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchRestaurantResult;
 			sourceTree = "<group>";
 		};
 		84AFC3692725D40600B9244E = {
