@@ -47,7 +47,7 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
         setupViews()
     }
 
-    // MARK: - Setup Methodps
+    // MARK: - Setup Methods
     func setupViews() {
         title = "プロフィール"
     }
