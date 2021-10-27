@@ -331,11 +331,11 @@
 			path = SearchRestaurant;
 			sourceTree = "<group>";
 		};
-		8477773B2729468E0054E15D /* AddToGroup */ = {
+		8477773B2729468E0054E15D /* AddRestaurantToGroup */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = AddToGroup;
+			path = AddRestaurantToGroup;
 			sourceTree = "<group>";
 		};
 		84AFC3692725D40600B9244E = {
@@ -469,7 +469,7 @@
 		84AFC3B62726730D00B9244E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				8477773B2729468E0054E15D /* AddToGroup */,
+				8477773B2729468E0054E15D /* AddRestaurantToGroup */,
 				84B88DEF27283776004EB87D /* CreateGroup */,
 				8477771C2728FBF80054E15D /* EditGroup */,
 				84AFC4082727A53400B9244E /* Group */,
