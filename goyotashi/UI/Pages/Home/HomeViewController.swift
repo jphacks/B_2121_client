@@ -62,6 +62,27 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
+        searchBar.rx.textDidBeginEditing
+            .bind { [weak self] in
+                self?.searchBar.setShowsCancelButton(true, animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        searchBar.rx.searchButtonClicked
+            .bind { [weak self] in
+                self?.searchBar.resignFirstResponder()
+                print("search")
+            }
+            .disposed(by: disposeBag)
+
+        searchBar.rx.cancelButtonClicked
+            .bind { [weak self] in
+                self?.searchBar.text = ""
+                self?.searchBar.resignFirstResponder()
+                self?.searchBar.setShowsCancelButton(false, animated: true)
+            }
+            .disposed(by: disposeBag)
+
         // State
     }
 }
