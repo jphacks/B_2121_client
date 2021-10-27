@@ -48,7 +48,7 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
     // MARK: - Setup Methods
     func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
-        title = "お店を探す"
+        title = "お店をグループに追加する"
         navigationItem.rightBarButtonItem = addButton
         view.backgroundColor = Color.white
 
