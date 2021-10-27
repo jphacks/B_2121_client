@@ -22,11 +22,6 @@ final class HomeReactor: Reactor {
 
     let initialState: State = State()
 
-    // MARK: - Create Reactor Methods
-    func createRecommendGroupReactor() -> RecommendGroupReactor {
-        return RecommendGroupReactor()
-    }
-
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .updateKeyword(keyword):
@@ -42,6 +37,11 @@ final class HomeReactor: Reactor {
             state.keyword = keyword
         }
         return state
+    }
+    
+    // MARK: - Create Reactor Methods
+    func createRecommendGroupReactor() -> RecommendGroupReactor {
+        return RecommendGroupReactor()
     }
 }
 
