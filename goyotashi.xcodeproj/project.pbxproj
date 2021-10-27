@@ -37,6 +37,7 @@
 		84777757272979610054E15D /* RecommendGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84777756272979610054E15D /* RecommendGroupViewController.swift */; };
 		847777592729796A0054E15D /* RecommendGroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777582729796A0054E15D /* RecommendGroupReactor.swift */; };
 		8477775C27297A120054E15D /* RecommendGroupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477775B27297A120054E15D /* RecommendGroupHeaderView.swift */; };
+		8477775F27298FAF0054E15D /* RestaurantMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477775E27298FAF0054E15D /* RestaurantMapViewController.swift */; };
 		84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3752725D40600B9244E /* AppDelegate.swift */; };
 		84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3772725D40600B9244E /* SceneDelegate.swift */; };
 		84AFC37A2725D40600B9244E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3792725D40600B9244E /* ViewController.swift */; };
@@ -153,6 +154,7 @@
 		84777756272979610054E15D /* RecommendGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendGroupViewController.swift; sourceTree = "<group>"; };
 		847777582729796A0054E15D /* RecommendGroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendGroupReactor.swift; sourceTree = "<group>"; };
 		8477775B27297A120054E15D /* RecommendGroupHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendGroupHeaderView.swift; sourceTree = "<group>"; };
+		8477775E27298FAF0054E15D /* RestaurantMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapViewController.swift; sourceTree = "<group>"; };
 		84AFC3722725D40600B9244E /* goyotashi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goyotashi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3752725D40600B9244E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AFC3772725D40600B9244E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 		8477775D27298F830054E15D /* RestaurantMap */ = {
 			isa = PBXGroup;
 			children = (
+				8477775E27298FAF0054E15D /* RestaurantMapViewController.swift */,
 			);
 			path = RestaurantMap;
 			sourceTree = "<group>";
@@ -1091,6 +1094,7 @@
 				84AFC3EC272714D700B9244E /* ProfileViewController.swift in Sources */,
 				8477771127285C670054E15D /* AddMemberButton.swift in Sources */,
 				84AFC3FC2727340000B9244E /* ProfileGroupListReactor.swift in Sources */,
+				8477775F27298FAF0054E15D /* RestaurantMapViewController.swift in Sources */,
 				84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */,
 				8477774A2729481F0054E15D /* AddRestaurantToGroupCellReactor.swift in Sources */,
 				84777754272977BE0054E15D /* SearchGroupResultHeaderView.swift in Sources */,
