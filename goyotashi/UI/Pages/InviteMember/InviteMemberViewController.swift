@@ -19,6 +19,12 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let searchBar = UISearchBar().then {
+        $0.placeholder = "キーワード"
+        $0.backgroundImage = UIImage()
+        $0.tintColor = Color.gray01
+    }
+
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize =  InviteMemberCell.Const.itemSize
         $0.minimumLineSpacing = 0
@@ -38,14 +44,31 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
         setupViewConstraints()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        searchBar.snp.remakeConstraints {
+            $0.top.equalToSuperview().inset(view.safeAreaInsets.top)
+            $0.left.right.equalToSuperview()
+        }
+    }
+
     // MARK: - Setup Methods
     func setupViews() {
+        view.backgroundColor = Color.white
+
+        view.addSubview(searchBar)
         view.addSubview(collectionView)
     }
 
     func setupViewConstraints() {
+        searchBar.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.left.right.equalToSuperview()
+        }
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(searchBar.snp.bottom)
+            $0.left.right.bottom.equalToSuperview()
         }
     }
 
