@@ -40,6 +40,7 @@ final class AddRestaurantToGroupViewController: UIViewController, View, ViewCons
 
     // MARK: - Setup Methods
     func setupViews() {
+        title = "グループに追加する"
         view.addSubview(collectionView)
     }
 
