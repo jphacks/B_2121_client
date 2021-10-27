@@ -69,6 +69,18 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
             $0.top.left.equalToSuperview()
             $0.size.equalTo(Const.imageViewSize)
         }
+        imageViews[1].snp.makeConstraints {
+            $0.top.right.equalToSuperview()
+            $0.size.equalTo(Const.imageViewSize)
+        }
+        imageViews[2].snp.makeConstraints {
+            $0.left.bottom.equalToSuperview()
+            $0.size.equalTo(Const.imageViewSize)
+        }
+        imageViews[3].snp.makeConstraints {
+            $0.right.bottom.equalToSuperview()
+            $0.size.equalTo(Const.imageViewSize)
+        }
     }
 
     // MARK: - Bind Method
