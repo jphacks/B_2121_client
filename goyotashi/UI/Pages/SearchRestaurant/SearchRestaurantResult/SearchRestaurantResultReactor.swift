@@ -16,7 +16,7 @@ final class SearchRestaurantResultReactor: Reactor {
     }
 
     struct State {
-        var restaurantCellReactors: [SearchRestaurantCellReactor] = (0 ..< 9).map { _ in SearchRestaurantCellReactor() }
+        var restaurantCellReactors: [SearchRestaurantCellReactor] = []
     }
 
     let initialState: State = State()
@@ -32,7 +32,7 @@ final class SearchRestaurantResultReactor: Reactor {
         var state = state
         switch mutation {
         case let .setRestaurantCellReactors(restaurants):
-            state.restaurantCellReactors = restaurants.map { _ in SearchRestaurantCellReactor() }
+            state.restaurantCellReactors = restaurants.map { SearchRestaurantCellReactor(restaurant: $0) }
         }
         return state
     }

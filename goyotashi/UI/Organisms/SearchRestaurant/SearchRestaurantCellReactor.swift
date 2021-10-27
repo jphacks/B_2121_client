@@ -12,10 +12,18 @@ final class SearchRestaurantCellReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let restaurant: Restaurant = TestData.restaurant()
+        let restaurant: Restaurant
+
+        init(restaurant: Restaurant) {
+            self.restaurant = restaurant
+        }
     }
 
-    let initialState: State = State()
+    let initialState: State
+
+    init(restaurant: Restaurant) {
+        initialState = State(restaurant: restaurant)
+    }
 }
 
 extension SearchRestaurantCellReactor: Equatable {
