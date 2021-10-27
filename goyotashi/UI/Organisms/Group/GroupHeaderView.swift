@@ -42,7 +42,7 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
         $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
     }
 
-    private let plusButton = PlusButton()
+    let plusButton = PlusButton()
 
     // MARK: - Initializers
     override init(frame: CGRect) {

@@ -113,6 +113,18 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
+        header.plusButton.rx.tap
+            .bind { [weak self] _ in
+                let viewController = SearchRestaurantViewController().then {
+                    $0.reactor = reactor.createSearchRestaurantReactor()
+                }
+                let navController = UINavigationController(rootViewController: viewController).then {
+                    $0.modalPresentationStyle = .fullScreen
+                }
+                self?.present(navController, animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
         collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
                 let viewController = RestaurantViewController().then {

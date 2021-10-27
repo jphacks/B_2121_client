@@ -54,6 +54,10 @@ final class GroupReactor: Reactor {
         return InviteMemberReactor()
     }
 
+    func createSearchRestaurantReactor() -> SearchRestaurantReactor {
+        return SearchRestaurantReactor()
+    }
+
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {
         return RestaurantReactor()
     }
