@@ -23,7 +23,6 @@ final class SearchGroupResultViewController: UIViewController, View, ViewConstru
         $0.itemSize =  HomeGroupCell.Const.itemSize
         $0.minimumLineSpacing = 32
         $0.scrollDirection = .vertical
-        $0.sectionInset.top = HomeHeaderView.Const.height + 32
     }).then {
         $0.register(Reusable.groupCell)
         $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 56, right: 16)
