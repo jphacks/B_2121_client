@@ -40,6 +40,10 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
         return imageViews
     }()
 
+    private let stackView = UIStackView().then {
+        $0.axis = .vertical
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -58,6 +62,7 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
             imagesView.addSubview($0)
         }
         contentView.addSubview(imagesView)
+        contentView.addSubview(stackView)
     }
 
     func setupViewConstraints() {
@@ -80,6 +85,13 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
         imageViews[3].snp.makeConstraints {
             $0.right.bottom.equalToSuperview()
             $0.size.equalTo(Const.imageViewSize)
+        }
+        stackView.snp.makeConstraints {
+            $0.top.greaterThanOrEqualToSuperview().inset(8)
+            $0.bottom.lessThanOrEqualToSuperview().inset(8)
+            $0.centerY.equalToSuperview()
+            $0.left.equalTo(imagesView.snp.right).offset(8)
+            $0.right.equalToSuperview().inset(16)
         }
     }
 
