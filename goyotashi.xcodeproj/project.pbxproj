@@ -382,6 +382,13 @@
 			path = SearchGroupResult;
 			sourceTree = "<group>";
 		};
+		84777755272979330054E15D /* RecommendGroup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RecommendGroup;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +594,7 @@
 			children = (
 				84AFC3D72726CE7800B9244E /* HomeViewController.swift */,
 				84AFC3D92726CE8300B9244E /* HomeReactor.swift */,
+				84777755272979330054E15D /* RecommendGroup */,
 				8477774D272974E70054E15D /* SearchGroupResult */,
 			);
 			path = Home;
