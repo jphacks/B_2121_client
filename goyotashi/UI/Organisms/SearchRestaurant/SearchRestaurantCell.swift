@@ -36,7 +36,7 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
     private let restaurantNameLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 16, color: Color.gray01)
         $0.numberOfLines = 0
-        $0.text = "和洋キッチン松之助和洋キッチン松之助和洋キッチン松之助"
+        $0.text = "和洋キッチン松之助"
     }
 
     private let descriptionLabel = UILabel().then {
@@ -47,6 +47,8 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
 
     private let addressLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 12, color: Color.gray02)
+        $0.numberOfLines = 0
+        $0.text = "京都府京都市左京区田中里ノ前町1西野ビル1F"
     }
 
     // MARK: - Initializers
@@ -67,6 +69,7 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(restaurantNameLabel)
         stackView.addArrangedSubview(descriptionLabel)
+        stackView.setCustomSpacing(8, after: descriptionLabel)
         stackView.addArrangedSubview(addressLabel)
     }
 
@@ -77,7 +80,9 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
             $0.size.equalTo(Const.imageViewSize)
         }
         stackView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(8)
+            $0.top.greaterThanOrEqualToSuperview().inset(8)
+            $0.bottom.lessThanOrEqualToSuperview().inset(8)
+            $0.centerY.equalToSuperview()
             $0.left.equalTo(imageView.snp.right).offset(8)
             $0.right.equalToSuperview().inset(16)
         }
