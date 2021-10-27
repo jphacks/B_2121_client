@@ -46,6 +46,10 @@ final class GroupReactor: Reactor {
         return OrganizeRestaurantReactor()
     }
 
+    func createEditGroupReactor() -> EditGroupReactor {
+        return EditGroupReactor(group: currentState.group)
+    }
+
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {
         return RestaurantReactor()
     }

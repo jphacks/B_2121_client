@@ -1,0 +1,181 @@
+//
+//  EditGroupViewController.swift
+//  goyotashi
+//
+//  Created by Akihiro Kokubo on 2021/10/27.
+//
+
+import UIKit
+import ReactorKit
+
+final class EditGroupViewController: UIViewController, View, ViewConstructor {
+
+    // MARK: - Variables
+    var disposeBag = DisposeBag()
+
+    // MARK: - Views
+    private let closeButton = UIButton().then {
+        $0.setImage(R.image.close(), for: .normal)
+    }
+
+    private let doneButton = UIBarButtonItem(title: "完了", style: .done, target: nil, action: nil).then {
+        $0.tintColor = Color.gray01
+    }
+
+    private let scrollView = UIScrollView().then {
+        $0.alwaysBounceVertical = true
+    }
+
+    private let groupNameLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
+        $0.text = "グループ名"
+    }
+
+    private let groupNameTextField = UITextField().then {
+        $0.placeholder = "グループ名を入力"
+        $0.font = UIFont(name: FontStyle.bold.rawValue, size: 18)
+        $0.adjustsFontSizeToFitWidth = true
+    }
+
+    private let groupMemberLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
+        $0.text = "グループのメンバー"
+    }
+
+    private let countableGroupMemberButton = CountableGroupMemberButton()
+
+    private let addMemberButton = AddMemberButton()
+
+    private let privacyTitleLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
+        $0.text = "公開／非公開"
+    }
+
+    private let privacyStateLabel = UILabel().then {
+        $0.apply(fontStyle: .bold, size: 19, color: Color.gray01)
+    }
+
+    private let privacySwitch = UISwitch()
+
+    private let privacyDescriptionLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 15, color: Color.gray04)
+        $0.numberOfLines = 0
+    }
+
+    // MARK: - Lify Cycles
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupViews()
+        setupViewConstraints()
+    }
+
+    // MARK: - Setup Methods
+    func setupViews() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+        navigationItem.rightBarButtonItem = doneButton
+
+        view.backgroundColor = Color.white
+        title = "グループを編集"
+
+        view.addSubview(scrollView)
+        scrollView.addSubview(groupNameLabel)
+        scrollView.addSubview(groupNameTextField)
+        scrollView.addSubview(groupMemberLabel)
+        scrollView.addSubview(countableGroupMemberButton)
+        scrollView.addSubview(addMemberButton)
+        scrollView.addSubview(privacyTitleLabel)
+        scrollView.addSubview(privacyStateLabel)
+        scrollView.addSubview(privacySwitch)
+        scrollView.addSubview(privacyDescriptionLabel)
+    }
+
+    func setupViewConstraints() {
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        groupNameLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(24)
+            $0.left.equalToSuperview().inset(16)
+        }
+        groupNameTextField.snp.makeConstraints {
+            $0.top.equalTo(groupNameLabel.snp.bottom).offset(8)
+            $0.left.right.equalTo(view).inset(16)
+        }
+        groupMemberLabel.snp.makeConstraints {
+            $0.top.equalTo(groupNameTextField.snp.bottom).offset(40)
+            $0.left.equalToSuperview().inset(16)
+        }
+        countableGroupMemberButton.snp.makeConstraints {
+            $0.top.equalTo(groupMemberLabel.snp.bottom).offset(8)
+            $0.left.equalToSuperview().inset(16)
+        }
+        addMemberButton.snp.makeConstraints {
+            $0.centerY.equalTo(countableGroupMemberButton)
+            $0.right.equalTo(view).inset(16)
+        }
+        privacyTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(countableGroupMemberButton.snp.bottom).offset(40)
+            $0.left.equalToSuperview().inset(16)
+        }
+        privacyStateLabel.snp.makeConstraints {
+            $0.top.equalTo(privacyTitleLabel.snp.bottom).offset(8)
+            $0.left.equalToSuperview().inset(16)
+        }
+        privacySwitch.snp.makeConstraints {
+            $0.centerY.equalTo(privacyStateLabel)
+            $0.right.equalTo(view).inset(16)
+        }
+        privacyDescriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(privacyStateLabel.snp.bottom).offset(8)
+            $0.left.equalToSuperview().inset(16)
+            $0.right.equalTo(privacySwitch.snp.left).offset(-20)
+        }
+    }
+
+    // MARK: - Bind Method
+    func bind(reactor: EditGroupReactor) {
+        // State
+        reactor.state.map { $0.groupName }
+            .distinctUntilChanged()
+            .bind(to: groupNameTextField.rx.text)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.members }
+            .distinctUntilChanged()
+            .bind(to: countableGroupMemberButton.rx.members)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.isPublic }
+            .distinctUntilChanged()
+            .bind(to: privacySwitch.rx.isOn)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.isPublic }
+            .distinctUntilChanged()
+            .bind { [weak self] isPublic in
+                self?.privacyStateLabel.text = isPublic ? "公開する" : "非公開にする"
+                self?.privacyDescriptionLabel.text = isPublic ? "すべてのユーザがグループの内容を見ることができます。" : "グループに参加しているメンバーだけがグループの内容を見ることができます。"
+            }
+            .disposed(by: disposeBag)
+
+        // Action
+        closeButton.rx.tap
+            .bind { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
+        groupNameTextField.rx.text
+            .distinctUntilChanged()
+            .map { Reactor.Action.updateGroupName($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        privacySwitch.rx.isOn
+            .distinctUntilChanged()
+            .map { Reactor.Action.updateIsOnPrivacySwitch($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+}
