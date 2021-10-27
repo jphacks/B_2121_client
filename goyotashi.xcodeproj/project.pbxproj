@@ -265,6 +265,13 @@
 			path = EditGroup;
 			sourceTree = "<group>";
 		};
+		84777721272905200054E15D /* InviteMember */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InviteMember;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +405,7 @@
 				8477771C2728FBF80054E15D /* EditGroup */,
 				84AFC4082727A53400B9244E /* Group */,
 				84AFC3D62726CE5000B9244E /* Home */,
+				84777721272905200054E15D /* InviteMember */,
 				84777712272861600054E15D /* OrganizeRestaurant */,
 				84AFC3EA2727135E00B9244E /* Profile */,
 				84AFC41C2727FEBC00B9244E /* Restaurant */,
