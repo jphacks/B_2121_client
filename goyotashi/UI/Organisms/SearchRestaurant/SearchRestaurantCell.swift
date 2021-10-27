@@ -29,6 +29,10 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         $0.layer.masksToBounds = true
     }
 
+    private let stackView = UIStackView().then {
+        $0.axis = .vertical
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -44,6 +48,7 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         contentView.addSubview(imageView)
+        contentView.addSubview(stackView)
     }
 
     func setupViewConstraints() {
@@ -51,6 +56,11 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
             $0.centerY.equalToSuperview()
             $0.left.equalToSuperview().inset(16)
             $0.size.equalTo(Const.imageViewSize)
+        }
+        stackView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(8)
+            $0.left.equalTo(imageView.snp.right).offset(8)
+            $0.right.equalToSuperview().inset(16)
         }
     }
 
