@@ -16,6 +16,8 @@
 		8477771B272862450054E15D /* OrganizeRestaurantCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771A272862450054E15D /* OrganizeRestaurantCellReactor.swift */; };
 		8477771E2728FC210054E15D /* EditGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771D2728FC210054E15D /* EditGroupViewController.swift */; };
 		847777202728FC2B0054E15D /* EditGroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771F2728FC2B0054E15D /* EditGroupReactor.swift */; };
+		84777723272905510054E15D /* InviteMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84777722272905510054E15D /* InviteMemberViewController.swift */; };
+		847777252729055A0054E15D /* InviteMemberReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777242729055A0054E15D /* InviteMemberReactor.swift */; };
 		84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3752725D40600B9244E /* AppDelegate.swift */; };
 		84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3772725D40600B9244E /* SceneDelegate.swift */; };
 		84AFC37A2725D40600B9244E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3792725D40600B9244E /* ViewController.swift */; };
@@ -112,6 +114,8 @@
 		8477771A272862450054E15D /* OrganizeRestaurantCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantCellReactor.swift; sourceTree = "<group>"; };
 		8477771D2728FC210054E15D /* EditGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupViewController.swift; sourceTree = "<group>"; };
 		8477771F2728FC2B0054E15D /* EditGroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupReactor.swift; sourceTree = "<group>"; };
+		84777722272905510054E15D /* InviteMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMemberViewController.swift; sourceTree = "<group>"; };
+		847777242729055A0054E15D /* InviteMemberReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMemberReactor.swift; sourceTree = "<group>"; };
 		84AFC3722725D40600B9244E /* goyotashi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goyotashi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3752725D40600B9244E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AFC3772725D40600B9244E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 		84777721272905200054E15D /* InviteMember */ = {
 			isa = PBXGroup;
 			children = (
+				84777722272905510054E15D /* InviteMemberViewController.swift */,
+				847777242729055A0054E15D /* InviteMemberReactor.swift */,
 			);
 			path = InviteMember;
 			sourceTree = "<group>";
@@ -884,6 +890,7 @@
 				84B88DEC27281C05004EB87D /* Location.swift in Sources */,
 				84AFC41B2727E84F00B9244E /* Group.swift in Sources */,
 				84AFC3F72727232000B9244E /* RoundBorderButton.swift in Sources */,
+				847777252729055A0054E15D /* InviteMemberReactor.swift in Sources */,
 				84AFC4202727FEF500B9244E /* RestaurantReactor.swift in Sources */,
 				84AFC3A927266C9900B9244E /* DevelopingViewController.swift in Sources */,
 				84AFC3E92726E82900B9244E /* TestData.swift in Sources */,
@@ -916,6 +923,7 @@
 				84AFC3FA272733F800B9244E /* ProfileGroupListViewController.swift in Sources */,
 				84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */,
 				84AFC3AC27266F2100B9244E /* DeviceSize.swift in Sources */,
+				84777723272905510054E15D /* InviteMemberViewController.swift in Sources */,
 				84AFC3FF272734F400B9244E /* ProfileGroupListCell.swift in Sources */,
 				84AFC3EE2727150E00B9244E /* ProfileReactor.swift in Sources */,
 				84AFC3DD2726CF4100B9244E /* HomeHeaderView.swift in Sources */,
