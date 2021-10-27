@@ -95,5 +95,12 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
             .disposed(by: disposeBag)
 
         // State
+        reactor.state.map { $0.pageType }
+            .distinctUntilChanged()
+            .bind { [weak self] pageType in
+                self?.recommendGroupViewController.view.isHidden = pageType != .recommendGroup
+                self?.searchGroupResultViewController.view.isHidden = pageType != .searchGroupResult
+            }
+            .disposed(by: disposeBag)
     }
 }
