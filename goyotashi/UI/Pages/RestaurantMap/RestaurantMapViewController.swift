@@ -10,10 +10,12 @@ import MapKit
 
 class RestaurantMapViewController: UIViewController, ViewConstructor {
 
+    // MARK: - Views
     private let mapView = MKMapView()
     private let location: Location
     private let placeName: String
 
+    // MARK: - Initializers
     init(placeName: String, location: Location) {
         self.location = location
         self.placeName = placeName
@@ -24,6 +26,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +35,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         setMap(location: location)
     }
 
+    // MARK: - Setup Methods
     func setupViews() {
         title = placeName
         view.addSubview(mapView)
