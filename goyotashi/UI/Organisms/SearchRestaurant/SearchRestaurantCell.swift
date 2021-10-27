@@ -90,6 +90,27 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         // Action
 
         // State
+        reactor.state.map { $0.restaurant.imageUrl }
+            .distinctUntilChanged()
+            .bind { [weak self] urlString in
+                self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
+            }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.restaurant.name }
+            .distinctUntilChanged()
+            .bind(to: restaurantNameLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.restaurant.description }
+            .distinctUntilChanged()
+            .bind(to: descriptionLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.restaurant.address }
+            .distinctUntilChanged()
+            .bind(to: addressLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 
     override func prepareForReuse() {
