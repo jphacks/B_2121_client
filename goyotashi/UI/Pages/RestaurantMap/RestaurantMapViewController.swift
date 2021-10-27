@@ -7,12 +7,15 @@
 
 import UIKit
 import MapKit
+import RxSwift
 
 class RestaurantMapViewController: UIViewController, ViewConstructor {
 
     // MARK: - Variables
     private let location: Location
     private let restaurantName: String
+
+    var disposeBag = DisposeBag()
 
     // MARK: - Views
     private let mapView = MKMapView()
@@ -47,6 +50,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         setupViews()
         setupViewConstraints()
         setMap(location: location)
+        bind()
     }
 
     // MARK: - Setup Methods
@@ -81,5 +85,29 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         pointAnnotation.coordinate = center
         pointAnnotation.title = restaurantName
         mapView.addAnnotation(pointAnnotation)
+    }
+
+    private func bind() {
+        openNativeMapButton.rx.tap
+            .bind { [weak self] _ in
+                let daddr = NSString(format: "%f,%f", self?.location.latitude ?? "", self?.location.longitude ?? "")
+                let urlString = "http://maps.apple.com/?daddr=\(daddr)&dirflg=w"
+                if let url = URL(string: urlString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            .disposed(by: disposeBag)
+
+        openGoogleMapButton.rx.tap
+            .bind { [weak self] _ in
+                if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+                    let daddr = NSString(format: "%f,%f", self?.location.latitude ?? "", self?.location.longitude ?? "")
+                    let urlStr: String = "comgooglemaps://?daddr=\(daddr)&directionsmode=walking&zoom=14"
+                    if let url = URL(string: urlStr) {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

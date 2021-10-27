@@ -134,6 +134,29 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: RestaurantReactor) {
         // Action
+        openNativeMapButton.rx.tap
+            .bind { _ in
+                let location = reactor.currentState.restaurant.location
+                let daddr = NSString(format: "%f,%f", location.latitude, location.longitude)
+                let urlString = "http://maps.apple.com/?daddr=\(daddr)&dirflg=w"
+                if let url = URL(string: urlString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            .disposed(by: disposeBag)
+
+        openGoogleMapButton.rx.tap
+            .bind { _ in
+                if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+                    let location = reactor.currentState.restaurant.location
+                    let daddr = NSString(format: "%f,%f", location.latitude, location.longitude)
+                    let urlStr: String = "comgooglemaps://?daddr=\(daddr)&directionsmode=walking&zoom=14"
+                    if let url = URL(string: urlStr) {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
 
         // State
         reactor.state.map { $0.restaurant.imageUrl }
