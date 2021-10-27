@@ -82,7 +82,6 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
         searchBar.rx.searchButtonClicked
             .bind { [weak self] in
                 self?.searchBar.resignFirstResponder()
-                print("search")
             }
             .disposed(by: disposeBag)
 
