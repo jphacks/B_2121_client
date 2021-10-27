@@ -14,6 +14,9 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let closeButton = UIButton().then {
+        $0.setImage(R.image.close(), for: .normal)
+    }
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -25,7 +28,7 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
 
     // MARK: - Setup Methods
     func setupViews() {
-
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
     }
 
     func setupViewConstraints() {
