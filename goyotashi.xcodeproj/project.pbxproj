@@ -291,6 +291,13 @@
 			path = InviteMember;
 			sourceTree = "<group>";
 		};
+		8477772B27291CC80054E15D /* SearchRestaurant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchRestaurant;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +436,7 @@
 				84777712272861600054E15D /* OrganizeRestaurant */,
 				84AFC3EA2727135E00B9244E /* Profile */,
 				84AFC41C2727FEBC00B9244E /* Restaurant */,
+				8477772B27291CC80054E15D /* SearchRestaurant */,
 				84AFC3CC27269A0100B9244E /* TabBar */,
 			);
 			path = Pages;
