@@ -50,6 +50,10 @@ final class GroupReactor: Reactor {
         return EditGroupReactor(group: currentState.group)
     }
 
+    func createInviteMemberReactor() -> InviteMemberReactor {
+        return InviteMemberReactor()
+    }
+
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {
         return RestaurantReactor()
     }

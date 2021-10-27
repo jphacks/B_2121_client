@@ -35,7 +35,7 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
 
     let organizeButton = GroupActionButton(actionType: .organize)
     let editButton = GroupActionButton(actionType: .edit)
-    private let addMemberButton = GroupActionButton(actionType: .addMember)
+    let addMemberButton = GroupActionButton(actionType: .addMember)
     private let bookmarkButton = GroupActionButton(actionType: .bookmark)
 
     private let restaurantCountLabel = UILabel().then {

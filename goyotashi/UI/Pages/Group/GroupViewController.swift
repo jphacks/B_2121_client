@@ -101,6 +101,18 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
+        header.addMemberButton.rx.tap
+            .bind { [weak self] _ in
+                let viewController = InviteMemberViewController().then {
+                    $0.reactor = reactor.createInviteMemberReactor()
+                }
+                let navController = UINavigationController(rootViewController: viewController).then {
+                    $0.modalPresentationStyle = .fullScreen
+                }
+                self?.present(navController, animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
         collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
                 let viewController = RestaurantViewController().then {
