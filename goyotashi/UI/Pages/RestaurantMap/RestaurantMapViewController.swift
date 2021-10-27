@@ -97,5 +97,17 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
                 }
             }
             .disposed(by: disposeBag)
+
+        openGoogleMapButton.rx.tap
+            .bind { [weak self] _ in
+                if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+                    let daddr = NSString(format: "%f,%f", self?.location.latitude ?? "", self?.location.longitude ?? "")
+                    let urlStr: String = "comgooglemaps://?daddr=\(daddr)&directionsmode=walking&zoom=14"
+                    if let url = URL(string: urlStr) {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
