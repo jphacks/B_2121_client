@@ -395,6 +395,13 @@
 			path = RecommendGroup;
 			sourceTree = "<group>";
 		};
+		8477775A272979F20054E15D /* RecommendGroup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RecommendGroup;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +619,7 @@
 				84AFC3DC2726CF4100B9244E /* HomeHeaderView.swift */,
 				84AFC3DE2726D79700B9244E /* HomeGroupCell.swift */,
 				84AFC3E02726D7A300B9244E /* HomeGroupCellReactor.swift */,
+				8477775A272979F20054E15D /* RecommendGroup */,
 				847777522729778F0054E15D /* SearchGroupResult */,
 			);
 			path = Home;
