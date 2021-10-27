@@ -20,7 +20,7 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
 
     // MARK: - Views
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
-        $0.estimatedItemSize =  InviteMemberCell.Const.itemSize
+        $0.itemSize =  InviteMemberCell.Const.itemSize
         $0.minimumLineSpacing = 0
         $0.scrollDirection = .vertical
     }).then {
