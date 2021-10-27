@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private lazy var recommendGroupViewController = RecommendGroupViewController()
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -25,12 +26,26 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
     }
 
     // MARK: - Setup Methods
-    func setupViews() {}
+    func setupViews() {
+        addChild()
+    }
 
-    func setupViewConstraints() {}
+    private func addChild() {
+        addChild(recommendGroupViewController)
+        view.addSubview(recommendGroupViewController.view)
+        recommendGroupViewController.didMove(toParent: self)
+    }
+
+    func setupViewConstraints() {
+        recommendGroupViewController.view.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
 
     // MARK: - Bind Method
     func bind(reactor: HomeReactor) {
+        recommendGroupViewController.reactor = reactor.createRecommendGroupReactor()
+
         // Action
 
         // State
