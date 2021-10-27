@@ -8,8 +8,9 @@
 import UIKit
 import ReactorKit
 import ReusableKit
+import RxGesture
 
-final class RestaurantViewController: UIViewController, View, ViewConstructor {
+final class RestaurantViewController: UIViewController, ReactorKit.View, ViewConstructor {
 
     struct Reusable {
         static let groupCell = ReusableCell<RestaurantOtherGroupCell>()
@@ -92,6 +93,16 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
                 }
                 let navController = UINavigationController(rootViewController: viewController)
                 self?.present(navController, animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
+        header.mapView.rx.tapGesture()
+            .when(.ended)
+            .bind { [weak self] _ in
+                let restaurantName = reactor.currentState.restaurant.name
+                let location = reactor.currentState.restaurant.location
+                let viewController = RestaurantMapViewController(restaurantName: restaurantName, location: location)
+                self?.navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)
 
