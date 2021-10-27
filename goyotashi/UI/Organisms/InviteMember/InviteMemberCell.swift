@@ -59,6 +59,12 @@ final class InviteMemberCell: UICollectionViewCell, View, ViewConstructor {
         // Action
 
         // State
+        reactor.state.map { $0.member.profileImageUrl }
+            .distinctUntilChanged()
+            .bind { [weak self] urlString in
+                self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
+            }
+            .disposed(by: disposeBag)
     }
 
     override func prepareForReuse() {
