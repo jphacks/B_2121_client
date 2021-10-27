@@ -12,7 +12,7 @@ final class SearchGroupResultReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        var groupCellReactors: [HomeGroupCellReactor] = []
+        var groupCellReactors: [HomeGroupCellReactor] = TestData.homeGroups(count: 8).map { HomeGroupCellReactor(homeGroup: $0) }
     }
 
     let initialState: State = State()
