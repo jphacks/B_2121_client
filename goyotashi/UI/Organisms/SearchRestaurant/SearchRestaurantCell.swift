@@ -33,6 +33,10 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         $0.axis = .vertical
     }
 
+    private let restaurantNameLabel = UILabel().then {
+        $0.apply(fontStyle: .bold, size: 16, color: Color.gray01)
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -49,6 +53,7 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
     func setupViews() {
         contentView.addSubview(imageView)
         contentView.addSubview(stackView)
+        stackView.addArrangedSubview(restaurantNameLabel)
     }
 
     func setupViewConstraints() {
