@@ -23,7 +23,7 @@ final class RecommendGroupViewController: UIViewController, View, ViewConstructo
         $0.estimatedItemSize =  HomeGroupCell.Const.itemSize
         $0.minimumLineSpacing = 32
         $0.scrollDirection = .vertical
-        $0.sectionInset.top = HomeHeaderView.Const.height + 32
+        $0.sectionInset.top = RecommendGroupHeaderView.Const.height + 32
     }).then {
         $0.register(Reusable.groupCell)
         $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 56, right: 16)
@@ -31,7 +31,7 @@ final class RecommendGroupViewController: UIViewController, View, ViewConstructo
         $0.alwaysBounceVertical = true
     }
 
-    private let header = HomeHeaderView()
+    private let header = RecommendGroupHeaderView()
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
