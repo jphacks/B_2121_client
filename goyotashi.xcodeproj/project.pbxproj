@@ -34,6 +34,8 @@
 		8477774F2729753B0054E15D /* SearchGroupResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477774E2729753B0054E15D /* SearchGroupResultViewController.swift */; };
 		84777751272975430054E15D /* SearchGroupResultReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84777750272975430054E15D /* SearchGroupResultReactor.swift */; };
 		84777754272977BE0054E15D /* SearchGroupResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84777753272977BE0054E15D /* SearchGroupResultHeaderView.swift */; };
+		84777757272979610054E15D /* RecommendGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84777756272979610054E15D /* RecommendGroupViewController.swift */; };
+		847777592729796A0054E15D /* RecommendGroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777582729796A0054E15D /* RecommendGroupReactor.swift */; };
 		84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3752725D40600B9244E /* AppDelegate.swift */; };
 		84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3772725D40600B9244E /* SceneDelegate.swift */; };
 		84AFC37A2725D40600B9244E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3792725D40600B9244E /* ViewController.swift */; };
@@ -148,6 +150,8 @@
 		8477774E2729753B0054E15D /* SearchGroupResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupResultViewController.swift; sourceTree = "<group>"; };
 		84777750272975430054E15D /* SearchGroupResultReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupResultReactor.swift; sourceTree = "<group>"; };
 		84777753272977BE0054E15D /* SearchGroupResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupResultHeaderView.swift; sourceTree = "<group>"; };
+		84777756272979610054E15D /* RecommendGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendGroupViewController.swift; sourceTree = "<group>"; };
+		847777582729796A0054E15D /* RecommendGroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendGroupReactor.swift; sourceTree = "<group>"; };
 		84AFC3722725D40600B9244E /* goyotashi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goyotashi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3752725D40600B9244E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AFC3772725D40600B9244E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -385,6 +389,8 @@
 		84777755272979330054E15D /* RecommendGroup */ = {
 			isa = PBXGroup;
 			children = (
+				84777756272979610054E15D /* RecommendGroupViewController.swift */,
+				847777582729796A0054E15D /* RecommendGroupReactor.swift */,
 			);
 			path = RecommendGroup;
 			sourceTree = "<group>";
@@ -1024,6 +1030,7 @@
 				84777716272861930054E15D /* OrganizeRestaurantReactor.swift in Sources */,
 				8477772F27291CF30054E15D /* SearchRestaurantReactor.swift in Sources */,
 				847777202728FC2B0054E15D /* EditGroupReactor.swift in Sources */,
+				847777592729796A0054E15D /* RecommendGroupReactor.swift in Sources */,
 				84B88DEA27281B67004EB87D /* Restaurant.swift in Sources */,
 				84AFC4052727419700B9244E /* PlusButton.swift in Sources */,
 				8477771E2728FC210054E15D /* EditGroupViewController.swift in Sources */,
@@ -1032,6 +1039,7 @@
 				8477774F2729753B0054E15D /* SearchGroupResultViewController.swift in Sources */,
 				84AFC4192727E39400B9244E /* GroupRestaurant.swift in Sources */,
 				84B88DE4272816E1004EB87D /* RestaurantOtherGroupCell.swift in Sources */,
+				84777757272979610054E15D /* RecommendGroupViewController.swift in Sources */,
 				847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */,
 				84AFC4072727474100B9244E /* ProfileGroup.swift in Sources */,
 				84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */,
