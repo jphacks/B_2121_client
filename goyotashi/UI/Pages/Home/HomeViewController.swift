@@ -93,6 +93,7 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
                 self?.searchBar.text = ""
                 self?.searchBar.resignFirstResponder()
                 self?.searchBar.setShowsCancelButton(false, animated: true)
+                reactor.action.onNext(.didClickCancelButton)
             }
             .disposed(by: disposeBag)
 
