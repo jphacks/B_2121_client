@@ -54,5 +54,11 @@ final class SearchRestaurantResultViewController: UIViewController, View, ViewCo
         // Action
 
         // State
+        reactor.state.map { $0.restaurantCellReactors }
+            .distinctUntilChanged()
+            .bind(to: collectionView.rx.items(Reusable.restaurantCell)) { _, reactor, cell in
+                cell.reactor = reactor
+            }
+            .disposed(by: disposeBag)
     }
 }
