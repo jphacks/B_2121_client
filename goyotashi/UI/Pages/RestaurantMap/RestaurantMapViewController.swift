@@ -17,6 +17,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
     // MARK: - Views
     private let mapView = MKMapView()
     private let openNativeMapButton = OpenMapButton(mapAppType: .nativeMap)
+    private let openGoogleMapButton = OpenMapButton(mapAppType: .googleMap)
 
     // MARK: - Initializers
     init(placeName: String, location: Location) {
@@ -43,6 +44,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         title = placeName
         view.addSubview(mapView)
         view.addSubview(openNativeMapButton)
+        view.addSubview(openGoogleMapButton)
     }
 
     func setupViewConstraints() {
@@ -51,6 +53,10 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         }
         openNativeMapButton.snp.makeConstraints {
             $0.left.equalToSuperview().inset(32)
+            $0.bottom.equalToSuperview().inset(120)
+        }
+        openGoogleMapButton.snp.makeConstraints {
+            $0.left.equalTo(openNativeMapButton.snp.right).offset(16)
             $0.bottom.equalToSuperview().inset(120)
         }
     }
