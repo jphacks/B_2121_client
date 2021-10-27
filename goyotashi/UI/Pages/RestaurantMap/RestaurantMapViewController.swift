@@ -63,11 +63,11 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         }
         openNativeMapButton.snp.makeConstraints {
             $0.left.equalToSuperview().inset(32)
-            $0.bottom.equalToSuperview().inset(120)
+            $0.bottom.equalToSuperview().inset(64)
         }
         openGoogleMapButton.snp.makeConstraints {
             $0.left.equalTo(openNativeMapButton.snp.right).offset(16)
-            $0.bottom.equalToSuperview().inset(120)
+            $0.bottom.equalToSuperview().inset(64)
         }
     }
 
