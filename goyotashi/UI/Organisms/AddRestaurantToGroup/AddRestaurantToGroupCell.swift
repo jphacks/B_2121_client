@@ -141,6 +141,13 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
             .distinctUntilChanged()
             .bind(to: groupDescriptionLabel.rx.text)
             .disposed(by: disposeBag)
+
+        reactor.state.map { ($0.groupSummary.restaurantCount, $0.groupSummary.memberCount) }
+            .map { (restaurantCount, memberCount) in
+                "\(restaurantCount)件のお店 / \(memberCount)人のメンバー"
+            }
+            .bind(to: groupSummaryLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 
     override func prepareForReuse() {
