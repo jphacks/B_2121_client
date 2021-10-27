@@ -16,4 +16,9 @@ final class SearchRestaurantReactor: Reactor {
     }
 
     let initialState: State = State()
+
+    // MARK: - Create Reactor Methods
+    func createSearchRestaurantResultReactor() -> SearchRestaurantResultReactor {
+        return SearchRestaurantResultReactor()
+    }
 }
