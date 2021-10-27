@@ -10,10 +10,13 @@ import MapKit
 
 class RestaurantMapViewController: UIViewController, ViewConstructor {
 
-    // MARK: - Views
-    private let mapView = MKMapView()
+    // MARK: - Variables
     private let location: Location
     private let placeName: String
+
+    // MARK: - Views
+    private let mapView = MKMapView()
+    private let openNativeMapButton = OpenMapButton(mapAppType: .nativeMap)
 
     // MARK: - Initializers
     init(placeName: String, location: Location) {
@@ -39,11 +42,16 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
     func setupViews() {
         title = placeName
         view.addSubview(mapView)
+        view.addSubview(openNativeMapButton)
     }
 
     func setupViewConstraints() {
         mapView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        openNativeMapButton.snp.makeConstraints {
+            $0.left.equalToSuperview().inset(32)
+            $0.bottom.equalToSuperview().inset(120)
         }
     }
 
