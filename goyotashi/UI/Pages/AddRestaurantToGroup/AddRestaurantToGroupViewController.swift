@@ -19,6 +19,10 @@ final class AddRestaurantToGroupViewController: UIViewController, View, ViewCons
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let closeButton = UIButton().then {
+        $0.setImage(R.image.close(), for: .normal)
+    }
+
     private let doneButton = UIBarButtonItem(title: "完了", style: .done, target: nil, action: nil).then {
         $0.tintColor = Color.gray01
     }
@@ -45,6 +49,7 @@ final class AddRestaurantToGroupViewController: UIViewController, View, ViewCons
     // MARK: - Setup Methods
     func setupViews() {
         title = "グループに追加する"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         navigationItem.rightBarButtonItem = doneButton
 
         view.addSubview(collectionView)
