@@ -84,6 +84,16 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
         // Action
         reactor.action.onNext(.refresh)
 
+        header.addRestaurantButton.rx.tap
+            .bind { [weak self] _ in
+                let viewController = AddRestaurantToGroupViewController().then {
+                    $0.reactor = reactor.createAddRestaurantToGroupReactor()
+                }
+                let navController = UINavigationController(rootViewController: viewController)
+                self?.present(navController, animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.groupCellReactors }
             .distinctUntilChanged()
