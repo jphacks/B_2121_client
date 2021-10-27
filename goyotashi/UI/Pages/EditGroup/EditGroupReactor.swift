@@ -18,12 +18,24 @@ final class EditGroupReactor: Reactor {
     }
 
     struct State {
-        var groupName: String = ""
-        let members: [User] = (0 ..< 4).map { _ in TestData.user() }
-        var isPublic: Bool = false
+        let uneditedGroup: Group
+        var groupName: String
+        let members: [User]
+        var isPublic: Bool
+
+        init(group: Group) {
+            self.uneditedGroup = group
+            self.groupName = group.name
+            self.members = group.members
+            self.isPublic = false
+        }
     }
 
-    let initialState: State = State()
+    let initialState: State
+
+    init(group: Group) {
+        initialState = State(group: group)
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
