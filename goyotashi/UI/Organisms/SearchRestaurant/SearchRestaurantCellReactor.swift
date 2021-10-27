@@ -12,7 +12,7 @@ final class SearchRestaurantCellReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        let restaurant: Restaurant = TestData.restaurant()
     }
 
     let initialState: State = State()
