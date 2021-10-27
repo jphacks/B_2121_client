@@ -86,6 +86,11 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
     // MARK: - Bind Method
     func bind(reactor: InviteMemberReactor) {
         // Action
+        closeButton.rx.tap
+            .bind { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
 
         // State
         reactor.state.map { $0.memberCellReactors }
