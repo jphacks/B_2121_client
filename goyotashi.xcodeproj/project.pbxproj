@@ -252,6 +252,13 @@
 			path = OrganizeRestaurant;
 			sourceTree = "<group>";
 		};
+		8477771C2728FBF80054E15D /* EditGroup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditGroup;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				84B88DEF27283776004EB87D /* CreateGroup */,
+				8477771C2728FBF80054E15D /* EditGroup */,
 				84AFC4082727A53400B9244E /* Group */,
 				84AFC3D62726CE5000B9244E /* Home */,
 				84777712272861600054E15D /* OrganizeRestaurant */,
