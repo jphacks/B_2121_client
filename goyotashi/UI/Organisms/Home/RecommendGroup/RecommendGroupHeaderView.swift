@@ -33,6 +33,11 @@ final class RecommendGroupHeaderView: UIView, ViewConstructor {
         $0.text = "近くを検索する"
     }
 
+    private let precautionaryStatementLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 12, color: Color.gray03)
+        $0.text = "位置情報を使います"
+    }
+
     private let searchAroundHereSwitch = UISwitch()
 
     // MARK: - Initializers
@@ -53,6 +58,7 @@ final class RecommendGroupHeaderView: UIView, ViewConstructor {
         addSubview(mapIconBackgroundView)
         mapIconBackgroundView.addSubview(mapIconView)
         addSubview(searchAroundHereLabel)
+        addSubview(precautionaryStatementLabel)
         addSubview(searchAroundHereSwitch)
     }
 
