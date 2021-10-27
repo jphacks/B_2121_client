@@ -28,6 +28,8 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
         $0.tintColor = Color.gray01
     }
 
+    private lazy var searchRestaurantResultViewController = SearchRestaurantResultViewController()
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,14 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
         view.backgroundColor = Color.white
 
         view.addSubview(searchBar)
+
+        addChild()
+    }
+
+    private func addChild() {
+        addChild(searchRestaurantResultViewController)
+        view.addSubview(searchRestaurantResultViewController.view)
+        searchRestaurantResultViewController.didMove(toParent: self)
     }
 
     func setupViewConstraints() {
@@ -60,10 +70,16 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
             $0.top.equalToSuperview()
             $0.left.right.equalToSuperview()
         }
+        searchRestaurantResultViewController.view.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom)
+            $0.left.right.bottom.equalToSuperview()
+        }
     }
 
     // MARK: - Bind Method
     func bind(reactor: SearchRestaurantReactor) {
+        searchRestaurantResultViewController.reactor = reactor.createSearchRestaurantResultReactor()
+
         // Action
         closeButton.rx.tap
             .bind { [weak self] _ in
