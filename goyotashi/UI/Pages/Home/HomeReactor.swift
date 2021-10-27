@@ -43,3 +43,10 @@ final class HomeReactor: Reactor {
         return state
     }
 }
+
+extension HomeReactor {
+    enum PageType {
+        case recommendGroup
+        case searchGroupResult
+    }
+}
