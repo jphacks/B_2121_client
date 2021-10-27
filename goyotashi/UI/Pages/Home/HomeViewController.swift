@@ -22,6 +22,7 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
     }
 
     private lazy var recommendGroupViewController = RecommendGroupViewController()
+    private lazy var searchGroupResultViewController = SearchGroupResultViewController()
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -39,13 +40,22 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
     }
 
     private func addChild() {
+        // RecommendGroupViewController
         addChild(recommendGroupViewController)
         view.addSubview(recommendGroupViewController.view)
         recommendGroupViewController.didMove(toParent: self)
+
+        // SearchGroupResultViewController
+        addChild(searchGroupResultViewController)
+        view.addSubview(searchGroupResultViewController.view)
+        searchGroupResultViewController.didMove(toParent: self)
     }
 
     func setupViewConstraints() {
         recommendGroupViewController.view.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        searchGroupResultViewController.view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
