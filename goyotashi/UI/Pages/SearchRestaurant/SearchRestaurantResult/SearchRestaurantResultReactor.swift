@@ -24,8 +24,13 @@ final class SearchRestaurantResultReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .search(keyword):
-            return .empty()
+            return search(keyword: keyword)
+                .map(Mutation.setRestaurantCellReactors)
         }
+    }
+
+    private func search(keyword: String) -> Observable<[Restaurant]> {
+        return .just(TestData.restaurants(count: Int.random(in: 0 ..< 10)))
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
