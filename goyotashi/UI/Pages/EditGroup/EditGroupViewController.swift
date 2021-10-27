@@ -135,6 +135,30 @@ final class EditGroupViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Bind Method
     func bind(reactor: EditGroupReactor) {
+        // State
+        reactor.state.map { $0.groupName }
+            .distinctUntilChanged()
+            .bind(to: groupNameTextField.rx.text)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.members }
+            .distinctUntilChanged()
+            .bind(to: countableGroupMemberButton.rx.members)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.isPublic }
+            .distinctUntilChanged()
+            .bind(to: privacySwitch.rx.isOn)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.isPublic }
+            .distinctUntilChanged()
+            .bind { [weak self] isPublic in
+                self?.privacyStateLabel.text = isPublic ? "公開する" : "非公開にする"
+                self?.privacyDescriptionLabel.text = isPublic ? "すべてのユーザがグループの内容を見ることができます。" : "グループに参加しているメンバーだけがグループの内容を見ることができます。"
+            }
+            .disposed(by: disposeBag)
+
         // Action
         closeButton.rx.tap
             .bind { [weak self] _ in
@@ -152,25 +176,6 @@ final class EditGroupViewController: UIViewController, View, ViewConstructor {
             .distinctUntilChanged()
             .map { Reactor.Action.updateIsOnPrivacySwitch($0) }
             .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-
-        // State
-        reactor.state.map { $0.members }
-            .distinctUntilChanged()
-            .bind(to: countableGroupMemberButton.rx.members)
-            .disposed(by: disposeBag)
-
-        reactor.state.map { $0.isPublic }
-            .distinctUntilChanged()
-            .bind(to: privacySwitch.rx.isOn)
-            .disposed(by: disposeBag)
-
-        reactor.state.map { $0.isPublic }
-            .distinctUntilChanged()
-            .bind { [weak self] isPublic in
-                self?.privacyStateLabel.text = isPublic ? "公開する" : "非公開にする"
-                self?.privacyDescriptionLabel.text = isPublic ? "すべてのユーザがグループの内容を見ることができます。" : "グループに参加しているメンバーだけがグループの内容を見ることができます。"
-            }
             .disposed(by: disposeBag)
     }
 }
