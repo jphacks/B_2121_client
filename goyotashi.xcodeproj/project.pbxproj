@@ -321,8 +321,16 @@
 		8477773527292C2C0054E15D /* SearchRestaurant */ = {
 			isa = PBXGroup;
 			children = (
+				8477773627292C620054E15D /* SearchRestaurantResult */,
 			);
 			path = SearchRestaurant;
+			sourceTree = "<group>";
+		};
+		8477773627292C620054E15D /* SearchRestaurantResult */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchRestaurantResult;
 			sourceTree = "<group>";
 		};
 		84AFC3692725D40600B9244E = {
