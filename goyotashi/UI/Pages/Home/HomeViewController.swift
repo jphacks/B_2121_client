@@ -82,6 +82,9 @@ final class HomeViewController: UIViewController, View, ViewConstructor {
         searchBar.rx.searchButtonClicked
             .bind { [weak self] in
                 self?.searchBar.resignFirstResponder()
+                let keyword = reactor.currentState.keyword
+                self?.searchGroupResultViewController.reactor?.action.onNext(.search(keyword))
+                reactor.action.onNext(.didStartSearch)
             }
             .disposed(by: disposeBag)
 
