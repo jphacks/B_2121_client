@@ -60,7 +60,6 @@
 		84AFC3D42726A4EF00B9244E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3D32726A4EF00B9244E /* R.generated.swift */; };
 		84AFC3D82726CE7800B9244E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3D72726CE7800B9244E /* HomeViewController.swift */; };
 		84AFC3DA2726CE8300B9244E /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3D92726CE8300B9244E /* HomeReactor.swift */; };
-		84AFC3DD2726CF4100B9244E /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3DC2726CF4100B9244E /* HomeHeaderView.swift */; };
 		84AFC3DF2726D79700B9244E /* HomeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3DE2726D79700B9244E /* HomeGroupCell.swift */; };
 		84AFC3E12726D7A300B9244E /* HomeGroupCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3E02726D7A300B9244E /* HomeGroupCellReactor.swift */; };
 		84AFC3E72726E64400B9244E /* HomeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3E62726E64400B9244E /* HomeGroup.swift */; };
@@ -183,7 +182,6 @@
 		84AFC3D32726A4EF00B9244E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		84AFC3D72726CE7800B9244E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		84AFC3D92726CE8300B9244E /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
-		84AFC3DC2726CF4100B9244E /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		84AFC3DE2726D79700B9244E /* HomeGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGroupCell.swift; sourceTree = "<group>"; };
 		84AFC3E02726D7A300B9244E /* HomeGroupCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGroupCellReactor.swift; sourceTree = "<group>"; };
 		84AFC3E62726E64400B9244E /* HomeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGroup.swift; sourceTree = "<group>"; };
@@ -619,7 +617,6 @@
 		84AFC3DB2726CF0900B9244E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				84AFC3DC2726CF4100B9244E /* HomeHeaderView.swift */,
 				84AFC3DE2726D79700B9244E /* HomeGroupCell.swift */,
 				84AFC3E02726D7A300B9244E /* HomeGroupCellReactor.swift */,
 				8477775A272979F20054E15D /* RecommendGroup */,
@@ -1077,7 +1074,6 @@
 				84777723272905510054E15D /* InviteMemberViewController.swift in Sources */,
 				84AFC3FF272734F400B9244E /* ProfileGroupListCell.swift in Sources */,
 				84AFC3EE2727150E00B9244E /* ProfileReactor.swift in Sources */,
-				84AFC3DD2726CF4100B9244E /* HomeHeaderView.swift in Sources */,
 				84B88DE6272816EA004EB87D /* RestaurantOtherGroupCellReactor.swift in Sources */,
 				84AFC3CE27269A2E00B9244E /* TabBarController.swift in Sources */,
 				8477773827292D130054E15D /* SearchRestaurantCell.swift in Sources */,
