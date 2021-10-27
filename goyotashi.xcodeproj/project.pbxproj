@@ -359,6 +359,13 @@
 			path = AddRestaurantToGroup;
 			sourceTree = "<group>";
 		};
+		8477774D272974E70054E15D /* SearchGroupResult */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchGroupResult;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -564,6 +571,7 @@
 			children = (
 				84AFC3D72726CE7800B9244E /* HomeViewController.swift */,
 				84AFC3D92726CE8300B9244E /* HomeReactor.swift */,
+				8477774D272974E70054E15D /* SearchGroupResult */,
 			);
 			path = Home;
 			sourceTree = "<group>";
