@@ -17,3 +17,9 @@ final class InviteMemberCellReactor: Reactor {
 
     let initialState: State = State()
 }
+
+extension InviteMemberCellReactor: Equatable {
+    static func == (lhs: InviteMemberCellReactor, rhs: InviteMemberCellReactor) -> Bool {
+        return lhs.currentState.member.userId == rhs.currentState.member.userId
+    }
+}
