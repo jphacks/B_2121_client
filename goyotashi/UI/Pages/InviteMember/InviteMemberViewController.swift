@@ -31,7 +31,7 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
         $0.scrollDirection = .vertical
     }).then {
         $0.register(Reusable.memberCell)
-        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 56, right: 0)
+        $0.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 56, right: 0)
         $0.backgroundColor = Color.white
         $0.alwaysBounceVertical = true
     }
