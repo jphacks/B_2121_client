@@ -45,6 +45,10 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         $0.text = "定食・食堂・ハンバーグ・洋食"
     }
 
+    private let addressLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 12, color: Color.gray02)
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -63,6 +67,7 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(restaurantNameLabel)
         stackView.addArrangedSubview(descriptionLabel)
+        stackView.addArrangedSubview(addressLabel)
     }
 
     func setupViewConstraints() {
