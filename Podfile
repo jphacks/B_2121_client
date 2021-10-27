@@ -14,6 +14,7 @@ target 'goyotashi' do
   pod 'R.swift'
   pod 'Kingfisher', '~> 7.0'
   pod 'SegementSlide', '3.0.1'
+  pod "RxGesture"
 
   target 'goyotashiTests' do
     inherit! :search_paths
