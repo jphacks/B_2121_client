@@ -131,6 +131,11 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
                 }
             }
             .disposed(by: disposeBag)
+
+        reactor.state.map { $0.groupSummary.groupName }
+            .distinctUntilChanged()
+            .bind(to: groupNameLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 
     override func prepareForReuse() {
