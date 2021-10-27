@@ -11,7 +11,9 @@ final class HomeReactor: Reactor {
     enum Action {}
     enum Mutation {}
 
-    struct State {}
+    struct State {
+        var keyword: String = ""
+    }
 
     let initialState: State = State()
 
