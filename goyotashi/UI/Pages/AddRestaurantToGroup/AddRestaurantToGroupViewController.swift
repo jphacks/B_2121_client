@@ -19,6 +19,10 @@ final class AddRestaurantToGroupViewController: UIViewController, View, ViewCons
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let doneButton = UIBarButtonItem(title: "完了", style: .done, target: nil, action: nil).then {
+        $0.tintColor = Color.gray01
+    }
+
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize =  AddRestaurantToGroupCell.Const.itemSize
         $0.minimumLineSpacing = 16
@@ -41,6 +45,8 @@ final class AddRestaurantToGroupViewController: UIViewController, View, ViewCons
     // MARK: - Setup Methods
     func setupViews() {
         title = "グループに追加する"
+        navigationItem.rightBarButtonItem = doneButton
+
         view.addSubview(collectionView)
     }
 
