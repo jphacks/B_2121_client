@@ -11,6 +11,7 @@ final class HomeReactor: Reactor {
     enum Action {
         case updateKeyword(String?)
         case didStartSearch
+        case didClickCancelButton
     }
     enum Mutation {
         case setKeyword(String)
@@ -31,6 +32,8 @@ final class HomeReactor: Reactor {
             return .just(.setKeyword(keyword))
         case .didStartSearch:
             return .just(.setPageType(.searchGroupResult))
+        case .didClickCancelButton:
+            return .just(.setPageType(.recommendGroup))
         }
     }
 
