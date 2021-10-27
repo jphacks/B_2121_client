@@ -17,3 +17,9 @@ final class SearchRestaurantCellReactor: Reactor {
 
     let initialState: State = State()
 }
+
+extension SearchRestaurantCellReactor: Equatable {
+    static func == (lhs: SearchRestaurantCellReactor, rhs: SearchRestaurantCellReactor) -> Bool {
+        return lhs.currentState.restaurant.id == rhs.currentState.restaurant.id
+    }
+}
