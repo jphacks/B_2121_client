@@ -12,7 +12,7 @@ final class AddRestaurantToGroupCellReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let property: Int = 0
+        let group: Group = TestData.group()
     }
 
     let initialState: State = State()
@@ -20,6 +20,6 @@ final class AddRestaurantToGroupCellReactor: Reactor {
 
 extension AddRestaurantToGroupCellReactor: Equatable {
     static func == (lhs: AddRestaurantToGroupCellReactor, rhs: AddRestaurantToGroupCellReactor) -> Bool {
-        return lhs.currentState.property == rhs.currentState.property
+        return lhs.currentState.group.id == rhs.currentState.group.id
     }
 }
