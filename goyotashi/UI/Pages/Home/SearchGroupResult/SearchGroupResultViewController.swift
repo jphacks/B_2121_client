@@ -55,5 +55,11 @@ final class SearchGroupResultViewController: UIViewController, View, ViewConstru
         // Action
 
         // State
+        reactor.state.map { $0.groupCellReactors }
+            .distinctUntilChanged()
+            .bind(to: collectionView.rx.items(Reusable.groupCell)) { _, reactor, cell in
+                cell.reactor = reactor
+            }
+            .disposed(by: disposeBag)
     }
 }
