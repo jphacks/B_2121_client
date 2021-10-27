@@ -22,6 +22,8 @@
 		8477772A272906E90054E15D /* InviteMemberCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84777729272906E90054E15D /* InviteMemberCellReactor.swift */; };
 		8477772D27291CED0054E15D /* SearchRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477772C27291CED0054E15D /* SearchRestaurantViewController.swift */; };
 		8477772F27291CF30054E15D /* SearchRestaurantReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477772E27291CF30054E15D /* SearchRestaurantReactor.swift */; };
+		84777732272928640054E15D /* SearchRestaurantResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84777731272928640054E15D /* SearchRestaurantResultViewController.swift */; };
+		847777342729286C0054E15D /* SearchRestaurantResultReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777332729286C0054E15D /* SearchRestaurantResultReactor.swift */; };
 		84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3752725D40600B9244E /* AppDelegate.swift */; };
 		84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3772725D40600B9244E /* SceneDelegate.swift */; };
 		84AFC37A2725D40600B9244E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3792725D40600B9244E /* ViewController.swift */; };
@@ -124,6 +126,8 @@
 		84777729272906E90054E15D /* InviteMemberCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMemberCellReactor.swift; sourceTree = "<group>"; };
 		8477772C27291CED0054E15D /* SearchRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantViewController.swift; sourceTree = "<group>"; };
 		8477772E27291CF30054E15D /* SearchRestaurantReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantReactor.swift; sourceTree = "<group>"; };
+		84777731272928640054E15D /* SearchRestaurantResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantResultViewController.swift; sourceTree = "<group>"; };
+		847777332729286C0054E15D /* SearchRestaurantResultReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRestaurantResultReactor.swift; sourceTree = "<group>"; };
 		84AFC3722725D40600B9244E /* goyotashi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goyotashi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3752725D40600B9244E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AFC3772725D40600B9244E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 		847777302729283F0054E15D /* SearchRestaurantResult */ = {
 			isa = PBXGroup;
 			children = (
+				84777731272928640054E15D /* SearchRestaurantResultViewController.swift */,
+				847777332729286C0054E15D /* SearchRestaurantResultReactor.swift */,
 			);
 			path = SearchRestaurantResult;
 			sourceTree = "<group>";
@@ -928,6 +934,7 @@
 				84AFC3F72727232000B9244E /* RoundBorderButton.swift in Sources */,
 				847777252729055A0054E15D /* InviteMemberReactor.swift in Sources */,
 				84AFC4202727FEF500B9244E /* RestaurantReactor.swift in Sources */,
+				84777732272928640054E15D /* SearchRestaurantResultViewController.swift in Sources */,
 				84AFC3A927266C9900B9244E /* DevelopingViewController.swift in Sources */,
 				84AFC3E92726E82900B9244E /* TestData.swift in Sources */,
 				84AFC3DF2726D79700B9244E /* HomeGroupCell.swift in Sources */,
@@ -948,6 +955,7 @@
 				84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */,
 				84AFC3D82726CE7800B9244E /* HomeViewController.swift in Sources */,
 				84AFC4272728050B00B9244E /* RestaurantInformationView.swift in Sources */,
+				847777342729286C0054E15D /* SearchRestaurantResultReactor.swift in Sources */,
 				84B88DF127283799004EB87D /* CreateGroupViewController.swift in Sources */,
 				84AFC3AE27266F5100B9244E /* ViewConstructor.swift in Sources */,
 				84AFC40F2727A6C600B9244E /* GroupHeaderView.swift in Sources */,
