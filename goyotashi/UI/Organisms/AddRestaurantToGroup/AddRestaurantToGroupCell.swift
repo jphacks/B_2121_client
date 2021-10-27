@@ -122,6 +122,15 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
         // Action
 
         // State
+        reactor.state.map { $0.groupSummary.imageUrls }
+            .distinctUntilChanged()
+            .bind { [weak self] imageUrls in
+                let max = min(imageUrls.count, 4)
+                for index in 0 ..< max {
+                    self?.imageViews[index].kf.setImage(with: URL(string: imageUrls[index]), placeholder: R.image.dish())
+                }
+            }
+            .disposed(by: disposeBag)
     }
 
     override func prepareForReuse() {
