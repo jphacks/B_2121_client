@@ -54,7 +54,10 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.text = "グループの説明"
     }
 
-    private let groupDescriptionTextView = UITextView()
+    private let groupDescriptionTextView = UITextView().then {
+        $0.font = UIFont(name: FontStyle.medium.rawValue, size: 14)
+        $0.textColor = Color.gray01
+    }
 
     private let privacyTitleLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
@@ -132,7 +135,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         }
         groupDescriptionTextView.snp.makeConstraints {
             $0.top.equalTo(groupDescriptionLabel.snp.bottom).offset(8)
-            $0.left.right.equalTo(view).inset(16)
+            $0.left.right.equalTo(view).inset(12)
             $0.height.equalTo(72)
         }
         privacyTitleLabel.snp.makeConstraints {
