@@ -13,6 +13,7 @@ final class GroupReactor: Reactor {
     }
 
     enum Mutation {
+        case setGroup(Group)
         case setRestaurantCellReactors([GroupRestaurant])
     }
 
@@ -34,13 +35,22 @@ final class GroupReactor: Reactor {
         switch action {
         case .refresh:
             let groupRestaurants = TestData.groupRestaurants(count: 9)
-            return .just(Mutation.setRestaurantCellReactors(groupRestaurants))
+            return .merge(
+                refresh().map(Mutation.setGroup),
+                .just(Mutation.setRestaurantCellReactors(groupRestaurants))
+            )
         }
+    }
+
+    private func refresh() -> Observable<Group> {
+        return provider.groupService.getGroup(id: "groupId").asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
+        case let .setGroup(group):
+            state.group = group
         case let .setRestaurantCellReactors(groupRestaurants):
             state.restaurantCellReactors = groupRestaurants.map { GroupRestaurantCellReactor(groupRestaurant: $0) }
         }
@@ -52,8 +62,9 @@ final class GroupReactor: Reactor {
         return OrganizeRestaurantReactor(provider: provider)
     }
 
-    func createEditGroupReactor() -> EditGroupReactor {
-        return EditGroupReactor(provider: provider, group: currentState.group)
+    func createEditGroupReactor() -> EditGroupReactor? {
+        guard let group = currentState.group else { return nil }
+        return EditGroupReactor(provider: provider, group: group)
     }
 
     func createInviteMemberReactor() -> InviteMemberReactor {
