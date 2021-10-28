@@ -75,7 +75,6 @@
 		84AFC3DA2726CE8300B9244E /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3D92726CE8300B9244E /* HomeReactor.swift */; };
 		84AFC3DF2726D79700B9244E /* HomeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3DE2726D79700B9244E /* HomeGroupCell.swift */; };
 		84AFC3E12726D7A300B9244E /* HomeGroupCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3E02726D7A300B9244E /* HomeGroupCellReactor.swift */; };
-		84AFC3E72726E64400B9244E /* HomeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3E62726E64400B9244E /* HomeGroup.swift */; };
 		84AFC3E92726E82900B9244E /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3E82726E82900B9244E /* TestData.swift */; };
 		84AFC3EC272714D700B9244E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3EB272714D700B9244E /* ProfileViewController.swift */; };
 		84AFC3EE2727150E00B9244E /* ProfileReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3ED2727150E00B9244E /* ProfileReactor.swift */; };
@@ -209,7 +208,6 @@
 		84AFC3D92726CE8300B9244E /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
 		84AFC3DE2726D79700B9244E /* HomeGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGroupCell.swift; sourceTree = "<group>"; };
 		84AFC3E02726D7A300B9244E /* HomeGroupCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGroupCellReactor.swift; sourceTree = "<group>"; };
-		84AFC3E62726E64400B9244E /* HomeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGroup.swift; sourceTree = "<group>"; };
 		84AFC3E82726E82900B9244E /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		84AFC3EB272714D700B9244E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		84AFC3ED2727150E00B9244E /* ProfileReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReactor.swift; sourceTree = "<group>"; };
@@ -705,7 +703,6 @@
 		84AFC3E52726E5DB00B9244E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				84AFC3E62726E64400B9244E /* HomeGroup.swift */,
 				84B88DE727281804004EB87D /* RestaurantOtherGroup.swift */,
 				84AFC3F227271AA200B9244E /* User.swift */,
 				84AFC4182727E39400B9244E /* GroupRestaurant.swift */,
@@ -1132,7 +1129,6 @@
 				84AFC3D42726A4EF00B9244E /* R.generated.swift in Sources */,
 				84AFC3F12727173100B9244E /* ProfileHeaderView.swift in Sources */,
 				80C6F3FF2729893C00EEF467 /* MemberCellReactor.swift in Sources */,
-				84AFC3E72726E64400B9244E /* HomeGroup.swift in Sources */,
 				84B88DF3272837A4004EB87D /* CreateGroupReactor.swift in Sources */,
 				840F195B272A44F1009BC1ED /* GroupService.swift in Sources */,
 				84AFC3DA2726CE8300B9244E /* HomeReactor.swift in Sources */,
