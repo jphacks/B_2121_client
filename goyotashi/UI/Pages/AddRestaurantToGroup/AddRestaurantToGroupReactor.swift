@@ -16,9 +16,7 @@ final class AddRestaurantToGroupReactor: Reactor {
     }
 
     struct State {
-        var groupCellReactors: [AddRestaurantToGroupCellReactor] = (0 ..< 9)
-            .map { _ in TestData.groupSummary() }
-            .map { AddRestaurantToGroupCellReactor(groupSummary: $0) }
+        var groupCellReactors: [AddRestaurantToGroupCellReactor] = []
     }
 
     let initialState: State
