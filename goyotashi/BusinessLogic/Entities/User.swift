@@ -5,6 +5,8 @@
 //  Created by Akihiro Kokubo on 2021/10/26.
 //
 
+import SwiftyUserDefaults
+
 struct User {
     let id: Int
     let name: String
@@ -16,3 +18,5 @@ extension User: Equatable {
         return lhs.id == rhs.id
     }
 }
+
+extension User: Codable, DefaultsSerializable {}
