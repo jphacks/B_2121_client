@@ -15,6 +15,12 @@ final class PlaceholderTextView: UITextView, ViewConstructor {
         }
     }
 
+    override var text: String! {
+        didSet {
+            placeholderLabel.isHidden = !text.isEmpty
+        }
+    }
+
     // MARK: - Views
     private let placeholderLabel = UILabel().then {
         $0.textColor = Color.gray04
