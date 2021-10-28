@@ -44,7 +44,7 @@ final class RestaurantReactor: Reactor {
     }
 
     private func getOtherGroups() -> Observable<[RestaurantOtherGroup]> {
-        return .just(TestData.restaurantOtherGroups(count: 1))
+        return provider.restaurantService.getOtherGroups(restaurantId: "restaurantId").asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
