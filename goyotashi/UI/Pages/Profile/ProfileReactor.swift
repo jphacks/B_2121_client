@@ -25,7 +25,7 @@ final class ProfileReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createProfileGroupListReactor() -> ProfileGroupListReactor {
-        return ProfileGroupListReactor()
+        return ProfileGroupListReactor(provider: provider)
     }
 
     func createCreateGroupReactor() -> CreateGroupReactor {

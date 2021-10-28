@@ -19,7 +19,13 @@ final class ProfileGroupListReactor: Reactor {
         var groupCellReactors: [ProfileGroupListCellReactor] = []
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
