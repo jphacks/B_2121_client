@@ -28,10 +28,12 @@ OpenAPIClient/Classes/OpenAPIs/Models/CreateCommunityRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CreateUserRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CreateUserResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InlineObject.swift
+OpenAPIClient/Classes/OpenAPIs/Models/JoinCommunityRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListCommunityRestaurantsResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListCommunityRestaurantsResponseAllOf.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListCommunityUsersResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListCommunityUsersResponseAllOf.swift
+OpenAPIClient/Classes/OpenAPIs/Models/ListUserBookmarkResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListUserCommunityResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Location.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PageInfo.swift
@@ -65,10 +67,12 @@ docs/CreateCommunityRequest.md
 docs/CreateUserRequest.md
 docs/CreateUserResponse.md
 docs/InlineObject.md
+docs/JoinCommunityRequest.md
 docs/ListCommunityRestaurantsResponse.md
 docs/ListCommunityRestaurantsResponseAllOf.md
 docs/ListCommunityUsersResponse.md
 docs/ListCommunityUsersResponseAllOf.md
+docs/ListUserBookmarkResponse.md
 docs/ListUserCommunityResponse.md
 docs/Location.md
 docs/PageInfo.md
