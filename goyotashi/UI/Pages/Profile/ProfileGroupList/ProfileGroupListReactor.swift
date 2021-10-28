@@ -42,7 +42,12 @@ final class ProfileGroupListReactor: Reactor {
     }
 
     func refresh() -> Observable<[ProfileGroup]> {
-        return provider.userService.getMyGroups().asObservable()
+        switch groupListType {
+        case .myGroups:
+            return provider.userService.getMyGroups().asObservable()
+        case .bookmarkedGroups:
+            return provider.bookmarkService.getBookmarkedGroups(userId: "userId").asObservable()
+        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
