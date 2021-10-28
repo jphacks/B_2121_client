@@ -53,7 +53,7 @@ final class GroupReactor: Reactor {
     }
 
     func createEditGroupReactor() -> EditGroupReactor {
-        return EditGroupReactor(group: currentState.group)
+        return EditGroupReactor(provider: provider, group: currentState.group)
     }
 
     func createInviteMemberReactor() -> InviteMemberReactor {
