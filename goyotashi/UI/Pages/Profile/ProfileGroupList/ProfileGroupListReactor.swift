@@ -17,7 +17,7 @@ final class ProfileGroupListReactor: Reactor {
         case refresh
     }
     enum Mutation {
-        case setGroupCellReactors([ProfileGroup])
+        case setGroupCellReactors([GroupSummary])
     }
 
     struct State {
@@ -41,7 +41,7 @@ final class ProfileGroupListReactor: Reactor {
         }
     }
 
-    func refresh() -> Observable<[ProfileGroup]> {
+    func refresh() -> Observable<[GroupSummary]> {
         switch groupListType {
         case .myGroups:
             return provider.userService.getMyGroups().asObservable()
@@ -53,8 +53,8 @@ final class ProfileGroupListReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case let .setGroupCellReactors(profileGroups):
-            state.groupCellReactors = profileGroups.map { ProfileGroupListCellReactor(profileGroup: $0) }
+        case let .setGroupCellReactors(groupSummaries):
+            state.groupCellReactors = groupSummaries.map { ProfileGroupListCellReactor(groupSummary: $0) }
         }
         return state
     }
