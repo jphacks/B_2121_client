@@ -10,6 +10,7 @@ import RxSwift
 protocol UserServiceType {
     func createUser() -> Single<Void>
     func getMyProfile() -> Single<User>
+    func getMyGroups() -> Single<[ProfileGroup]>
 }
 
 final class UserService: BaseService, UserServiceType {
@@ -19,5 +20,9 @@ final class UserService: BaseService, UserServiceType {
 
     func getMyProfile() -> Single<User> {
         return .just(TestData.user())
+    }
+
+    func getMyGroups() -> Single<[ProfileGroup]> {
+        return .just(TestData.profileGroups(count: 9))
     }
 }
