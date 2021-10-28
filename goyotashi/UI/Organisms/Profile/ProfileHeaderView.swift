@@ -89,14 +89,15 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
         // Action
 
         // State
-        reactor.state.map { $0.user.profileImageUrl }
+        reactor.state.map { $0.user?.profileImageUrl }
             .distinctUntilChanged()
+            .filterNil()
             .bind { [weak self] urlString in
                 self?.profileImageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.user.userName }
+        reactor.state.map { $0.user?.userName }
             .distinctUntilChanged()
             .bind(to: userNameLabel.rx.text)
             .disposed(by: disposeBag)
