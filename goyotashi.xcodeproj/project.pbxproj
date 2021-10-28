@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		41E0CE0BB1D29594A4F51D47 /* Pods_goyotashi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */; };
+		80C6F3F82729102A00EEF467 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6F3F72729102A00EEF467 /* MemberListViewController.swift */; };
+		80C6F3FA2729103F00EEF467 /* MemberListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6F3F92729103F00EEF467 /* MemberListReactor.swift */; };
+		80C6F3FD2729882400EEF467 /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6F3FC2729882400EEF467 /* MemberCell.swift */; };
+		80C6F3FF2729893C00EEF467 /* MemberCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6F3FE2729893C00EEF467 /* MemberCellReactor.swift */; };
 		840F19532729EA18009BC1ED /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19522729EA18009BC1ED /* ServiceProvider.swift */; };
 		840F19552729EA78009BC1ED /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19542729EA78009BC1ED /* BaseService.swift */; };
 		840F19572729EAD4009BC1ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19562729EAD4009BC1ED /* UserService.swift */; };
@@ -132,6 +136,10 @@
 		5A2510B4727F1FAB74093E2D /* Pods-goyotashi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi/Pods-goyotashi.debug.xcconfig"; sourceTree = "<group>"; };
 		6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi_goyotashiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashiTests.release.xcconfig"; path = "Target Support Files/Pods-goyotashiTests/Pods-goyotashiTests.release.xcconfig"; sourceTree = "<group>"; };
+		80C6F3F72729102A00EEF467 /* MemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
+		80C6F3F92729103F00EEF467 /* MemberListReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListReactor.swift; sourceTree = "<group>"; };
+		80C6F3FC2729882400EEF467 /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
+		80C6F3FE2729893C00EEF467 /* MemberCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCellReactor.swift; sourceTree = "<group>"; };
 		840F19522729EA18009BC1ED /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		840F19542729EA78009BC1ED /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		840F19562729EAD4009BC1ED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -294,6 +302,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		80C6F3F627290FE800EEF467 /* MemberList */ = {
+			isa = PBXGroup;
+			children = (
+				80C6F3F72729102A00EEF467 /* MemberListViewController.swift */,
+				80C6F3F92729103F00EEF467 /* MemberListReactor.swift */,
+			);
+			path = MemberList;
+			sourceTree = "<group>";
+		};
+		80C6F3FB272987FA00EEF467 /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				80C6F3FC2729882400EEF467 /* MemberCell.swift */,
+				80C6F3FE2729893C00EEF467 /* MemberCellReactor.swift */,
+			);
+			path = Member;
+            sourceTree = "<group>";
+        };
 		840F19512729E9D2009BC1ED /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +583,7 @@
 		84AFC3B5272672EE00B9244E /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				80C6F3FB272987FA00EEF467 /* Member */,
 				84777746272947E20054E15D /* AddRestaurantToGroup */,
 				84AFC40D2727A69F00B9244E /* Group */,
 				84AFC3DB2726CF0900B9244E /* Home */,
@@ -572,6 +599,7 @@
 		84AFC3B62726730D00B9244E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				80C6F3F627290FE800EEF467 /* MemberList */,
 				8477773B2729468E0054E15D /* AddRestaurantToGroup */,
 				84B88DEF27283776004EB87D /* CreateGroup */,
 				8477771C2728FBF80054E15D /* EditGroup */,
@@ -1066,6 +1094,7 @@
 				84AFC40A2727A62A00B9244E /* GroupViewController.swift in Sources */,
 				84B88DEC27281C05004EB87D /* Location.swift in Sources */,
 				84AFC41B2727E84F00B9244E /* Group.swift in Sources */,
+				80C6F3FD2729882400EEF467 /* MemberCell.swift in Sources */,
 				84AFC3F72727232000B9244E /* RoundBorderButton.swift in Sources */,
 				847777252729055A0054E15D /* InviteMemberReactor.swift in Sources */,
 				84AFC4202727FEF500B9244E /* RestaurantReactor.swift in Sources */,
@@ -1098,10 +1127,12 @@
 				84AFC4272728050B00B9244E /* RestaurantInformationView.swift in Sources */,
 				847777342729286C0054E15D /* SearchRestaurantResultReactor.swift in Sources */,
 				84B88DF127283799004EB87D /* CreateGroupViewController.swift in Sources */,
+				80C6F3F82729102A00EEF467 /* MemberListViewController.swift in Sources */,
 				84AFC3AE27266F5100B9244E /* ViewConstructor.swift in Sources */,
 				84AFC40F2727A6C600B9244E /* GroupHeaderView.swift in Sources */,
 				84AFC3D42726A4EF00B9244E /* R.generated.swift in Sources */,
 				84AFC3F12727173100B9244E /* ProfileHeaderView.swift in Sources */,
+				80C6F3FF2729893C00EEF467 /* MemberCellReactor.swift in Sources */,
 				84AFC3E72726E64400B9244E /* HomeGroup.swift in Sources */,
 				84B88DF3272837A4004EB87D /* CreateGroupReactor.swift in Sources */,
 				840F195B272A44F1009BC1ED /* GroupService.swift in Sources */,
@@ -1129,6 +1160,7 @@
 				84AFC3EC272714D700B9244E /* ProfileViewController.swift in Sources */,
 				8477771127285C670054E15D /* AddMemberButton.swift in Sources */,
 				84AFC3FC2727340000B9244E /* ProfileGroupListReactor.swift in Sources */,
+				80C6F3FA2729103F00EEF467 /* MemberListReactor.swift in Sources */,
 				8477775F27298FAF0054E15D /* RestaurantMapViewController.swift in Sources */,
 				84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */,
 				840F19532729EA18009BC1ED /* ServiceProvider.swift in Sources */,

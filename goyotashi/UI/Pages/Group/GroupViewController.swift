@@ -78,6 +78,18 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
         // Action
         reactor.action.onNext(.refresh)
 
+        header.groupMemberButton.rx.tap
+            .bind { [weak self] _ in
+                let viewController = MemberListViewController().then {
+                    $0.reactor = reactor.memberListReactor()
+                }
+                let navController = UINavigationController(rootViewController: viewController).then {
+                    $0.modalPresentationStyle = .fullScreen
+                }
+                self?.present(navController, animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
         header.organizeButton.rx.tap
             .bind { [weak self] _ in
                 let viewController = OrganizeRestaurantViewController().then {

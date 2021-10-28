@@ -21,7 +21,7 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
         $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
     }
 
-    private let groupMemberButton = GroupMemberButton()
+    let groupMemberButton = GroupMemberButton()
 
     private let descriptionLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 13, color: Color.gray02)
