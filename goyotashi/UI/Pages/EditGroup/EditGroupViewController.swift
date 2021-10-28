@@ -46,6 +46,17 @@ final class EditGroupViewController: UIViewController, View, ViewConstructor {
 
     private let addMemberButton = AddMemberButton()
 
+    private let groupDescriptionLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
+        $0.text = "グループの説明"
+    }
+
+    private let groupDescriptionTextView = PlaceholderTextView().then {
+        $0.font = UIFont(name: FontStyle.medium.rawValue, size: 14)
+        $0.textColor = Color.gray01
+        $0.placeholder = "グループの説明を入力"
+    }
+
     private let privacyTitleLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
         $0.text = "公開／非公開"
@@ -84,6 +95,8 @@ final class EditGroupViewController: UIViewController, View, ViewConstructor {
         scrollView.addSubview(groupMemberLabel)
         scrollView.addSubview(countableGroupMemberButton)
         scrollView.addSubview(addMemberButton)
+        scrollView.addSubview(groupDescriptionLabel)
+        scrollView.addSubview(groupDescriptionTextView)
         scrollView.addSubview(privacyTitleLabel)
         scrollView.addSubview(privacyStateLabel)
         scrollView.addSubview(privacySwitch)
@@ -114,8 +127,17 @@ final class EditGroupViewController: UIViewController, View, ViewConstructor {
             $0.centerY.equalTo(countableGroupMemberButton)
             $0.right.equalTo(view).inset(16)
         }
+        groupDescriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(addMemberButton.snp.bottom).offset(40)
+            $0.left.equalToSuperview().inset(16)
+        }
+        groupDescriptionTextView.snp.makeConstraints {
+            $0.top.equalTo(groupDescriptionLabel.snp.bottom).offset(8)
+            $0.left.right.equalTo(view).inset(12)
+            $0.height.equalTo(72)
+        }
         privacyTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(countableGroupMemberButton.snp.bottom).offset(40)
+            $0.top.equalTo(groupDescriptionTextView.snp.bottom).offset(40)
             $0.left.equalToSuperview().inset(16)
         }
         privacyStateLabel.snp.makeConstraints {
