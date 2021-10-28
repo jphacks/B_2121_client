@@ -16,6 +16,8 @@ protocol UserServiceType {
 
 final class UserService: BaseService, UserServiceType {
     func createUser() -> Single<Void> {
+        // TODO: remove name "Gohan Daisuki"
+        // TODO: remove vendor: .anonymous
         let request = CreateUserRequest(name: "Gohan Daisuki", vendor: .anonymous)
         return UserAPI.newUser(createUserRequest: request)
             .map { (response: CreateUserResponse) in
@@ -31,6 +33,8 @@ final class UserService: BaseService, UserServiceType {
     }
 
     func getMyProfile() -> Single<User> {
+        // TODO: save communityCount
+        // TODO: save bookmarkCount
         return UserAPI.getMyProfile()
             .map { (userDetail: UserDetail) in
                 return User(id: userDetail.id, name: userDetail.name, profileImageUrl: userDetail.profileImageUrl)
@@ -39,6 +43,9 @@ final class UserService: BaseService, UserServiceType {
     }
 
     func getMyGroups(userId: Int64) -> Single<[GroupSummary]> {
+        // TODO: get restaurantCount
+        // TODO: get memberCount
+        // TODO: get imageUrls
         return UserAPI.listUserCommunities(id: userId)
             .map { (response: ListUserCommunityResponse) in
                 guard let communities = response.communities else { return [] }
