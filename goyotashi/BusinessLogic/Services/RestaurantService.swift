@@ -9,10 +9,15 @@ import RxSwift
 
 protocol RestaurantServiceType {
     func getRestaurants(groupId: String) -> Single<[GroupRestaurant]>
+    func addRestaurantToGroup(restaurantId: String, groupId: String) -> Single<Void>
 }
 
 final class RestaurantService: BaseService, RestaurantServiceType {
     func getRestaurants(groupId: String) -> Single<[GroupRestaurant]> {
         return .just(TestData.groupRestaurants(count: 9))
+    }
+
+    func addRestaurantToGroup(restaurantId: String, groupId: String) -> Single<Void> {
+        return .just(())
     }
 }
