@@ -46,6 +46,6 @@ final class SearchRestaurantReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createSearchRestaurantResultReactor() -> SearchRestaurantResultReactor {
-        return SearchRestaurantResultReactor()
+        return SearchRestaurantResultReactor(provider: provider)
     }
 }
