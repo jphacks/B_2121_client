@@ -65,6 +65,8 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
     // MARK: - Bind Method
     func bind(reactor: OrganizeRestaurantReactor) {
         // Action
+        reactor.action.onNext(.refresh)
+
         closeButton.rx.tap
             .bind { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)

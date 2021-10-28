@@ -13,11 +13,12 @@ final class GroupReactor: Reactor {
     }
 
     enum Mutation {
+        case setGroup(Group)
         case setRestaurantCellReactors([GroupRestaurant])
     }
 
     struct State {
-        var group: Group = TestData.group()
+        var group: Group?
         var restaurantCellReactors: [GroupRestaurantCellReactor] = []
         let isMember: Bool = true
     }
@@ -33,14 +34,26 @@ final class GroupReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            let groupRestaurants = TestData.groupRestaurants(count: 9)
-            return .just(Mutation.setRestaurantCellReactors(groupRestaurants))
+            return .merge(
+                getGroup().map(Mutation.setGroup),
+                getRestaurants().map(Mutation.setRestaurantCellReactors)
+            )
         }
+    }
+
+    private func getGroup() -> Observable<Group> {
+        return provider.groupService.getGroup(id: "groupId").asObservable()
+    }
+
+    private func getRestaurants() -> Observable<[GroupRestaurant]> {
+        return provider.restaurantService.getRestaurants(groupId: "groupId").asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
+        case let .setGroup(group):
+            state.group = group
         case let .setRestaurantCellReactors(groupRestaurants):
             state.restaurantCellReactors = groupRestaurants.map { GroupRestaurantCellReactor(groupRestaurant: $0) }
         }
@@ -52,8 +65,9 @@ final class GroupReactor: Reactor {
         return OrganizeRestaurantReactor(provider: provider)
     }
 
-    func createEditGroupReactor() -> EditGroupReactor {
-        return EditGroupReactor(provider: provider, group: currentState.group)
+    func createEditGroupReactor() -> EditGroupReactor? {
+        guard let group = currentState.group else { return nil }
+        return EditGroupReactor(provider: provider, group: group)
     }
 
     func createInviteMemberReactor() -> InviteMemberReactor {

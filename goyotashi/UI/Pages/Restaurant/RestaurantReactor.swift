@@ -12,11 +12,12 @@ final class RestaurantReactor: Reactor {
         case refresh
     }
     enum Mutation {
+        case setRestaurant(Restaurant)
         case setGroupCellReactors([RestaurantOtherGroup])
     }
 
     struct State {
-        let restaurant: Restaurant = TestData.restaurant()
+        var restaurant: Restaurant?
         var groupCellReactors: [RestaurantOtherGroupCellReactor] = []
     }
 
@@ -31,14 +32,26 @@ final class RestaurantReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            let restaurantOtherGroups = TestData.restaurantOtherGroups(count: 9)
-            return .just(Mutation.setGroupCellReactors(restaurantOtherGroups))
+            return .merge(
+                getRestaurant().map(Mutation.setRestaurant),
+                getOtherGroups().map(Mutation.setGroupCellReactors)
+            )
         }
+    }
+
+    private func getRestaurant() -> Observable<Restaurant> {
+        return provider.restaurantService.getRestaurant(restaurantId: "restaurantId").asObservable()
+    }
+
+    private func getOtherGroups() -> Observable<[RestaurantOtherGroup]> {
+        return provider.restaurantService.getOtherGroups(restaurantId: "restaurantId").asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
+        case let .setRestaurant(restaurant):
+            state.restaurant = restaurant
         case let .setGroupCellReactors(restaurantOtherGroups):
             state.groupCellReactors = restaurantOtherGroups.map { RestaurantOtherGroupCellReactor(restaurantOtherGroup: $0) }
         }

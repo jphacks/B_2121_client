@@ -9,13 +9,16 @@ import ReactorKit
 
 final class OrganizeRestaurantReactor: Reactor {
     enum Action {
+        case refresh
         case didSelectItem(IndexPath)
         case remove
     }
-    enum Mutation {}
+    enum Mutation {
+        case setRestaurantCellReactors([GroupRestaurant])
+    }
 
     struct State {
-        var restaurantCellReactors: [OrganizeRestaurantCellReactor] = TestData.groupRestaurants(count: 9).map { OrganizeRestaurantCellReactor(groupRestaurant: $0) }
+        var restaurantCellReactors: [OrganizeRestaurantCellReactor] = []
     }
 
     let initialState: State
@@ -28,6 +31,8 @@ final class OrganizeRestaurantReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .refresh:
+            return getGroupRestaurants().map(Mutation.setRestaurantCellReactors)
         case let .didSelectItem(indexPath):
             currentState.restaurantCellReactors[indexPath.row].action.onNext(.toggleIsRemovable)
             return .empty()
@@ -39,5 +44,18 @@ final class OrganizeRestaurantReactor: Reactor {
                 .map { $0.currentState.groupRestaurant }
             return .empty()
         }
+    }
+
+    private func getGroupRestaurants() -> Observable<[GroupRestaurant]> {
+        return provider.restaurantService.getRestaurants(groupId: "groupId").asObservable()
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setRestaurantCellReactors(groupRestaurants):
+            state.restaurantCellReactors = groupRestaurants.map { OrganizeRestaurantCellReactor(groupRestaurant: $0) }
+        }
+        return state
     }
 }

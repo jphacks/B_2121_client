@@ -8,11 +8,15 @@
 import ReactorKit
 
 final class AddRestaurantToGroupReactor: Reactor {
-    enum Action {}
-    enum Mutation {}
+    enum Action {
+        case refresh
+    }
+    enum Mutation {
+        case setGroupCellReactors([GroupSummary])
+    }
 
     struct State {
-        let groupCellReactors: [AddRestaurantToGroupCellReactor] = (0 ..< 9).map { _ in AddRestaurantToGroupCellReactor() }
+        var groupCellReactors: [AddRestaurantToGroupCellReactor] = []
     }
 
     let initialState: State
@@ -21,5 +25,39 @@ final class AddRestaurantToGroupReactor: Reactor {
     init(provider: ServiceProviderType) {
         self.provider = provider
         initialState = State()
+    }
+
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .refresh:
+            return refresh().map(Mutation.setGroupCellReactors)
+        }
+    }
+
+    private func refresh() -> Observable<[GroupSummary]> {
+        return provider.userService.getMyGroups()
+            .map { (profileGroups: [ProfileGroup]) -> [GroupSummary] in
+                let groupSummaries = profileGroups.map { profileGroup in
+                    GroupSummary(
+                        groupId: profileGroup.groupId,
+                        groupName: profileGroup.groupName,
+                        groupDescription: "",
+                        restaurantCount: profileGroup.restaurantCount,
+                        memberCount: profileGroup.memberCount,
+                        imageUrls: profileGroup.imageUrls
+                    )
+                }
+                return groupSummaries
+            }
+            .asObservable()
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setGroupCellReactors(groupSummaries):
+            state.groupCellReactors = groupSummaries.map { AddRestaurantToGroupCellReactor(groupSummary: $0) }
+        }
+        return state
     }
 }

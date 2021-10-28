@@ -16,7 +16,7 @@ final class SearchGroupResultReactor: Reactor {
     }
 
     struct State {
-        var groupCellReactors: [HomeGroupCellReactor] = TestData.homeGroups(count: 8).map { HomeGroupCellReactor(homeGroup: $0) }
+        var groupCellReactors: [HomeGroupCellReactor] = []
     }
 
     let initialState: State
@@ -36,7 +36,7 @@ final class SearchGroupResultReactor: Reactor {
     }
 
     private func search(keyword: String) -> Observable<[HomeGroup]> {
-        return .just(TestData.homeGroups(count: Int.random(in: 0 ..< 7)))
+        return provider.groupService.searchGroup(keyword: keyword, location: nil).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {

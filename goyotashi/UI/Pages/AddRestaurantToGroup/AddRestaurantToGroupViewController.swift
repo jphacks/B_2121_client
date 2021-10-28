@@ -74,6 +74,8 @@ final class AddRestaurantToGroupViewController: UIViewController, View, ViewCons
     // MARK: - Bind Method
     func bind(reactor: AddRestaurantToGroupReactor) {
         // Action
+        reactor.action.onNext(.refresh)
+
         closeButton.rx.tap
             .bind { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)

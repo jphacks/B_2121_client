@@ -14,6 +14,7 @@
 		840F1959272A39DD009BC1ED /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F1958272A39DD009BC1ED /* RestaurantService.swift */; };
 		840F195B272A44F1009BC1ED /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F195A272A44F1009BC1ED /* GroupService.swift */; };
 		840F195D272A4869009BC1ED /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F195C272A4869009BC1ED /* BookmarkService.swift */; };
+		840F195F272A6439009BC1ED /* Observable+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F195E272A6439009BC1ED /* Observable+Optional.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -137,6 +138,7 @@
 		840F1958272A39DD009BC1ED /* RestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		840F195A272A44F1009BC1ED /* GroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
 		840F195C272A4869009BC1ED /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
+		840F195E272A6439009BC1ED /* Observable+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Optional.swift"; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 			children = (
 				84AFC3B8272674A800B9244E /* UIColor+Extension.swift */,
 				84AFC3C5272682F900B9244E /* UILabel+Extension.swift */,
+				840F195E272A6439009BC1ED /* Observable+Optional.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1106,6 +1109,7 @@
 				84AFC3BB272676AE00B9244E /* Color.swift in Sources */,
 				84777748272948170054E15D /* AddRestaurantToGroupCell.swift in Sources */,
 				84AFC3FA272733F800B9244E /* ProfileGroupListViewController.swift in Sources */,
+				840F195F272A6439009BC1ED /* Observable+Optional.swift in Sources */,
 				84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */,
 				840F195D272A4869009BC1ED /* BookmarkService.swift in Sources */,
 				8477772A272906E90054E15D /* InviteMemberCellReactor.swift in Sources */,

@@ -59,6 +59,8 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
         header.reactor = reactor
 
         // Action
+        reactor.action.onNext(.refresh)
+
         header.plusButton.rx.tap
             .bind { [weak self] _ in
                 let viewController = CreateGroupViewController().then {
@@ -81,11 +83,11 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
         switch index {
         case 0:
             return ProfileGroupListViewController().then {
-                $0.reactor = reactor.createProfileGroupListReactor()
+                $0.reactor = reactor.createProfileGroupListReactor(groupListType: .myGroups)
             }
         default:
             return ProfileGroupListViewController().then {
-                $0.reactor = reactor.createProfileGroupListReactor()
+                $0.reactor = reactor.createProfileGroupListReactor(groupListType: .bookmarkedGroups)
             }
         }
     }
