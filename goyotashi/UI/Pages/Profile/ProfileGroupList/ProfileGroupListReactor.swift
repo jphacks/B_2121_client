@@ -37,9 +37,12 @@ final class ProfileGroupListReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            let profileGroups = TestData.profileGroups(count: 8)
-            return .just(Mutation.setGroupCellReactors(profileGroups))
+            return refresh().map(Mutation.setGroupCellReactors)
         }
+    }
+
+    func refresh() -> Observable<[ProfileGroup]> {
+        return provider.userService.getMyGroups().asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
