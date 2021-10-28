@@ -60,7 +60,7 @@ final class HomeReactor: Reactor {
     }
 
     func createSearchGroupResultReactor() -> SearchGroupResultReactor {
-        return SearchGroupResultReactor()
+        return SearchGroupResultReactor(provider: provider)
     }
 }
 

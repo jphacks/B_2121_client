@@ -19,7 +19,13 @@ final class SearchGroupResultReactor: Reactor {
         var groupCellReactors: [HomeGroupCellReactor] = TestData.homeGroups(count: 8).map { HomeGroupCellReactor(homeGroup: $0) }
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
