@@ -163,6 +163,11 @@ final class EditGroupViewController: UIViewController, View, ViewConstructor {
             .bind(to: groupNameTextField.rx.text)
             .disposed(by: disposeBag)
 
+        reactor.state.map { $0.groupDescription }
+            .distinctUntilChanged()
+            .bind(to: groupDescriptionTextView.rx.text)
+            .disposed(by: disposeBag)
+
         reactor.state.map { $0.members }
             .distinctUntilChanged()
             .bind(to: countableGroupMemberButton.rx.members)
