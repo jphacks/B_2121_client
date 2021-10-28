@@ -16,7 +16,7 @@ final class RestaurantReactor: Reactor {
     }
 
     struct State {
-        let restaurant: Restaurant = TestData.restaurant()
+        var restaurant: Restaurant?
         var groupCellReactors: [RestaurantOtherGroupCellReactor] = []
     }
 

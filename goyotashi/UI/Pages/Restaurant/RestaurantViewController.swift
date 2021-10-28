@@ -99,8 +99,9 @@ final class RestaurantViewController: UIViewController, ReactorKit.View, ViewCon
         header.mapView.rx.tapGesture()
             .when(.ended)
             .bind { [weak self] _ in
-                let restaurantName = reactor.currentState.restaurant.name
-                let location = reactor.currentState.restaurant.location
+                guard let restaurant = reactor.currentState.restaurant else { return }
+                let restaurantName = restaurant.name
+                let location = restaurant.location
                 let viewController = RestaurantMapViewController(restaurantName: restaurantName, location: location)
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
