@@ -43,10 +43,14 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
 
         reloadData()
         defaultSelectedIndex = 0
+
+        setupViews()
     }
 
     // MARK: - Setup Methods
-    func setupViews() {}
+    func setupViews() {
+        title = "プロフィール"
+    }
 
     func setupViewConstraints() {}
 
@@ -55,6 +59,8 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
         header.reactor = reactor
 
         // Action
+        reactor.action.onNext(.refresh)
+
         header.plusButton.rx.tap
             .bind { [weak self] _ in
                 let viewController = CreateGroupViewController().then {
@@ -72,14 +78,16 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
 
     // MARK: - Override Functions
     override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
+        guard let reactor = reactor else { return nil }
+
         switch index {
         case 0:
             return ProfileGroupListViewController().then {
-                $0.reactor = ProfileGroupListReactor()
+                $0.reactor = reactor.createProfileGroupListReactor(groupListType: .myGroups)
             }
         default:
             return ProfileGroupListViewController().then {
-                $0.reactor = ProfileGroupListReactor()
+                $0.reactor = reactor.createProfileGroupListReactor(groupListType: .bookmarkedGroups)
             }
         }
     }

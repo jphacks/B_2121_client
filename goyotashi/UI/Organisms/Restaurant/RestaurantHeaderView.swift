@@ -37,11 +37,11 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         $0.numberOfLines = 0
     }
 
-    private let addRestaurantButton = AddRestaurantButton()
+    let addRestaurantButton = AddRestaurantButton()
 
     private let restaurantInformationView = RestaurantInformationView()
 
-    private let mapView = MKMapView()
+    let mapView = MKMapView()
 
     private let openNativeMapButton = OpenMapButton(mapAppType: .nativeMap)
     private let openGoogleMapButton = OpenMapButton(mapAppType: .googleMap)
@@ -134,27 +134,52 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: RestaurantReactor) {
         // Action
+        openNativeMapButton.rx.tap
+            .bind { _ in
+                guard let location = reactor.currentState.restaurant?.location else { return }
+                let daddr = NSString(format: "%f,%f", location.latitude, location.longitude)
+                let urlString = "http://maps.apple.com/?daddr=\(daddr)&dirflg=w"
+                if let url = URL(string: urlString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            .disposed(by: disposeBag)
+
+        openGoogleMapButton.rx.tap
+            .bind { _ in
+                if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
+                    guard let location = reactor.currentState.restaurant?.location else { return }
+                    let daddr = NSString(format: "%f,%f", location.latitude, location.longitude)
+                    let urlStr: String = "comgooglemaps://?daddr=\(daddr)&directionsmode=walking&zoom=14"
+                    if let url = URL(string: urlStr) {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
 
         // State
-        reactor.state.map { $0.restaurant.imageUrl }
+        reactor.state.map { $0.restaurant?.imageUrl }
             .distinctUntilChanged()
+            .filterNil()
             .bind { [weak self] urlString in
                 self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.restaurant.name }
+        reactor.state.map { $0.restaurant?.name }
             .distinctUntilChanged()
             .bind(to: restaurantNameLabel.rx.text)
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.restaurant.description }
+        reactor.state.map { $0.restaurant?.description }
             .distinctUntilChanged()
             .bind(to: restaurantDescriptionLabel.rx.text)
             .disposed(by: disposeBag)
 
         reactor.state.map { $0.restaurant }
             .distinctUntilChanged()
+            .filterNil()
             .bind { [weak self] restaurant in
                 self?.restaurantInformationView.configure(
                     restaurantName: restaurant.name,
@@ -165,8 +190,9 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.restaurant.location }
+        reactor.state.map { $0.restaurant?.location }
             .distinctUntilChanged()
+            .filterNil()
             .bind { [weak self] location in
                 self?.setMap(latitude: location.latitude, longitude: location.longitude)
             }

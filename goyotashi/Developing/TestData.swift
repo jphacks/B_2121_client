@@ -48,6 +48,12 @@ struct TestData {
         )
     }
 
+    static func users(count: Int) -> [User] {
+        return (0 ..< count).map { _ in
+            user()
+        }
+    }
+
     static func groupRestaurant() -> GroupRestaurant {
         return GroupRestaurant(
             restaurantId: randomString(length: 8),
@@ -107,6 +113,25 @@ struct TestData {
             openingHours: "[月〜土]\n11:30〜14:30(L.O. 14:00)\n17:30〜22:30(L.O. 22:00)",
             location: location()
         )
+    }
+
+    static func restaurants(count: Int) -> [Restaurant] {
+        return (0 ..< count).map { _ in restaurant() }
+    }
+
+    static func groupSummary() -> GroupSummary {
+        return GroupSummary(
+            groupId: randomString(length: 8),
+            groupName: "CAMPHOR-",
+            groupDescription: "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。",
+            restaurantCount: Int.random(in: 2 ..< 16),
+            memberCount: Int.random(in: 4 ..< 16),
+            imageUrls: restaurantImageUrlStrings()
+        )
+    }
+
+    static func groupSummaries(count: Int) -> [GroupSummary] {
+        return (0 ..< count).map { _ in groupSummary() }
     }
 
     // MARK: - Private Functions

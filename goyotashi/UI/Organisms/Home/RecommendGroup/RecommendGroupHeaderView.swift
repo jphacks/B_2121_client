@@ -1,13 +1,13 @@
 //
-//  HomeHeaderView.swift
+//  RecommendGroupHeaderView.swift
 //  goyotashi
 //
-//  Created by Akihiro Kokubo on 2021/10/25.
+//  Created by Akihiro Kokubo on 2021/10/27.
 //
 
 import UIKit
 
-final class HomeHeaderView: UIView, ViewConstructor {
+final class RecommendGroupHeaderView: UIView, ViewConstructor {
     struct Const {
         static let height: CGFloat = 148
     }
@@ -28,9 +28,19 @@ final class HomeHeaderView: UIView, ViewConstructor {
         $0.contentMode = .scaleAspectFit
     }
 
+    private let stackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.spacing = 4
+    }
+
     private let searchAroundHereLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 16, color: Color.gray02)
         $0.text = "近くを検索する"
+    }
+
+    private let precautionaryStatementLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 12, color: Color.gray03)
+        $0.text = "位置情報を使います"
     }
 
     private let searchAroundHereSwitch = UISwitch()
@@ -52,7 +62,9 @@ final class HomeHeaderView: UIView, ViewConstructor {
         addSubview(titleLabel)
         addSubview(mapIconBackgroundView)
         mapIconBackgroundView.addSubview(mapIconView)
-        addSubview(searchAroundHereLabel)
+        addSubview(stackView)
+        stackView.addArrangedSubview(searchAroundHereLabel)
+        stackView.addArrangedSubview(precautionaryStatementLabel)
         addSubview(searchAroundHereSwitch)
     }
 
@@ -73,7 +85,7 @@ final class HomeHeaderView: UIView, ViewConstructor {
             $0.center.equalToSuperview()
             $0.size.equalTo(24)
         }
-        searchAroundHereLabel.snp.makeConstraints {
+        stackView.snp.makeConstraints {
             $0.centerY.equalTo(mapIconBackgroundView)
             $0.left.equalTo(mapIconBackgroundView.snp.right).offset(8)
         }

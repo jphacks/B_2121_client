@@ -1,26 +1,22 @@
 //
-//  HomeReactor.swift
+//  SearchRestaurantReactor.swift
 //  goyotashi
 //
-//  Created by Akihiro Kokubo on 2021/10/25.
+//  Created by Akihiro Kokubo on 2021/10/27.
 //
 
 import ReactorKit
 
-final class HomeReactor: Reactor {
+final class SearchRestaurantReactor: Reactor {
     enum Action {
         case updateKeyword(String?)
-        case didStartSearch
-        case didClickCancelButton
     }
     enum Mutation {
         case setKeyword(String)
-        case setPageType(PageType)
     }
 
     struct State {
         var keyword: String = ""
-        var pageType: PageType = .recommendGroup
     }
 
     let initialState: State
@@ -36,10 +32,6 @@ final class HomeReactor: Reactor {
         case let .updateKeyword(keyword):
             guard let keyword = keyword else { return .empty() }
             return .just(.setKeyword(keyword))
-        case .didStartSearch:
-            return .just(.setPageType(.searchGroupResult))
-        case .didClickCancelButton:
-            return .just(.setPageType(.recommendGroup))
         }
     }
 
@@ -48,25 +40,12 @@ final class HomeReactor: Reactor {
         switch mutation {
         case let .setKeyword(keyword):
             state.keyword = keyword
-        case let .setPageType(pageType):
-            state.pageType = pageType
         }
         return state
     }
 
     // MARK: - Create Reactor Methods
-    func createRecommendGroupReactor() -> RecommendGroupReactor {
-        return RecommendGroupReactor(provider: provider)
-    }
-
-    func createSearchGroupResultReactor() -> SearchGroupResultReactor {
-        return SearchGroupResultReactor(provider: provider)
-    }
-}
-
-extension HomeReactor {
-    enum PageType {
-        case recommendGroup
-        case searchGroupResult
+    func createSearchRestaurantResultReactor() -> SearchRestaurantResultReactor {
+        return SearchRestaurantResultReactor(provider: provider)
     }
 }

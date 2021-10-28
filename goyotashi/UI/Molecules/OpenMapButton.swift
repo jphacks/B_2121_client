@@ -50,6 +50,8 @@ final class OpenMapButton: UIButton {
         $0.backgroundColor = Color.white.withAlphaComponent(0.8)
         $0.isUserInteractionEnabled = false
         $0.isHidden = true
+        $0.layer.cornerRadius = Const.cornerRadius
+        $0.layer.masksToBounds = true
     }
 
     // MARK: - Initializers

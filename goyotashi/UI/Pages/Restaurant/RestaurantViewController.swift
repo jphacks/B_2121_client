@@ -8,8 +8,9 @@
 import UIKit
 import ReactorKit
 import ReusableKit
+import RxGesture
 
-final class RestaurantViewController: UIViewController, View, ViewConstructor {
+final class RestaurantViewController: UIViewController, ReactorKit.View, ViewConstructor {
 
     struct Reusable {
         static let groupCell = ReusableCell<RestaurantOtherGroupCell>()
@@ -64,6 +65,7 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
+        title = "お店"
         view.addSubview(collectionView)
         collectionView.addSubview(header)
     }
@@ -83,6 +85,27 @@ final class RestaurantViewController: UIViewController, View, ViewConstructor {
 
         // Action
         reactor.action.onNext(.refresh)
+
+        header.addRestaurantButton.rx.tap
+            .bind { [weak self] _ in
+                let viewController = AddRestaurantToGroupViewController().then {
+                    $0.reactor = reactor.createAddRestaurantToGroupReactor()
+                }
+                let navController = UINavigationController(rootViewController: viewController)
+                self?.present(navController, animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
+        header.mapView.rx.tapGesture()
+            .when(.ended)
+            .bind { [weak self] _ in
+                guard let restaurant = reactor.currentState.restaurant else { return }
+                let restaurantName = restaurant.name
+                let location = restaurant.location
+                let viewController = RestaurantMapViewController(restaurantName: restaurantName, location: location)
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
 
         // State
         reactor.state.map { $0.groupCellReactors }

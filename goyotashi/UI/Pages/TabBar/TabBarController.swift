@@ -14,6 +14,18 @@ final class TabBarController: UITabBarController {
         static let tabBarSelectedImages: [UIImage?] = [R.image.home_filled(), R.image.user_filled()]
     }
 
+    private let provider: ServiceProviderType
+
+    // MARK: - Initializers
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +40,12 @@ final class TabBarController: UITabBarController {
         viewControllers = [
             UINavigationController(
                 rootViewController: HomeViewController().then {
-                    $0.reactor = HomeReactor()
+                    $0.reactor = HomeReactor(provider: provider)
                 }
             ),
             UINavigationController(
                 rootViewController: ProfileViewController().then {
-                    $0.reactor = ProfileReactor()
+                    $0.reactor = ProfileReactor(provider: provider)
                 }
             )
         ]

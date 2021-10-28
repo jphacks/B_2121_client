@@ -35,14 +35,14 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
 
     let organizeButton = GroupActionButton(actionType: .organize)
     let editButton = GroupActionButton(actionType: .edit)
-    private let addMemberButton = GroupActionButton(actionType: .addMember)
+    let addMemberButton = GroupActionButton(actionType: .addMember)
     private let bookmarkButton = GroupActionButton(actionType: .bookmark)
 
     private let restaurantCountLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 20, color: Color.gray01)
     }
 
-    private let plusButton = PlusButton()
+    let plusButton = PlusButton()
 
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -104,19 +104,20 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
         // Action
 
         // State
-        reactor.state.map { $0.group.name }
+        reactor.state.map { $0.group?.name }
             .distinctUntilChanged()
             .bind(to: groupNameLabel.rx.text)
             .disposed(by: disposeBag)
 
-        reactor.state.map { ($0.group.members, $0.group.memberCount) }
-            .bind { [weak self] (members, memberCount) in
-                let imageUrlStrings = members.map { $0.profileImageUrl }
-                self?.groupMemberButton.configure(imageUrlStrings: imageUrlStrings, memberCount: memberCount)
+        reactor.state.map { $0.group }
+            .filterNil()
+            .bind { [weak self] group in
+                let imageUrlStrings = group.members.map { $0.profileImageUrl }
+                self?.groupMemberButton.configure(imageUrlStrings: imageUrlStrings, memberCount: group.memberCount)
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.group.description }
+        reactor.state.map { $0.group?.description }
             .distinctUntilChanged()
             .bind(to: descriptionLabel.rx.text)
             .disposed(by: disposeBag)
@@ -132,8 +133,9 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.group.restaurantCount }
+        reactor.state.map { $0.group?.restaurantCount }
             .distinctUntilChanged()
+            .filterNil()
             .map { "\($0)件のお店"}
             .bind(to: restaurantCountLabel.rx.text)
             .disposed(by: disposeBag)
