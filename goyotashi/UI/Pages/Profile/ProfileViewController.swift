@@ -83,11 +83,11 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
         switch index {
         case 0:
             return ProfileGroupListViewController().then {
-                $0.reactor = reactor.createProfileGroupListReactor()
+                $0.reactor = reactor.createProfileGroupListReactor(groupListType: .myGroups)
             }
         default:
             return ProfileGroupListViewController().then {
-                $0.reactor = reactor.createProfileGroupListReactor()
+                $0.reactor = reactor.createProfileGroupListReactor(groupListType: .bookmarkedGroups)
             }
         }
     }

@@ -8,6 +8,11 @@
 import ReactorKit
 
 final class ProfileGroupListReactor: Reactor {
+    enum GroupListType {
+        case myGroups
+        case bookmarkedGroups
+    }
+
     enum Action {
         case refresh
     }
@@ -21,9 +26,11 @@ final class ProfileGroupListReactor: Reactor {
 
     let initialState: State
     private let provider: ServiceProviderType
+    private let groupListType: GroupListType
 
-    init(provider: ServiceProviderType) {
+    init(provider: ServiceProviderType, groupListType: GroupListType) {
         self.provider = provider
+        self.groupListType = groupListType
         initialState = State()
     }
 

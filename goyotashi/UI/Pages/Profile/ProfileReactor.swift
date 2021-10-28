@@ -48,8 +48,8 @@ final class ProfileReactor: Reactor {
     }
 
     // MARK: - Create Reactor Methods
-    func createProfileGroupListReactor() -> ProfileGroupListReactor {
-        return ProfileGroupListReactor(provider: provider)
+    func createProfileGroupListReactor(groupListType: ProfileGroupListReactor.GroupListType) -> ProfileGroupListReactor {
+        return ProfileGroupListReactor(provider: provider, groupListType: groupListType)
     }
 
     func createCreateGroupReactor() -> CreateGroupReactor {
