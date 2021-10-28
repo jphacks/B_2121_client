@@ -12,6 +12,7 @@ protocol RestaurantServiceType {
     func addRestaurantToGroup(restaurantId: String, groupId: String) -> Single<Void>
     func removeRestaurantFromGroup(restaurantId: String, groupId: String) -> Single<Void>
     func searchRestaurants(keyword: String, location: Location?) -> Single<[Restaurant]>
+    func getRestaurant(restaurantId: String) -> Single<Restaurant>
 }
 
 final class RestaurantService: BaseService, RestaurantServiceType {
@@ -29,5 +30,9 @@ final class RestaurantService: BaseService, RestaurantServiceType {
 
     func searchRestaurants(keyword: String, location: Location?) -> Single<[Restaurant]> {
         return .just(TestData.restaurants(count: 8))
+    }
+
+    func getRestaurant(restaurantId: String) -> Single<Restaurant> {
+        return .just(TestData.restaurant())
     }
 }
