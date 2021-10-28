@@ -135,6 +135,7 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
 
         reactor.state.map { $0.group?.restaurantCount }
             .distinctUntilChanged()
+            .filterNil()
             .map { "\($0)件のお店"}
             .bind(to: restaurantCountLabel.rx.text)
             .disposed(by: disposeBag)
