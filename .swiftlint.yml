@@ -15,6 +15,7 @@ excluded:
 # R.swiftが生成したファイルは無視
 - goyotashi/Resources/Rswift/R.generated.swift
 
+- OpenAPIClient/
 
 # 1行あたりの文字数制限を300に変更
 line_length: 300
