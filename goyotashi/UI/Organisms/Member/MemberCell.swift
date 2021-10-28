@@ -73,7 +73,7 @@ final class MemberCell: UICollectionViewCell, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.member.userName }
+        reactor.state.map { $0.member.name }
             .distinctUntilChanged()
             .bind(to: memberNameLabel.rx.text)
             .disposed(by: disposeBag)

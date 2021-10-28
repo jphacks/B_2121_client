@@ -97,7 +97,7 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.user?.userName }
+        reactor.state.map { $0.user?.name }
             .distinctUntilChanged()
             .bind(to: userNameLabel.rx.text)
             .disposed(by: disposeBag)

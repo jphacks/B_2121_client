@@ -20,6 +20,6 @@ final class InviteMemberCellReactor: Reactor {
 
 extension InviteMemberCellReactor: Equatable {
     static func == (lhs: InviteMemberCellReactor, rhs: InviteMemberCellReactor) -> Bool {
-        return lhs.currentState.member.userId == rhs.currentState.member.userId
+        return lhs.currentState.member.id == rhs.currentState.member.id
     }
 }

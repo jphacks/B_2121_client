@@ -10,8 +10,8 @@ import Foundation
 struct TestData {
     static func user() -> User {
         return User(
-            userId: randomInt(),
-            userName: "KoukiNAGATA",
+            id: randomInt(),
+            name: "KoukiNAGATA",
             profileImageUrl: "https://avatars.githubusercontent.com/u/38304075?v=4"
         )
     }
