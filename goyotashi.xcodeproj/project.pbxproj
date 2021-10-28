@@ -11,6 +11,7 @@
 		840F19532729EA18009BC1ED /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19522729EA18009BC1ED /* ServiceProvider.swift */; };
 		840F19552729EA78009BC1ED /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19542729EA78009BC1ED /* BaseService.swift */; };
 		840F19572729EAD4009BC1ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19562729EAD4009BC1ED /* UserService.swift */; };
+		840F1959272A39DD009BC1ED /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F1958272A39DD009BC1ED /* RestaurantService.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -131,6 +132,7 @@
 		840F19522729EA18009BC1ED /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		840F19542729EA78009BC1ED /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		840F19562729EAD4009BC1ED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		840F1958272A39DD009BC1ED /* RestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				840F19522729EA18009BC1ED /* ServiceProvider.swift */,
 				840F19542729EA78009BC1ED /* BaseService.swift */,
 				840F19562729EAD4009BC1ED /* UserService.swift */,
+				840F1958272A39DD009BC1ED /* RestaurantService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1108,6 +1111,7 @@
 				840F19552729EA78009BC1ED /* BaseService.swift in Sources */,
 				8477773827292D130054E15D /* SearchRestaurantCell.swift in Sources */,
 				84B88DE827281804004EB87D /* RestaurantOtherGroup.swift in Sources */,
+				840F1959272A39DD009BC1ED /* RestaurantService.swift in Sources */,
 				84AFC3F327271AA200B9244E /* User.swift in Sources */,
 				8477774C2729628D0054E15D /* GroupSummary.swift in Sources */,
 				84AFC3EC272714D700B9244E /* ProfileViewController.swift in Sources */,
