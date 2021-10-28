@@ -5,6 +5,14 @@
 //  Created by Akihiro Kokubo on 2021/10/28.
 //
 
-protocol UserServiceType {}
+import RxSwift
 
-final class UserService: BaseService, UserServiceType {}
+protocol UserServiceType {
+    func createUser() -> Single<Void>
+}
+
+final class UserService: BaseService, UserServiceType {
+    func createUser() -> Single<Void> {
+        return .just(())
+    }
+}
