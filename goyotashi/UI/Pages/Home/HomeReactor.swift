@@ -56,7 +56,7 @@ final class HomeReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createRecommendGroupReactor() -> RecommendGroupReactor {
-        return RecommendGroupReactor()
+        return RecommendGroupReactor(provider: provider)
     }
 
     func createSearchGroupResultReactor() -> SearchGroupResultReactor {
