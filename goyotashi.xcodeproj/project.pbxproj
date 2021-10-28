@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		41E0CE0BB1D29594A4F51D47 /* Pods_goyotashi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */; };
+		840F19532729EA18009BC1ED /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19522729EA18009BC1ED /* ServiceProvider.swift */; };
+		840F19552729EA78009BC1ED /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19542729EA78009BC1ED /* BaseService.swift */; };
+		840F19572729EAD4009BC1ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19562729EAD4009BC1ED /* UserService.swift */; };
+		840F1959272A39DD009BC1ED /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F1958272A39DD009BC1ED /* RestaurantService.swift */; };
+		840F195B272A44F1009BC1ED /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F195A272A44F1009BC1ED /* GroupService.swift */; };
+		840F195D272A4869009BC1ED /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F195C272A4869009BC1ED /* BookmarkService.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -125,6 +131,12 @@
 		5A2510B4727F1FAB74093E2D /* Pods-goyotashi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi/Pods-goyotashi.debug.xcconfig"; sourceTree = "<group>"; };
 		6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi_goyotashiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D738EBE6608E20911C41B2 /* Pods-goyotashiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashiTests.release.xcconfig"; path = "Target Support Files/Pods-goyotashiTests/Pods-goyotashiTests.release.xcconfig"; sourceTree = "<group>"; };
+		840F19522729EA18009BC1ED /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		840F19542729EA78009BC1ED /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		840F19562729EAD4009BC1ED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		840F1958272A39DD009BC1ED /* RestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
+		840F195A272A44F1009BC1ED /* GroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
+		840F195C272A4869009BC1ED /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -278,6 +290,19 @@
 				38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		840F19512729E9D2009BC1ED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				840F19522729EA18009BC1ED /* ServiceProvider.swift */,
+				840F19542729EA78009BC1ED /* BaseService.swift */,
+				840F19562729EAD4009BC1ED /* UserService.swift */,
+				840F1958272A39DD009BC1ED /* RestaurantService.swift */,
+				840F195A272A44F1009BC1ED /* GroupService.swift */,
+				840F195C272A4869009BC1ED /* BookmarkService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		84777712272861600054E15D /* OrganizeRestaurant */ = {
@@ -640,6 +665,7 @@
 			isa = PBXGroup;
 			children = (
 				84AFC3E52726E5DB00B9244E /* Entities */,
+				840F19512729E9D2009BC1ED /* Services */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -1042,6 +1068,7 @@
 				84AFC4202727FEF500B9244E /* RestaurantReactor.swift in Sources */,
 				84777732272928640054E15D /* SearchRestaurantResultViewController.swift in Sources */,
 				84AFC3A927266C9900B9244E /* DevelopingViewController.swift in Sources */,
+				840F19572729EAD4009BC1ED /* UserService.swift in Sources */,
 				84AFC3E92726E82900B9244E /* TestData.swift in Sources */,
 				84AFC3DF2726D79700B9244E /* HomeGroupCell.swift in Sources */,
 				84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */,
@@ -1074,11 +1101,13 @@
 				84AFC3F12727173100B9244E /* ProfileHeaderView.swift in Sources */,
 				84AFC3E72726E64400B9244E /* HomeGroup.swift in Sources */,
 				84B88DF3272837A4004EB87D /* CreateGroupReactor.swift in Sources */,
+				840F195B272A44F1009BC1ED /* GroupService.swift in Sources */,
 				84AFC3DA2726CE8300B9244E /* HomeReactor.swift in Sources */,
 				84AFC3BB272676AE00B9244E /* Color.swift in Sources */,
 				84777748272948170054E15D /* AddRestaurantToGroupCell.swift in Sources */,
 				84AFC3FA272733F800B9244E /* ProfileGroupListViewController.swift in Sources */,
 				84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */,
+				840F195D272A4869009BC1ED /* BookmarkService.swift in Sources */,
 				8477772A272906E90054E15D /* InviteMemberCellReactor.swift in Sources */,
 				84777728272906DF0054E15D /* InviteMemberCell.swift in Sources */,
 				84AFC3AC27266F2100B9244E /* DeviceSize.swift in Sources */,
@@ -1087,8 +1116,10 @@
 				84AFC3EE2727150E00B9244E /* ProfileReactor.swift in Sources */,
 				84B88DE6272816EA004EB87D /* RestaurantOtherGroupCellReactor.swift in Sources */,
 				84AFC3CE27269A2E00B9244E /* TabBarController.swift in Sources */,
+				840F19552729EA78009BC1ED /* BaseService.swift in Sources */,
 				8477773827292D130054E15D /* SearchRestaurantCell.swift in Sources */,
 				84B88DE827281804004EB87D /* RestaurantOtherGroup.swift in Sources */,
+				840F1959272A39DD009BC1ED /* RestaurantService.swift in Sources */,
 				84AFC3F327271AA200B9244E /* User.swift in Sources */,
 				8477774C2729628D0054E15D /* GroupSummary.swift in Sources */,
 				84AFC3EC272714D700B9244E /* ProfileViewController.swift in Sources */,
@@ -1096,6 +1127,7 @@
 				84AFC3FC2727340000B9244E /* ProfileGroupListReactor.swift in Sources */,
 				8477775F27298FAF0054E15D /* RestaurantMapViewController.swift in Sources */,
 				84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */,
+				840F19532729EA18009BC1ED /* ServiceProvider.swift in Sources */,
 				8477774A2729481F0054E15D /* AddRestaurantToGroupCellReactor.swift in Sources */,
 				84777754272977BE0054E15D /* SearchGroupResultHeaderView.swift in Sources */,
 				84AFC4232727FFD200B9244E /* RestaurantHeaderView.swift in Sources */,
