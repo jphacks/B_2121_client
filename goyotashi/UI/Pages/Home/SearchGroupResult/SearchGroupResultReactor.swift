@@ -16,7 +16,7 @@ final class SearchGroupResultReactor: Reactor {
     }
 
     struct State {
-        var groupCellReactors: [HomeGroupCellReactor] = TestData.homeGroups(count: 8).map { HomeGroupCellReactor(homeGroup: $0) }
+        var groupCellReactors: [HomeGroupCellReactor] = []
     }
 
     let initialState: State
