@@ -12,7 +12,7 @@ final class SearchGroupResultReactor: Reactor {
         case search(String)
     }
     enum Mutation {
-        case setGroupCellReactors([HomeGroup])
+        case setGroupCellReactors([GroupSummary])
     }
 
     struct State {
@@ -35,15 +35,15 @@ final class SearchGroupResultReactor: Reactor {
         }
     }
 
-    private func search(keyword: String) -> Observable<[HomeGroup]> {
+    private func search(keyword: String) -> Observable<[GroupSummary]> {
         return provider.groupService.searchGroup(keyword: keyword, location: nil).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case let .setGroupCellReactors(homeGroups):
-            state.groupCellReactors = homeGroups.map { HomeGroupCellReactor(homeGroup: $0) }
+        case let .setGroupCellReactors(groupSummaries):
+            state.groupCellReactors = groupSummaries.map { HomeGroupCellReactor(groupSummary: $0) }
         }
         return state
     }
