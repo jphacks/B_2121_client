@@ -10,7 +10,7 @@ import RxSwift
 protocol UserServiceType {
     func createUser() -> Single<Void>
     func getMyProfile() -> Single<User>
-    func getMyGroups() -> Single<[ProfileGroup]>
+    func getMyGroups() -> Single<[GroupSummary]>
 }
 
 final class UserService: BaseService, UserServiceType {
@@ -22,7 +22,7 @@ final class UserService: BaseService, UserServiceType {
         return .just(TestData.user())
     }
 
-    func getMyGroups() -> Single<[ProfileGroup]> {
-        return .just(TestData.profileGroups(count: 9))
+    func getMyGroups() -> Single<[GroupSummary]> {
+        return .just(TestData.groupSummaries(count: 9))
     }
 }
