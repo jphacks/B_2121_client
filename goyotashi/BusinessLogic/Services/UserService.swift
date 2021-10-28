@@ -54,7 +54,9 @@ final class UserService: BaseService, UserServiceType {
                         groupId: community.id,
                         groupName: community.name,
                         groupDescription: community.description ?? "",
-                        restaurantCount: 0, memberCount: 0, imageUrls: []
+                        restaurantCount: 0,
+                        memberCount: 0,
+                        imageUrls: []
                     )
                 }
                 return groups
