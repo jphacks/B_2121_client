@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import OpenAPIClient
 
 protocol UserServiceType {
     func createUser() -> Single<Void>
@@ -15,7 +16,18 @@ protocol UserServiceType {
 
 final class UserService: BaseService, UserServiceType {
     func createUser() -> Single<Void> {
-        return .just(())
+        let request = CreateUserRequest(name: "Gohan Daisuki", vendor: .anonymous)
+        return UserAPI.newUser(createUserRequest: request)
+            .map { (response: CreateUserResponse) in
+                let authInfo: AuthInfo = AuthInfo(token: response.authInfo.token, vendor: response.authInfo.vendor.rawValue)
+                let user: User = User(id: response.user.id, name: response.user.name, profileImageUrl: response.user.profileImageUrl ?? "")
+                self.provider.storeService.authStore.authInfo = authInfo
+                self.provider.storeService.authStore.user = user
+
+                print("response: \(response)")
+                return
+            }
+            .asSingle()
     }
 
     func getMyProfile() -> Single<User> {
