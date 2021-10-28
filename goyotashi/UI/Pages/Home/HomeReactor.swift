@@ -23,7 +23,13 @@ final class HomeReactor: Reactor {
         var pageType: PageType = .recommendGroup
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {

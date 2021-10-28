@@ -40,7 +40,7 @@ final class TabBarController: UITabBarController {
         viewControllers = [
             UINavigationController(
                 rootViewController: HomeViewController().then {
-                    $0.reactor = HomeReactor()
+                    $0.reactor = HomeReactor(provider: provider)
                 }
             ),
             UINavigationController(
