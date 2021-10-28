@@ -59,6 +59,8 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
         header.reactor = reactor
 
         // Action
+        reactor.action.onNext(.refresh)
+
         header.plusButton.rx.tap
             .bind { [weak self] _ in
                 let viewController = CreateGroupViewController().then {
