@@ -16,5 +16,11 @@ final class InviteMemberReactor: Reactor {
         var memberCellReactors: [InviteMemberCellReactor] = (0 ..< 8).map { _ in InviteMemberCellReactor() }
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 }
