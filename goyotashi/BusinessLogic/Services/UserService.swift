@@ -11,7 +11,7 @@ import OpenAPIClient
 protocol UserServiceType {
     func createUser() -> Single<Void>
     func getMyProfile() -> Single<User>
-    func getMyGroups() -> Single<[GroupSummary]>
+    func getMyGroups(userId: Int64) -> Single<[GroupSummary]>
 }
 
 final class UserService: BaseService, UserServiceType {
@@ -38,7 +38,20 @@ final class UserService: BaseService, UserServiceType {
             .asSingle()
     }
 
-    func getMyGroups() -> Single<[GroupSummary]> {
-        return .just(TestData.groupSummaries(count: 9))
+    func getMyGroups(userId: Int64) -> Single<[GroupSummary]> {
+        return UserAPI.listUserCommunities(id: userId)
+            .map { (response: ListUserCommunityResponse) in
+                guard let communities = response.communities else { return [] }
+                let groups = communities.map { community in
+                    return GroupSummary(
+                        groupId: community.id,
+                        groupName: community.name,
+                        groupDescription: community.description ?? "",
+                        restaurantCount: 0, memberCount: 0, imageUrls: []
+                    )
+                }
+                return groups
+            }
+            .asSingle()
     }
 }

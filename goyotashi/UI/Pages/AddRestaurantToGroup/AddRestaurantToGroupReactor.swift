@@ -35,7 +35,8 @@ final class AddRestaurantToGroupReactor: Reactor {
     }
 
     private func refresh() -> Observable<[GroupSummary]> {
-        return provider.userService.getMyGroups().asObservable()
+        guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+        return provider.userService.getMyGroups(userId: userId).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
