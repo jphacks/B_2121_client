@@ -54,9 +54,10 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.text = "グループの説明"
     }
 
-    private let groupDescriptionTextView = UITextView().then {
+    private let groupDescriptionTextView = PlaceholderTextView().then {
         $0.font = UIFont(name: FontStyle.medium.rawValue, size: 14)
         $0.textColor = Color.gray01
+        $0.placeholder = "グループの説明を入力"
     }
 
     private let privacyTitleLabel = UILabel().then {
