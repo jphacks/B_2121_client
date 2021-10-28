@@ -10,7 +10,7 @@ protocol ServiceProviderType: AnyObject {
     var restaurantService: RestaurantServiceType { get }
     var groupService: GroupServiceType { get }
     var bookmarkService: BookmarkServiceType { get }
-    var storeService: StoreServiceType { get }
+    var storeService: StoreServiceType { get set }
 }
 
 final class ServiceProvider: ServiceProviderType {
