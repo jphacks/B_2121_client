@@ -104,19 +104,20 @@ final class GroupHeaderView: UIView, View, ViewConstructor {
         // Action
 
         // State
-        reactor.state.map { $0.group.name }
+        reactor.state.map { $0.group?.name }
             .distinctUntilChanged()
             .bind(to: groupNameLabel.rx.text)
             .disposed(by: disposeBag)
 
-        reactor.state.map { ($0.group.members, $0.group.memberCount) }
-            .bind { [weak self] (members, memberCount) in
-                let imageUrlStrings = members.map { $0.profileImageUrl }
-                self?.groupMemberButton.configure(imageUrlStrings: imageUrlStrings, memberCount: memberCount)
+        reactor.state.map { $0.group }
+            .filterNil()
+            .bind { [weak self] group in
+                let imageUrlStrings = group.members.map { $0.profileImageUrl }
+                self?.groupMemberButton.configure(imageUrlStrings: imageUrlStrings, memberCount: group.memberCount)
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.group.description }
+        reactor.state.map { $0.group?.description }
             .distinctUntilChanged()
             .bind(to: descriptionLabel.rx.text)
             .disposed(by: disposeBag)
