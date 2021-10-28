@@ -6,7 +6,7 @@
 //
 
 struct Group {
-    let id: Int
+    let id: Int64
     let name: String
     let description: String
     let memberCount: Int

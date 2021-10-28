@@ -40,7 +40,7 @@ struct TestData {
         let memberCount = Int.random(in: 1 ..< 5)
         let members = (0 ..< memberCount).map { _ in user() }
         return Group(
-            id: randomInt(),
+            id: randomInt64(),
             name: "CAMPHOR-",
             description: "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。",
             memberCount: memberCount,
