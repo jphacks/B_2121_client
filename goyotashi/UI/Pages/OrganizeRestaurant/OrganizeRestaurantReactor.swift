@@ -13,7 +13,9 @@ final class OrganizeRestaurantReactor: Reactor {
         case didSelectItem(IndexPath)
         case remove
     }
-    enum Mutation {}
+    enum Mutation {
+        case setRestaurantCellReactors([GroupRestaurant])
+    }
 
     struct State {
         var restaurantCellReactors: [OrganizeRestaurantCellReactor] = []
@@ -42,5 +44,14 @@ final class OrganizeRestaurantReactor: Reactor {
                 .map { $0.currentState.groupRestaurant }
             return .empty()
         }
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setRestaurantCellReactors(groupRestaurants):
+            state.restaurantCellReactors = groupRestaurants.map { OrganizeRestaurantCellReactor(groupRestaurant: $0) }
+        }
+        return state
     }
 }
