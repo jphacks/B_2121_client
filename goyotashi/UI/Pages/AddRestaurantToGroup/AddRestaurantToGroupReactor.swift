@@ -8,11 +8,15 @@
 import ReactorKit
 
 final class AddRestaurantToGroupReactor: Reactor {
-    enum Action {}
-    enum Mutation {}
+    enum Action {
+        case refresh
+    }
+    enum Mutation {
+        case setGroupCellReactors([GroupSummary])
+    }
 
     struct State {
-        let groupCellReactors: [AddRestaurantToGroupCellReactor] = (0 ..< 9)
+        var groupCellReactors: [AddRestaurantToGroupCellReactor] = (0 ..< 9)
             .map { _ in TestData.groupSummary() }
             .map { AddRestaurantToGroupCellReactor(groupSummary: $0) }
     }
@@ -23,5 +27,22 @@ final class AddRestaurantToGroupReactor: Reactor {
     init(provider: ServiceProviderType) {
         self.provider = provider
         initialState = State()
+    }
+
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .refresh:
+            let summaries = (0 ..< 9).map { _ in TestData.groupSummary() }
+            return .just(Mutation.setGroupCellReactors(summaries))
+        }
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setGroupCellReactors(groupSummaries):
+            state.groupCellReactors = groupSummaries.map { AddRestaurantToGroupCellReactor(groupSummary: $0) }
+        }
+        return state
     }
 }
