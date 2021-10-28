@@ -31,7 +31,11 @@ final class UserService: BaseService, UserServiceType {
     }
 
     func getMyProfile() -> Single<User> {
-        return .just(TestData.user())
+        return UserAPI.getMyProfile()
+            .map { (userDetail: UserDetail) in
+                return User(id: userDetail.id, name: userDetail.name, profileImageUrl: userDetail.profileImageUrl)
+            }
+            .asSingle()
     }
 
     func getMyGroups() -> Single<[GroupSummary]> {
