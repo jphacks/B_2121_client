@@ -10,7 +10,7 @@ import Foundation
 struct TestData {
     static func user() -> User {
         return User(
-            id: randomInt(),
+            id: randomInt64(),
             name: "KoukiNAGATA",
             profileImageUrl: "https://avatars.githubusercontent.com/u/38304075?v=4"
         )
@@ -105,6 +105,10 @@ struct TestData {
     // MARK: - Private Functions
     private static func randomInt() -> Int {
         return Int.random(in: Int.min ..< Int.max)
+    }
+
+    private static func randomInt64() -> Int64 {
+        return Int64.random(in: Int64.min ..< Int64.max)
     }
 
     private static func randomString(length: Int) -> String {
