@@ -30,9 +30,12 @@ final class RecommendGroupReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            let homeGroups = TestData.homeGroups(count: 6)
-            return .just(Mutation.setGroupCellReactors(homeGroups))
+            return getGroups().map(Mutation.setGroupCellReactors)
         }
+    }
+
+    private func getGroups() -> Observable<[HomeGroup]> {
+        return provider.groupService.searchGroup(keyword: "", location: nil).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
