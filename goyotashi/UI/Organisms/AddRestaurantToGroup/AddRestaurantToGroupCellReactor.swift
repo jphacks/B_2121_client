@@ -12,10 +12,14 @@ final class AddRestaurantToGroupCellReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let groupSummary: GroupSummary = TestData.groupSummary()
+        let groupSummary: GroupSummary
     }
 
-    let initialState: State = State()
+    let initialState: State
+
+    init(groupSummary: GroupSummary) {
+        initialState = State(groupSummary: groupSummary)
+    }
 }
 
 extension AddRestaurantToGroupCellReactor: Equatable {

@@ -12,7 +12,9 @@ final class AddRestaurantToGroupReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let groupCellReactors: [AddRestaurantToGroupCellReactor] = (0 ..< 9).map { _ in AddRestaurantToGroupCellReactor() }
+        let groupCellReactors: [AddRestaurantToGroupCellReactor] = (0 ..< 9)
+            .map { _ in TestData.groupSummary() }
+            .map { AddRestaurantToGroupCellReactor(groupSummary: $0) }
     }
 
     let initialState: State
