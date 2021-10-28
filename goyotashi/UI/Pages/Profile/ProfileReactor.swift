@@ -29,6 +29,6 @@ final class ProfileReactor: Reactor {
     }
 
     func createCreateGroupReactor() -> CreateGroupReactor {
-        return CreateGroupReactor()
+        return CreateGroupReactor(provider: provider)
     }
 }
