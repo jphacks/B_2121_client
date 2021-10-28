@@ -88,7 +88,6 @@
 		84AFC401272734FD00B9244E /* ProfileGroupListCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC400272734FD00B9244E /* ProfileGroupListCellReactor.swift */; };
 		84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC40227273E8100B9244E /* RoundBorderDotsButton.swift */; };
 		84AFC4052727419700B9244E /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC4042727419700B9244E /* PlusButton.swift */; };
-		84AFC4072727474100B9244E /* ProfileGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC4062727474100B9244E /* ProfileGroup.swift */; };
 		84AFC40A2727A62A00B9244E /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC4092727A62A00B9244E /* GroupViewController.swift */; };
 		84AFC40C2727A63500B9244E /* GroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC40B2727A63500B9244E /* GroupReactor.swift */; };
 		84AFC40F2727A6C600B9244E /* GroupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC40E2727A6C600B9244E /* GroupHeaderView.swift */; };
@@ -223,7 +222,6 @@
 		84AFC400272734FD00B9244E /* ProfileGroupListCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGroupListCellReactor.swift; sourceTree = "<group>"; };
 		84AFC40227273E8100B9244E /* RoundBorderDotsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBorderDotsButton.swift; sourceTree = "<group>"; };
 		84AFC4042727419700B9244E /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
-		84AFC4062727474100B9244E /* ProfileGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGroup.swift; sourceTree = "<group>"; };
 		84AFC4092727A62A00B9244E /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		84AFC40B2727A63500B9244E /* GroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupReactor.swift; sourceTree = "<group>"; };
 		84AFC40E2727A6C600B9244E /* GroupHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHeaderView.swift; sourceTree = "<group>"; };
@@ -708,7 +706,6 @@
 			isa = PBXGroup;
 			children = (
 				84AFC3E62726E64400B9244E /* HomeGroup.swift */,
-				84AFC4062727474100B9244E /* ProfileGroup.swift */,
 				84B88DE727281804004EB87D /* RestaurantOtherGroup.swift */,
 				84AFC3F227271AA200B9244E /* User.swift */,
 				84AFC4182727E39400B9244E /* GroupRestaurant.swift */,
@@ -1123,7 +1120,6 @@
 				84B88DE4272816E1004EB87D /* RestaurantOtherGroupCell.swift in Sources */,
 				84777757272979610054E15D /* RecommendGroupViewController.swift in Sources */,
 				847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */,
-				84AFC4072727474100B9244E /* ProfileGroup.swift in Sources */,
 				84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */,
 				84AFC3D82726CE7800B9244E /* HomeViewController.swift in Sources */,
 				847777412729473B0054E15D /* AddRestaurantToGroupViewController.swift in Sources */,
