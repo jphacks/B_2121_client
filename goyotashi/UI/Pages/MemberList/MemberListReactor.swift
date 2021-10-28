@@ -9,7 +9,9 @@ import ReactorKit
 
 final class MemberListReactor: Reactor {
     enum Action {
+        case refresh
     }
+
     enum Mutation {
         case setMemberCellReactors([User])
     }
@@ -20,6 +22,14 @@ final class MemberListReactor: Reactor {
     }
 
     let initialState: State = State()
+
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .refresh:
+            let members = (0 ..< 4).map { _ in TestData.user() }
+            return .just(Mutation.setMemberCellReactors(members))
+        }
+    }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state

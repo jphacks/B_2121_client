@@ -70,11 +70,19 @@ final class MemberListViewController: UIViewController, View, ViewConstructor {
     }
 
     func setupViewConstraints() {
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        memberNameLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
     // MARK: - Bind Method
     func bind(reactor: MemberListReactor) {
         // Action
+        reactor.action.onNext(.refresh)
+
         closeButton.rx.tap
             .bind { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
