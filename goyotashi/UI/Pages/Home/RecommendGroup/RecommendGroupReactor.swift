@@ -46,6 +46,6 @@ final class RecommendGroupReactor: Reactor {
 
     // MARK: Create Reactor Methods
     func createGroupReactor(indexPath: IndexPath) -> GroupReactor {
-        return GroupReactor()
+        return GroupReactor(provider: provider)
     }
 }
