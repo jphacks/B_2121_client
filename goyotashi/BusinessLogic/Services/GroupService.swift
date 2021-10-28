@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import OpenAPIClient
 
 protocol GroupServiceType {
     func createGroup(group: Group) -> Single<Void>
@@ -20,7 +21,25 @@ final class GroupService: BaseService, GroupServiceType {
     }
 
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]> {
-        return .just(TestData.groupSummaries(count: 9))
+        // TODO: get restaurantCount
+        // TODO: get memberCount
+        // TODO: get imageUrls
+        return CommunityAPI.searchCommunities(keyword: keyword)
+            .map { (response: SearchCommunityResponse) in
+                guard let communities = response.communities else { return [] }
+                let groups = communities.map { community in
+                    return GroupSummary(
+                        groupId: community.id,
+                        groupName: community.name,
+                        groupDescription: community.description ?? "",
+                        restaurantCount: 0,
+                        memberCount: 0,
+                        imageUrls: []
+                    )
+                }
+                return groups
+            }
+            .asSingle()
     }
 
     func getGroup(id: String) -> Single<Group> {
