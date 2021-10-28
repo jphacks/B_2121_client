@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import OpenAPIClient
 
 protocol BookmarkServiceType {
     func getBookmarkedGroups(userId: Int64) -> Single<[GroupSummary]>
@@ -15,7 +16,25 @@ protocol BookmarkServiceType {
 
 final class BookmarkService: BaseService, BookmarkServiceType {
     func getBookmarkedGroups(userId: Int64) -> Single<[GroupSummary]> {
-        return .just(TestData.groupSummaries(count: 9))
+        // TODO: get restaurantCount
+        // TODO: get memberCount
+        // TODO: get imageUrls
+        return BookmarkAPI.userIdBookmarkGet(id: userId)
+            .map { (response: ListUserBookmarkResponse) in
+                guard let communities = response.communities else { return [] }
+                let groups = communities.map { community in
+                    return GroupSummary(
+                        groupId: community.id,
+                        groupName: community.name,
+                        groupDescription: community.description ?? "",
+                        restaurantCount: 0,
+                        memberCount: 0,
+                        imageUrls: []
+                    )
+                }
+                return groups
+            }
+            .asSingle()
     }
 
     func createBookmark(userId: String, groupId: String) -> Single<Void> {
