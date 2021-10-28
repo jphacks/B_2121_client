@@ -1,5 +1,9 @@
 PODS:
+  - AnyCodable-FlightSchool (0.6.2)
   - Kingfisher (7.1.1)
+  - OpenAPIClient (0.1.0):
+    - AnyCodable-FlightSchool (~> 0.6.1)
+    - RxSwift (~> 5.1.3)
   - R.swift (5.4.0):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
@@ -28,6 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - Kingfisher (~> 7.0)
+  - OpenAPIClient (from `./OpenAPIClient`)
   - R.swift
   - ReactorKit
   - ReusableKit/RxSwift
@@ -39,6 +44,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AnyCodable-FlightSchool
     - Kingfisher
     - R.swift
     - R.swift.Library
@@ -54,8 +60,14 @@ SPEC REPOS:
     - Then
     - WeakMapTable
 
+EXTERNAL SOURCES:
+  OpenAPIClient:
+    :path: "./OpenAPIClient"
+
 SPEC CHECKSUMS:
+  AnyCodable-FlightSchool: ac75ed9bae659e16a41ebfa6c71a663d6f2c111c
   Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
+  OpenAPIClient: c092e613ab85d1163299040c54ae5dc95cc19add
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   ReactorKit: 6d894a20c3d508344320901cd8e386fde92df4b6
@@ -70,6 +82,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 2cbfa904936a28932cf9dd6b4ac483a748f7495d
+PODFILE CHECKSUM: 3f767ea4c6addae8acae2dd3142b3eabc0ef6bfa
 
 COCOAPODS: 1.10.1

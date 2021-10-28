@@ -15,7 +15,7 @@ target 'goyotashi' do
   pod 'Kingfisher', '~> 7.0'
   pod 'SegementSlide', '3.0.1'
   pod "RxGesture"
-
+  pod 'OpenAPIClient', :path => './OpenAPIClient'
   target 'goyotashiTests' do
     inherit! :search_paths
     # Pods for testing
