@@ -5,8 +5,9 @@
 - 機能：　feature/xxx
 - バグ：　fix/xxx
 
-## その他
+## 開発の流れ
 
-- まずIssueを立てる
-- PRにはIssueを紐づける
-- 誰かがレビューしてからマージ
+- まず[issue](https://github.com/jphacks/B_2121_client/issues)を立てる
+- PRには関連するissueを紐づける  
+  > close #xxx
+- reviewがapproveされたのちmergeする
