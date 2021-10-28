@@ -66,5 +66,8 @@ extension SceneDelegate {
         if provider.storeService.authStore.user == nil {
             provider.userService.createUser().subscribe()
         }
+        if let token = provider.storeService.authStore.authInfo?.token {
+            OpenAPIClient.customHeaders["Authorization"] = token
+        }
     }
 }
