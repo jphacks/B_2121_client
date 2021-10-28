@@ -22,7 +22,13 @@ final class GroupReactor: Reactor {
         let isMember: Bool = true
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
@@ -43,22 +49,22 @@ final class GroupReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createOrganizeRestaurantReactor() -> OrganizeRestaurantReactor {
-        return OrganizeRestaurantReactor()
+        return OrganizeRestaurantReactor(provider: provider)
     }
 
     func createEditGroupReactor() -> EditGroupReactor {
-        return EditGroupReactor(group: currentState.group)
+        return EditGroupReactor(provider: provider, group: currentState.group)
     }
 
     func createInviteMemberReactor() -> InviteMemberReactor {
-        return InviteMemberReactor()
+        return InviteMemberReactor(provider: provider)
     }
 
     func createSearchRestaurantReactor() -> SearchRestaurantReactor {
-        return SearchRestaurantReactor()
+        return SearchRestaurantReactor(provider: provider)
     }
 
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {
-        return RestaurantReactor()
+        return RestaurantReactor(provider: provider)
     }
 }

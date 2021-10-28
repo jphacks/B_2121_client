@@ -15,5 +15,11 @@ final class AddRestaurantToGroupReactor: Reactor {
         let groupCellReactors: [AddRestaurantToGroupCellReactor] = (0 ..< 9).map { _ in AddRestaurantToGroupCellReactor() }
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 }

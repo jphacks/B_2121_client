@@ -19,7 +19,13 @@ final class RecommendGroupReactor: Reactor {
         var groupCellReactors: [HomeGroupCellReactor] = []
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
@@ -40,6 +46,6 @@ final class RecommendGroupReactor: Reactor {
 
     // MARK: Create Reactor Methods
     func createGroupReactor(indexPath: IndexPath) -> GroupReactor {
-        return GroupReactor()
+        return GroupReactor(provider: provider)
     }
 }

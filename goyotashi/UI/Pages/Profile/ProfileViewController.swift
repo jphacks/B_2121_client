@@ -76,14 +76,16 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
 
     // MARK: - Override Functions
     override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
+        guard let reactor = reactor else { return nil }
+
         switch index {
         case 0:
             return ProfileGroupListViewController().then {
-                $0.reactor = ProfileGroupListReactor()
+                $0.reactor = reactor.createProfileGroupListReactor()
             }
         default:
             return ProfileGroupListViewController().then {
-                $0.reactor = ProfileGroupListReactor()
+                $0.reactor = reactor.createProfileGroupListReactor()
             }
         }
     }

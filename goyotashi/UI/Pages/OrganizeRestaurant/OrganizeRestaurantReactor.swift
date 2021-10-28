@@ -18,7 +18,13 @@ final class OrganizeRestaurantReactor: Reactor {
         var restaurantCellReactors: [OrganizeRestaurantCellReactor] = TestData.groupRestaurants(count: 9).map { OrganizeRestaurantCellReactor(groupRestaurant: $0) }
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {

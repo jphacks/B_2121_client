@@ -20,7 +20,13 @@ final class RestaurantReactor: Reactor {
         var groupCellReactors: [RestaurantOtherGroupCellReactor] = []
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
@@ -41,6 +47,6 @@ final class RestaurantReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createAddRestaurantToGroupReactor() -> AddRestaurantToGroupReactor {
-        return AddRestaurantToGroupReactor()
+        return AddRestaurantToGroupReactor(provider: provider)
     }
 }

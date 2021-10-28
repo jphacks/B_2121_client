@@ -32,8 +32,10 @@ final class EditGroupReactor: Reactor {
     }
 
     let initialState: State
+    private let provider: ServiceProviderType
 
-    init(group: Group) {
+    init(provider: ServiceProviderType, group: Group) {
+        self.provider = provider
         initialState = State(group: group)
     }
 

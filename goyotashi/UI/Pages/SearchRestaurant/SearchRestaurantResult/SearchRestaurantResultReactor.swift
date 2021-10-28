@@ -19,7 +19,13 @@ final class SearchRestaurantResultReactor: Reactor {
         var restaurantCellReactors: [SearchRestaurantCellReactor] = []
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {

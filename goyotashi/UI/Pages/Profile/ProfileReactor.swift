@@ -15,10 +15,20 @@ final class ProfileReactor: Reactor {
         let user: User = TestData.user()
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     // MARK: - Create Reactor Methods
+    func createProfileGroupListReactor() -> ProfileGroupListReactor {
+        return ProfileGroupListReactor(provider: provider)
+    }
+
     func createCreateGroupReactor() -> CreateGroupReactor {
-        return CreateGroupReactor()
+        return CreateGroupReactor(provider: provider)
     }
 }
