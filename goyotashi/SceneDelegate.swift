@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OpenAPIClient
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         if let windowScene = scene as? UIWindowScene {
+            configure()
+
             let window = UIWindow(windowScene: windowScene)
             window.backgroundColor = .white
             window.rootViewController = TabBarController(provider: provider)
@@ -54,4 +57,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+}
+
+extension SceneDelegate {
+    private func configure() {
+        OpenAPIClient.basePath = "https://api.goyotashi.kmconner.net"
+
+        if provider.storeService.authStore.user == nil {
+            provider.userService.createUser().subscribe()
+        }
+    }
 }
