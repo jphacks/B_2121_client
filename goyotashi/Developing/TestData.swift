@@ -52,7 +52,7 @@ struct TestData {
 
     static func restaurantOtherGroup() -> RestaurantOtherGroup {
         return RestaurantOtherGroup(
-            groupId: randomString(length: 8),
+            groupId: randomInt(),
             groupName: "そこまでランチして委員会",
             restaurantCount: 9,
             memberCount: 3,
@@ -103,6 +103,10 @@ struct TestData {
     }
 
     // MARK: - Private Functions
+    private static func randomInt() -> Int {
+        return Int.random(in: Int.min ..< Int.max)
+    }
+
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)
