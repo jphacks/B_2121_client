@@ -36,7 +36,7 @@ final class SearchRestaurantResultReactor: Reactor {
     }
 
     private func search(keyword: String) -> Observable<[Restaurant]> {
-        return .just(TestData.restaurants(count: Int.random(in: 0 ..< 10)))
+        return provider.restaurantService.searchRestaurants(keyword: keyword, location: nil).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
