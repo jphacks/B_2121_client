@@ -49,4 +49,13 @@ extension PlaceholderTextView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         placeholderLabel.isHidden = textView.text != ""
     }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
 }
