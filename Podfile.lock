@@ -27,6 +27,7 @@ PODS:
   - SegementSlide (3.0.1)
   - SnapKit (5.0.1)
   - SwiftLint (0.45.0)
+  - SwiftyUserDefaults (5.3.0)
   - Then (2.7.0)
   - WeakMapTable (1.2.0)
 
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - SegementSlide (= 3.0.1)
   - SnapKit (~> 5.0.0)
   - SwiftLint
+  - SwiftyUserDefaults (~> 5.0)
   - Then
 
 SPEC REPOS:
@@ -57,6 +59,7 @@ SPEC REPOS:
     - SegementSlide
     - SnapKit
     - SwiftLint
+    - SwiftyUserDefaults
     - Then
     - WeakMapTable
 
@@ -79,9 +82,10 @@ SPEC CHECKSUMS:
   SegementSlide: 83b56ffb66b9c0edc4e4f2a74229309c62915db3
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
+  SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 3f767ea4c6addae8acae2dd3142b3eabc0ef6bfa
+PODFILE CHECKSUM: 4bd5d4c6a7308676d3c12a753a27bb8b7aa5662c
 
 COCOAPODS: 1.10.1
