@@ -212,4 +212,110 @@ open class UserAPI {
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
+
+    /**
+     Leave a community
+     
+     - parameter id: (path)  
+     - parameter communityId: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Void>
+     */
+    open class func userIdCommunitiesCommunityIdDelete(id: Int64, communityId: Int64, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<Void> {
+        return Observable.create { observer -> Disposable in
+            userIdCommunitiesCommunityIdDeleteWithRequestBuilder(id: id, communityId: communityId).execute(apiResponseQueue) { result -> Void in
+                switch result {
+                case .success:
+                    observer.onNext(())
+                case let .failure(error):
+                    observer.onError(error)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
+    /**
+     Leave a community
+     - DELETE /user/{id}/communities/{community_id}
+     - API Key:
+       - type: apiKey Authorization 
+       - name: token
+     - parameter id: (path)  
+     - parameter communityId: (path)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func userIdCommunitiesCommunityIdDeleteWithRequestBuilder(id: Int64, communityId: Int64) -> RequestBuilder<Void> {
+        var localVariablePath = "/user/{id}/communities/{community_id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let communityIdPreEscape = "\(APIHelper.mapValueToPathItem(communityId))"
+        let communityIdPostEscape = communityIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{community_id}", with: communityIdPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClient.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+     Join a community
+     
+     - parameter joinCommunityRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Void>
+     */
+    open class func userMeCommunitiesPost(joinCommunityRequest: JoinCommunityRequest, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<Void> {
+        return Observable.create { observer -> Disposable in
+            userMeCommunitiesPostWithRequestBuilder(joinCommunityRequest: joinCommunityRequest).execute(apiResponseQueue) { result -> Void in
+                switch result {
+                case .success:
+                    observer.onNext(())
+                case let .failure(error):
+                    observer.onError(error)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
+    /**
+     Join a community
+     - POST /user/me/communities
+     - API Key:
+       - type: apiKey Authorization 
+       - name: token
+     - parameter joinCommunityRequest: (body)  
+     - returns: RequestBuilder<Void> 
+     */
+    open class func userMeCommunitiesPostWithRequestBuilder(joinCommunityRequest: JoinCommunityRequest) -> RequestBuilder<Void> {
+        let localVariablePath = "/user/me/communities"
+        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: joinCommunityRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClient.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
 }

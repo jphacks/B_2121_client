@@ -51,7 +51,7 @@ Void (empty response body)
 
 # **userIdBookmarkGet**
 ```swift
-    open class func userIdBookmarkGet(id: Int64) -> Observable<PageInfo>
+    open class func userIdBookmarkGet(id: Int64) -> Observable<ListUserBookmarkResponse>
 ```
 
 Get bookmarking list of the specified user
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PageInfo**](PageInfo.md)
+[**ListUserBookmarkResponse**](ListUserBookmarkResponse.md)
 
 ### Authorization
 

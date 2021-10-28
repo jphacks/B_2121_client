@@ -75,9 +75,9 @@ open class BookmarkAPI {
      
      - parameter id: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Observable<PageInfo>
+     - returns: Observable<ListUserBookmarkResponse>
      */
-    open class func userIdBookmarkGet(id: Int64, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<PageInfo> {
+    open class func userIdBookmarkGet(id: Int64, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<ListUserBookmarkResponse> {
         return Observable.create { observer -> Disposable in
             userIdBookmarkGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -99,9 +99,9 @@ open class BookmarkAPI {
        - type: apiKey Authorization 
        - name: token
      - parameter id: (path)  
-     - returns: RequestBuilder<PageInfo> 
+     - returns: RequestBuilder<ListUserBookmarkResponse> 
      */
-    open class func userIdBookmarkGetWithRequestBuilder(id: Int64) -> RequestBuilder<PageInfo> {
+    open class func userIdBookmarkGetWithRequestBuilder(id: Int64) -> RequestBuilder<ListUserBookmarkResponse> {
         var localVariablePath = "/user/{id}/bookmark"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -117,7 +117,7 @@ open class BookmarkAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<PageInfo>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ListUserBookmarkResponse>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

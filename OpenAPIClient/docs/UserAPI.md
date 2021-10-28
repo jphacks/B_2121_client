@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**listUserCommunities**](UserAPI.md#listusercommunities) | **GET** /user/{id}/communities | Get communities where the specified user joins
 [**newUser**](UserAPI.md#newuser) | **POST** /user | Create a new user
 [**uploadProfileImage**](UserAPI.md#uploadprofileimage) | **POST** /user/profile | 
+[**userIdCommunitiesCommunityIdDelete**](UserAPI.md#useridcommunitiescommunityiddelete) | **DELETE** /user/{id}/communities/{community_id} | Leave a community
+[**userMeCommunitiesPost**](UserAPI.md#usermecommunitiespost) | **POST** /user/me/communities | Join a community
 
 
 # **getMyProfile**
@@ -157,6 +159,84 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: image/jpeg
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userIdCommunitiesCommunityIdDelete**
+```swift
+    open class func userIdCommunitiesCommunityIdDelete(id: Int64, communityId: Int64) -> Observable<Void>
+```
+
+Leave a community
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let id = 987 // Int64 | 
+let communityId = 987 // Int64 | 
+
+// TODO RxSwift sample code not yet implemented. To contribute, please open a ticket via http://github.com/OpenAPITools/openapi-generator/issues/new
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int64** |  | 
+ **communityId** | **Int64** |  | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userMeCommunitiesPost**
+```swift
+    open class func userMeCommunitiesPost(joinCommunityRequest: JoinCommunityRequest) -> Observable<Void>
+```
+
+Join a community
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let joinCommunityRequest = joinCommunityRequest(communityId: 123) // JoinCommunityRequest | 
+
+// TODO RxSwift sample code not yet implemented. To contribute, please open a ticket via http://github.com/OpenAPITools/openapi-generator/issues/new
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **joinCommunityRequest** | [**JoinCommunityRequest**](JoinCommunityRequest.md) |  | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

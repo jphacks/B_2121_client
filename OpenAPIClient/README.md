@@ -43,6 +43,8 @@ Class | Method | HTTP request | Description
 *UserAPI* | [**listUserCommunities**](docs/UserAPI.md#listusercommunities) | **GET** /user/{id}/communities | Get communities where the specified user joins
 *UserAPI* | [**newUser**](docs/UserAPI.md#newuser) | **POST** /user | Create a new user
 *UserAPI* | [**uploadProfileImage**](docs/UserAPI.md#uploadprofileimage) | **POST** /user/profile | 
+*UserAPI* | [**userIdCommunitiesCommunityIdDelete**](docs/UserAPI.md#useridcommunitiescommunityiddelete) | **DELETE** /user/{id}/communities/{community_id} | Leave a community
+*UserAPI* | [**userMeCommunitiesPost**](docs/UserAPI.md#usermecommunitiespost) | **POST** /user/me/communities | Join a community
 
 
 ## Documentation For Models
@@ -60,10 +62,12 @@ Class | Method | HTTP request | Description
  - [CreateUserRequest](docs/CreateUserRequest.md)
  - [CreateUserResponse](docs/CreateUserResponse.md)
  - [InlineObject](docs/InlineObject.md)
+ - [JoinCommunityRequest](docs/JoinCommunityRequest.md)
  - [ListCommunityRestaurantsResponse](docs/ListCommunityRestaurantsResponse.md)
  - [ListCommunityRestaurantsResponseAllOf](docs/ListCommunityRestaurantsResponseAllOf.md)
  - [ListCommunityUsersResponse](docs/ListCommunityUsersResponse.md)
  - [ListCommunityUsersResponseAllOf](docs/ListCommunityUsersResponseAllOf.md)
+ - [ListUserBookmarkResponse](docs/ListUserBookmarkResponse.md)
  - [ListUserCommunityResponse](docs/ListUserCommunityResponse.md)
  - [Location](docs/Location.md)
  - [PageInfo](docs/PageInfo.md)
