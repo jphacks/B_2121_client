@@ -65,6 +65,6 @@ final class GroupReactor: Reactor {
     }
 
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {
-        return RestaurantReactor()
+        return RestaurantReactor(provider: provider)
     }
 }
