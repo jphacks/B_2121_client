@@ -66,11 +66,11 @@ final class CountableGroupMemberButton: UIButton {
         }
     }
 
-    func configure(imageUrlStrings: [String]) {
+    func configure(imageUrlStrings: [String?]) {
         let imageUrls: [URL?] = (0 ..< 3).map { index in
             if imageUrlStrings.indices.contains(index) {
                 let urlString = imageUrlStrings[index]
-                return URL(string: urlString)
+                return URL(string: urlString ?? "")
             } else {
                 return nil
             }
@@ -85,9 +85,9 @@ final class CountableGroupMemberButton: UIButton {
         }
     }
 
-    func configure(urlStringPair: (String, String), memberCount: Int) {
-        memberIconViews[0].imageView.kf.setImage(with: URL(string: urlStringPair.0), placeholder: R.image.dish())
-        memberIconViews[1].imageView.kf.setImage(with: URL(string: urlStringPair.1), placeholder: R.image.dish())
+    func configure(urlStringPair: (String?, String?), memberCount: Int) {
+        memberIconViews[0].imageView.kf.setImage(with: URL(string: urlStringPair.0 ?? ""), placeholder: R.image.dish())
+        memberIconViews[1].imageView.kf.setImage(with: URL(string: urlStringPair.1 ?? ""), placeholder: R.image.dish())
         memberIconViews[2].imageView.image = nil
         memberIconViews[2].countLabel.text = "\(memberCount - 2)"
     }

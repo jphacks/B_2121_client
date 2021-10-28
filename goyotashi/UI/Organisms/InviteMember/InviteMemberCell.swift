@@ -72,6 +72,7 @@ final class InviteMemberCell: UICollectionViewCell, View, ViewConstructor {
         // State
         reactor.state.map { $0.member.profileImageUrl }
             .distinctUntilChanged()
+            .filterNil()
             .bind { [weak self] urlString in
                 self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
             }

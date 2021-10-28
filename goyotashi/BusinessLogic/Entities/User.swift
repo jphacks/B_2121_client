@@ -10,7 +10,7 @@ import SwiftyUserDefaults
 struct User {
     let id: Int64
     let name: String
-    let profileImageUrl: String
+    let profileImageUrl: String?
 }
 
 extension User: Equatable {
