@@ -12,25 +12,25 @@ final class HomeGroupCellReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        let homeGroup: HomeGroup
+        let groupSummary: GroupSummary
         var description: String {
-            return "\(homeGroup.restaurantCount)件のお店 / \(homeGroup.memberCount)人のメンバー"
+            return "\(groupSummary.restaurantCount)件のお店 / \(groupSummary.memberCount)人のメンバー"
         }
 
-        init(homeGroup: HomeGroup) {
-            self.homeGroup = homeGroup
+        init(groupSummary: GroupSummary) {
+            self.groupSummary = groupSummary
         }
     }
 
     let initialState: State
 
-    init(homeGroup: HomeGroup) {
-        initialState = State(homeGroup: homeGroup)
+    init(groupSummary: GroupSummary) {
+        initialState = State(groupSummary: groupSummary)
     }
 }
 
 extension HomeGroupCellReactor: Equatable {
     static func == (lhs: HomeGroupCellReactor, rhs: HomeGroupCellReactor) -> Bool {
-        return lhs.currentState.homeGroup.groupId == rhs.currentState.homeGroup.groupId
+        return lhs.currentState.groupSummary.groupId == rhs.currentState.groupSummary.groupId
     }
 }
