@@ -22,13 +22,14 @@ final class EditGroupReactor: Reactor {
     struct State {
         let uneditedGroup: Group
         var groupName: String
-        var groupDescription: String = ""
+        var groupDescription: String
         let members: [User]
         var isPublic: Bool
 
         init(group: Group) {
             self.uneditedGroup = group
             self.groupName = group.name
+            self.groupDescription = group.description
             self.members = group.members
             self.isPublic = group.isPublic
         }
