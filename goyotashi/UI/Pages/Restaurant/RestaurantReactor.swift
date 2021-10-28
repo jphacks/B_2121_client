@@ -32,16 +32,19 @@ final class RestaurantReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            let restaurantOtherGroups = TestData.restaurantOtherGroups(count: 9)
             return .merge(
                 getRestaurant().map(Mutation.setRestaurant),
-                .just(Mutation.setGroupCellReactors(restaurantOtherGroups))
+                getOtherGroups().map(Mutation.setGroupCellReactors)
             )
         }
     }
 
     private func getRestaurant() -> Observable<Restaurant> {
         return provider.restaurantService.getRestaurant(restaurantId: "restaurantId").asObservable()
+    }
+
+    private func getOtherGroups() -> Observable<[RestaurantOtherGroup]> {
+        return .just(TestData.restaurantOtherGroups(count: 1))
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
