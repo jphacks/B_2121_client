@@ -24,7 +24,7 @@ struct TestData {
 
     static func groupRestaurant() -> GroupRestaurant {
         return GroupRestaurant(
-            restaurantId: randomString(length: 8),
+            restaurantId: randomInt(),
             imageUrl: restaurantImageUrlString(),
             restaurantName: "和洋キッチン松之助"
         )
