@@ -45,7 +45,7 @@ final class TabBarController: UITabBarController {
             ),
             UINavigationController(
                 rootViewController: ProfileViewController().then {
-                    $0.reactor = ProfileReactor()
+                    $0.reactor = ProfileReactor(provider: provider)
                 }
             )
         ]
