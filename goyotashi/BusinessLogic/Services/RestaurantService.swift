@@ -8,7 +8,11 @@
 import RxSwift
 
 protocol RestaurantServiceType {
+    func getRestaurants(groupId: String) -> Single<[GroupRestaurant]>
 }
 
 final class RestaurantService: BaseService, RestaurantServiceType {
+    func getRestaurants(groupId: String) -> Single<[GroupRestaurant]> {
+        return .just(TestData.groupRestaurants(count: 9))
+    }
 }
