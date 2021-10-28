@@ -8,7 +8,11 @@
 import RxSwift
 
 protocol BookmarkServiceType {
+    func getBookmarkedGroups(userId: String) -> Single<[ProfileGroup]>
 }
 
 final class BookmarkService: BaseService, BookmarkServiceType {
+    func getBookmarkedGroups(userId: String) -> Single<[ProfileGroup]> {
+        return .just(TestData.profileGroups(count: 9))
+    }
 }
