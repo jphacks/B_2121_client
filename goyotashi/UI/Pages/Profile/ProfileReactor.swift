@@ -8,11 +8,15 @@
 import ReactorKit
 
 final class ProfileReactor: Reactor {
-    enum Action {}
-    enum Mutation {}
+    enum Action {
+        case refresh
+    }
+    enum Mutation {
+        case setUser(User)
+    }
 
     struct State {
-        let user: User = TestData.user()
+        var user: User?
     }
 
     let initialState: State
@@ -21,6 +25,17 @@ final class ProfileReactor: Reactor {
     init(provider: ServiceProviderType) {
         self.provider = provider
         initialState = State()
+    }
+
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .refresh:
+            return refresh().map(Mutation.setUser)
+        }
+    }
+
+    private func refresh() -> Observable<User> {
+        provider.userService.getMyProfile().asObservable()
     }
 
     // MARK: - Create Reactor Methods
