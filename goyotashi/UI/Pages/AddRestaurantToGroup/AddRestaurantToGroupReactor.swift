@@ -35,21 +35,7 @@ final class AddRestaurantToGroupReactor: Reactor {
     }
 
     private func refresh() -> Observable<[GroupSummary]> {
-        return provider.userService.getMyGroups()
-            .map { (profileGroups: [ProfileGroup]) -> [GroupSummary] in
-                let groupSummaries = profileGroups.map { profileGroup in
-                    GroupSummary(
-                        groupId: profileGroup.groupId,
-                        groupName: profileGroup.groupName,
-                        groupDescription: "",
-                        restaurantCount: profileGroup.restaurantCount,
-                        memberCount: profileGroup.memberCount,
-                        imageUrls: profileGroup.imageUrls
-                    )
-                }
-                return groupSummaries
-            }
-            .asObservable()
+        return provider.userService.getMyGroups().asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
