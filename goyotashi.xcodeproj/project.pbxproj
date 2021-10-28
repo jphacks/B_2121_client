@@ -464,6 +464,13 @@
 			path = RestaurantMap;
 			sourceTree = "<group>";
 		};
+		84A18FA8272B0BAA0073C770 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -696,6 +703,7 @@
 			children = (
 				84AFC3E52726E5DB00B9244E /* Entities */,
 				840F19512729E9D2009BC1ED /* Services */,
+				84A18FA8272B0BAA0073C770 /* Stores */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
