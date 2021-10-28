@@ -11,13 +11,22 @@ final class MemberListReactor: Reactor {
     enum Action {
     }
     enum Mutation {
-        case setGroupName(String)
-        case setIsPublic(Bool)
+        case setMemberCellReactors([User])
     }
 
     struct State {
         let members: [User] = (0 ..< 4).map { _ in TestData.user() }
+        var memberCellReactors: [MemberCellReactor] = []
     }
 
     let initialState: State = State()
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setMemberCellReactors(members):
+            state.memberCellReactors = members.map { MemberCellReactor(member: $0) }
+        }
+        return state
+    }
 }
