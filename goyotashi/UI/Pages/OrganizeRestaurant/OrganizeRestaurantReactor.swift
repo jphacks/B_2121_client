@@ -15,7 +15,7 @@ final class OrganizeRestaurantReactor: Reactor {
     enum Mutation {}
 
     struct State {
-        var restaurantCellReactors: [OrganizeRestaurantCellReactor] = TestData.groupRestaurants(count: 9).map { OrganizeRestaurantCellReactor(groupRestaurant: $0) }
+        var restaurantCellReactors: [OrganizeRestaurantCellReactor] = []
     }
 
     let initialState: State
