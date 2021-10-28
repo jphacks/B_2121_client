@@ -23,11 +23,8 @@ final class MemberListViewController: UIViewController, View, ViewConstructor {
         $0.setImage(R.image.close(), for: .normal)
     }
 
-    // 出ない
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
-        $0.estimatedItemSize =  MemberCell.Const.itemSize
-        $0.minimumLineSpacing = 24
-        $0.minimumInteritemSpacing = 8
+        $0.itemSize =  MemberCell.Const.itemSize
         $0.scrollDirection = .vertical
     }).then {
         $0.register(Reusable.memberCell)
@@ -36,31 +33,16 @@ final class MemberListViewController: UIViewController, View, ViewConstructor {
         $0.alwaysBounceVertical = true
     }
 
-    // 出ない
-    private let memberNameLabel = UILabel().then {
-        $0.apply(fontStyle: .medium, size: 14, color: Color.gray01)
-        $0.text="aaa"
-    }
-
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         setupViewConstraints()
-
-        // これは出る
-        let label = UILabel()
-        label.text = "Swift"
-        label.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
-        label.textColor = UIColor.red
-
-        view.addSubview(label)
     }
 
     // MARK: - Setup Methods
     func setupViews() {
-        view.addSubview(memberNameLabel)
         view.addSubview(collectionView)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
@@ -71,10 +53,8 @@ final class MemberListViewController: UIViewController, View, ViewConstructor {
 
     func setupViewConstraints() {
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        memberNameLabel.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(16)
         }
     }
 

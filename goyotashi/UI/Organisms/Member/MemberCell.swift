@@ -12,11 +12,10 @@ import Kingfisher
 final class MemberCell: UICollectionViewCell, View, ViewConstructor {
 
     struct Const {
-        static let aspectRatio: CGFloat = 1.42
-        static let imageViewWidth: CGFloat = (DeviceSize.screenWidth - 32 - 8) / 2
-        static let imageViewHeight: CGFloat = imageViewWidth / aspectRatio
-        static let cellWidth: CGFloat = imageViewWidth
-        static let cellHeight: CGFloat = imageViewHeight + 28
+        static let imageViewWidth: CGFloat = 44
+        static let imageViewHeight: CGFloat = 44
+        static let cellWidth: CGFloat = DeviceSize.screenWidth - 32
+        static let cellHeight: CGFloat = imageViewHeight + 16
         static let itemSize: CGSize = CGSize(width: cellWidth, height: cellHeight)
     }
 
@@ -57,7 +56,8 @@ final class MemberCell: UICollectionViewCell, View, ViewConstructor {
             $0.width.equalTo(Const.imageViewWidth)
         }
         memberNameLabel.snp.makeConstraints {
-            $0.right.equalToSuperview().inset(8)
+            $0.centerY.equalToSuperview()
+            $0.left.equalToSuperview().inset(48)
         }
     }
 
