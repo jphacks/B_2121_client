@@ -72,7 +72,7 @@ struct TestData {
 
     static func restaurant() -> Restaurant {
         return Restaurant(
-            id: randomString(length: 8),
+            id: randomInt(),
             imageUrl: restaurantImageUrlString(),
             name: "とんかつおくだ",
             description: "定食・食堂・ハンバーグ・洋食",
