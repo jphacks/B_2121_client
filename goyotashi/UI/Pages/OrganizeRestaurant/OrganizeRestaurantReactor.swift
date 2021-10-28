@@ -32,7 +32,7 @@ final class OrganizeRestaurantReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            return .empty()
+            return getGroupRestaurants().map(Mutation.setRestaurantCellReactors)
         case let .didSelectItem(indexPath):
             currentState.restaurantCellReactors[indexPath.row].action.onNext(.toggleIsRemovable)
             return .empty()
@@ -44,6 +44,10 @@ final class OrganizeRestaurantReactor: Reactor {
                 .map { $0.currentState.groupRestaurant }
             return .empty()
         }
+    }
+
+    private func getGroupRestaurants() -> Observable<[GroupRestaurant]> {
+        return provider.restaurantService.getRestaurants(groupId: "groupId").asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
