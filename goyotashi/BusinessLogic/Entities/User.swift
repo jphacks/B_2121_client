@@ -6,13 +6,13 @@
 //
 
 struct User {
-    let userId: String
-    let userName: String
+    let id: Int
+    let name: String
     let profileImageUrl: String
 }
 
 extension User: Equatable {
     static func == (lhs: User, rhs: User) -> Bool {
-        return lhs.userId == rhs.userId
+        return lhs.id == rhs.id
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 struct TestData {
     static func user() -> User {
         return User(
-            userId: randomString(length: 8),
-            userName: "KoukiNAGATA",
+            id: randomInt(),
+            name: "KoukiNAGATA",
             profileImageUrl: "https://avatars.githubusercontent.com/u/38304075?v=4"
         )
     }
@@ -24,7 +24,7 @@ struct TestData {
 
     static func groupRestaurant() -> GroupRestaurant {
         return GroupRestaurant(
-            restaurantId: randomString(length: 8),
+            restaurantId: randomInt(),
             imageUrl: restaurantImageUrlString(),
             restaurantName: "和洋キッチン松之助"
         )
@@ -40,7 +40,7 @@ struct TestData {
         let memberCount = Int.random(in: 1 ..< 5)
         let members = (0 ..< memberCount).map { _ in user() }
         return Group(
-            id: randomString(length: 8),
+            id: randomInt(),
             name: "CAMPHOR-",
             description: "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。",
             memberCount: memberCount,
@@ -52,7 +52,7 @@ struct TestData {
 
     static func restaurantOtherGroup() -> RestaurantOtherGroup {
         return RestaurantOtherGroup(
-            groupId: randomString(length: 8),
+            groupId: randomInt(),
             groupName: "そこまでランチして委員会",
             restaurantCount: 9,
             memberCount: 3,
@@ -72,7 +72,7 @@ struct TestData {
 
     static func restaurant() -> Restaurant {
         return Restaurant(
-            id: randomString(length: 8),
+            id: randomInt(),
             imageUrl: restaurantImageUrlString(),
             name: "とんかつおくだ",
             description: "定食・食堂・ハンバーグ・洋食",
@@ -89,7 +89,7 @@ struct TestData {
 
     static func groupSummary() -> GroupSummary {
         return GroupSummary(
-            groupId: randomString(length: 8),
+            groupId: randomInt(),
             groupName: "CAMPHOR-",
             groupDescription: "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。",
             restaurantCount: Int.random(in: 2 ..< 16),
@@ -103,6 +103,10 @@ struct TestData {
     }
 
     // MARK: - Private Functions
+    private static func randomInt() -> Int {
+        return Int.random(in: Int.min ..< Int.max)
+    }
+
     private static func randomString(length: Int) -> String {
         let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)

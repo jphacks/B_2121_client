@@ -77,7 +77,7 @@ final class InviteMemberCell: UICollectionViewCell, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.member.userName }
+        reactor.state.map { $0.member.name }
             .distinctUntilChanged()
             .bind(to: userNameLabel.rx.text)
             .disposed(by: disposeBag)
