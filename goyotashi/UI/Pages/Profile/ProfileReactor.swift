@@ -38,6 +38,15 @@ final class ProfileReactor: Reactor {
         provider.userService.getMyProfile().asObservable()
     }
 
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setUser(user):
+            state.user = user
+        }
+        return state
+    }
+
     // MARK: - Create Reactor Methods
     func createProfileGroupListReactor() -> ProfileGroupListReactor {
         return ProfileGroupListReactor(provider: provider)
