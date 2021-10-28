@@ -173,6 +173,12 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        groupDescriptionTextView.rx.text
+            .distinctUntilChanged()
+            .map { Reactor.Action.updateGroupDescription($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         privacySwitch.rx.isOn
             .distinctUntilChanged()
             .map { Reactor.Action.updateIsOnPrivacySwitch($0) }
