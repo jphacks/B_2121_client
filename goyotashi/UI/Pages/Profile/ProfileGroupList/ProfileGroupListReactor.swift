@@ -47,7 +47,8 @@ final class ProfileGroupListReactor: Reactor {
             guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
             return provider.userService.getMyGroups(userId: userId).asObservable()
         case .bookmarkedGroups:
-            return provider.bookmarkService.getBookmarkedGroups(userId: "userId").asObservable()
+            guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+            return provider.bookmarkService.getBookmarkedGroups(userId: userId).asObservable()
         }
     }
 
