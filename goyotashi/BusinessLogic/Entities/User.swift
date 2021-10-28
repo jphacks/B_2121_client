@@ -6,7 +6,7 @@
 //
 
 struct User {
-    let userId: String
+    let userId: Int
     let userName: String
     let profileImageUrl: String
 }
