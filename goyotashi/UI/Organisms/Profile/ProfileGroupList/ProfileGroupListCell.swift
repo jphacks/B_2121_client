@@ -129,7 +129,7 @@ final class ProfileGroupListCell: UICollectionViewCell, View, ViewConstructor {
         // Action
 
         // State
-        reactor.state.map { $0.profileGroup.imageUrls }
+        reactor.state.map { $0.groupSummary.imageUrls }
             .distinctUntilChanged()
             .bind { [weak self] imageUrls in
                 let max = min(imageUrls.count, 6)
@@ -143,7 +143,7 @@ final class ProfileGroupListCell: UICollectionViewCell, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.profileGroup.groupName }
+        reactor.state.map { $0.groupSummary.groupName }
             .distinctUntilChanged()
             .bind(to: groupNameLabel.rx.text)
             .disposed(by: disposeBag)

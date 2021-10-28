@@ -9,7 +9,7 @@ import RxSwift
 
 protocol GroupServiceType {
     func createGroup(group: Group) -> Single<Void>
-    func searchGroup(keyword: String, location: Location?) -> Single<[HomeGroup]>
+    func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]>
     func getGroup(id: String) -> Single<Group>
     func getUsers(groupId: String) -> Single<[User]>
 }
@@ -19,8 +19,8 @@ final class GroupService: BaseService, GroupServiceType {
         return .just(())
     }
 
-    func searchGroup(keyword: String, location: Location?) -> Single<[HomeGroup]> {
-        return .just(TestData.homeGroups(count: 9))
+    func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]> {
+        return .just(TestData.groupSummaries(count: 9))
     }
 
     func getGroup(id: String) -> Single<Group> {
