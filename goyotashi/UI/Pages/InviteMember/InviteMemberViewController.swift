@@ -112,6 +112,23 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
             .disposed(by: disposeBag)
 
         // State
+        reactor.state.map { $0.getTokenApiStatus }
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                switch apiStatus {
+                case .pending:
+                    self?.invitationLinkCopyView.activityIndicatorView.stopAnimating()
+                case .loading:
+                    self?.invitationLinkCopyView.activityIndicatorView.startAnimating()
+                    self?.invitationLinkCopyView.doneImageView.isHidden = true
+                case .succeeded:
+                    self?.invitationLinkCopyView.doneImageView.isHidden = false
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
+
         reactor.state.map { $0.memberCellReactors }
             .distinctUntilChanged()
             .bind(to: collectionView.rx.items(Reusable.memberCell)) { _, reactor, cell in
