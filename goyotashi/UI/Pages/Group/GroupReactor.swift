@@ -45,7 +45,8 @@ final class GroupReactor: Reactor {
             return .merge(
                 getGroup().map(Mutation.setGroup),
                 getUsers().map(Mutation.setUsers),
-                getRestaurants().map(Mutation.setRestaurantCellReactors)
+                getRestaurants().map(Mutation.setRestaurantCellReactors),
+                getIsBookmarked().map(Mutation.setIsBookmarked)
             )
         case .tapBookmarkButton:
             if currentState.bookmarkApiStatus != .pending { return .empty() }
@@ -75,6 +76,18 @@ final class GroupReactor: Reactor {
     private func getRestaurants() -> Observable<[GroupRestaurant]> {
         let groupId = currentState.groupId
         return provider.restaurantService.getRestaurants(groupId: groupId).asObservable()
+    }
+
+    private func getIsBookmarked() -> Observable<Bool> {
+        guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+        let groupId = currentState.groupId
+        return provider.bookmarkService.getBookmarkedGroups(userId: userId)
+            .asObservable()
+            .map { groups in
+                let isContained = groups.map { $0.groupId }
+                    .contains(groupId)
+                return isContained
+            }
     }
 
     private func updateBookmark(currentIsBookmarked: Bool) -> Observable<Bool> {
