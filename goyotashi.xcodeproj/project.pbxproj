@@ -22,6 +22,7 @@
 		840F1962272A8BF9009BC1ED /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F1961272A8BF9009BC1ED /* PlaceholderTextView.swift */; };
 		84195A51272B898200D0AD9D /* GeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A50272B898200D0AD9D /* GeoPoint.swift */; };
 		84195A53272B956000D0AD9D /* APIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A52272B956000D0AD9D /* APIStatus.swift */; };
+		84195A55272B9D4400D0AD9D /* APIStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A54272B9D4400D0AD9D /* APIStatusView.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -155,6 +156,7 @@
 		840F1961272A8BF9009BC1ED /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		84195A50272B898200D0AD9D /* GeoPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPoint.swift; sourceTree = "<group>"; };
 		84195A52272B956000D0AD9D /* APIStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStatus.swift; sourceTree = "<group>"; };
+		84195A54272B9D4400D0AD9D /* APIStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStatusView.swift; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -598,6 +600,7 @@
 				8477770E272847E90054E15D /* CountableGroupMemberButton.swift */,
 				8477771027285C670054E15D /* AddMemberButton.swift */,
 				840F1961272A8BF9009BC1ED /* PlaceholderTextView.swift */,
+				84195A54272B9D4400D0AD9D /* APIStatusView.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -1147,6 +1150,7 @@
 				84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */,
 				84AFC3D82726CE7800B9244E /* HomeViewController.swift in Sources */,
 				847777412729473B0054E15D /* AddRestaurantToGroupViewController.swift in Sources */,
+				84195A55272B9D4400D0AD9D /* APIStatusView.swift in Sources */,
 				84AFC4272728050B00B9244E /* RestaurantInformationView.swift in Sources */,
 				847777342729286C0054E15D /* SearchRestaurantResultReactor.swift in Sources */,
 				84B88DF127283799004EB87D /* CreateGroupViewController.swift in Sources */,
