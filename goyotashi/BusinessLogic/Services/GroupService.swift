@@ -17,6 +17,7 @@ protocol GroupServiceType {
     func getGroup(id: Int64) -> Single<Group>
     func getUsers(groupId: Int64) -> Single<[User]>
     func updateGroup(id: Int64, name: String, description: String) -> Single<Group>
+    func getGroupToken(groupId: Int64) -> Single<String>
 }
 
 final class GroupService: BaseService, GroupServiceType {
@@ -125,6 +126,15 @@ final class GroupService: BaseService, GroupServiceType {
                     isPublic: true,
                     imageUrls: community.imageUrls
                 )
+            }
+            .asSingle()
+    }
+
+    func getGroupToken(groupId: Int64) -> Single<String> {
+        let id = Int(groupId)
+        return CommunityAPI.communityIdTokenGet(id: id)
+            .map { response in
+                return response.inviteToken
             }
             .asSingle()
     }
