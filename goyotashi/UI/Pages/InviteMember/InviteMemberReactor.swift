@@ -18,6 +18,7 @@ final class InviteMemberReactor: Reactor {
 
     struct State {
         let groupId: Int64
+        var keyword: String = ""
         var memberCellReactors: [InviteMemberCellReactor] = []
         var invitationToken: String = ""
         var getTokenApiStatus: APIStatus = .pending
