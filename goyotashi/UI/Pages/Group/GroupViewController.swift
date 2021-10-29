@@ -41,20 +41,6 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
         setupViewConstraints()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        let height = header.frame.height
-        collectionView.contentInset.top = height
-        header.snp.remakeConstraints {
-            $0.top.equalToSuperview().offset(-height)
-            $0.left.right.equalTo(view)
-        }
-
-        let topInset = collectionView.adjustedContentInset.top
-        collectionView.setContentOffset(CGPoint(x: -16, y: -topInset), animated: false)
-    }
-
     // MARK: - Setup Methods
     func setupViews() {
         title = "グループ"
@@ -69,6 +55,19 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
         header.snp.makeConstraints {
             $0.left.right.equalTo(view)
         }
+    }
+
+    func setupHeaderHeight() {
+        // TODO: fix layout collapse
+        let height = header.frame.height + 100
+        collectionView.contentInset.top = height
+        header.snp.remakeConstraints {
+            $0.top.equalToSuperview().offset(-height)
+            $0.left.right.equalTo(view)
+        }
+
+        let topInset = collectionView.adjustedContentInset.top
+        collectionView.setContentOffset(CGPoint(x: -16, y: -topInset), animated: false)
     }
 
     // MARK: - Bind Method
@@ -152,6 +151,14 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
             .distinctUntilChanged()
             .bind(to: collectionView.rx.items(Reusable.restaurantCell)) { _, reactor, cell in
                 cell.reactor = reactor
+            }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.group }
+            .filterNil()
+            .bind { [weak self] group in
+                logger.debug(group)
+                self?.setupHeaderHeight()
             }
             .disposed(by: disposeBag)
     }
