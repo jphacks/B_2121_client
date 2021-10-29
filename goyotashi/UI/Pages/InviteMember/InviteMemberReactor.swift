@@ -50,7 +50,7 @@ final class InviteMemberReactor: Reactor {
             )
         case let .updateKeyword(keyword):
             guard let keyword = keyword else { return .empty() }
-            return .empty()
+            return .just(.setKeyword(keyword))
         }
     }
 
