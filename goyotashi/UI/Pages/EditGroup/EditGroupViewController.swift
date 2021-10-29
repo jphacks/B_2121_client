@@ -194,7 +194,7 @@ final class EditGroupViewController: UIViewController, View, ViewConstructor {
                     self?.dismiss(animated: false, completion: nil)
                 }
                 if apiStatus == .failed {
-                    logger.error("failed to create a group")
+                    logger.error("failed to update a group")
                 }
             }
             .disposed(by: disposeBag)

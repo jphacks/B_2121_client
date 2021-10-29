@@ -112,7 +112,7 @@ final class GroupService: BaseService, GroupServiceType {
             description: description,
             location: Location(lat: geoPoint.latitude, lng: geoPoint.longitude)
         )
-        print(name)
+
         return CommunityAPI.updateCommunity(id: id, inlineObject: inlineObject)
             .map { community in
                 return Group(
