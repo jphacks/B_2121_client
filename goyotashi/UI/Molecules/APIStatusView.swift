@@ -30,6 +30,10 @@ final class APIStatusView: UIView, ViewConstructor {
     private let statusImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
     }
+    
+    private let statusLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 15, color: Color.gray02)
+    }
 
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -48,6 +52,7 @@ final class APIStatusView: UIView, ViewConstructor {
         addSubview(messageView)
         messageView.addSubview(activityIndicatorView)
         messageView.addSubview(statusImageView)
+        messageView.addSubview(statusLabel)
 
         backgroundColor = Color.gray01.withAlphaComponent(0.3)
     }
@@ -63,6 +68,9 @@ final class APIStatusView: UIView, ViewConstructor {
         statusImageView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.size.equalTo(Const.statusImageViewSize)
+        }
+        statusLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 
