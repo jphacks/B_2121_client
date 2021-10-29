@@ -146,7 +146,7 @@ final class GroupReactor: Reactor {
     }
 
     func createSearchRestaurantReactor() -> SearchRestaurantReactor {
-        return SearchRestaurantReactor(provider: provider)
+        return SearchRestaurantReactor(provider: provider, groupId: currentState.groupId)
     }
 
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {
