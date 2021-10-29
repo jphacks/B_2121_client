@@ -10,12 +10,15 @@ import ReactorKit
 final class GroupReactor: Reactor {
     enum Action {
         case refresh
+        case tapBookmarkButton
     }
 
     enum Mutation {
         case setGroup(Group)
         case setUsers([User])
         case setRestaurantCellReactors([GroupRestaurant])
+        case setIsBookmarked(Bool)
+        case setBookmarkApiStatus(APIStatus)
     }
 
     struct State {
@@ -24,6 +27,8 @@ final class GroupReactor: Reactor {
         var users: [User] = []
         var restaurantCellReactors: [GroupRestaurantCellReactor] = []
         var isMember: Bool = false
+        var isBookmarked: Bool = false
+        var bookmarkApiStatus: APIStatus = .pending
     }
 
     let initialState: State
@@ -40,7 +45,20 @@ final class GroupReactor: Reactor {
             return .merge(
                 getGroup().map(Mutation.setGroup),
                 getUsers().map(Mutation.setUsers),
-                getRestaurants().map(Mutation.setRestaurantCellReactors)
+                getRestaurants().map(Mutation.setRestaurantCellReactors),
+                getIsBookmarked().map(Mutation.setIsBookmarked)
+            )
+        case .tapBookmarkButton:
+            if currentState.bookmarkApiStatus != .pending { return .empty() }
+            return .concat(
+                .just(.setBookmarkApiStatus(.loading)),
+                updateBookmark(currentIsBookmarked: currentState.isBookmarked)
+                    .map(Mutation.setIsBookmarked)
+                    .catchError { error in
+                        logger.error(error)
+                        return .just(.setBookmarkApiStatus(.failed))
+                    },
+                .just(.setBookmarkApiStatus(.pending))
             )
         }
     }
@@ -60,6 +78,38 @@ final class GroupReactor: Reactor {
         return provider.restaurantService.getRestaurants(groupId: groupId).asObservable()
     }
 
+    private func getIsBookmarked() -> Observable<Bool> {
+        guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+        let groupId = currentState.groupId
+        return provider.bookmarkService.getBookmarkedGroups(userId: userId)
+            .asObservable()
+            .map { groups in
+                let isContained = groups.map { $0.groupId }
+                    .contains(groupId)
+                return isContained
+            }
+    }
+
+    private func updateBookmark(currentIsBookmarked: Bool) -> Observable<Bool> {
+        if currentIsBookmarked {
+            return removeBookmark()
+        } else {
+            return addBookmark()
+        }
+    }
+
+    private func addBookmark() -> Observable<Bool> {
+        guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+        let groupId = currentState.groupId
+        return provider.bookmarkService.createBookmark(userId: userId, groupId: groupId).asObservable()
+    }
+
+    private func removeBookmark() -> Observable<Bool> {
+        guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+        let groupId = currentState.groupId
+        return provider.bookmarkService.removeBookmark(userId: userId, groupId: groupId).asObservable()
+    }
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -72,6 +122,11 @@ final class GroupReactor: Reactor {
             }
         case let .setRestaurantCellReactors(groupRestaurants):
             state.restaurantCellReactors = groupRestaurants.map { GroupRestaurantCellReactor(groupRestaurant: $0) }
+        case let .setIsBookmarked(isBookmarked):
+            state.isBookmarked = isBookmarked
+            provider.bookmarkService.event.onNext(.didUpdateBookmark)
+        case let .setBookmarkApiStatus(apiStatus):
+            state.bookmarkApiStatus = apiStatus
         }
         return state
     }

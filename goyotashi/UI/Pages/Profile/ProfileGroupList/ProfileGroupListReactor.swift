@@ -36,15 +36,27 @@ final class ProfileGroupListReactor: Reactor {
 
     func transform(action: Observable<Action>) -> Observable<Action> {
         let groupEventAction = provider.groupService.event
-            .flatMap { [weak self] event -> Observable<Action> in
+            .flatMap { event -> Observable<Action> in
                 switch event {
                 case .didCreateGroup:
                     return .just(.refresh)
                 }
             }
+        let bookmarkEventAction = provider.bookmarkService.event
+            .flatMap { [weak self] event -> Observable<Action> in
+                switch event {
+                case .didUpdateBookmark:
+                    if self?.groupListType == .bookmarkedGroups {
+                        return .just(.refresh)
+                    } else {
+                        return .empty()
+                    }
+                }
+            }
         return .merge(
             action,
-            groupEventAction
+            groupEventAction,
+            bookmarkEventAction
         )
     }
 
