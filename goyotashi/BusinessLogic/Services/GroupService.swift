@@ -92,6 +92,19 @@ final class GroupService: BaseService, GroupServiceType {
     }
 
     func getUsers(groupId: Int64) -> Single<[User]> {
-        return .just(TestData.users(count: 8))
+        let id = Int(groupId)
+        return CommunityAPI.listUsersOfCommunity(id: id)
+            .map { (response: ListCommunityUsersResponse) in
+                guard let responseUsers = response.users else { return [] }
+                let users = responseUsers.map { user in
+                    User(
+                        id: user.id,
+                        name: user.name,
+                        profileImageUrl: user.profileImageUrl
+                    )
+                }
+                return users
+            }
+            .asSingle()
     }
 }
