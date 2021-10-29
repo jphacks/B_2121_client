@@ -26,6 +26,7 @@ final class CreateGroupReactor: Reactor {
         var groupDescription: String = ""
         let members: [User] = (0 ..< 4).map { _ in TestData.user() }
         var isPublic: Bool = false
+        var apiStatus: APIStatus = .pending
     }
 
     let initialState: State
