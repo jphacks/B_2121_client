@@ -109,5 +109,17 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
                 self?.searchRestaurantResultViewController.reactor?.action.onNext(.search(keyword))
             }
             .disposed(by: disposeBag)
+
+        searchRestaurantResultViewController.reactor?.state
+            .map {$0.apiStatus}
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                if apiStatus == .succeeded {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+                if apiStatus == .failed {
+                    logger.error("failed to add a restaurant to the group")
+                }
+            }
     }
 }
