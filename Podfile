@@ -17,6 +17,7 @@ target 'goyotashi' do
   pod "RxGesture"
   pod 'OpenAPIClient', :path => './OpenAPIClient'
   pod 'SwiftyUserDefaults', '~> 5.0'
+  pod 'LoggerKit'
 
   target 'goyotashiTests' do
     inherit! :search_paths
