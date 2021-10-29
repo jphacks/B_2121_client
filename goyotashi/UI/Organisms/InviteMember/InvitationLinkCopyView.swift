@@ -27,9 +27,7 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
         $0.setTitleColor(Color.blue.withAlphaComponent(0.3), for: .highlighted)
     }
 
-    private let activityIndicatorView = UIActivityIndicatorView().then {
-        $0.startAnimating()
-    }
+    let activityIndicatorView = UIActivityIndicatorView()
 
     private let doneImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
