@@ -27,6 +27,10 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
         $0.setTitleColor(Color.blue.withAlphaComponent(0.3), for: .highlighted)
     }
 
+    private let activityIndicatorView = UIActivityIndicatorView().then {
+        $0.startAnimating()
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -43,6 +47,7 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
     func setupViews() {
         addSubview(linkImageView)
         addSubview(linkCopyButton)
+        addSubview(activityIndicatorView)
     }
 
     func setupViewConstraints() {
@@ -59,6 +64,10 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
             $0.left.equalTo(linkImageView.snp.right).offset(8)
             $0.height.equalTo(32)
             $0.width.equalTo(200)
+        }
+        activityIndicatorView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.right.equalToSuperview().inset(32)
         }
     }
 }
