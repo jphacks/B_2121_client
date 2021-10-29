@@ -34,6 +34,7 @@ final class APIStatusView: UIView, ViewConstructor {
 
     private let statusImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
+        $0.image = R.image.report()
     }
 
     private let statusLabel = UILabel().then {
@@ -75,7 +76,8 @@ final class APIStatusView: UIView, ViewConstructor {
             $0.center.equalToSuperview()
         }
         stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.left.right.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
         statusImageView.snp.makeConstraints {
             $0.size.equalTo(Const.statusImageViewSize)
