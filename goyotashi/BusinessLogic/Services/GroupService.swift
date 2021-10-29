@@ -73,7 +73,22 @@ final class GroupService: BaseService, GroupServiceType {
     }
 
     func getGroup(id: Int64) -> Single<Group> {
-        return .just(TestData.group())
+        // INFO: You can get the list of members from other requests.
+        // TODO: get imageUrls
+        let groupId = Int(id)
+        return CommunityAPI.getCommunityById(id: groupId)
+            .map { (community: Community) in
+                Group(
+                    id: community.id,
+                    name: community.name,
+                    description: community.description,
+                    memberCount: community.numUser,
+                    restaurantCount: community.numRestaurant,
+                    members: [],
+                    isPublic: true
+                )
+            }
+            .asSingle()
     }
 
     func getUsers(groupId: String) -> Single<[User]> {
