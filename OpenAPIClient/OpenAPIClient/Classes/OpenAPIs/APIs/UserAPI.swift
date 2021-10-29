@@ -318,4 +318,53 @@ open class UserAPI {
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
+
+    /**
+     Update my profile
+     
+     - parameter putUserMeRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<User>
+     */
+    open class func userMePut(putUserMeRequest: PutUserMeRequest, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<User> {
+        return Observable.create { observer -> Disposable in
+            userMePutWithRequestBuilder(putUserMeRequest: putUserMeRequest).execute(apiResponseQueue) { result -> Void in
+                switch result {
+                case let .success(response):
+                    observer.onNext(response.body!)
+                case let .failure(error):
+                    observer.onError(error)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
+    /**
+     Update my profile
+     - PUT /user/me
+     - API Key:
+       - type: apiKey Authorization 
+       - name: token
+     - parameter putUserMeRequest: (body)  
+     - returns: RequestBuilder<User> 
+     */
+    open class func userMePutWithRequestBuilder(putUserMeRequest: PutUserMeRequest) -> RequestBuilder<User> {
+        let localVariablePath = "/user/me"
+        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: putUserMeRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<User>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
 }

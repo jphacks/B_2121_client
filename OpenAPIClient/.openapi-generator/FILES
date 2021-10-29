@@ -37,6 +37,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/ListUserBookmarkResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListUserCommunityResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Location.swift
 OpenAPIClient/Classes/OpenAPIs/Models/PageInfo.swift
+OpenAPIClient/Classes/OpenAPIs/Models/PutUserMeRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Restaurant.swift
 OpenAPIClient/Classes/OpenAPIs/Models/SearchCommunityResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/SearchCommunityResponseAllOf.swift
@@ -76,6 +77,7 @@ docs/ListUserBookmarkResponse.md
 docs/ListUserCommunityResponse.md
 docs/Location.md
 docs/PageInfo.md
+docs/PutUserMeRequest.md
 docs/Restaurant.md
 docs/RestaurantAPI.md
 docs/SearchCommunityResponse.md

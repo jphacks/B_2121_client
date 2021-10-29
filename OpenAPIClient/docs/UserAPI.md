@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**uploadProfileImage**](UserAPI.md#uploadprofileimage) | **POST** /user/profile | 
 [**userIdCommunitiesCommunityIdDelete**](UserAPI.md#useridcommunitiescommunityiddelete) | **DELETE** /user/{id}/communities/{community_id} | Leave a community
 [**userMeCommunitiesPost**](UserAPI.md#usermecommunitiespost) | **POST** /user/me/communities | Join a community
+[**userMePut**](UserAPI.md#usermeput) | **PUT** /user/me | Update my profile
 
 
 # **getMyProfile**
@@ -237,6 +238,44 @@ Void (empty response body)
 
  - **Content-Type**: application/json
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **userMePut**
+```swift
+    open class func userMePut(putUserMeRequest: PutUserMeRequest) -> Observable<User>
+```
+
+Update my profile
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let putUserMeRequest = putUserMeRequest(name: "name_example") // PutUserMeRequest | 
+
+// TODO RxSwift sample code not yet implemented. To contribute, please open a ticket via http://github.com/OpenAPITools/openapi-generator/issues/new
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **putUserMeRequest** | [**PutUserMeRequest**](PutUserMeRequest.md) |  | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
