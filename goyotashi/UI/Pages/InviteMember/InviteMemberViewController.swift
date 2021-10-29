@@ -111,6 +111,12 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        searchBar.rx.text
+            .distinctUntilChanged()
+            .map { Reactor.Action.updateKeyword($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.getTokenApiStatus }
             .distinctUntilChanged()
