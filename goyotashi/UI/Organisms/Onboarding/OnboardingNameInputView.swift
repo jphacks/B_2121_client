@@ -28,10 +28,11 @@ class OnboardingNameInputView: UIView, ViewConstructor {
         $0.backgroundColor = Color.white
     }
 
-    let nextButton = UIButton().then {
+    let startButton = UIButton().then {
         $0.titleLabel?.apply(fontStyle: .bold, size: 24)
-        $0.setTitle("次へ", for: .normal)
+        $0.setTitle("はじめる", for: .normal)
         $0.setTitleColor(Color.white, for: .normal)
+        $0.setTitleColor(Color.white.withAlphaComponent(0.3), for: .disabled)
     }
 
     override init(frame: CGRect) {
@@ -49,7 +50,7 @@ class OnboardingNameInputView: UIView, ViewConstructor {
         addSubview(questionLabel)
         addSubview(nameTextField)
         addSubview(border)
-        addSubview(nextButton)
+        addSubview(startButton)
     }
 
     func setupViewConstraints() {
@@ -66,7 +67,7 @@ class OnboardingNameInputView: UIView, ViewConstructor {
             $0.height.equalTo(2)
             $0.centerY.equalToSuperview()
         }
-        nextButton.snp.makeConstraints {
+        startButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(72)
         }
