@@ -38,6 +38,10 @@ final class OnboardingReactor: Reactor {
         }
     }
 
+    private func createUser() -> Observable<User> {
+        return provider.userService.createUser().asObservable()
+    }
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
