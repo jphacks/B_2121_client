@@ -20,7 +20,7 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
         $0.image = R.image.link()
     }
 
-    private let linkCopyButton = UIButton().then {
+    let linkCopyButton = UIButton().then {
         $0.titleLabel?.apply(fontStyle: .medium, size: 16)
         $0.setTitle("招待コードをコピーする", for: .normal)
         $0.setTitleColor(Color.blue, for: .normal)
