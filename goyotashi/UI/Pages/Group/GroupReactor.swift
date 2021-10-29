@@ -39,6 +39,22 @@ final class GroupReactor: Reactor {
         initialState = State(groupId: groupId)
     }
 
+    func transform(action: Observable<Action>) -> Observable<Action> {
+        let restaurantEventAction = provider.restaurantService.event
+            .flatMap { event -> Observable<Action> in
+                switch event {
+                case .didDelete,
+                     .didAdd:
+                    return .just(.refresh)
+                }
+            }
+
+        return .merge(
+            action,
+            restaurantEventAction
+        )
+    }
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
@@ -133,7 +149,7 @@ final class GroupReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createOrganizeRestaurantReactor() -> OrganizeRestaurantReactor {
-        return OrganizeRestaurantReactor(provider: provider)
+        return OrganizeRestaurantReactor(provider: provider, groupId: currentState.groupId)
     }
 
     func createEditGroupReactor() -> EditGroupReactor? {
@@ -146,11 +162,12 @@ final class GroupReactor: Reactor {
     }
 
     func createSearchRestaurantReactor() -> SearchRestaurantReactor {
-        return SearchRestaurantReactor(provider: provider)
+        return SearchRestaurantReactor(provider: provider, groupId: currentState.groupId)
     }
 
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {
-        return RestaurantReactor(provider: provider)
+        let restaurantId = self.currentState.restaurantCellReactors[indexPath.row].currentState.groupRestaurant.restaurantId
+        return RestaurantReactor(provider: provider, restaurantId: restaurantId, groupId: currentState.groupId)
     }
 
     func memberListReactor() -> MemberListReactor {

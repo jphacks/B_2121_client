@@ -60,5 +60,10 @@ final class SearchRestaurantResultViewController: UIViewController, View, ViewCo
                 cell.reactor = reactor
             }
             .disposed(by: disposeBag)
+
+        collectionView.rx.itemSelected
+            .map { return Reactor.Action.didSelectItem($0) }
+            .bind(to: reactor.action )
+            .disposed(by: disposeBag)
     }
 }

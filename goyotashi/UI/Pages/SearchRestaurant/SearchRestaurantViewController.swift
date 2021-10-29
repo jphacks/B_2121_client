@@ -18,10 +18,6 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
         $0.setImage(R.image.close(), for: .normal)
     }
 
-    private let addButton = UIBarButtonItem(title: "追加", style: .done, target: nil, action: nil).then {
-        $0.tintColor = Color.gray01
-    }
-
     private let searchBar = UISearchBar().then {
         $0.placeholder = "キーワード"
         $0.backgroundImage = UIImage()
@@ -51,7 +47,6 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
     func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         title = "お店をグループに追加する"
-        navigationItem.rightBarButtonItem = addButton
         view.backgroundColor = Color.white
 
         view.addSubview(searchBar)
@@ -93,11 +88,38 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        searchBar.rx.textDidBeginEditing
+            .bind { [weak self] in
+                self?.searchBar.setShowsCancelButton(true, animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        searchBar.rx.cancelButtonClicked
+            .bind { [weak self] in
+                self?.searchBar.text = ""
+                self?.searchBar.resignFirstResponder()
+                self?.searchBar.setShowsCancelButton(false, animated: true)
+            }
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.keyword }
             .distinctUntilChanged()
             .bind { [weak self] keyword in
                 self?.searchRestaurantResultViewController.reactor?.action.onNext(.search(keyword))
+            }
+            .disposed(by: disposeBag)
+
+        searchRestaurantResultViewController.reactor?.state
+            .map {$0.apiStatus}
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                if apiStatus == .succeeded {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+                if apiStatus == .failed {
+                    logger.error("failed to add a restaurant to the group")
+                }
             }
             .disposed(by: disposeBag)
     }

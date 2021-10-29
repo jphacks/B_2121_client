@@ -122,6 +122,7 @@
 		84B88DF127283799004EB87D /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B88DF027283799004EB87D /* CreateGroupViewController.swift */; };
 		84B88DF3272837A4004EB87D /* CreateGroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B88DF2272837A4004EB87D /* CreateGroupReactor.swift */; };
 		C9E235DF076AE0453284CE2A /* Pods_goyotashiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */; };
+		E79AE36E272C4436009A9FB5 /* RestaurantEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79AE36D272C4436009A9FB5 /* RestaurantEvent.swift */; };
 		F70D3ADA7A6F72E7AB99F70D /* Pods_goyotashi_goyotashiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1C92D00F828F7ED1AB5F45 /* Pods_goyotashi_goyotashiUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -270,6 +271,7 @@
 		B707DF8E2402CEF9A2130B10 /* Pods-goyotashi-goyotashiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.debug.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9A2C7CE43C45943D754B76C /* Pods_goyotashi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goyotashi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E389DE2A3AEF77328A5FA225 /* Pods-goyotashiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashiTests.debug.xcconfig"; path = "Target Support Files/Pods-goyotashiTests/Pods-goyotashiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E79AE36D272C4436009A9FB5 /* RestaurantEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantEvent.swift; sourceTree = "<group>"; };
 		F8DDF477CEA6C07373B17BDE /* Pods-goyotashi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi.release.xcconfig"; path = "Target Support Files/Pods-goyotashi/Pods-goyotashi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -371,6 +373,7 @@
 				84195A57272BB23900D0AD9D /* GroupEvent.swift */,
 				80C6F40A272C3E3500EEF467 /* UserEvent.swift */,
 				84195A5B272BE82800D0AD9D /* BookmarkEvent.swift */,
+				E79AE36D272C4436009A9FB5 /* RestaurantEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1203,6 +1206,7 @@
 				84AFC3BB272676AE00B9244E /* Color.swift in Sources */,
 				84777748272948170054E15D /* AddRestaurantToGroupCell.swift in Sources */,
 				84AFC3FA272733F800B9244E /* ProfileGroupListViewController.swift in Sources */,
+				E79AE36E272C4436009A9FB5 /* RestaurantEvent.swift in Sources */,
 				840F195F272A6439009BC1ED /* Observable+Optional.swift in Sources */,
 				84AFC3C9272686BD00B9244E /* TemplateViewController.swift in Sources */,
 				840F195D272A4869009BC1ED /* BookmarkService.swift in Sources */,

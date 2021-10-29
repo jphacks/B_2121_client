@@ -47,6 +47,7 @@ Class | Method | HTTP request | Description
 *UserAPI* | [**uploadProfileImage**](docs/UserAPI.md#uploadprofileimage) | **POST** /user/profile | 
 *UserAPI* | [**userIdCommunitiesCommunityIdDelete**](docs/UserAPI.md#useridcommunitiescommunityiddelete) | **DELETE** /user/{id}/communities/{community_id} | Leave a community
 *UserAPI* | [**userMeCommunitiesPost**](docs/UserAPI.md#usermecommunitiespost) | **POST** /user/me/communities | Join a community
+*UserAPI* | [**userMePut**](docs/UserAPI.md#usermeput) | **PUT** /user/me | Update my profile
 
 
 ## Documentation For Models
@@ -73,6 +74,7 @@ Class | Method | HTTP request | Description
  - [ListUserCommunityResponse](docs/ListUserCommunityResponse.md)
  - [Location](docs/Location.md)
  - [PageInfo](docs/PageInfo.md)
+ - [PutUserMeRequest](docs/PutUserMeRequest.md)
  - [Restaurant](docs/Restaurant.md)
  - [SearchCommunityResponse](docs/SearchCommunityResponse.md)
  - [SearchCommunityResponseAllOf](docs/SearchCommunityResponseAllOf.md)
