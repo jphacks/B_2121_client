@@ -34,6 +34,20 @@ final class ProfileGroupListReactor: Reactor {
         initialState = State()
     }
 
+    func transform(action: Observable<Action>) -> Observable<Action> {
+        let groupEventAction = provider.groupService.event
+            .flatMap { [weak self] event -> Observable<Action> in
+                switch event {
+                case .didCreateGroup:
+                    return .just(.refresh)
+                }
+            }
+        return .merge(
+            action,
+            groupEventAction
+        )
+    }
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
