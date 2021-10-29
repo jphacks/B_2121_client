@@ -82,7 +82,7 @@ struct TestData {
             geoPoint: geoPoint()
         )
     }
-    
+
     static func camphorGeoPoint() -> GeoPoint {
         return GeoPoint(latitude: 35.02488258885156, longitude: 135.77692591466467)
     }
