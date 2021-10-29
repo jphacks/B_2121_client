@@ -9,6 +9,9 @@ import RxSwift
 import OpenAPIClient
 
 protocol GroupServiceType {
+    // MARK: - Event
+    var event: PublishSubject<GroupEvent> { get }
+
     func createGroup(name: String, description: String, isPublic: Bool) -> Single<Group>
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]>
     func getGroup(id: String) -> Single<Group>
@@ -16,6 +19,9 @@ protocol GroupServiceType {
 }
 
 final class GroupService: BaseService, GroupServiceType {
+    // MARK: - Event
+    let event: PublishSubject<GroupEvent> = PublishSubject<GroupEvent>()
+
     func createGroup(name: String, description: String, isPublic: Bool) -> Single<Group> {
         // TODO: replace geoPoint with user location
         // TODO: send isPublic
