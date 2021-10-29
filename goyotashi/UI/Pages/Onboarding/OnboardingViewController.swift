@@ -39,6 +39,13 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: OnboardingReactor) {
         // Action
+        nameInputView.nameTextField.rx.controlEvent(.editingDidEndOnExit)
+            .bind { [weak self] _ in
+                if let name = self?.nameInputView.nameTextField.text {
+                    logger.debug(name)
+                }
+            }
+            .disposed(by: disposeBag)
 
         // State
     }
