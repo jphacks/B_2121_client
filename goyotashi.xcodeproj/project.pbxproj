@@ -346,6 +346,13 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		84195A56272BB1AA00D0AD9D /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		84777712272861600054E15D /* OrganizeRestaurant */ = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +727,7 @@
 		84AFC3E42726E5C500B9244E /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				84195A56272BB1AA00D0AD9D /* Events */,
 				84AFC3E52726E5DB00B9244E /* Entities */,
 				840F19512729E9D2009BC1ED /* Services */,
 				84A18FA8272B0BAA0073C770 /* Stores */,
