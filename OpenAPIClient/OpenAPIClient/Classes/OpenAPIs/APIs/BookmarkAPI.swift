@@ -126,13 +126,13 @@ open class BookmarkAPI {
      Create a new bookmark
      
      - parameter id: (path)  
-     - parameter inlineObject: (body)  
+     - parameter inlineObject1: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Observable<Void>
      */
-    open class func userIdBookmarkPost(id: Int64, inlineObject: InlineObject, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<Void> {
+    open class func userIdBookmarkPost(id: Int64, inlineObject1: InlineObject1, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<Void> {
         return Observable.create { observer -> Disposable in
-            userIdBookmarkPostWithRequestBuilder(id: id, inlineObject: inlineObject).execute(apiResponseQueue) { result -> Void in
+            userIdBookmarkPostWithRequestBuilder(id: id, inlineObject1: inlineObject1).execute(apiResponseQueue) { result -> Void in
                 switch result {
                 case .success:
                     observer.onNext(())
@@ -152,16 +152,16 @@ open class BookmarkAPI {
        - type: apiKey Authorization 
        - name: token
      - parameter id: (path)  
-     - parameter inlineObject: (body)  
+     - parameter inlineObject1: (body)  
      - returns: RequestBuilder<Void> 
      */
-    open class func userIdBookmarkPostWithRequestBuilder(id: Int64, inlineObject: InlineObject) -> RequestBuilder<Void> {
+    open class func userIdBookmarkPostWithRequestBuilder(id: Int64, inlineObject1: InlineObject1) -> RequestBuilder<Void> {
         var localVariablePath = "/user/{id}/bookmark"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let localVariableURLString = OpenAPIClient.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: inlineObject)
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: inlineObject1)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 

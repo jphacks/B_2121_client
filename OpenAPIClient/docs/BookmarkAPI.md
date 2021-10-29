@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 # **userIdBookmarkPost**
 ```swift
-    open class func userIdBookmarkPost(id: Int64, inlineObject: InlineObject) -> Observable<Void>
+    open class func userIdBookmarkPost(id: Int64, inlineObject1: InlineObject1) -> Observable<Void>
 ```
 
 Create a new bookmark
@@ -100,7 +100,7 @@ Create a new bookmark
 import OpenAPIClient
 
 let id = 987 // Int64 | 
-let inlineObject = inline_object(communityId: 123) // InlineObject | 
+let inlineObject1 = inline_object_1(communityId: 123) // InlineObject1 | 
 
 // TODO RxSwift sample code not yet implemented. To contribute, please open a ticket via http://github.com/OpenAPITools/openapi-generator/issues/new
 ```
@@ -110,7 +110,7 @@ let inlineObject = inline_object(communityId: 123) // InlineObject |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int64** |  | 
- **inlineObject** | [**InlineObject**](InlineObject.md) |  | 
+ **inlineObject1** | [**InlineObject1**](InlineObject1.md) |  | 
 
 ### Return type
 

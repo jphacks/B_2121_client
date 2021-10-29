@@ -41,8 +41,8 @@ final class BookmarkService: BaseService, BookmarkServiceType {
     }
 
     func createBookmark(userId: Int64, groupId: Int64) -> Single<Bool> {
-        let inlineObject = InlineObject(communityId: groupId)
-        return BookmarkAPI.userIdBookmarkPost(id: userId, inlineObject: inlineObject)
+        let inlineObject = InlineObject1(communityId: groupId)
+        return BookmarkAPI.userIdBookmarkPost(id: userId, inlineObject1: inlineObject)
             .map { true }
             .asSingle()
     }
