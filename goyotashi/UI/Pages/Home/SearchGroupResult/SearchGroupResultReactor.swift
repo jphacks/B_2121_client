@@ -47,4 +47,9 @@ final class SearchGroupResultReactor: Reactor {
         }
         return state
     }
+
+    func createGroupReactor(indexPath: IndexPath) -> GroupReactor {
+        let groupId = currentState.groupCellReactors[indexPath.row].currentState.groupSummary.groupId
+        return GroupReactor(provider: provider, groupId: groupId)
+    }
 }
