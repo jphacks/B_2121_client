@@ -13,6 +13,7 @@ final class APIStatusView: UIView, ViewConstructor {
 
     struct Const {
         static let messageViewSize: CGFloat = 160
+        static let statusImageViewSize: CGFloat = 32
     }
 
     // MARK: - Views
@@ -24,6 +25,10 @@ final class APIStatusView: UIView, ViewConstructor {
         $0.backgroundColor = Color.white
         $0.layer.cornerRadius = 16
         $0.layer.masksToBounds = true
+    }
+
+    private let statusImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
     }
 
     // MARK: - Initializers
@@ -42,6 +47,7 @@ final class APIStatusView: UIView, ViewConstructor {
     func setupViews() {
         addSubview(messageView)
         messageView.addSubview(activityIndicatorView)
+        messageView.addSubview(statusImageView)
 
         backgroundColor = Color.gray01.withAlphaComponent(0.3)
     }
@@ -53,6 +59,10 @@ final class APIStatusView: UIView, ViewConstructor {
         }
         activityIndicatorView.snp.makeConstraints {
             $0.center.equalToSuperview()
+        }
+        statusImageView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(Const.statusImageViewSize)
         }
     }
 
