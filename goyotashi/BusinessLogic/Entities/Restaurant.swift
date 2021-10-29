@@ -13,7 +13,7 @@ struct Restaurant {
     let address: String
     let phoneNumber: String
     let openingHours: String
-    let location: Location
+    let geoPoint: GeoPoint
 }
 
 extension Restaurant: Equatable {

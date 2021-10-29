@@ -12,7 +12,7 @@ import RxSwift
 class RestaurantMapViewController: UIViewController, ViewConstructor {
 
     // MARK: - Variables
-    private let location: Location
+    private let geoPoint: GeoPoint
     private let restaurantName: String
 
     var disposeBag = DisposeBag()
@@ -33,8 +33,8 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
     }
 
     // MARK: - Initializers
-    init(restaurantName: String, location: Location) {
-        self.location = location
+    init(restaurantName: String, geoPoint: GeoPoint) {
+        self.geoPoint = geoPoint
         self.restaurantName = restaurantName
         super.init(nibName: nil, bundle: nil)
     }
@@ -49,7 +49,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
 
         setupViews()
         setupViewConstraints()
-        setMap(location: location)
+        setMap(geoPoint: geoPoint)
         bind()
     }
 
@@ -75,8 +75,8 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         }
     }
 
-    private func setMap(location: Location) {
-        let center: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.latitude), longitude: CLLocationDegrees(location.longitude))
+    private func setMap(geoPoint: GeoPoint) {
+        let center: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: CLLocationDegrees(geoPoint.latitude), longitude: CLLocationDegrees(geoPoint.longitude))
         mapView.setCenter(center, animated: false)
         let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region: MKCoordinateRegion = MKCoordinateRegion(center: center, span: span)
@@ -90,7 +90,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
     private func bind() {
         openNativeMapButton.rx.tap
             .bind { [weak self] _ in
-                let daddr = NSString(format: "%f,%f", self?.location.latitude ?? "", self?.location.longitude ?? "")
+                let daddr = NSString(format: "%f,%f", self?.geoPoint.latitude ?? "", self?.geoPoint.longitude ?? "")
                 let urlString = "http://maps.apple.com/?daddr=\(daddr)&dirflg=w"
                 if let url = URL(string: urlString) {
                     UIApplication.shared.open(url)
@@ -101,7 +101,7 @@ class RestaurantMapViewController: UIViewController, ViewConstructor {
         openGoogleMapButton.rx.tap
             .bind { [weak self] _ in
                 if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
-                    let daddr = NSString(format: "%f,%f", self?.location.latitude ?? "", self?.location.longitude ?? "")
+                    let daddr = NSString(format: "%f,%f", self?.geoPoint.latitude ?? "", self?.geoPoint.longitude ?? "")
                     let urlStr: String = "comgooglemaps://?daddr=\(daddr)&directionsmode=walking&zoom=14"
                     if let url = URL(string: urlStr) {
                         UIApplication.shared.open(url)

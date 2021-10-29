@@ -66,8 +66,8 @@ struct TestData {
         }
     }
 
-    static func location() -> Location {
-        return Location(latitude: 35.020669, longitude: 135.77871)
+    static func geoPoint() -> GeoPoint {
+        return GeoPoint(latitude: 35.020669, longitude: 135.77871)
     }
 
     static func restaurant() -> Restaurant {
@@ -79,7 +79,7 @@ struct TestData {
             address: "京都府京都市左京区田中里ノ前町1西野ビル1F",
             phoneNumber: "075-702-1724",
             openingHours: "[月〜土]\n11:30〜14:30(L.O. 14:00)\n17:30〜22:30(L.O. 22:00)",
-            location: location()
+            geoPoint: geoPoint()
         )
     }
 

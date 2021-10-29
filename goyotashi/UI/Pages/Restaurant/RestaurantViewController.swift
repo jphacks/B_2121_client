@@ -101,8 +101,8 @@ final class RestaurantViewController: UIViewController, ReactorKit.View, ViewCon
             .bind { [weak self] _ in
                 guard let restaurant = reactor.currentState.restaurant else { return }
                 let restaurantName = restaurant.name
-                let location = restaurant.location
-                let viewController = RestaurantMapViewController(restaurantName: restaurantName, location: location)
+                let geoPoint = restaurant.geoPoint
+                let viewController = RestaurantMapViewController(restaurantName: restaurantName, geoPoint: geoPoint)
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)

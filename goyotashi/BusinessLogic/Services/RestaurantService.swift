@@ -12,7 +12,7 @@ protocol RestaurantServiceType {
     func getRestaurants(groupId: String) -> Single<[GroupRestaurant]>
     func addRestaurantToGroup(restaurantId: String, groupId: String) -> Single<Void>
     func removeRestaurantFromGroup(restaurantId: String, groupId: String) -> Single<Void>
-    func searchRestaurants(keyword: String, location: Location?) -> Single<[Restaurant]>
+    func searchRestaurants(keyword: String, geoPoint: GeoPoint?) -> Single<[Restaurant]>
     func getRestaurant(restaurantId: String) -> Single<Restaurant>
     func getOtherGroups(restaurantId: String) -> Single<[RestaurantOtherGroup]>
 }
@@ -30,12 +30,12 @@ final class RestaurantService: BaseService, RestaurantServiceType {
         return .just(())
     }
 
-    func searchRestaurants(keyword: String, location: Location?) -> Single<[Restaurant]> {
+    func searchRestaurants(keyword: String, geoPoint: GeoPoint?) -> Single<[Restaurant]> {
         // TODO: get description
         // TODO: get address
         // TODO: get phoneNumber
         // TODO: get openingHours
-        return RestaurantAPI.searchRestaurants(keyword: keyword, after: nil, centerLat: location?.latitude, centerLng: location?.longitude)
+        return RestaurantAPI.searchRestaurants(keyword: keyword, after: nil, centerLat: geoPoint?.latitude, centerLng: geoPoint?.longitude)
             .map { (response: SearchRestaurantResponse) -> [Restaurant] in
                 guard let responseRestaurants = response.restaurants else { return [] }
                 let restaurants = responseRestaurants.map { restaurant in
@@ -47,7 +47,7 @@ final class RestaurantService: BaseService, RestaurantServiceType {
                         address: "",
                         phoneNumber: "",
                         openingHours: "",
-                        location: Location(latitude: restaurant.location.lat, longitude: restaurant.location.lng)
+                        geoPoint: GeoPoint(latitude: restaurant.location.lat, longitude: restaurant.location.lng)
                     )
                 }
                 return restaurants
