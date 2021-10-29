@@ -28,7 +28,7 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
     }
 
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
-        $0.estimatedItemSize =  OrganizeRestaurantCell.Const.itemSize
+        $0.itemSize =  OrganizeRestaurantCell.Const.itemSize
         $0.minimumLineSpacing = 24
         $0.minimumInteritemSpacing = 8
         $0.scrollDirection = .vertical
