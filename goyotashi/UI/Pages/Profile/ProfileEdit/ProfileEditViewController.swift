@@ -97,6 +97,12 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        userNameTextField.rx.text
+            .distinctUntilChanged()
+            .map { Reactor.Action.updateName($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.profileImageUrl }
             .distinctUntilChanged()
@@ -116,7 +122,7 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
             .bind { [weak self] apiStatus in
                 self?.doneButton.isEnabled = apiStatus == .pending
                 if apiStatus == .succeeded {
-                    self?.navigationController?.popViewController(animated: true)
+                    self?.dismiss(animated: false, completion: nil)
                 }
                 if apiStatus == .failed {
                     logger.error("failed to create a group")

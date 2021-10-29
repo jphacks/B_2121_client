@@ -11,11 +11,13 @@ final class ProfileEditReactor: Reactor {
     enum Action {
         case refresh
         case update
+        case updateName(String?)
     }
     enum Mutation {
         case setUser(User)
         case didUpdate(User)
         case setApiStatus(APIStatus)
+        case setUserName(String?)
     }
 
     struct State {
@@ -46,6 +48,8 @@ final class ProfileEditReactor: Reactor {
                         return .just(.setApiStatus(.failed))
                     }
             )
+        case let .updateName(name):
+            return .just(Mutation.setUserName(name))
         }
     }
 
@@ -54,9 +58,11 @@ final class ProfileEditReactor: Reactor {
     }
 
     private func updateUser() -> Observable<User> {
-        //        provider.userService.updateUser(name: currentState.name, profileImageUrl: currentState.profileImageUrl).asObservable()
-        // 型合うから返してるだけ
-        provider.userService.getMyProfile().asObservable()
+        print("update user!!!")
+        if let name = currentState.name {
+            return provider.userService.updateMyName(name: name).asObservable()
+        }
+        return .empty()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -71,6 +77,8 @@ final class ProfileEditReactor: Reactor {
             provider.userService.event.onNext(.didUpdateUser)
         case let .setApiStatus(apiStatus):
             state.apiStatus = apiStatus
+        case let .setUserName(name):
+            state.name = name
         }
         return state
     }

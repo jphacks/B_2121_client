@@ -14,6 +14,7 @@ protocol UserServiceType {
 
     func createUser() -> Single<Void>
     func getMyProfile() -> Single<User>
+    func updateMyName(name: String) -> Single<User>
     func getMyGroups(userId: Int64) -> Single<[GroupSummary]>
 }
 
@@ -64,6 +65,19 @@ final class UserService: BaseService, UserServiceType {
                     )
                 }
                 return groups
+            }
+            .asSingle()
+    }
+
+    func updateMyName(name: String) -> Single<User> {
+        let req = PutUserMeRequest(name: name)
+        return UserAPI.userMePut(putUserMeRequest: req)
+            .map { resp in
+                return User(
+                    id: resp.id,
+                    name: resp.name,
+                    profileImageUrl: resp.profileImageUrl
+                )
             }
             .asSingle()
     }
