@@ -73,6 +73,8 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.numberOfLines = 0
     }
 
+    private let apiStatusView = APIStatusView()
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +103,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         scrollView.addSubview(privacyStateLabel)
         scrollView.addSubview(privacySwitch)
         scrollView.addSubview(privacyDescriptionLabel)
+        view.addSubview(apiStatusView)
     }
 
     func setupViewConstraints() {
@@ -152,6 +155,9 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
             $0.top.equalTo(privacyStateLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview().inset(16)
             $0.right.equalTo(privacySwitch.snp.left).offset(-20)
+        }
+        apiStatusView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 
@@ -217,6 +223,11 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
                     logger.error("failed to create a group")
                 }
             }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind(to: apiStatusView.rx.apiStatus)
             .disposed(by: disposeBag)
     }
 }
