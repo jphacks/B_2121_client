@@ -12,19 +12,24 @@ final class EditGroupReactor: Reactor {
         case updateGroupName(String?)
         case updateGroupDescription(String?)
         case updateIsOnPrivacySwitch(Bool)
+        case save
     }
     enum Mutation {
         case setGroupName(String)
         case setGroupDescription(String)
         case setIsPublic(Bool)
+        case didUpdate(Group)
+        case setApiStatus(APIStatus)
     }
 
     struct State {
         let uneditedGroup: Group
+        let groupId: Int64
         var groupName: String
         var groupDescription: String
         let members: [User]
         var isPublic: Bool
+        var apiStatus: APIStatus = .pending
 
         init(group: Group) {
             self.uneditedGroup = group
@@ -32,6 +37,7 @@ final class EditGroupReactor: Reactor {
             self.groupDescription = group.description
             self.members = group.members
             self.isPublic = group.isPublic
+            self.groupId = group.id
         }
     }
 
@@ -53,6 +59,16 @@ final class EditGroupReactor: Reactor {
             return .just(Mutation.setGroupDescription(description))
         case let .updateIsOnPrivacySwitch(isOn):
             return .just(Mutation.setIsPublic(isOn))
+        case .save:
+            if currentState.apiStatus != .pending { return .empty() }
+            return .concat(
+                .just(.setApiStatus(.loading)),
+                saveGroup()
+                    .map(Mutation.didUpdate)
+                    .catchError { _ in
+                        return .just(.setApiStatus(.failed))
+                    }
+            )
         }
     }
 
@@ -65,7 +81,17 @@ final class EditGroupReactor: Reactor {
             state.groupDescription = description
         case let .setIsPublic(isPublic):
             state.isPublic = isPublic
+        case let .didUpdate(group):
+            logger.verbose("group update: \(group)")
+            state.apiStatus = .succeeded
+            provider.groupService.event.onNext(.didUpdateGroup)
+        case let .setApiStatus(apiStatus):
+            state.apiStatus = apiStatus
         }
         return state
+    }
+
+    func saveGroup() -> Observable<Group> {
+        return provider.groupService.updateGroup(id: currentState.groupId, name: currentState.groupName, description: currentState.groupDescription).asObservable()
     }
 }

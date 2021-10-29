@@ -7,4 +7,5 @@
 
 enum GroupEvent {
     case didCreateGroup
+    case didUpdateGroup
 }

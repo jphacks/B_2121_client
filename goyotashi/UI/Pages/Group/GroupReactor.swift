@@ -49,9 +49,19 @@ final class GroupReactor: Reactor {
                 }
             }
 
+        let groupEventAction = provider.groupService.event
+            .flatMap { event -> Observable<Action> in
+                switch event {
+                case .didCreateGroup,
+                     .didUpdateGroup:
+                    return .just(.refresh)
+                }
+            }
+
         return .merge(
             action,
-            restaurantEventAction
+            restaurantEventAction,
+            groupEventAction
         )
     }
 

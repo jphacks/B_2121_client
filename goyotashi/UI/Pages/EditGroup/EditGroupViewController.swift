@@ -186,11 +186,29 @@ final class EditGroupViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                self?.doneButton.isEnabled = apiStatus == .pending
+                if apiStatus == .succeeded {
+                    self?.dismiss(animated: false, completion: nil)
+                }
+                if apiStatus == .failed {
+                    logger.error("failed to create a group")
+                }
+            }
+            .disposed(by: disposeBag)
+
         // Action
         closeButton.rx.tap
             .bind { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
             }
+            .disposed(by: disposeBag)
+
+        doneButton.rx.tap
+            .map { Reactor.Action.save }
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
         groupNameTextField.rx.text
