@@ -20,6 +20,7 @@
 		840F195D272A4869009BC1ED /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F195C272A4869009BC1ED /* BookmarkService.swift */; };
 		840F195F272A6439009BC1ED /* Observable+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F195E272A6439009BC1ED /* Observable+Optional.swift */; };
 		840F1962272A8BF9009BC1ED /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F1961272A8BF9009BC1ED /* PlaceholderTextView.swift */; };
+		84195A51272B898200D0AD9D /* GeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A50272B898200D0AD9D /* GeoPoint.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -50,6 +51,11 @@
 		847777592729796A0054E15D /* RecommendGroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777582729796A0054E15D /* RecommendGroupReactor.swift */; };
 		8477775C27297A120054E15D /* RecommendGroupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477775B27297A120054E15D /* RecommendGroupHeaderView.swift */; };
 		8477775F27298FAF0054E15D /* RestaurantMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477775E27298FAF0054E15D /* RestaurantMapViewController.swift */; };
+		84A18FAA272B0BF40073C770 /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18FA9272B0BF40073C770 /* DefaultKeys.swift */; };
+		84A18FAC272B0CE50073C770 /* AuthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18FAB272B0CE50073C770 /* AuthInfo.swift */; };
+		84A18FAE272B13860073C770 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18FAD272B13860073C770 /* AuthStore.swift */; };
+		84A18FB0272B144B0073C770 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18FAF272B144B0073C770 /* StoreService.swift */; };
+		84A18FB2272B791A0073C770 /* LoggerFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18FB1272B791A0073C770 /* LoggerFormatter.swift */; };
 		84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3752725D40600B9244E /* AppDelegate.swift */; };
 		84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3772725D40600B9244E /* SceneDelegate.swift */; };
 		84AFC37A2725D40600B9244E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3792725D40600B9244E /* ViewController.swift */; };
@@ -106,7 +112,6 @@
 		84B88DE6272816EA004EB87D /* RestaurantOtherGroupCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B88DE5272816EA004EB87D /* RestaurantOtherGroupCellReactor.swift */; };
 		84B88DE827281804004EB87D /* RestaurantOtherGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B88DE727281804004EB87D /* RestaurantOtherGroup.swift */; };
 		84B88DEA27281B67004EB87D /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B88DE927281B67004EB87D /* Restaurant.swift */; };
-		84B88DEC27281C05004EB87D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B88DEB27281C05004EB87D /* Location.swift */; };
 		84B88DF127283799004EB87D /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B88DF027283799004EB87D /* CreateGroupViewController.swift */; };
 		84B88DF3272837A4004EB87D /* CreateGroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B88DF2272837A4004EB87D /* CreateGroupReactor.swift */; };
 		C9E235DF076AE0453284CE2A /* Pods_goyotashiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E6BE1198716C93506F4C92 /* Pods_goyotashiTests.framework */; };
@@ -147,6 +152,7 @@
 		840F195C272A4869009BC1ED /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
 		840F195E272A6439009BC1ED /* Observable+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Optional.swift"; sourceTree = "<group>"; };
 		840F1961272A8BF9009BC1ED /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		84195A50272B898200D0AD9D /* GeoPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPoint.swift; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +183,11 @@
 		847777582729796A0054E15D /* RecommendGroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendGroupReactor.swift; sourceTree = "<group>"; };
 		8477775B27297A120054E15D /* RecommendGroupHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendGroupHeaderView.swift; sourceTree = "<group>"; };
 		8477775E27298FAF0054E15D /* RestaurantMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapViewController.swift; sourceTree = "<group>"; };
+		84A18FA9272B0BF40073C770 /* DefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeys.swift; sourceTree = "<group>"; };
+		84A18FAB272B0CE50073C770 /* AuthInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInfo.swift; sourceTree = "<group>"; };
+		84A18FAD272B13860073C770 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
+		84A18FAF272B144B0073C770 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
+		84A18FB1272B791A0073C770 /* LoggerFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFormatter.swift; sourceTree = "<group>"; };
 		84AFC3722725D40600B9244E /* goyotashi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goyotashi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3752725D40600B9244E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AFC3772725D40600B9244E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,7 +250,6 @@
 		84B88DE5272816EA004EB87D /* RestaurantOtherGroupCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantOtherGroupCellReactor.swift; sourceTree = "<group>"; };
 		84B88DE727281804004EB87D /* RestaurantOtherGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantOtherGroup.swift; sourceTree = "<group>"; };
 		84B88DE927281B67004EB87D /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		84B88DEB27281C05004EB87D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		84B88DF027283799004EB87D /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		84B88DF2272837A4004EB87D /* CreateGroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupReactor.swift; sourceTree = "<group>"; };
 		AA95625A967B92EE36331243 /* Pods-goyotashi-goyotashiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goyotashi-goyotashiUITests.release.xcconfig"; path = "Target Support Files/Pods-goyotashi-goyotashiUITests/Pods-goyotashi-goyotashiUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -327,6 +337,7 @@
 				840F1958272A39DD009BC1ED /* RestaurantService.swift */,
 				840F195A272A44F1009BC1ED /* GroupService.swift */,
 				840F195C272A4869009BC1ED /* BookmarkService.swift */,
+				84A18FAF272B144B0073C770 /* StoreService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -464,6 +475,15 @@
 			path = RestaurantMap;
 			sourceTree = "<group>";
 		};
+		84A18FA8272B0BAA0073C770 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				84A18FA9272B0BF40073C770 /* DefaultKeys.swift */,
+				84A18FAD272B13860073C770 /* AuthStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
 		84AFC3692725D40600B9244E = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +559,7 @@
 			children = (
 				84AFC3AB27266F2100B9244E /* DeviceSize.swift */,
 				84AFC3AD27266F5100B9244E /* ViewConstructor.swift */,
+				84A18FB1272B791A0073C770 /* LoggerFormatter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -696,6 +717,7 @@
 			children = (
 				84AFC3E52726E5DB00B9244E /* Entities */,
 				840F19512729E9D2009BC1ED /* Services */,
+				84A18FA8272B0BAA0073C770 /* Stores */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -708,8 +730,9 @@
 				84AFC4182727E39400B9244E /* GroupRestaurant.swift */,
 				84AFC41A2727E84F00B9244E /* Group.swift */,
 				84B88DE927281B67004EB87D /* Restaurant.swift */,
-				84B88DEB27281C05004EB87D /* Location.swift */,
 				8477774B2729628D0054E15D /* GroupSummary.swift */,
+				84A18FAB272B0CE50073C770 /* AuthInfo.swift */,
+				84195A50272B898200D0AD9D /* GeoPoint.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1082,6 +1105,7 @@
 				8477773A27292D1C0054E15D /* SearchRestaurantCellReactor.swift in Sources */,
 				84777743272947420054E15D /* AddRestaurantToGroupReactor.swift in Sources */,
 				84AFC3B9272674A800B9244E /* UIColor+Extension.swift in Sources */,
+				84A18FB0272B144B0073C770 /* StoreService.swift in Sources */,
 				84777751272975430054E15D /* SearchGroupResultReactor.swift in Sources */,
 				8477771B272862450054E15D /* OrganizeRestaurantCellReactor.swift in Sources */,
 				8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */,
@@ -1089,7 +1113,6 @@
 				84AFC37A2725D40600B9244E /* ViewController.swift in Sources */,
 				84AFC4112727A84400B9244E /* GroupMemberButton.swift in Sources */,
 				84AFC40A2727A62A00B9244E /* GroupViewController.swift in Sources */,
-				84B88DEC27281C05004EB87D /* Location.swift in Sources */,
 				84AFC41B2727E84F00B9244E /* Group.swift in Sources */,
 				80C6F3FD2729882400EEF467 /* MemberCell.swift in Sources */,
 				84AFC3F72727232000B9244E /* RoundBorderButton.swift in Sources */,
@@ -1117,6 +1140,7 @@
 				84B88DE4272816E1004EB87D /* RestaurantOtherGroupCell.swift in Sources */,
 				84777757272979610054E15D /* RecommendGroupViewController.swift in Sources */,
 				847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */,
+				84A18FB2272B791A0073C770 /* LoggerFormatter.swift in Sources */,
 				84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */,
 				84AFC3D82726CE7800B9244E /* HomeViewController.swift in Sources */,
 				847777412729473B0054E15D /* AddRestaurantToGroupViewController.swift in Sources */,
@@ -1127,6 +1151,7 @@
 				84AFC3AE27266F5100B9244E /* ViewConstructor.swift in Sources */,
 				84AFC40F2727A6C600B9244E /* GroupHeaderView.swift in Sources */,
 				84AFC3D42726A4EF00B9244E /* R.generated.swift in Sources */,
+				84195A51272B898200D0AD9D /* GeoPoint.swift in Sources */,
 				84AFC3F12727173100B9244E /* ProfileHeaderView.swift in Sources */,
 				80C6F3FF2729893C00EEF467 /* MemberCellReactor.swift in Sources */,
 				84B88DF3272837A4004EB87D /* CreateGroupReactor.swift in Sources */,
@@ -1140,6 +1165,7 @@
 				840F195D272A4869009BC1ED /* BookmarkService.swift in Sources */,
 				8477772A272906E90054E15D /* InviteMemberCellReactor.swift in Sources */,
 				84777728272906DF0054E15D /* InviteMemberCell.swift in Sources */,
+				84A18FAC272B0CE50073C770 /* AuthInfo.swift in Sources */,
 				84AFC3AC27266F2100B9244E /* DeviceSize.swift in Sources */,
 				84777723272905510054E15D /* InviteMemberViewController.swift in Sources */,
 				84AFC3FF272734F400B9244E /* ProfileGroupListCell.swift in Sources */,
@@ -1150,6 +1176,7 @@
 				8477773827292D130054E15D /* SearchRestaurantCell.swift in Sources */,
 				84B88DE827281804004EB87D /* RestaurantOtherGroup.swift in Sources */,
 				840F1959272A39DD009BC1ED /* RestaurantService.swift in Sources */,
+				84A18FAE272B13860073C770 /* AuthStore.swift in Sources */,
 				84AFC3F327271AA200B9244E /* User.swift in Sources */,
 				8477774C2729628D0054E15D /* GroupSummary.swift in Sources */,
 				84AFC3EC272714D700B9244E /* ProfileViewController.swift in Sources */,
@@ -1167,6 +1194,7 @@
 				84AFC3C6272682F900B9244E /* UILabel+Extension.swift in Sources */,
 				8477772D27291CED0054E15D /* SearchRestaurantViewController.swift in Sources */,
 				84AFC4172727D59D00B9244E /* GroupRestaurantCellReactor.swift in Sources */,
+				84A18FAA272B0BF40073C770 /* DefaultKeys.swift in Sources */,
 				84B88DE2272810B9004EB87D /* OpenMapButton.swift in Sources */,
 				84AFC4132727BC0600B9244E /* GroupActionButton.swift in Sources */,
 				84AFC4252728030800B9244E /* AddRestaurantButton.swift in Sources */,

@@ -136,8 +136,8 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         // Action
         openNativeMapButton.rx.tap
             .bind { _ in
-                guard let location = reactor.currentState.restaurant?.location else { return }
-                let daddr = NSString(format: "%f,%f", location.latitude, location.longitude)
+                guard let geoPoint = reactor.currentState.restaurant?.geoPoint else { return }
+                let daddr = NSString(format: "%f,%f", geoPoint.latitude, geoPoint.longitude)
                 let urlString = "http://maps.apple.com/?daddr=\(daddr)&dirflg=w"
                 if let url = URL(string: urlString) {
                     UIApplication.shared.open(url)
@@ -148,8 +148,8 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
         openGoogleMapButton.rx.tap
             .bind { _ in
                 if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
-                    guard let location = reactor.currentState.restaurant?.location else { return }
-                    let daddr = NSString(format: "%f,%f", location.latitude, location.longitude)
+                    guard let geoPoint = reactor.currentState.restaurant?.geoPoint else { return }
+                    let daddr = NSString(format: "%f,%f", geoPoint.latitude, geoPoint.longitude)
                     let urlStr: String = "comgooglemaps://?daddr=\(daddr)&directionsmode=walking&zoom=14"
                     if let url = URL(string: urlStr) {
                         UIApplication.shared.open(url)
@@ -190,11 +190,11 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        reactor.state.map { $0.restaurant?.location }
+        reactor.state.map { $0.restaurant?.geoPoint }
             .distinctUntilChanged()
             .filterNil()
-            .bind { [weak self] location in
-                self?.setMap(latitude: location.latitude, longitude: location.longitude)
+            .bind { [weak self] geoPoint in
+                self?.setMap(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
             }
             .disposed(by: disposeBag)
     }

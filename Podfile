@@ -16,6 +16,9 @@ target 'goyotashi' do
   pod 'SegementSlide', '3.0.1'
   pod "RxGesture"
   pod 'OpenAPIClient', :path => './OpenAPIClient'
+  pod 'SwiftyUserDefaults', '~> 5.0'
+  pod 'LoggerKit'
+
   target 'goyotashiTests' do
     inherit! :search_paths
     # Pods for testing

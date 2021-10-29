@@ -12,11 +12,13 @@ final class CreateGroupReactor: Reactor {
         case updateGroupName(String?)
         case updateGroupDescription(String?)
         case updateIsOnPrivacySwitch(Bool)
+        case create
     }
     enum Mutation {
         case setGroupName(String)
         case setGroupDescription(String)
         case setIsPublic(Bool)
+        case didCreate(Group)
     }
 
     struct State {
@@ -44,7 +46,13 @@ final class CreateGroupReactor: Reactor {
             return .just(Mutation.setGroupDescription(description))
         case let .updateIsOnPrivacySwitch(isOn):
             return .just(Mutation.setIsPublic(isOn))
+        case .create:
+            return createGroup().map(Mutation.didCreate)
         }
+    }
+
+    private func createGroup() -> Observable<Group> {
+        provider.groupService.createGroup(name: currentState.groupName, description: currentState.groupDescription, isPublic: currentState.isPublic).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -56,6 +64,9 @@ final class CreateGroupReactor: Reactor {
             state.groupDescription = description
         case let .setIsPublic(isPublic):
             state.isPublic = isPublic
+        case let .didCreate(group):
+            // TODO: Notify that a group has been created
+            logger.verbose("group created: \(group)")
         }
         return state
     }

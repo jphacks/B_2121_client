@@ -44,9 +44,11 @@ final class ProfileGroupListReactor: Reactor {
     func refresh() -> Observable<[GroupSummary]> {
         switch groupListType {
         case .myGroups:
-            return provider.userService.getMyGroups().asObservable()
+            guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+            return provider.userService.getMyGroups(userId: userId).asObservable()
         case .bookmarkedGroups:
-            return provider.bookmarkService.getBookmarkedGroups(userId: "userId").asObservable()
+            guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+            return provider.bookmarkService.getBookmarkedGroups(userId: userId).asObservable()
         }
     }
 

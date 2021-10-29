@@ -75,11 +75,11 @@ final class GroupMemberButton: UIButton {
     }
 
     // MARK: Configure Methods
-    func configure(imageUrlStrings: [String], memberCount: Int) {
+    func configure(imageUrlStrings: [String?], memberCount: Int) {
         let imageUrls: [URL?] = (0 ..< 3).map { index in
             if imageUrlStrings.indices.contains(index) {
                 let urlString = imageUrlStrings[index]
-                return URL(string: urlString)
+                return URL(string: urlString ?? "")
             } else {
                 return nil
             }

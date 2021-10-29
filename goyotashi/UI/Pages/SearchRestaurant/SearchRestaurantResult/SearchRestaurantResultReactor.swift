@@ -36,7 +36,7 @@ final class SearchRestaurantResultReactor: Reactor {
     }
 
     private func search(keyword: String) -> Observable<[Restaurant]> {
-        return provider.restaurantService.searchRestaurants(keyword: keyword, location: nil).asObservable()
+        return provider.restaurantService.searchRestaurants(keyword: keyword, geoPoint: nil).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {

@@ -10,6 +10,7 @@ protocol ServiceProviderType: AnyObject {
     var restaurantService: RestaurantServiceType { get }
     var groupService: GroupServiceType { get }
     var bookmarkService: BookmarkServiceType { get }
+    var storeService: StoreServiceType { get set }
 }
 
 final class ServiceProvider: ServiceProviderType {
@@ -17,4 +18,5 @@ final class ServiceProvider: ServiceProviderType {
     lazy var restaurantService: RestaurantServiceType = RestaurantService(provider: self)
     lazy var groupService: GroupServiceType = GroupService(provider: self)
     lazy var bookmarkService: BookmarkServiceType = BookmarkService(provider: self)
+    lazy var storeService: StoreServiceType = StoreService()
 }

@@ -6,7 +6,7 @@
 //
 
 struct GroupSummary {
-    let groupId: Int
+    let groupId: Int64
     let groupName: String
     let groupDescription: String
     let restaurantCount: Int

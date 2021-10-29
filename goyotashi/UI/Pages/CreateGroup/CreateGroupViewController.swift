@@ -161,6 +161,11 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: CreateGroupReactor) {
         // Action
+        createButton.rx.tap
+            .map { Reactor.Action.create }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         closeButton.rx.tap
             .bind { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)

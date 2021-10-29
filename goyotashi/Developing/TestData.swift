@@ -10,7 +10,7 @@ import Foundation
 struct TestData {
     static func user() -> User {
         return User(
-            id: randomInt(),
+            id: randomInt64(),
             name: "KoukiNAGATA",
             profileImageUrl: "https://avatars.githubusercontent.com/u/38304075?v=4"
         )
@@ -40,7 +40,7 @@ struct TestData {
         let memberCount = Int.random(in: 1 ..< 5)
         let members = (0 ..< memberCount).map { _ in user() }
         return Group(
-            id: randomInt(),
+            id: randomInt64(),
             name: "CAMPHOR-",
             description: "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。",
             memberCount: memberCount,
@@ -66,21 +66,25 @@ struct TestData {
         }
     }
 
-    static func location() -> Location {
-        return Location(latitude: 35.020669, longitude: 135.77871)
+    static func geoPoint() -> GeoPoint {
+        return GeoPoint(latitude: 35.020669, longitude: 135.77871)
     }
 
     static func restaurant() -> Restaurant {
         return Restaurant(
-            id: randomInt(),
+            id: randomInt64(),
             imageUrl: restaurantImageUrlString(),
             name: "とんかつおくだ",
             description: "定食・食堂・ハンバーグ・洋食",
             address: "京都府京都市左京区田中里ノ前町1西野ビル1F",
             phoneNumber: "075-702-1724",
             openingHours: "[月〜土]\n11:30〜14:30(L.O. 14:00)\n17:30〜22:30(L.O. 22:00)",
-            location: location()
+            geoPoint: geoPoint()
         )
+    }
+
+    static func camphorGeoPoint() -> GeoPoint {
+        return GeoPoint(latitude: 35.02488258885156, longitude: 135.77692591466467)
     }
 
     static func restaurants(count: Int) -> [Restaurant] {
@@ -89,7 +93,7 @@ struct TestData {
 
     static func groupSummary() -> GroupSummary {
         return GroupSummary(
-            groupId: randomInt(),
+            groupId: randomInt64(),
             groupName: "CAMPHOR-",
             groupDescription: "CAMPHOR-カンファーは京都のIT系学生コミュニティです。エンジニアリング・デザイン・プロダクト開発などへの関心を共通点とする、様々なバックグラウンドを持つ学生が集まっています。",
             restaurantCount: Int.random(in: 2 ..< 16),
@@ -105,6 +109,10 @@ struct TestData {
     // MARK: - Private Functions
     private static func randomInt() -> Int {
         return Int.random(in: Int.min ..< Int.max)
+    }
+
+    private static func randomInt64() -> Int64 {
+        return Int64.random(in: Int64.min ..< Int64.max)
     }
 
     private static func randomString(length: Int) -> String {

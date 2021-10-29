@@ -6,14 +6,14 @@
 //
 
 struct Restaurant {
-    let id: Int
-    let imageUrl: String
+    let id: Int64
+    let imageUrl: String?
     let name: String
     let description: String
     let address: String
     let phoneNumber: String
     let openingHours: String
-    let location: Location
+    let geoPoint: GeoPoint
 }
 
 extension Restaurant: Equatable {
