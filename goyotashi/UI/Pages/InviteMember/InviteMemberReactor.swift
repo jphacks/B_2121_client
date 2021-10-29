@@ -13,6 +13,7 @@ final class InviteMemberReactor: Reactor {
     }
     enum Mutation {
         case setInvitationToken(String)
+        case setGetTokenApiStatus(APIStatus)
     }
 
     struct State {
@@ -20,6 +21,7 @@ final class InviteMemberReactor: Reactor {
         let members: [User] = TestData.users(count: 8)
         var memberCellReactors: [InviteMemberCellReactor] = (0 ..< 8).map { _ in InviteMemberCellReactor() }
         var invitationToken: String = ""
+        var getTokenApiStatus: APIStatus = .pending
 
         init(groupId: Int64) {
             self.groupId = groupId
@@ -52,6 +54,8 @@ final class InviteMemberReactor: Reactor {
         case let .setInvitationToken(token):
             state.invitationToken = token
             logger.debug("token: \(token)")
+        case let .setGetTokenApiStatus(apiStatus):
+            state.getTokenApiStatus = apiStatus
         }
         return state
     }
