@@ -10,7 +10,7 @@ import OpenAPIClient
 
 protocol RestaurantServiceType {
     func getRestaurants(groupId: Int64) -> Single<[GroupRestaurant]>
-    func addRestaurantToGroup(restaurantId: String, groupId: String) -> Single<Void>
+    func addRestaurantToGroup(restaurantId: Int64, groupId: Int64) -> Single<Void>
     func removeRestaurantFromGroup(restaurantId: String, groupId: String) -> Single<Void>
     func searchRestaurants(keyword: String, geoPoint: GeoPoint?) -> Single<[Restaurant]>
     func getRestaurant(restaurantId: Int64) -> Single<Restaurant>
@@ -35,8 +35,10 @@ final class RestaurantService: BaseService, RestaurantServiceType {
             .asSingle()
     }
 
-    func addRestaurantToGroup(restaurantId: String, groupId: String) -> Single<Void> {
-        return .just(())
+    func addRestaurantToGroup(restaurantId: Int64, groupId: Int64) -> Single<Void> {
+        let req = AddRestaurantRequest(restaurantId: restaurantId)
+        return RestaurantAPI.addRestaurantToCommunity(id: Int(groupId), addRestaurantRequest: req)
+            .asSingle()
     }
 
     func removeRestaurantFromGroup(restaurantId: String, groupId: String) -> Single<Void> {
