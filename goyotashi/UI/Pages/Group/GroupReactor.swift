@@ -133,7 +133,7 @@ final class GroupReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createOrganizeRestaurantReactor() -> OrganizeRestaurantReactor {
-        return OrganizeRestaurantReactor(provider: provider)
+        return OrganizeRestaurantReactor(provider: provider, groupId: currentState.groupId)
     }
 
     func createEditGroupReactor() -> EditGroupReactor? {
