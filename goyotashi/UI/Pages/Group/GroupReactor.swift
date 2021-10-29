@@ -18,6 +18,7 @@ final class GroupReactor: Reactor {
     }
 
     struct State {
+        let groupId: Int64
         var group: Group?
         var restaurantCellReactors: [GroupRestaurantCellReactor] = []
         let isMember: Bool = true
@@ -26,9 +27,9 @@ final class GroupReactor: Reactor {
     let initialState: State
     private let provider: ServiceProviderType
 
-    init(provider: ServiceProviderType) {
+    init(provider: ServiceProviderType, groupId: Int64) {
         self.provider = provider
-        initialState = State()
+        initialState = State(groupId: groupId)
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
