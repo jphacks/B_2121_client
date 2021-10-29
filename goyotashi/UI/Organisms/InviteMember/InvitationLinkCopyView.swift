@@ -32,6 +32,7 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
     let doneImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
         $0.image = R.image.check()
+        $0.isHidden = true
     }
 
     // MARK: - Initializers
