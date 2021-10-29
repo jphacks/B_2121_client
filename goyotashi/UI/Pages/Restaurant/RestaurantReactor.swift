@@ -62,6 +62,6 @@ final class RestaurantReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createAddRestaurantToGroupReactor() -> AddRestaurantToGroupReactor {
-        return AddRestaurantToGroupReactor(provider: provider)
+        return AddRestaurantToGroupReactor(provider: provider, groupId: currentState.groupId)
     }
 }
