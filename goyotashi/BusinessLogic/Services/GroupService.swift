@@ -15,7 +15,7 @@ protocol GroupServiceType {
     func createGroup(name: String, description: String, isPublic: Bool) -> Single<Group>
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]>
     func getGroup(id: Int64) -> Single<Group>
-    func getUsers(groupId: String) -> Single<[User]>
+    func getUsers(groupId: Int64) -> Single<[User]>
 }
 
 final class GroupService: BaseService, GroupServiceType {
@@ -91,7 +91,7 @@ final class GroupService: BaseService, GroupServiceType {
             .asSingle()
     }
 
-    func getUsers(groupId: String) -> Single<[User]> {
+    func getUsers(groupId: Int64) -> Single<[User]> {
         return .just(TestData.users(count: 8))
     }
 }
