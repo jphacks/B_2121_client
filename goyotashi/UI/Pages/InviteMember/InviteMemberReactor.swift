@@ -39,7 +39,13 @@ final class InviteMemberReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .tapInvitationLinkButton:
-            return getToken().map(Mutation.setInvitationToken)
+            if currentState.getTokenApiStatus != .pending { return .empty() }
+            return .concat(
+                .just(.setGetTokenApiStatus(.loading)),
+                getToken()
+                    .map(Mutation.setInvitationToken),
+                .just(.setGetTokenApiStatus(.pending))
+            )
         }
     }
 
@@ -53,6 +59,7 @@ final class InviteMemberReactor: Reactor {
         switch mutation {
         case let .setInvitationToken(token):
             state.invitationToken = token
+            state.getTokenApiStatus = .succeeded
             logger.debug("token: \(token)")
         case let .setGetTokenApiStatus(apiStatus):
             state.getTokenApiStatus = apiStatus
