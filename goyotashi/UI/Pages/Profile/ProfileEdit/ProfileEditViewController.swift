@@ -38,6 +38,10 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
         $0.font = UIFont(name: FontStyle.regular.rawValue, size: 18)
     }
 
+    private let doneButton = UIBarButtonItem(title: "完了", style: .done, target: nil, action: nil).then {
+        $0.tintColor = Color.gray01
+    }
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +58,8 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
         view.addSubview(userNameTextField)
 
         title = "プロフィール編集"
+
+        navigationItem.rightBarButtonItem = doneButton
     }
 
     func setupViewConstraints() {
@@ -87,6 +93,12 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
             .filterNil()
             .bind { [weak self] urlString in
                 self?.profileImageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
+            }
+            .disposed(by: disposeBag)
+
+        doneButton.rx.tap
+            .bind { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)
 
