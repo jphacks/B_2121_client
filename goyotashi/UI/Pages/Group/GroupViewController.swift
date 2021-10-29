@@ -20,7 +20,7 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Views
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
-        $0.estimatedItemSize =  GroupRestaurantCell.Const.itemSize
+        $0.itemSize =  GroupRestaurantCell.Const.itemSize
         $0.minimumLineSpacing = 24
         $0.minimumInteritemSpacing = 8
         $0.scrollDirection = .vertical
