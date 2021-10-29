@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class APIStatusView: UIView, ViewConstructor {
 
@@ -34,6 +36,32 @@ final class APIStatusView: UIView, ViewConstructor {
     func setupViewConstraints() {
         activityIndicator.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+    }
+
+    func configure(apiStatus: APIStatus) {
+        switch apiStatus {
+        case .pending:
+            isHidden = true
+        case .refreshing:
+            isHidden = true
+        case .loading:
+            isHidden = false
+            activityIndicator.startAnimating()
+        case .succeeded:
+            isHidden = false
+            activityIndicator.stopAnimating()
+        case .failed:
+            isHidden = false
+            activityIndicator.stopAnimating()
+        }
+    }
+}
+
+extension Reactive where Base: APIStatusView {
+    var apiStatus: Binder<APIStatus> {
+        return Binder(base) { view, apiStatus in
+            view.configure(apiStatus: apiStatus)
         }
     }
 }
