@@ -56,8 +56,6 @@ Class | Method | HTTP request | Description
  - [Bookmark](docs/Bookmark.md)
  - [Comment](docs/Comment.md)
  - [Community](docs/Community.md)
- - [CommunityDetail](docs/CommunityDetail.md)
- - [CommunityDetailAllOf](docs/CommunityDetailAllOf.md)
  - [CreateCommunityRequest](docs/CreateCommunityRequest.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
  - [CreateUserResponse](docs/CreateUserResponse.md)

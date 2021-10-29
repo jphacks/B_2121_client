@@ -36,7 +36,6 @@ open class RequestBuilder<T> {
         self.headers = headers
 
         addHeaders(OpenAPIClient.customHeaders)
-        credential = OpenAPIClient.credential
     }
 
     open func addHeaders(_ aHeaders: [String: String]) {

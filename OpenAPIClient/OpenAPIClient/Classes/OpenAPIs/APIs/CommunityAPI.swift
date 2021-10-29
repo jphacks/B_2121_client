@@ -18,9 +18,9 @@ open class CommunityAPI {
      
      - parameter id: (path)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Observable<CommunityDetail>
+     - returns: Observable<Community>
      */
-    open class func getCommunityById(id: Int, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<CommunityDetail> {
+    open class func getCommunityById(id: Int, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<Community> {
         return Observable.create { observer -> Disposable in
             getCommunityByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
                 switch result {
@@ -42,9 +42,9 @@ open class CommunityAPI {
        - type: apiKey Authorization 
        - name: token
      - parameter id: (path)  
-     - returns: RequestBuilder<CommunityDetail> 
+     - returns: RequestBuilder<Community> 
      */
-    open class func getCommunityByIdWithRequestBuilder(id: Int) -> RequestBuilder<CommunityDetail> {
+    open class func getCommunityByIdWithRequestBuilder(id: Int) -> RequestBuilder<Community> {
         var localVariablePath = "/community/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -60,7 +60,7 @@ open class CommunityAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CommunityDetail>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Community>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
