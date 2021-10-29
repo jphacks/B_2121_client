@@ -19,6 +19,7 @@ final class CreateGroupReactor: Reactor {
         case setGroupDescription(String)
         case setIsPublic(Bool)
         case didCreate(Group)
+        case setApiStatus(APIStatus)
     }
 
     struct State {
@@ -26,6 +27,7 @@ final class CreateGroupReactor: Reactor {
         var groupDescription: String = ""
         let members: [User] = (0 ..< 4).map { _ in TestData.user() }
         var isPublic: Bool = false
+        var apiStatus: APIStatus = .pending
     }
 
     let initialState: State
@@ -47,7 +49,15 @@ final class CreateGroupReactor: Reactor {
         case let .updateIsOnPrivacySwitch(isOn):
             return .just(Mutation.setIsPublic(isOn))
         case .create:
-            return createGroup().map(Mutation.didCreate)
+            if currentState.apiStatus != .pending { return .empty() }
+            return .concat(
+                .just(.setApiStatus(.loading)),
+                createGroup()
+                    .map(Mutation.didCreate)
+                    .catchError { _ in
+                        return .just(.setApiStatus(.failed))
+                    }
+            )
         }
     }
 
@@ -65,8 +75,11 @@ final class CreateGroupReactor: Reactor {
         case let .setIsPublic(isPublic):
             state.isPublic = isPublic
         case let .didCreate(group):
-            // TODO: Notify that a group has been created
             logger.verbose("group created: \(group)")
+            state.apiStatus = .succeeded
+            provider.groupService.event.onNext(.didCreateGroup)
+        case let .setApiStatus(apiStatus):
+            state.apiStatus = apiStatus
         }
         return state
     }

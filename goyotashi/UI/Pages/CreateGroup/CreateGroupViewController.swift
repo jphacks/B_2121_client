@@ -18,11 +18,8 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.setImage(R.image.close(), for: .normal)
     }
 
-    private let createButton = UIButton().then {
-        $0.titleLabel?.apply(fontStyle: .medium, size: 15)
-        $0.setTitle("作成", for: .normal)
-        $0.setTitleColor(Color.gray01, for: .normal)
-        $0.setTitleColor(Color.gray05, for: .disabled)
+    private let createButton = UIBarButtonItem(title: "作成", style: .done, target: nil, action: nil).then {
+        $0.tintColor = Color.gray01
     }
 
     private let scrollView = UIScrollView().then {
@@ -76,6 +73,8 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.numberOfLines = 0
     }
 
+    private let apiStatusView = APIStatusView()
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +86,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: createButton)
+        navigationItem.rightBarButtonItem = createButton
 
         view.backgroundColor = Color.white
         title = "新しいグループを作成"
@@ -104,6 +103,7 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         scrollView.addSubview(privacyStateLabel)
         scrollView.addSubview(privacySwitch)
         scrollView.addSubview(privacyDescriptionLabel)
+        view.addSubview(apiStatusView)
     }
 
     func setupViewConstraints() {
@@ -156,6 +156,9 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
             $0.left.equalToSuperview().inset(16)
             $0.right.equalTo(privacySwitch.snp.left).offset(-20)
         }
+        apiStatusView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
     // MARK: - Bind Method
@@ -207,6 +210,24 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
                 self?.privacyStateLabel.text = isPublic ? "公開する" : "非公開にする"
                 self?.privacyDescriptionLabel.text = isPublic ? "すべてのユーザがグループの内容を見ることができます。" : "グループに参加しているメンバーだけがグループの内容を見ることができます。"
             }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                self?.createButton.isEnabled = apiStatus == .pending
+                if apiStatus == .succeeded {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+                if apiStatus == .failed {
+                    logger.error("failed to create a group")
+                }
+            }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind(to: apiStatusView.rx.apiStatus)
             .disposed(by: disposeBag)
     }
 }
