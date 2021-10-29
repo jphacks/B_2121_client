@@ -32,6 +32,7 @@ final class UserService: BaseService, UserServiceType {
                 let user: User = User(id: response.user.id, name: response.user.name, profileImageUrl: response.user.profileImageUrl ?? "")
                 self.provider.storeService.authStore.authInfo = authInfo
                 self.provider.storeService.authStore.user = user
+                OpenAPIClient.customHeaders["Authorization"] = authInfo.token
 
                 logger.verbose("success to create user: \(user)")
                 logger.verbose("authInfo is \(authInfo)")
