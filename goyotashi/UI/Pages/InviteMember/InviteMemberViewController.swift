@@ -27,6 +27,8 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
         $0.tintColor = Color.gray01
     }
 
+    private let invitationLinkCopyView = InvitationLinkCopyView()
+
     private let searchBar = UISearchBar().then {
         $0.placeholder = "キーワード"
         $0.backgroundImage = UIImage()
@@ -55,9 +57,10 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        searchBar.snp.remakeConstraints {
+        invitationLinkCopyView.snp.remakeConstraints {
             $0.top.equalToSuperview().inset(view.safeAreaInsets.top)
-            $0.left.right.equalToSuperview().inset(8)
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(InvitationLinkCopyView.Const.height)
         }
     }
 
@@ -68,14 +71,19 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         navigationItem.rightBarButtonItem = doneButton
 
+        view.addSubview(invitationLinkCopyView)
         view.addSubview(searchBar)
         view.addSubview(collectionView)
     }
 
     func setupViewConstraints() {
-        searchBar.snp.makeConstraints {
+        invitationLinkCopyView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.left.right.equalToSuperview()
+        }
+        searchBar.snp.makeConstraints {
+            $0.top.equalTo(invitationLinkCopyView.snp.bottom)
+            $0.left.right.equalToSuperview().inset(8)
         }
         collectionView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom)
