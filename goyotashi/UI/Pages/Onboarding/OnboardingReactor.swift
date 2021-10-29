@@ -8,12 +8,33 @@
 import ReactorKit
 
 final class OnboardingReactor: Reactor {
-    enum Action {}
-    enum Mutation {}
+    enum Action {
+        case updateName(String?)
+    }
+    enum Mutation {
+        case setName(String)
+    }
 
     struct State {
-        let property: Int = 0
+        var name: String = ""
     }
 
     let initialState: State = State()
+
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case let .updateName(name):
+            guard let name = name else { return .empty() }
+            return .just(.setName(name))
+        }
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .setName(name):
+            state.name = name
+        }
+        return state
+    }
 }
