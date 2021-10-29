@@ -14,21 +14,24 @@ final class GroupReactor: Reactor {
 
     enum Mutation {
         case setGroup(Group)
+        case setUsers([User])
         case setRestaurantCellReactors([GroupRestaurant])
     }
 
     struct State {
+        let groupId: Int64
         var group: Group?
+        var users: [User] = []
         var restaurantCellReactors: [GroupRestaurantCellReactor] = []
-        let isMember: Bool = true
+        var isMember: Bool = false
     }
 
     let initialState: State
     private let provider: ServiceProviderType
 
-    init(provider: ServiceProviderType) {
+    init(provider: ServiceProviderType, groupId: Int64) {
         self.provider = provider
-        initialState = State()
+        initialState = State(groupId: groupId)
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -36,17 +39,25 @@ final class GroupReactor: Reactor {
         case .refresh:
             return .merge(
                 getGroup().map(Mutation.setGroup),
+                getUsers().map(Mutation.setUsers),
                 getRestaurants().map(Mutation.setRestaurantCellReactors)
             )
         }
     }
 
     private func getGroup() -> Observable<Group> {
-        return provider.groupService.getGroup(id: "groupId").asObservable()
+        let groupId = currentState.groupId
+        return provider.groupService.getGroup(id: groupId).asObservable()
+    }
+
+    private func getUsers() -> Observable<[User]> {
+        let groupId = currentState.groupId
+        return provider.groupService.getUsers(groupId: groupId).asObservable()
     }
 
     private func getRestaurants() -> Observable<[GroupRestaurant]> {
-        return provider.restaurantService.getRestaurants(groupId: "groupId").asObservable()
+        let groupId = currentState.groupId
+        return provider.restaurantService.getRestaurants(groupId: groupId).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -54,6 +65,11 @@ final class GroupReactor: Reactor {
         switch mutation {
         case let .setGroup(group):
             state.group = group
+        case let .setUsers(users):
+            state.users = users
+            if let userId = provider.storeService.authStore.user?.id {
+                state.isMember = users.map { $0.id }.contains(userId)
+            }
         case let .setRestaurantCellReactors(groupRestaurants):
             state.restaurantCellReactors = groupRestaurants.map { GroupRestaurantCellReactor(groupRestaurant: $0) }
         }

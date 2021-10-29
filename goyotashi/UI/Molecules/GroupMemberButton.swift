@@ -76,21 +76,14 @@ final class GroupMemberButton: UIButton {
 
     // MARK: Configure Methods
     func configure(imageUrlStrings: [String?], memberCount: Int) {
-        let imageUrls: [URL?] = (0 ..< 3).map { index in
+        _ = (0 ..< 3).map { index in
             if imageUrlStrings.indices.contains(index) {
-                let urlString = imageUrlStrings[index]
-                return URL(string: urlString ?? "")
-            } else {
-                return nil
+                let url = URL(string: imageUrlStrings[index] ?? "")
+                memberIconViews[index].imageView.kf.setImage(with: url, placeholder: R.image.dish())
             }
         }
-        _ = imageUrls.enumerated().map {
-            if let url = $0.element {
-                memberIconViews[$0.offset].isHidden = false
-                memberIconViews[$0.offset].imageView.kf.setImage(with: url, placeholder: R.image.dish())
-            } else {
-                memberIconViews[$0.offset].isHidden = true
-            }
+        memberIconViews.enumerated().map {
+            memberIconViews[$0.offset].isHidden = !($0.offset < memberCount)
         }
         memberCountLalbel.text = "\(memberCount)人のメンバー"
     }

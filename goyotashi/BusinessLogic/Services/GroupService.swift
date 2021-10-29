@@ -14,8 +14,8 @@ protocol GroupServiceType {
 
     func createGroup(name: String, description: String, isPublic: Bool) -> Single<Group>
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]>
-    func getGroup(id: String) -> Single<Group>
-    func getUsers(groupId: String) -> Single<[User]>
+    func getGroup(id: Int64) -> Single<Group>
+    func getUsers(groupId: Int64) -> Single<[User]>
 }
 
 final class GroupService: BaseService, GroupServiceType {
@@ -72,11 +72,39 @@ final class GroupService: BaseService, GroupServiceType {
             .asSingle()
     }
 
-    func getGroup(id: String) -> Single<Group> {
-        return .just(TestData.group())
+    func getGroup(id: Int64) -> Single<Group> {
+        // INFO: You can get the list of members from other requests.
+        // TODO: get imageUrls
+        let groupId = Int(id)
+        return CommunityAPI.getCommunityById(id: groupId)
+            .map { (community: Community) in
+                Group(
+                    id: community.id,
+                    name: community.name,
+                    description: community.description,
+                    memberCount: community.numUser,
+                    restaurantCount: community.numRestaurant,
+                    members: [],
+                    isPublic: true
+                )
+            }
+            .asSingle()
     }
 
-    func getUsers(groupId: String) -> Single<[User]> {
-        return .just(TestData.users(count: 8))
+    func getUsers(groupId: Int64) -> Single<[User]> {
+        let id = Int(groupId)
+        return CommunityAPI.listUsersOfCommunity(id: id)
+            .map { (response: ListCommunityUsersResponse) in
+                guard let responseUsers = response.users else { return [] }
+                let users = responseUsers.map { user in
+                    User(
+                        id: user.id,
+                        name: user.name,
+                        profileImageUrl: user.profileImageUrl
+                    )
+                }
+                return users
+            }
+            .asSingle()
     }
 }

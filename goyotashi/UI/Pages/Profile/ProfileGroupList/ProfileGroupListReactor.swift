@@ -77,6 +77,7 @@ final class ProfileGroupListReactor: Reactor {
 
     // MARK: Create Reactor Methods
     func createGroupReactor(indexPath: IndexPath) -> GroupReactor {
-        return GroupReactor(provider: provider)
+        let groupId = currentState.groupCellReactors[indexPath.row].currentState.groupSummary.groupId
+        return GroupReactor(provider: provider, groupId: groupId)
     }
 }

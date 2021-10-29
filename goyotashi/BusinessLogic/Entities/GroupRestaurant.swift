@@ -6,7 +6,7 @@
 //
 
 struct GroupRestaurant {
-    let restaurantId: Int
+    let restaurantId: Int64
     let imageUrl: String
     let restaurantName: String
 }
