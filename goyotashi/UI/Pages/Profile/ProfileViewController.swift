@@ -82,7 +82,6 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
                     $0.modalPresentationStyle = .fullScreen
                 }
                 self?.present(navController, animated: true, completion: nil)
-                //                self?.navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)
 

@@ -70,8 +70,8 @@ final class UserService: BaseService, UserServiceType {
     }
 
     func updateMyName(name: String) -> Single<User> {
-        let req = PutUserMeRequest(name: name)
-        return UserAPI.userMePut(putUserMeRequest: req)
+        let request = PutUserMeRequest(name: name)
+        return UserAPI.userMePut(putUserMeRequest: request)
             .map { resp in
                 return User(
                     id: resp.id,

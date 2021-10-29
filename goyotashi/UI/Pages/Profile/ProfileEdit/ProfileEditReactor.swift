@@ -58,7 +58,6 @@ final class ProfileEditReactor: Reactor {
     }
 
     private func updateUser() -> Observable<User> {
-        print("update user!!!")
         if let name = currentState.name {
             return provider.userService.updateMyName(name: name).asObservable()
         }
