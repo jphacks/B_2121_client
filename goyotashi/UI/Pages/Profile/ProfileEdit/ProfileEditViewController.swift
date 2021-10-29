@@ -7,7 +7,7 @@
 
 import UIKit
 import ReactorKit
-import SegementSlide
+// import SegementSlide
 
 final class ProfileEditViewController: UIViewController, View, ViewConstructor {
     struct Const {
@@ -18,6 +18,10 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let closeButton = UIButton().then {
+        $0.setImage(R.image.close(), for: .normal)
+    }
+
     private let profileImageLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
         $0.text = "プロフィール画像"
@@ -56,10 +60,11 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
         view.addSubview(profileImageView)
         view.addSubview(userNameLabel)
         view.addSubview(userNameTextField)
-
+        view.backgroundColor = Color.white
         title = "プロフィール編集"
 
         navigationItem.rightBarButtonItem = doneButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
     }
 
     func setupViewConstraints() {
@@ -116,6 +121,12 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
                 if apiStatus == .failed {
                     logger.error("failed to create a group")
                 }
+            }
+            .disposed(by: disposeBag)
+
+        closeButton.rx.tap
+            .bind { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
             }
             .disposed(by: disposeBag)
     }

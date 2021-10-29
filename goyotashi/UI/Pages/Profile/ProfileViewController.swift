@@ -73,13 +73,16 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
             }
             .disposed(by: disposeBag)
 
-        header.editProfileButton.rx.tapGesture()
-            .when(.ended)
+        header.editProfileButton.rx.tap
             .bind { [weak self] _ in
                 let viewController = ProfileEditViewController().then {
                     $0.reactor = reactor.createProfileEditReactor()
                 }
-                self?.navigationController?.pushViewController(viewController, animated: true)
+                let navController = UINavigationController(rootViewController: viewController).then {
+                    $0.modalPresentationStyle = .fullScreen
+                }
+                self?.present(navController, animated: true, completion: nil)
+                //                self?.navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)
 
