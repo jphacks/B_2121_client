@@ -29,7 +29,7 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
 
     let activityIndicatorView = UIActivityIndicatorView()
 
-    private let doneImageView = UIImageView().then {
+    let doneImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
         $0.image = R.image.check()
     }
