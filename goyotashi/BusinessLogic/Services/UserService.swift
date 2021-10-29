@@ -12,7 +12,7 @@ protocol UserServiceType {
     // MARK: - Event
     var event: PublishSubject<UserEvent> { get }
 
-    func createUser() -> Single<Void>
+    func createUser() -> Single<User>
     func getMyProfile() -> Single<User>
     func updateMyName(name: String) -> Single<User>
     func getMyGroups(userId: Int64) -> Single<[GroupSummary]>
@@ -22,7 +22,7 @@ final class UserService: BaseService, UserServiceType {
     // MARK: - Event
     let event: PublishSubject<UserEvent> = PublishSubject<UserEvent>()
 
-    func createUser() -> Single<Void> {
+    func createUser() -> Single<User> {
         // TODO: remove name "Gohan Daisuki"
         // TODO: remove vendor: .anonymous
         let request = CreateUserRequest(name: "Gohan Daisuki", vendor: .anonymous)
@@ -35,7 +35,7 @@ final class UserService: BaseService, UserServiceType {
 
                 logger.verbose("success to create user: \(user)")
                 logger.verbose("authInfo is \(authInfo)")
-                return
+                return user
             }
             .asSingle()
     }
