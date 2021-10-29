@@ -9,12 +9,14 @@ import ReactorKit
 
 final class CreateGroupReactor: Reactor {
     enum Action {
+        case setUser
         case updateGroupName(String?)
         case updateGroupDescription(String?)
         case updateIsOnPrivacySwitch(Bool)
         case create
     }
     enum Mutation {
+        case setUsers([User])
         case setGroupName(String)
         case setGroupDescription(String)
         case setIsPublic(Bool)
@@ -25,7 +27,7 @@ final class CreateGroupReactor: Reactor {
     struct State {
         var groupName: String = ""
         var groupDescription: String = ""
-        let members: [User] = (0 ..< 4).map { _ in TestData.user() }
+        var members: [User] = []
         var isPublic: Bool = false
         var apiStatus: APIStatus = .pending
     }
@@ -40,6 +42,12 @@ final class CreateGroupReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .setUser:
+            if let user = provider.storeService.authStore.user {
+                return .just(.setUsers([user]))
+            } else {
+                return .just(.setUsers([]))
+            }
         case let .updateGroupName(name):
             guard let name = name else { return .empty() }
             return .just(Mutation.setGroupName(name))
@@ -68,6 +76,8 @@ final class CreateGroupReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
+        case let .setUsers(uses):
+            state.members = uses
         case let .setGroupName(name):
             state.groupName = name
         case let .setGroupDescription(description):
