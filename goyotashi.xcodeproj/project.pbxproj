@@ -24,7 +24,6 @@
 		84195A53272B956000D0AD9D /* APIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A52272B956000D0AD9D /* APIStatus.swift */; };
 		84195A55272B9D4400D0AD9D /* APIStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A54272B9D4400D0AD9D /* APIStatusView.swift */; };
 		84195A58272BB23900D0AD9D /* GroupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A57272BB23900D0AD9D /* GroupEvent.swift */; };
-		84195A5A272BE79400D0AD9D /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A59272BE79400D0AD9D /* Bookmark.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -160,7 +159,6 @@
 		84195A52272B956000D0AD9D /* APIStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStatus.swift; sourceTree = "<group>"; };
 		84195A54272B9D4400D0AD9D /* APIStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStatusView.swift; sourceTree = "<group>"; };
 		84195A57272BB23900D0AD9D /* GroupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEvent.swift; sourceTree = "<group>"; };
-		84195A59272BE79400D0AD9D /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -354,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				84195A57272BB23900D0AD9D /* GroupEvent.swift */,
-				84195A59272BE79400D0AD9D /* Bookmark.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1126,7 +1123,6 @@
 				84777743272947420054E15D /* AddRestaurantToGroupReactor.swift in Sources */,
 				84AFC3B9272674A800B9244E /* UIColor+Extension.swift in Sources */,
 				84195A58272BB23900D0AD9D /* GroupEvent.swift in Sources */,
-				84195A5A272BE79400D0AD9D /* Bookmark.swift in Sources */,
 				84A18FB0272B144B0073C770 /* StoreService.swift in Sources */,
 				84777751272975430054E15D /* SearchGroupResultReactor.swift in Sources */,
 				8477771B272862450054E15D /* OrganizeRestaurantCellReactor.swift in Sources */,
