@@ -15,18 +15,22 @@ final class OrganizeRestaurantReactor: Reactor {
     }
     enum Mutation {
         case setRestaurantCellReactors([GroupRestaurant])
+        case delete(Void)
+        case setApiStatus(APIStatus)
     }
 
     struct State {
         var restaurantCellReactors: [OrganizeRestaurantCellReactor] = []
+        let groupId: Int64
+        var apiStatus: APIStatus = .pending
     }
 
     let initialState: State
     private let provider: ServiceProviderType
 
-    init(provider: ServiceProviderType) {
+    init(provider: ServiceProviderType, groupId: Int64) {
         self.provider = provider
-        initialState = State()
+        initialState = State(groupId: groupId)
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -37,19 +41,29 @@ final class OrganizeRestaurantReactor: Reactor {
             currentState.restaurantCellReactors[indexPath.row].action.onNext(.toggleIsRemovable)
             return .empty()
         case .remove:
+            if currentState.apiStatus != .pending { return .empty() }
             let restaurants: [GroupRestaurant] = currentState.restaurantCellReactors
                 .filter {
                     $0.currentState.isRemovable == true
                 }
                 .map { $0.currentState.groupRestaurant }
-            return .empty()
+            let obs = removeRestaurants(restaurants: restaurants)
+            return Observable.concat(obs)
+                .map(Mutation.delete)
+                .catchError { _ in
+                    return .just(.setApiStatus(.failed))
+                }
         }
     }
 
     private func getGroupRestaurants() -> Observable<[GroupRestaurant]> {
-        // TODO: Replace groupdId with Group.id
-        let groupId: Int64 = 1
-        return provider.restaurantService.getRestaurants(groupId: groupId).asObservable()
+        return provider.restaurantService.getRestaurants(groupId: currentState.groupId).asObservable()
+    }
+
+    private func removeRestaurants(restaurants: [GroupRestaurant]) -> [Observable<Void>] {
+        return restaurants.map {
+            return provider.restaurantService.removeRestaurantFromGroup(restaurantId: $0.restaurantId, groupId: self.currentState.groupId).asObservable()
+        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -57,6 +71,11 @@ final class OrganizeRestaurantReactor: Reactor {
         switch mutation {
         case let .setRestaurantCellReactors(groupRestaurants):
             state.restaurantCellReactors = groupRestaurants.map { OrganizeRestaurantCellReactor(groupRestaurant: $0) }
+        case .delete:
+            state.apiStatus = .succeeded
+            provider.restaurantService.event.onNext(.didDelete)
+        case let .setApiStatus(apiStatus):
+            state.apiStatus = apiStatus
         }
         return state
     }

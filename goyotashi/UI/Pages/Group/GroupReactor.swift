@@ -39,6 +39,21 @@ final class GroupReactor: Reactor {
         initialState = State(groupId: groupId)
     }
 
+    func transform(action: Observable<Action>) -> Observable<Action> {
+        let restaurantEventAction = provider.restaurantService.event
+            .flatMap { event -> Observable<Action> in
+                switch event {
+                case .didDelete:
+                    return .just(.refresh)
+                }
+            }
+
+        return .merge(
+            action,
+            restaurantEventAction
+        )
+    }
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
@@ -133,7 +148,7 @@ final class GroupReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createOrganizeRestaurantReactor() -> OrganizeRestaurantReactor {
-        return OrganizeRestaurantReactor(provider: provider)
+        return OrganizeRestaurantReactor(provider: provider, groupId: currentState.groupId)
     }
 
     func createEditGroupReactor() -> EditGroupReactor? {
