@@ -37,8 +37,13 @@ final class InviteMemberReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .tapInvitationLinkButton:
-            return .empty()
+            return getToken().map(Mutation.setInvitationToken)
         }
+    }
+
+    private func getToken() -> Observable<String> {
+        let groupId = currentState.groupId
+        return provider.groupService.getGroupToken(groupId: groupId).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -46,6 +51,7 @@ final class InviteMemberReactor: Reactor {
         switch mutation {
         case let .setInvitationToken(token):
             state.invitationToken = token
+            logger.debug("token: \(token)")
         }
         return state
     }
