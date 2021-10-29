@@ -57,17 +57,15 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        nameInputView.nameTextField.rx.text
-            .bind { [weak self] text in
-                self?.nameInputView.startButton.isEnabled = text != nil && text != ""
-            }
-            .disposed(by: disposeBag)
-
         nameInputView.startButton.rx.tap
             .map { Reactor.Action.startApp }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
         // State
+        reactor.state.map { $0.canStartApp }
+            .distinctUntilChanged()
+            .bind(to: nameInputView.startButton.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
 }

@@ -15,12 +15,18 @@ final class OnboardingReactor: Reactor {
     }
     enum Mutation {
         case setUser(User)
+        case updateUser(User)
         case setGroup(Group)
     }
 
     struct State {
         var user: User?
         var group: Group?
+        var canStartApp: Bool {
+            didUpdateName && didCreateGroup
+        }
+        var didUpdateName: Bool = false
+        var didCreateGroup: Bool = false
     }
 
     let initialState: State
@@ -38,7 +44,7 @@ final class OnboardingReactor: Reactor {
         case let .updateName(name):
             guard let name = name else { return .empty() }
             return .merge(
-                updateUserName(name: name).map(Mutation.setUser),
+                updateUserName(name: name).map(Mutation.updateUser),
                 createGroup(userName: name).map(Mutation.setGroup)
             )
         case .startApp:
@@ -70,8 +76,12 @@ final class OnboardingReactor: Reactor {
         case let .setUser(user):
             state.user = user
             logger.debug("user: \(user)")
+        case let .updateUser(user):
+            logger.debug("updated user: \(user)")
+            state.didUpdateName = true
         case let .setGroup(group):
             state.group = group
+            state.didCreateGroup = true
             logger.debug("group: \(group)")
         }
         return state
