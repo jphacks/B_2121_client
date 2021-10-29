@@ -43,7 +43,8 @@ final class GroupReactor: Reactor {
         let restaurantEventAction = provider.restaurantService.event
             .flatMap { event -> Observable<Action> in
                 switch event {
-                case .didDelete:
+                case .didDelete,
+                     .didAdd:
                     return .just(.refresh)
                 }
             }
@@ -161,7 +162,7 @@ final class GroupReactor: Reactor {
     }
 
     func createSearchRestaurantReactor() -> SearchRestaurantReactor {
-        return SearchRestaurantReactor(provider: provider)
+        return SearchRestaurantReactor(provider: provider, groupId: currentState.groupId)
     }
 
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {

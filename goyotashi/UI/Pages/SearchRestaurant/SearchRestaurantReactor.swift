@@ -17,14 +17,15 @@ final class SearchRestaurantReactor: Reactor {
 
     struct State {
         var keyword: String = ""
+        let groupId: Int64
     }
 
     let initialState: State
     private let provider: ServiceProviderType
 
-    init(provider: ServiceProviderType) {
+    init(provider: ServiceProviderType, groupId: Int64) {
         self.provider = provider
-        initialState = State()
+        initialState = State(groupId: groupId)
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -46,6 +47,6 @@ final class SearchRestaurantReactor: Reactor {
 
     // MARK: - Create Reactor Methods
     func createSearchRestaurantResultReactor() -> SearchRestaurantResultReactor {
-        return SearchRestaurantResultReactor(provider: provider)
+        return SearchRestaurantResultReactor(provider: provider, groupId: currentState.groupId)
     }
 }
