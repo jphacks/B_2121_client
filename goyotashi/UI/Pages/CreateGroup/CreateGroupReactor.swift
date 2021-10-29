@@ -19,6 +19,7 @@ final class CreateGroupReactor: Reactor {
         case setGroupDescription(String)
         case setIsPublic(Bool)
         case didCreate(Group)
+        case setApiStatus(APIStatus)
     }
 
     struct State {
@@ -68,6 +69,8 @@ final class CreateGroupReactor: Reactor {
         case let .didCreate(group):
             // TODO: Notify that a group has been created
             logger.verbose("group created: \(group)")
+        case let .setApiStatus(apiStatus):
+            state.apiStatus = apiStatus
         }
         return state
     }
