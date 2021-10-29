@@ -10,6 +10,7 @@ import ReactorKit
 final class GroupReactor: Reactor {
     enum Action {
         case refresh
+        case tapBookmarkButton
     }
 
     enum Mutation {
@@ -24,6 +25,7 @@ final class GroupReactor: Reactor {
         var users: [User] = []
         var restaurantCellReactors: [GroupRestaurantCellReactor] = []
         var isMember: Bool = false
+        var isBookmarked: Bool = false
     }
 
     let initialState: State
@@ -42,6 +44,9 @@ final class GroupReactor: Reactor {
                 getUsers().map(Mutation.setUsers),
                 getRestaurants().map(Mutation.setRestaurantCellReactors)
             )
+        case .tapBookmarkButton:
+            logger.debug("tapBookmarkButton")
+            return .empty()
         }
     }
 
