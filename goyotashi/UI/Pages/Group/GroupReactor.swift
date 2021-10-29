@@ -124,6 +124,7 @@ final class GroupReactor: Reactor {
             state.restaurantCellReactors = groupRestaurants.map { GroupRestaurantCellReactor(groupRestaurant: $0) }
         case let .setIsBookmarked(isBookmarked):
             state.isBookmarked = isBookmarked
+            provider.bookmarkService.event.onNext(.didUpdateBookmark)
         case let .setBookmarkApiStatus(apiStatus):
             state.bookmarkApiStatus = apiStatus
         }
