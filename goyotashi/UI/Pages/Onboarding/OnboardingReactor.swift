@@ -10,7 +10,6 @@ import ReactorKit
 final class OnboardingReactor: Reactor {
     enum Action {
         case createUser
-        case createGroup
         case updateName(String?)
         case startApp
     }
@@ -36,8 +35,6 @@ final class OnboardingReactor: Reactor {
         switch action {
         case .createUser:
             return createUser().map(Mutation.setUser)
-        case .createGroup:
-            return createGroup().map(Mutation.setGroup)
         case let .updateName(name):
             guard let name = name else { return .empty() }
             return updateUserName(name: name).map(Mutation.setUser)
