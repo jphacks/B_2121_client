@@ -44,9 +44,6 @@ final class UserService: BaseService, UserServiceType {
     }
 
     func getMyGroups(userId: Int64) -> Single<[GroupSummary]> {
-        // TODO: get restaurantCount
-        // TODO: get memberCount
-        // TODO: get imageUrls
         return UserAPI.listUserCommunities(id: userId)
             .map { (response: ListUserCommunityResponse) in
                 guard let communities = response.communities else { return [] }
@@ -54,10 +51,10 @@ final class UserService: BaseService, UserServiceType {
                     return GroupSummary(
                         groupId: community.id,
                         groupName: community.name,
-                        groupDescription: community.description ?? "",
-                        restaurantCount: 0,
-                        memberCount: 0,
-                        imageUrls: []
+                        groupDescription: community.description,
+                        restaurantCount: community.numRestaurant,
+                        memberCount: community.numUser,
+                        imageUrls: community.imageUrls
                     )
                 }
                 return groups

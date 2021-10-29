@@ -25,8 +25,6 @@ final class GroupService: BaseService, GroupServiceType {
     func createGroup(name: String, description: String, isPublic: Bool) -> Single<Group> {
         // TODO: replace geoPoint with user location
         // TODO: send isPublic
-        // TODO: get memberCount
-        // TODO: get restaurantCount
         // TODO: get members
         // TODO: get isPublic
         let geoPoint = TestData.camphorGeoPoint()
@@ -40,20 +38,18 @@ final class GroupService: BaseService, GroupServiceType {
                 Group(
                     id: community.id,
                     name: community.name,
-                    description: community.description ?? "",
-                    memberCount: 1,
-                    restaurantCount: 0,
+                    description: community.description,
+                    memberCount: community.numUser,
+                    restaurantCount: community.numRestaurant,
                     members: [],
-                    isPublic: isPublic
+                    isPublic: isPublic,
+                    imageUrls: community.imageUrls
                 )
             }
             .asSingle()
     }
 
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]> {
-        // TODO: get restaurantCount
-        // TODO: get memberCount
-        // TODO: get imageUrls
         return CommunityAPI.searchCommunities(keyword: keyword)
             .map { (response: SearchCommunityResponse) in
                 guard let communities = response.communities else { return [] }
@@ -61,10 +57,10 @@ final class GroupService: BaseService, GroupServiceType {
                     return GroupSummary(
                         groupId: community.id,
                         groupName: community.name,
-                        groupDescription: community.description ?? "",
-                        restaurantCount: 0,
-                        memberCount: 0,
-                        imageUrls: []
+                        groupDescription: community.description,
+                        restaurantCount: community.numRestaurant,
+                        memberCount: community.numUser,
+                        imageUrls: community.imageUrls
                     )
                 }
                 return groups
@@ -74,7 +70,6 @@ final class GroupService: BaseService, GroupServiceType {
 
     func getGroup(id: Int64) -> Single<Group> {
         // INFO: You can get the list of members from other requests.
-        // TODO: get imageUrls
         let groupId = Int(id)
         return CommunityAPI.getCommunityById(id: groupId)
             .map { (community: Community) in
@@ -85,7 +80,8 @@ final class GroupService: BaseService, GroupServiceType {
                     memberCount: community.numUser,
                     restaurantCount: community.numRestaurant,
                     members: [],
-                    isPublic: true
+                    isPublic: true,
+                    imageUrls: community.imageUrls
                 )
             }
             .asSingle()

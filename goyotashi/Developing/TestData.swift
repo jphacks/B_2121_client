@@ -46,7 +46,8 @@ struct TestData {
             memberCount: memberCount,
             restaurantCount: Int.random(in: 3 ..< 16),
             members: members,
-            isPublic: Bool.random()
+            isPublic: Bool.random(),
+            imageUrls: []
         )
     }
 

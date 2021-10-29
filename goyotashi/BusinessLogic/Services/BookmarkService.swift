@@ -22,9 +22,6 @@ final class BookmarkService: BaseService, BookmarkServiceType {
     let event: PublishSubject<BookmarkEvent> = PublishSubject<BookmarkEvent>()
 
     func getBookmarkedGroups(userId: Int64) -> Single<[GroupSummary]> {
-        // TODO: get restaurantCount
-        // TODO: get memberCount
-        // TODO: get imageUrls
         return BookmarkAPI.userIdBookmarkGet(id: userId)
             .map { (response: ListUserBookmarkResponse) in
                 guard let communities = response.communities else { return [] }
@@ -32,10 +29,10 @@ final class BookmarkService: BaseService, BookmarkServiceType {
                     return GroupSummary(
                         groupId: community.id,
                         groupName: community.name,
-                        groupDescription: community.description ?? "",
-                        restaurantCount: 0,
-                        memberCount: 0,
-                        imageUrls: []
+                        groupDescription: community.description,
+                        restaurantCount: community.numRestaurant,
+                        memberCount: community.numUser,
+                        imageUrls: community.imageUrls
                     )
                 }
                 return groups
