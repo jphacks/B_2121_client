@@ -48,6 +48,12 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
+        nameInputView.nameTextField.rx.text
+            .bind { [weak self] text in
+                self?.nameInputView.startButton.isEnabled = text != nil && text != ""
+            }
+            .disposed(by: disposeBag)
+
         // State
     }
 }
