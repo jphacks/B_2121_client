@@ -123,6 +123,7 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
                     self?.invitationLinkCopyView.doneImageView.isHidden = true
                 case .succeeded:
                     self?.invitationLinkCopyView.doneImageView.isHidden = false
+                    UIPasteboard.general.string = reactor.currentState.invitationToken
                 default:
                     break
                 }
