@@ -16,6 +16,7 @@ protocol GroupServiceType {
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]>
     func getGroup(id: Int64) -> Single<Group>
     func getUsers(groupId: Int64) -> Single<[User]>
+    func updateGroup(id: Int64, name: String, description: String) -> Single<Group>
 }
 
 final class GroupService: BaseService, GroupServiceType {
@@ -100,6 +101,30 @@ final class GroupService: BaseService, GroupServiceType {
                     )
                 }
                 return users
+            }
+            .asSingle()
+    }
+
+    func updateGroup(id: Int64, name: String, description: String) -> Single<Group> {
+        let geoPoint = TestData.camphorGeoPoint()
+        let inlineObject = InlineObject(
+            name: name,
+            description: description,
+            location: Location(lat: geoPoint.latitude, lng: geoPoint.longitude)
+        )
+
+        return CommunityAPI.updateCommunity(id: id, inlineObject: inlineObject)
+            .map { community in
+                return Group(
+                    id: community.id,
+                    name: community.name,
+                    description: community.description,
+                    memberCount: community.numUser,
+                    restaurantCount: community.numRestaurant,
+                    members: [],
+                    isPublic: true,
+                    imageUrls: community.imageUrls
+                )
             }
             .asSingle()
     }

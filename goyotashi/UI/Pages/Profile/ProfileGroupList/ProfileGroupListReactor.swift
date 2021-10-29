@@ -38,7 +38,8 @@ final class ProfileGroupListReactor: Reactor {
         let groupEventAction = provider.groupService.event
             .flatMap { event -> Observable<Action> in
                 switch event {
-                case .didCreateGroup:
+                case .didCreateGroup,
+                     .didUpdateGroup:
                     return .just(.refresh)
                 }
             }
