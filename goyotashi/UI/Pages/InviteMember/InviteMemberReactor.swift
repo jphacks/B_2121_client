@@ -15,6 +15,7 @@ final class InviteMemberReactor: Reactor {
     enum Mutation {
         case setInvitationToken(String)
         case setGetTokenApiStatus(APIStatus)
+        case setKeyword(String)
     }
 
     struct State {
@@ -67,6 +68,8 @@ final class InviteMemberReactor: Reactor {
             logger.debug("token: \(token)")
         case let .setGetTokenApiStatus(apiStatus):
             state.getTokenApiStatus = apiStatus
+        case let .setKeyword(keyword):
+            state.keyword = keyword
         }
         return state
     }
