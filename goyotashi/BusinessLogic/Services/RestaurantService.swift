@@ -86,6 +86,18 @@ final class RestaurantService: BaseService, RestaurantServiceType {
     }
 
     func getOtherGroups(restaurantId: Int64) -> Single<[RestaurantOtherGroup]> {
-        return .just(TestData.restaurantOtherGroups(count: 5))
+        return RestaurantAPI.restaurantIdOtherGet(id: restaurantId, communityId: 0)
+            .map { communities in
+                return communities.communities
+                    .map {community in
+                        return RestaurantOtherGroup(
+                            groupId: community.id,
+                            groupName: community.name,
+                            restaurantCount: community.numRestaurant,
+                            memberCount: community.numUser,
+                            imageUrls: community.imageUrls)
+                    }
+            }
+            .asSingle()
     }
 }

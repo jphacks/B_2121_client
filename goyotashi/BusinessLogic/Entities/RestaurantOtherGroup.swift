@@ -6,7 +6,7 @@
 //
 
 struct RestaurantOtherGroup {
-    let groupId: Int
+    let groupId: Int64
     let groupName: String
     let restaurantCount: Int
     let memberCount: Int
