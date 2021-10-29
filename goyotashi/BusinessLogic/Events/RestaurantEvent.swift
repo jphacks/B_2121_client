@@ -7,4 +7,5 @@
 
 enum RestaurantEvent {
     case didDelete
+    case didAdd
 }

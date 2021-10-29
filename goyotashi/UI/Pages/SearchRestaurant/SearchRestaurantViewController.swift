@@ -121,5 +121,6 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
                     logger.error("failed to add a restaurant to the group")
                 }
             }
+            .disposed(by: disposeBag)
     }
 }

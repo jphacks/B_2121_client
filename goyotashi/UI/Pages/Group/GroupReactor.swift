@@ -43,7 +43,8 @@ final class GroupReactor: Reactor {
         let restaurantEventAction = provider.restaurantService.event
             .flatMap { event -> Observable<Action> in
                 switch event {
-                case .didDelete:
+                case .didDelete,
+                     .didAdd:
                     return .just(.refresh)
                 }
             }

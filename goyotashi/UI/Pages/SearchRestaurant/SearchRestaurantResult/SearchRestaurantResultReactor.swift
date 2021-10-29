@@ -64,8 +64,7 @@ final class SearchRestaurantResultReactor: Reactor {
             state.restaurantCellReactors = restaurants.map { SearchRestaurantCellReactor(restaurant: $0) }
         case .didAdd:
             state.apiStatus = .succeeded
-        // TODO: ???
-        //                provider.restaurantService.event.onNext(.didDelete)
+            provider.restaurantService.event.onNext(.didAdd)
         case let .setApiStatus(apiStatus):
             state.apiStatus = apiStatus
         }
