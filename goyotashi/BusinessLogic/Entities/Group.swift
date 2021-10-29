@@ -13,4 +13,5 @@ struct Group {
     let restaurantCount: Int
     let members: [User]
     let isPublic: Bool
+    let imageUrls: [String]
 }
