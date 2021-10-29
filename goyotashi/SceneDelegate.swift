@@ -13,6 +13,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     private let provider = ServiceProvider()
 
+    enum PageType {
+        case onboarding
+        case tabBar
+    }
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -71,5 +76,19 @@ extension SceneDelegate {
         }
         let credential = URLCredential(user: "", password: "", persistence: .permanent)
         OpenAPIClient.credential = credential
+    }
+
+    private func setMainPage(type: PageType) {
+        let viewController: UIViewController
+        switch type {
+        case .onboarding:
+            viewController = OnboardingViewController().then {
+                $0.reactor = OnboardingReactor()
+            }
+        case .tabBar:
+            viewController = TabBarController(provider: provider)
+        }
+
+        window?.rootViewController = viewController
     }
 }
