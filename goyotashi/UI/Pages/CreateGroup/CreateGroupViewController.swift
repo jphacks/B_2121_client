@@ -205,5 +205,18 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
                 self?.privacyDescriptionLabel.text = isPublic ? "すべてのユーザがグループの内容を見ることができます。" : "グループに参加しているメンバーだけがグループの内容を見ることができます。"
             }
             .disposed(by: disposeBag)
+
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                self?.createButton.isEnabled = apiStatus == .pending
+                if apiStatus == .succeeded {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+                if apiStatus == .failed {
+                    logger.error("failed to create a group")
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
