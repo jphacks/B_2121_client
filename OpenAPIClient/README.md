@@ -30,6 +30,7 @@ Class | Method | HTTP request | Description
 *BookmarkAPI* | [**userIdBookmarkPost**](docs/BookmarkAPI.md#useridbookmarkpost) | **POST** /user/{id}/bookmark | Create a new bookmark
 *CommentAPI* | [**getRestaurantComment**](docs/CommentAPI.md#getrestaurantcomment) | **GET** /community/{id}/restaurants/{restaurant_id}/comments | Get private comments for a restaurant
 *CommentAPI* | [**updateRestaurantComment**](docs/CommentAPI.md#updaterestaurantcomment) | **PUT** /community/{id}/restaurants/{restaurant_id}/comments | Update comment of the restaurant
+*CommunityAPI* | [**communityIdTokenGet**](docs/CommunityAPI.md#communityidtokenget) | **GET** /community/{id}/token | Get an invite token
 *CommunityAPI* | [**getCommunityById**](docs/CommunityAPI.md#getcommunitybyid) | **GET** /community/{id} | Get a community by id
 *CommunityAPI* | [**listUsersOfCommunity**](docs/CommunityAPI.md#listusersofcommunity) | **GET** /community/{id}/users | List users in a community
 *CommunityAPI* | [**newCommunity**](docs/CommunityAPI.md#newcommunity) | **POST** /community | Create a new community
@@ -38,6 +39,7 @@ Class | Method | HTTP request | Description
 *RestaurantAPI* | [**listCommunityRestaurants**](docs/RestaurantAPI.md#listcommunityrestaurants) | **GET** /community/{id}/restaurants | List restaurants in a community
 *RestaurantAPI* | [**removeRestaurantFromCommunity**](docs/RestaurantAPI.md#removerestaurantfromcommunity) | **DELETE** /community/{id}/restaurants/{restaurant_id} | Remove a restrant from the specified community
 *RestaurantAPI* | [**restaurantIdGet**](docs/RestaurantAPI.md#restaurantidget) | **GET** /restaurant/{id} | Get information about the speicifed restaurant.
+*RestaurantAPI* | [**restaurantIdOtherGet**](docs/RestaurantAPI.md#restaurantidotherget) | **GET** /restaurant/{id}/other | Get other communities which have the secified in thier lists
 *RestaurantAPI* | [**searchRestaurants**](docs/RestaurantAPI.md#searchrestaurants) | **GET** /restaurant/search | Search restaurants using keyword and location
 *UserAPI* | [**getMyProfile**](docs/UserAPI.md#getmyprofile) | **GET** /user/me | Get my profile in detail
 *UserAPI* | [**listUserCommunities**](docs/UserAPI.md#listusercommunities) | **GET** /user/{id}/communities | Get communities where the specified user joins
@@ -59,6 +61,8 @@ Class | Method | HTTP request | Description
  - [CreateCommunityRequest](docs/CreateCommunityRequest.md)
  - [CreateUserRequest](docs/CreateUserRequest.md)
  - [CreateUserResponse](docs/CreateUserResponse.md)
+ - [GetCommunityIdTokenResponse](docs/GetCommunityIdTokenResponse.md)
+ - [GetOtherCommunityResponse](docs/GetOtherCommunityResponse.md)
  - [InlineObject](docs/InlineObject.md)
  - [JoinCommunityRequest](docs/JoinCommunityRequest.md)
  - [ListCommunityRestaurantsResponse](docs/ListCommunityRestaurantsResponse.md)

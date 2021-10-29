@@ -46,13 +46,14 @@ struct TestData {
             memberCount: memberCount,
             restaurantCount: Int.random(in: 3 ..< 16),
             members: members,
-            isPublic: Bool.random()
+            isPublic: Bool.random(),
+            imageUrls: []
         )
     }
 
     static func restaurantOtherGroup() -> RestaurantOtherGroup {
         return RestaurantOtherGroup(
-            groupId: randomInt(),
+            groupId: Int64(randomInt()),
             groupName: "そこまでランチして委員会",
             restaurantCount: 9,
             memberCount: 3,

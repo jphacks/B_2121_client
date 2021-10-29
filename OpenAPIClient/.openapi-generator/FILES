@@ -25,6 +25,8 @@ OpenAPIClient/Classes/OpenAPIs/Models/Community.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CreateCommunityRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CreateUserRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CreateUserResponse.swift
+OpenAPIClient/Classes/OpenAPIs/Models/GetCommunityIdTokenResponse.swift
+OpenAPIClient/Classes/OpenAPIs/Models/GetOtherCommunityResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/InlineObject.swift
 OpenAPIClient/Classes/OpenAPIs/Models/JoinCommunityRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListCommunityRestaurantsResponse.swift
@@ -62,6 +64,8 @@ docs/CommunityAPI.md
 docs/CreateCommunityRequest.md
 docs/CreateUserRequest.md
 docs/CreateUserResponse.md
+docs/GetCommunityIdTokenResponse.md
+docs/GetOtherCommunityResponse.md
 docs/InlineObject.md
 docs/JoinCommunityRequest.md
 docs/ListCommunityRestaurantsResponse.md
