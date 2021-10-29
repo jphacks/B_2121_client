@@ -10,6 +10,7 @@ import ReactorKit
 final class InviteMemberReactor: Reactor {
     enum Action {
         case tapInvitationLinkButton
+        case updateKeyword(String?)
     }
     enum Mutation {
         case setInvitationToken(String)
@@ -46,6 +47,9 @@ final class InviteMemberReactor: Reactor {
                     .map(Mutation.setInvitationToken),
                 .just(.setGetTokenApiStatus(.pending))
             )
+        case let .updateKeyword(keyword):
+            guard let keyword = keyword else { return .empty() }
+            return .empty()
         }
     }
 
