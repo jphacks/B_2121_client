@@ -9,12 +9,18 @@ import RxSwift
 import OpenAPIClient
 
 protocol UserServiceType {
+    // MARK: - Event
+    var event: PublishSubject<UserEvent> { get }
+
     func createUser() -> Single<Void>
     func getMyProfile() -> Single<User>
     func getMyGroups(userId: Int64) -> Single<[GroupSummary]>
 }
 
 final class UserService: BaseService, UserServiceType {
+    // MARK: - Event
+    let event: PublishSubject<UserEvent> = PublishSubject<UserEvent>()
+
     func createUser() -> Single<Void> {
         // TODO: remove name "Gohan Daisuki"
         // TODO: remove vendor: .anonymous

@@ -14,6 +14,7 @@
 		80C6F3FF2729893C00EEF467 /* MemberCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6F3FE2729893C00EEF467 /* MemberCellReactor.swift */; };
 		80C6F404272C26E000EEF467 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6F403272C26E000EEF467 /* ProfileEditViewController.swift */; };
 		80C6F406272C270200EEF467 /* ProfileEditReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6F405272C270200EEF467 /* ProfileEditReactor.swift */; };
+		80C6F40B272C3E3500EEF467 /* UserEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C6F40A272C3E3500EEF467 /* UserEvent.swift */; };
 		840F19532729EA18009BC1ED /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19522729EA18009BC1ED /* ServiceProvider.swift */; };
 		840F19552729EA78009BC1ED /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19542729EA78009BC1ED /* BaseService.swift */; };
 		840F19572729EAD4009BC1ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F19562729EAD4009BC1ED /* UserService.swift */; };
@@ -152,6 +153,7 @@
 		80C6F3FE2729893C00EEF467 /* MemberCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCellReactor.swift; sourceTree = "<group>"; };
 		80C6F403272C26E000EEF467 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		80C6F405272C270200EEF467 /* ProfileEditReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditReactor.swift; sourceTree = "<group>"; };
+		80C6F40A272C3E3500EEF467 /* UserEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEvent.swift; sourceTree = "<group>"; };
 		840F19522729EA18009BC1ED /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		840F19542729EA78009BC1ED /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		840F19562729EAD4009BC1ED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				84195A57272BB23900D0AD9D /* GroupEvent.swift */,
+				80C6F40A272C3E3500EEF467 /* UserEvent.swift */,
 				84195A5B272BE82800D0AD9D /* BookmarkEvent.swift */,
 			);
 			path = Events;
@@ -1161,6 +1164,7 @@
 				84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */,
 				84AFC3E12726D7A300B9244E /* HomeGroupCellReactor.swift in Sources */,
 				84777716272861930054E15D /* OrganizeRestaurantReactor.swift in Sources */,
+				80C6F40B272C3E3500EEF467 /* UserEvent.swift in Sources */,
 				8477775C27297A120054E15D /* RecommendGroupHeaderView.swift in Sources */,
 				8477772F27291CF30054E15D /* SearchRestaurantReactor.swift in Sources */,
 				847777202728FC2B0054E15D /* EditGroupReactor.swift in Sources */,

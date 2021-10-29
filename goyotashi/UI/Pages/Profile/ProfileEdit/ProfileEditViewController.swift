@@ -87,8 +87,13 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
         // Action
         reactor.action.onNext(.refresh)
 
+        doneButton.rx.tap
+            .map { Reactor.Action.update }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         // State
-        reactor.state.map { $0.user?.profileImageUrl }
+        reactor.state.map { $0.profileImageUrl }
             .distinctUntilChanged()
             .filterNil()
             .bind { [weak self] urlString in
@@ -96,15 +101,22 @@ final class ProfileEditViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
-        doneButton.rx.tap
-            .bind { [weak self] _ in
-                self?.navigationController?.popViewController(animated: true)
-            }
-            .disposed(by: disposeBag)
-
-        reactor.state.map { $0.user?.name }
+        reactor.state.map { $0.name }
             .distinctUntilChanged()
             .bind(to: userNameTextField.rx.text)
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                self?.doneButton.isEnabled = apiStatus == .pending
+                if apiStatus == .succeeded {
+                    self?.navigationController?.popViewController(animated: true)
+                }
+                if apiStatus == .failed {
+                    logger.error("failed to create a group")
+                }
+            }
             .disposed(by: disposeBag)
     }
 }
