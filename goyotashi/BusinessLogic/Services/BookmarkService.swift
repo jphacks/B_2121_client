@@ -45,6 +45,8 @@ final class BookmarkService: BaseService, BookmarkServiceType {
     }
 
     func removeBookmark(userId: Int64, groupId: Int64) -> Single<Bool> {
-        return .just(false)
+        return BookmarkAPI.userIdBookmarkCommunityIdDelete(id: userId, communityId: groupId)
+            .map { false }
+            .asSingle()
     }
 }
