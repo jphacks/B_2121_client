@@ -69,5 +69,7 @@ extension SceneDelegate {
         if let token = provider.storeService.authStore.authInfo?.token {
             OpenAPIClient.customHeaders["Authorization"] = token
         }
+        let credential = URLCredential(user: "", password: "", persistence: .permanent)
+        OpenAPIClient.credential = credential
     }
 }
