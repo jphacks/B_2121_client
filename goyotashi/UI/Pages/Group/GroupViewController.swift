@@ -165,5 +165,10 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
                 self?.setupHeaderHeight()
             }
             .disposed(by: disposeBag)
+
+        reactor.state.map { $0.isBookmarked }
+            .distinctUntilChanged()
+            .bind(to: header.bookmarkButton.rx.isSelected)
+            .disposed(by: disposeBag)
     }
 }
