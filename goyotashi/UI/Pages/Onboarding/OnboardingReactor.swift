@@ -54,7 +54,14 @@ final class OnboardingReactor: Reactor {
     }
 
     private func createGroup() -> Observable<Group> {
-        return .just(TestData.group())
+        let name = groupName()
+        let description: String
+        if let name = currentState.user?.name {
+            description = "\(name)さんのはじめてのグループです！"
+        } else {
+            description = "はじめてのグループだよ！"
+        }
+        return provider.groupService.createGroup(name: name, description: description, isPublic: true).asObservable()
     }
 
     private func updateUserName(name: String) -> Observable<User> {
@@ -72,5 +79,24 @@ final class OnboardingReactor: Reactor {
             logger.debug("group: \(group)")
         }
         return state
+    }
+
+    private func groupName() -> String {
+        let groupNames: [String] = [
+            "はじめてのグループ",
+            "美味しいものたくさん食べたい！",
+            "はじめてのグループ",
+            "はじめてのグループ",
+            "はじめてのグループ",
+            "はじめてのグループ",
+            "はじめてのグループ",
+            "はじめてのグループ",
+            "はじめてのグループ",
+            "はじめてのグループ",
+            "はじめてのグループ",
+            "はじめてのグループ",
+            "はじめてのグループ"
+        ]
+        return groupNames.randomElement() ?? ""
     }
 }
