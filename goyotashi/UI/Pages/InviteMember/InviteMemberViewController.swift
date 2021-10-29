@@ -106,6 +106,11 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
             }
             .disposed(by: disposeBag)
 
+        invitationLinkCopyView.linkCopyButton.rx.tap
+            .map { _ in Reactor.Action.tapInvitationLinkButton }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.memberCellReactors }
             .distinctUntilChanged()
