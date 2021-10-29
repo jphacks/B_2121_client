@@ -31,6 +31,11 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
         $0.startAnimating()
     }
 
+    private let doneImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+        $0.image = R.image.check()
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -48,6 +53,7 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
         addSubview(linkImageView)
         addSubview(linkCopyButton)
         addSubview(activityIndicatorView)
+        addSubview(doneImageView)
     }
 
     func setupViewConstraints() {
@@ -68,6 +74,10 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
         activityIndicatorView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.right.equalToSuperview().inset(32)
+        }
+        doneImageView.snp.makeConstraints {
+            $0.center.equalTo(activityIndicatorView)
+            $0.size.equalTo(24)
         }
     }
 }
