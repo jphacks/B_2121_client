@@ -52,7 +52,7 @@ final class CreateGroupReactor: Reactor {
             if currentState.apiStatus != .pending { return .empty() }
             return .concat(
                 .just(.setApiStatus(.loading)),
-                sampleCreate()
+                createGroup()
                     .map(Mutation.didCreate)
                     .catchError { _ in
                         return .just(.setApiStatus(.failed))
