@@ -14,6 +14,7 @@ final class OnboardingReactor: Reactor {
     }
     enum Mutation {
         case setName(String)
+        case setUser(User)
     }
 
     struct State {
@@ -48,7 +49,10 @@ final class OnboardingReactor: Reactor {
         switch mutation {
         case let .setName(name):
             state.name = name
-            logger.debug(name)
+            logger.debug("name: \(name)")
+        case let .setUser(user):
+            state.user = user
+            logger.debug("user: \(user)")
         }
         return state
     }
