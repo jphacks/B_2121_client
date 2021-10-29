@@ -84,7 +84,7 @@ extension SceneDelegate {
         switch type {
         case .onboarding:
             viewController = OnboardingViewController().then {
-                $0.reactor = OnboardingReactor()
+                $0.reactor = OnboardingReactor(provider: provider)
             }
         case .tabBar:
             viewController = TabBarController(provider: provider)
