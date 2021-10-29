@@ -14,6 +14,11 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let backgroundImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.image = R.image.background()
+    }
+
     private let nameInputView = OnboardingNameInputView()
 
     // MARK: - Lify Cycles
@@ -26,11 +31,15 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
+        view.addSubview(backgroundImageView)
         view.addSubview(nameInputView)
         view.backgroundColor = .orange
     }
 
     func setupViewConstraints() {
+        backgroundImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         nameInputView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
