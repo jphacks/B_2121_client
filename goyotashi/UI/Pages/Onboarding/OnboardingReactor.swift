@@ -33,7 +33,7 @@ final class OnboardingReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .createUser:
-            return .empty()
+            return createUser().map(Mutation.setUser)
         case let .updateName(name):
             guard let name = name else { return .empty() }
             return .just(.setName(name))
