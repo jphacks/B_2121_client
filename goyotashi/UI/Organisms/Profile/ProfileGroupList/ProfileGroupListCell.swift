@@ -34,7 +34,7 @@ final class ProfileGroupListCell: UICollectionViewCell, View, ViewConstructor {
     }
 
     private let largeImageView = UIImageView().then {
-        $0.contentMode = .scaleToFill
+        $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
         $0.image = R.image.dish()
     }
