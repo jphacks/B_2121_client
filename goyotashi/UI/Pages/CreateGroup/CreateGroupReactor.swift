@@ -49,7 +49,15 @@ final class CreateGroupReactor: Reactor {
         case let .updateIsOnPrivacySwitch(isOn):
             return .just(Mutation.setIsPublic(isOn))
         case .create:
-            return createGroup().map(Mutation.didCreate)
+            if currentState.apiStatus != .pending { return .empty() }
+            return .concat(
+                .just(.setApiStatus(.loading)),
+                sampleCreate()
+                    .map(Mutation.didCreate)
+                    .catchError { _ in
+                        return .just(.setApiStatus(.failed))
+                    }
+            )
         }
     }
 
@@ -69,6 +77,7 @@ final class CreateGroupReactor: Reactor {
         case let .didCreate(group):
             // TODO: Notify that a group has been created
             logger.verbose("group created: \(group)")
+            state.apiStatus = .succeeded
         case let .setApiStatus(apiStatus):
             state.apiStatus = apiStatus
         }
