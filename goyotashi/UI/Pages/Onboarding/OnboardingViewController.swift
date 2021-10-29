@@ -14,6 +14,7 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let nameInputView = OnboardingNameInputView()
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -25,11 +26,14 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
-
+        view.addSubview(nameInputView)
+        view.backgroundColor = .orange
     }
 
     func setupViewConstraints() {
-
+        nameInputView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
     // MARK: - Bind Method
