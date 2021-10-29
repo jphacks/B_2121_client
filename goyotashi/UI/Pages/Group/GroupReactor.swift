@@ -43,7 +43,8 @@ final class GroupReactor: Reactor {
     }
 
     private func getGroup() -> Observable<Group> {
-        return provider.groupService.getGroup(id: "groupId").asObservable()
+        let groupId = currentState.groupId
+        return provider.groupService.getGroup(id: groupId).asObservable()
     }
 
     private func getRestaurants() -> Observable<[GroupRestaurant]> {
