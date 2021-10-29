@@ -28,9 +28,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let window = UIWindow(windowScene: windowScene)
             window.backgroundColor = .white
-            window.rootViewController = TabBarController(provider: provider)
             self.window = window
             window.makeKeyAndVisible()
+            setMainPage(type: .tabBar)
         }
     }
 
@@ -67,10 +67,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate {
     private func configure() {
         OpenAPIClient.basePath = "https://api.goyotashi.kmconner.net"
-
-        if provider.storeService.authStore.user == nil {
-            provider.userService.createUser().subscribe()
-        }
         if let token = provider.storeService.authStore.authInfo?.token {
             OpenAPIClient.customHeaders["Authorization"] = token
         }
