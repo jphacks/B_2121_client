@@ -15,7 +15,7 @@ final class RecommendGroupHeaderView: UIView, ViewConstructor {
     // MARK: - Views
     private let titleLabel = UILabel().then {
         $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
-        $0.text = "グループ"
+        $0.text = "グループを探す"
     }
 
     private let mapIconBackgroundView = UIView().then {
