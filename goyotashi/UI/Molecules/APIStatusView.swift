@@ -27,6 +27,11 @@ final class APIStatusView: UIView, ViewConstructor {
         $0.layer.masksToBounds = true
     }
 
+    private let stackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.spacing = 8
+    }
+
     private let statusImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
     }
@@ -54,8 +59,9 @@ final class APIStatusView: UIView, ViewConstructor {
     func setupViews() {
         addSubview(messageView)
         messageView.addSubview(activityIndicatorView)
-        messageView.addSubview(statusImageView)
-        messageView.addSubview(statusLabel)
+        messageView.addSubview(stackView)
+        stackView.addArrangedSubview(statusImageView)
+        stackView.addArrangedSubview(statusLabel)
 
         backgroundColor = Color.gray01.withAlphaComponent(0.3)
     }
@@ -68,12 +74,11 @@ final class APIStatusView: UIView, ViewConstructor {
         activityIndicatorView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
-        statusImageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.size.equalTo(Const.statusImageViewSize)
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
-        statusLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+        statusImageView.snp.makeConstraints {
+            $0.size.equalTo(Const.statusImageViewSize)
         }
     }
 
