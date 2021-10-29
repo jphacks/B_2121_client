@@ -22,8 +22,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/AuthVendor.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Bookmark.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Comment.swift
 OpenAPIClient/Classes/OpenAPIs/Models/Community.swift
-OpenAPIClient/Classes/OpenAPIs/Models/CommunityDetail.swift
-OpenAPIClient/Classes/OpenAPIs/Models/CommunityDetailAllOf.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CreateCommunityRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CreateUserRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/CreateUserResponse.swift
@@ -61,8 +59,6 @@ docs/Comment.md
 docs/CommentAPI.md
 docs/Community.md
 docs/CommunityAPI.md
-docs/CommunityDetail.md
-docs/CommunityDetailAllOf.md
 docs/CreateCommunityRequest.md
 docs/CreateUserRequest.md
 docs/CreateUserResponse.md

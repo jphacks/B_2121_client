@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **getCommunityById**
 ```swift
-    open class func getCommunityById(id: Int) -> Observable<CommunityDetail>
+    open class func getCommunityById(id: Int) -> Observable<Community>
 ```
 
 Get a community by id
@@ -35,7 +35,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CommunityDetail**](CommunityDetail.md)
+[**Community**](Community.md)
 
 ### Authorization
 
