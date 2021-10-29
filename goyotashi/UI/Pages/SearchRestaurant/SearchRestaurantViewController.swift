@@ -18,10 +18,6 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
         $0.setImage(R.image.close(), for: .normal)
     }
 
-    private let addButton = UIBarButtonItem(title: "追加", style: .done, target: nil, action: nil).then {
-        $0.tintColor = Color.gray01
-    }
-
     private let searchBar = UISearchBar().then {
         $0.placeholder = "キーワード"
         $0.backgroundImage = UIImage()
@@ -51,7 +47,6 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
     func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         title = "お店をグループに追加する"
-        navigationItem.rightBarButtonItem = addButton
         view.backgroundColor = Color.white
 
         view.addSubview(searchBar)
