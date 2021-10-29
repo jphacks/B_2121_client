@@ -30,9 +30,12 @@ final class APIStatusView: UIView, ViewConstructor {
     private let statusImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
     }
-    
+
     private let statusLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 15, color: Color.gray02)
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
+        $0.text = "失敗しちゃった...\nごめんね。"
     }
 
     // MARK: - Initializers
