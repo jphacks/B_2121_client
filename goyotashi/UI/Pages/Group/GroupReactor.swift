@@ -56,7 +56,8 @@ final class GroupReactor: Reactor {
     }
 
     private func getRestaurants() -> Observable<[GroupRestaurant]> {
-        return provider.restaurantService.getRestaurants(groupId: "groupId").asObservable()
+        let groupId = currentState.groupId
+        return provider.restaurantService.getRestaurants(groupId: groupId).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {

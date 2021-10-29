@@ -9,7 +9,7 @@ import RxSwift
 import OpenAPIClient
 
 protocol RestaurantServiceType {
-    func getRestaurants(groupId: String) -> Single<[GroupRestaurant]>
+    func getRestaurants(groupId: Int64) -> Single<[GroupRestaurant]>
     func addRestaurantToGroup(restaurantId: String, groupId: String) -> Single<Void>
     func removeRestaurantFromGroup(restaurantId: String, groupId: String) -> Single<Void>
     func searchRestaurants(keyword: String, geoPoint: GeoPoint?) -> Single<[Restaurant]>
@@ -18,7 +18,7 @@ protocol RestaurantServiceType {
 }
 
 final class RestaurantService: BaseService, RestaurantServiceType {
-    func getRestaurants(groupId: String) -> Single<[GroupRestaurant]> {
+    func getRestaurants(groupId: Int64) -> Single<[GroupRestaurant]> {
         return .just(TestData.groupRestaurants(count: 9))
     }
 
