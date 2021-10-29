@@ -168,7 +168,8 @@ final class GroupReactor: Reactor {
     }
 
     func createInviteMemberReactor() -> InviteMemberReactor {
-        return InviteMemberReactor(provider: provider)
+        let groupId = currentState.groupId
+        return InviteMemberReactor(provider: provider, groupId: groupId)
     }
 
     func createSearchRestaurantReactor() -> SearchRestaurantReactor {
