@@ -15,6 +15,7 @@ final class OrganizeRestaurantReactor: Reactor {
     }
     enum Mutation {
         case setRestaurantCellReactors([GroupRestaurant])
+        case delete(Void)
     }
 
     struct State {
@@ -43,7 +44,8 @@ final class OrganizeRestaurantReactor: Reactor {
                     $0.currentState.isRemovable == true
                 }
                 .map { $0.currentState.groupRestaurant }
-            return .empty()
+            let obs = removeRestaurants(restaurants: restaurants)
+            return Observable.concat(obs).map(Mutation.delete)
         }
     }
 
@@ -51,11 +53,20 @@ final class OrganizeRestaurantReactor: Reactor {
         return provider.restaurantService.getRestaurants(groupId: currentState.groupId).asObservable()
     }
 
+    private func removeRestaurants(restaurants: [GroupRestaurant]) -> [Observable<Void>] {
+        return restaurants.map {
+            return provider.restaurantService.removeRestaurantFromGroup(restaurantId: $0.restaurantId, groupId: self.currentState.groupId).asObservable()
+        }
+    }
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
         case let .setRestaurantCellReactors(groupRestaurants):
             state.restaurantCellReactors = groupRestaurants.map { OrganizeRestaurantCellReactor(groupRestaurant: $0) }
+            break
+        case .delete:
+            break
         }
         return state
     }
