@@ -125,6 +125,11 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
+        header.bookmarkButton.rx.tap
+            .map { Reactor.Action.tapBookmarkButton }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         header.plusButton.rx.tap
             .bind { [weak self] _ in
                 let viewController = SearchRestaurantViewController().then {
