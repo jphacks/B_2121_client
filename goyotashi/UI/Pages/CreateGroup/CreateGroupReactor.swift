@@ -75,9 +75,9 @@ final class CreateGroupReactor: Reactor {
         case let .setIsPublic(isPublic):
             state.isPublic = isPublic
         case let .didCreate(group):
-            // TODO: Notify that a group has been created
             logger.verbose("group created: \(group)")
             state.apiStatus = .succeeded
+            provider.groupService.event.onNext(.didCreateGroup)
         case let .setApiStatus(apiStatus):
             state.apiStatus = apiStatus
         }
