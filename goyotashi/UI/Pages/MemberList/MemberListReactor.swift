@@ -17,16 +17,23 @@ final class MemberListReactor: Reactor {
     }
 
     struct State {
-        let members: [User] = (0 ..< 4).map { _ in TestData.user() }
+        let members: [User]
         var memberCellReactors: [MemberCellReactor] = []
+        init(members: [User]) {
+            self.members = members
+        }
     }
 
-    let initialState: State = State()
+    let initialState: State
+
+    init(users: [User]) {
+        initialState = State(members: users)
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            let members = (0 ..< 4).map { _ in TestData.user() }
+            let members = initialState.members
             return .just(Mutation.setMemberCellReactors(members))
         }
     }

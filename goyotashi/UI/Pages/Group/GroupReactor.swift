@@ -154,6 +154,6 @@ final class GroupReactor: Reactor {
     }
 
     func memberListReactor() -> MemberListReactor {
-        return MemberListReactor()
+        return MemberListReactor(users: currentState.users)
     }
 }
