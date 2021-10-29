@@ -14,7 +14,7 @@ protocol RestaurantServiceType {
     func removeRestaurantFromGroup(restaurantId: String, groupId: String) -> Single<Void>
     func searchRestaurants(keyword: String, geoPoint: GeoPoint?) -> Single<[Restaurant]>
     func getRestaurant(restaurantId: Int64) -> Single<Restaurant>
-    func getOtherGroups(restaurantId: Int64) -> Single<[RestaurantOtherGroup]>
+    func getOtherGroups(restaurantId: Int64, groupId: Int64) -> Single<[RestaurantOtherGroup]>
 }
 
 final class RestaurantService: BaseService, RestaurantServiceType {
@@ -85,8 +85,8 @@ final class RestaurantService: BaseService, RestaurantServiceType {
             .asSingle()
     }
 
-    func getOtherGroups(restaurantId: Int64) -> Single<[RestaurantOtherGroup]> {
-        return RestaurantAPI.restaurantIdOtherGet(id: restaurantId, communityId: 0)
+    func getOtherGroups(restaurantId: Int64, groupId: Int64) -> Single<[RestaurantOtherGroup]> {
+        return RestaurantAPI.restaurantIdOtherGet(id: restaurantId, communityId: groupId)
             .map { communities in
                 return communities.communities
                     .map {community in
