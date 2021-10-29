@@ -82,11 +82,15 @@ final class GroupReactor: Reactor {
     }
 
     private func addBookmark() -> Observable<Bool> {
-        return .just(true)
+        guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+        let groupId = currentState.groupId
+        return provider.bookmarkService.createBookmark(userId: userId, groupId: groupId).asObservable()
     }
 
     private func removeBookmark() -> Observable<Bool> {
-        return .just(false)
+        guard let userId = provider.storeService.authStore.user?.id else { return .empty() }
+        let groupId = currentState.groupId
+        return provider.bookmarkService.removeBookmark(userId: userId, groupId: groupId).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
