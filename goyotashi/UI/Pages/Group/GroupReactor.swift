@@ -18,6 +18,7 @@ final class GroupReactor: Reactor {
         case setUsers([User])
         case setRestaurantCellReactors([GroupRestaurant])
         case setIsBookmarked(Bool)
+        case setBookmarkApiStatus(APIStatus)
     }
 
     struct State {
@@ -27,6 +28,7 @@ final class GroupReactor: Reactor {
         var restaurantCellReactors: [GroupRestaurantCellReactor] = []
         var isMember: Bool = false
         var isBookmarked: Bool = false
+        var bookmarkApiStatus: APIStatus = .pending
     }
 
     let initialState: State
@@ -46,8 +48,13 @@ final class GroupReactor: Reactor {
                 getRestaurants().map(Mutation.setRestaurantCellReactors)
             )
         case .tapBookmarkButton:
-            let isBookmarked = !currentState.isBookmarked
-            return .just(.setIsBookmarked(isBookmarked))
+            if currentState.bookmarkApiStatus != .pending { return .empty() }
+            return .concat(
+                .just(.setBookmarkApiStatus(.loading)),
+                updateBookmark(currentIsBookmarked: currentState.isBookmarked)
+                    .map(Mutation.setIsBookmarked),
+                .just(.setBookmarkApiStatus(.pending))
+            )
         }
     }
 
@@ -66,6 +73,22 @@ final class GroupReactor: Reactor {
         return provider.restaurantService.getRestaurants(groupId: groupId).asObservable()
     }
 
+    private func updateBookmark(currentIsBookmarked: Bool) -> Observable<Bool> {
+        if currentIsBookmarked {
+            return removeBookmark()
+        } else {
+            return addBookmark()
+        }
+    }
+
+    private func addBookmark() -> Observable<Bool> {
+        return .just(true)
+    }
+
+    private func removeBookmark() -> Observable<Bool> {
+        return .just(false)
+    }
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
@@ -80,6 +103,8 @@ final class GroupReactor: Reactor {
             state.restaurantCellReactors = groupRestaurants.map { GroupRestaurantCellReactor(groupRestaurant: $0) }
         case let .setIsBookmarked(isBookmarked):
             state.isBookmarked = isBookmarked
+        case let .setBookmarkApiStatus(apiStatus):
+            state.bookmarkApiStatus = apiStatus
         }
         return state
     }
