@@ -92,6 +92,12 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
             }
             .disposed(by: disposeBag)
 
+        doneButton.rx.tap
+            .bind { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.memberCellReactors }
             .distinctUntilChanged()
