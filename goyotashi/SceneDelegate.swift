@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
 
-            if let _ = provider.storeService.authStore.authInfo {
+            if provider.storeService.authStore.authInfo != nil {
                 setMainPage(type: .tabBar)
             } else {
                 setMainPage(type: .onboarding)
