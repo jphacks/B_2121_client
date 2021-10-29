@@ -9,6 +9,7 @@ import ReactorKit
 
 final class OnboardingReactor: Reactor {
     enum Action {
+        case createUser
         case updateName(String?)
     }
     enum Mutation {
@@ -23,6 +24,8 @@ final class OnboardingReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .createUser:
+            return .empty()
         case let .updateName(name):
             guard let name = name else { return .empty() }
             return .just(.setName(name))
@@ -34,6 +37,7 @@ final class OnboardingReactor: Reactor {
         switch mutation {
         case let .setName(name):
             state.name = name
+            logger.debug(name)
         }
         return state
     }

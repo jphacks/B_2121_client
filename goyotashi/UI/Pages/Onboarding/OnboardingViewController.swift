@@ -39,6 +39,8 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: OnboardingReactor) {
         // Action
+        reactor.action.onNext(.createUser)
+
         nameInputView.nameTextField.rx.controlEvent(.editingDidEndOnExit)
             .bind { [weak self] _ in
                 let name = self?.nameInputView.nameTextField.text
