@@ -12,21 +12,29 @@ import AnyCodable
 
 public struct InlineObject: Codable, Hashable {
 
-    public var communityId: Int64
+    public var name: String
+    public var description: String
+    public var location: Location
 
-    public init(communityId: Int64) {
-        self.communityId = communityId
+    public init(name: String, description: String, location: Location) {
+        self.name = name
+        self.description = description
+        self.location = location
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case communityId = "community_id"
+        case name
+        case description
+        case location
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(communityId, forKey: .communityId)
+        try container.encode(name, forKey: .name)
+        try container.encode(description, forKey: .description)
+        try container.encode(location, forKey: .location)
     }
 }
 

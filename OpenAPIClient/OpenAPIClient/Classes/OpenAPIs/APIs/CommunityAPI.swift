@@ -283,4 +283,58 @@ open class CommunityAPI {
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
+
+    /**
+     Update community infomation
+     
+     - parameter id: (path)  
+     - parameter inlineObject: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<Community>
+     */
+    open class func updateCommunity(id: Int64, inlineObject: InlineObject? = nil, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<Community> {
+        return Observable.create { observer -> Disposable in
+            updateCommunityWithRequestBuilder(id: id, inlineObject: inlineObject).execute(apiResponseQueue) { result -> Void in
+                switch result {
+                case let .success(response):
+                    observer.onNext(response.body!)
+                case let .failure(error):
+                    observer.onError(error)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
+    /**
+     Update community infomation
+     - PUT /community/{id}
+     - API Key:
+       - type: apiKey Authorization 
+       - name: token
+     - parameter id: (path)  
+     - parameter inlineObject: (body)  (optional)
+     - returns: RequestBuilder<Community> 
+     */
+    open class func updateCommunityWithRequestBuilder(id: Int64, inlineObject: InlineObject? = nil) -> RequestBuilder<Community> {
+        var localVariablePath = "/community/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: inlineObject)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Community>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
 }

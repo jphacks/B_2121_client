@@ -35,6 +35,7 @@ Class | Method | HTTP request | Description
 *CommunityAPI* | [**listUsersOfCommunity**](docs/CommunityAPI.md#listusersofcommunity) | **GET** /community/{id}/users | List users in a community
 *CommunityAPI* | [**newCommunity**](docs/CommunityAPI.md#newcommunity) | **POST** /community | Create a new community
 *CommunityAPI* | [**searchCommunities**](docs/CommunityAPI.md#searchcommunities) | **GET** /community/search | Search communities using keyword and location
+*CommunityAPI* | [**updateCommunity**](docs/CommunityAPI.md#updatecommunity) | **PUT** /community/{id} | Update community infomation
 *RestaurantAPI* | [**addRestaurantToCommunity**](docs/RestaurantAPI.md#addrestauranttocommunity) | **POST** /community/{id}/restaurants | Add a restaurant to a community
 *RestaurantAPI* | [**listCommunityRestaurants**](docs/RestaurantAPI.md#listcommunityrestaurants) | **GET** /community/{id}/restaurants | List restaurants in a community
 *RestaurantAPI* | [**removeRestaurantFromCommunity**](docs/RestaurantAPI.md#removerestaurantfromcommunity) | **DELETE** /community/{id}/restaurants/{restaurant_id} | Remove a restrant from the specified community
@@ -65,6 +66,7 @@ Class | Method | HTTP request | Description
  - [GetCommunityIdTokenResponse](docs/GetCommunityIdTokenResponse.md)
  - [GetOtherCommunityResponse](docs/GetOtherCommunityResponse.md)
  - [InlineObject](docs/InlineObject.md)
+ - [InlineObject1](docs/InlineObject1.md)
  - [JoinCommunityRequest](docs/JoinCommunityRequest.md)
  - [ListCommunityRestaurantsResponse](docs/ListCommunityRestaurantsResponse.md)
  - [ListCommunityRestaurantsResponseAllOf](docs/ListCommunityRestaurantsResponseAllOf.md)
