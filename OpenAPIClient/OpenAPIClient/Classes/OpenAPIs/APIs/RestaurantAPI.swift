@@ -234,6 +234,63 @@ open class RestaurantAPI {
     }
 
     /**
+     Get other communities which have the secified in thier lists
+     
+     - parameter id: (path)  
+     - parameter communityId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<GetOtherCommunityResponse>
+     */
+    open class func restaurantIdOtherGet(id: Int64, communityId: Int64, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<GetOtherCommunityResponse> {
+        return Observable.create { observer -> Disposable in
+            restaurantIdOtherGetWithRequestBuilder(id: id, communityId: communityId).execute(apiResponseQueue) { result -> Void in
+                switch result {
+                case let .success(response):
+                    observer.onNext(response.body!)
+                case let .failure(error):
+                    observer.onError(error)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
+    /**
+     Get other communities which have the secified in thier lists
+     - GET /restaurant/{id}/other
+     - API Key:
+       - type: apiKey Authorization 
+       - name: token
+     - parameter id: (path)  
+     - parameter communityId: (query)  
+     - returns: RequestBuilder<GetOtherCommunityResponse> 
+     */
+    open class func restaurantIdOtherGetWithRequestBuilder(id: Int64, communityId: Int64) -> RequestBuilder<GetOtherCommunityResponse> {
+        var localVariablePath = "/restaurant/{id}/other"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "community_id": communityId.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetOtherCommunityResponse>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
      Search restaurants using keyword and location
      
      - parameter keyword: (query)  
