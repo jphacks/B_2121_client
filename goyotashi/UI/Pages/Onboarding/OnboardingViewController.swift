@@ -63,6 +63,11 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
+        nameInputView.startButton.rx.tap
+            .map { Reactor.Action.startApp }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         // State
     }
 }
