@@ -13,6 +13,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     private let provider = ServiceProvider()
 
+    enum PageType {
+        case onboarding
+        case tabBar
+    }
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -23,9 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let window = UIWindow(windowScene: windowScene)
             window.backgroundColor = .white
-            window.rootViewController = TabBarController(provider: provider)
             self.window = window
             window.makeKeyAndVisible()
+
+            if provider.storeService.authStore.authInfo != nil {
+                setMainPage(type: .tabBar)
+            } else {
+                setMainPage(type: .onboarding)
+            }
         }
     }
 
@@ -62,14 +72,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate {
     private func configure() {
         OpenAPIClient.basePath = "https://api.goyotashi.kmconner.net"
-
-        if provider.storeService.authStore.user == nil {
-            provider.userService.createUser().subscribe()
-        }
         if let token = provider.storeService.authStore.authInfo?.token {
             OpenAPIClient.customHeaders["Authorization"] = token
         }
         let credential = URLCredential(user: "", password: "", persistence: .permanent)
         OpenAPIClient.credential = credential
+    }
+
+    func setMainPage(type: PageType) {
+        let viewController: UIViewController
+        switch type {
+        case .onboarding:
+            viewController = OnboardingViewController().then {
+                $0.reactor = OnboardingReactor(provider: provider)
+            }
+        case .tabBar:
+            viewController = TabBarController(provider: provider)
+        }
+
+        window?.rootViewController = viewController
     }
 }

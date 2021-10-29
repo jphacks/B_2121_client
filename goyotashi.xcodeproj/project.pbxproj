@@ -28,6 +28,9 @@
 		84195A55272B9D4400D0AD9D /* APIStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A54272B9D4400D0AD9D /* APIStatusView.swift */; };
 		84195A58272BB23900D0AD9D /* GroupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A57272BB23900D0AD9D /* GroupEvent.swift */; };
 		84195A5C272BE82800D0AD9D /* BookmarkEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A5B272BE82800D0AD9D /* BookmarkEvent.swift */; };
+		84195A5F272C712A00D0AD9D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A5E272C712A00D0AD9D /* OnboardingViewController.swift */; };
+		84195A61272C713200D0AD9D /* OnboardingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A60272C713200D0AD9D /* OnboardingReactor.swift */; };
+		84195A64272C727400D0AD9D /* OnboardingNameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A63272C727400D0AD9D /* OnboardingNameInputView.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -168,6 +171,9 @@
 		84195A54272B9D4400D0AD9D /* APIStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStatusView.swift; sourceTree = "<group>"; };
 		84195A57272BB23900D0AD9D /* GroupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEvent.swift; sourceTree = "<group>"; };
 		84195A5B272BE82800D0AD9D /* BookmarkEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkEvent.swift; sourceTree = "<group>"; };
+		84195A5E272C712A00D0AD9D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		84195A60272C713200D0AD9D /* OnboardingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingReactor.swift; sourceTree = "<group>"; };
+		84195A63272C727400D0AD9D /* OnboardingNameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNameInputView.swift; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -376,6 +382,23 @@
 				E79AE36D272C4436009A9FB5 /* RestaurantEvent.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		84195A5D272C710D00D0AD9D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				84195A5E272C712A00D0AD9D /* OnboardingViewController.swift */,
+				84195A60272C713200D0AD9D /* OnboardingReactor.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		84195A62272C725400D0AD9D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				84195A63272C727400D0AD9D /* OnboardingNameInputView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		84777712272861600054E15D /* OrganizeRestaurant */ = {
@@ -640,6 +663,7 @@
 		84AFC3B5272672EE00B9244E /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				84195A62272C725400D0AD9D /* Onboarding */,
 				80C6F3FB272987FA00EEF467 /* Member */,
 				84777746272947E20054E15D /* AddRestaurantToGroup */,
 				84AFC40D2727A69F00B9244E /* Group */,
@@ -656,6 +680,7 @@
 		84AFC3B62726730D00B9244E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				84195A5D272C710D00D0AD9D /* Onboarding */,
 				80C6F3F627290FE800EEF467 /* MemberList */,
 				8477773B2729468E0054E15D /* AddRestaurantToGroup */,
 				84B88DEF27283776004EB87D /* CreateGroup */,
@@ -1162,6 +1187,7 @@
 				84777732272928640054E15D /* SearchRestaurantResultViewController.swift in Sources */,
 				84AFC3A927266C9900B9244E /* DevelopingViewController.swift in Sources */,
 				840F19572729EAD4009BC1ED /* UserService.swift in Sources */,
+				84195A61272C713200D0AD9D /* OnboardingReactor.swift in Sources */,
 				84AFC3E92726E82900B9244E /* TestData.swift in Sources */,
 				84AFC3DF2726D79700B9244E /* HomeGroupCell.swift in Sources */,
 				84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */,
@@ -1216,9 +1242,11 @@
 				84AFC3AC27266F2100B9244E /* DeviceSize.swift in Sources */,
 				84777723272905510054E15D /* InviteMemberViewController.swift in Sources */,
 				84AFC3FF272734F400B9244E /* ProfileGroupListCell.swift in Sources */,
+				84195A5F272C712A00D0AD9D /* OnboardingViewController.swift in Sources */,
 				84AFC3EE2727150E00B9244E /* ProfileReactor.swift in Sources */,
 				80C6F406272C270200EEF467 /* ProfileEditReactor.swift in Sources */,
 				84B88DE6272816EA004EB87D /* RestaurantOtherGroupCellReactor.swift in Sources */,
+				84195A64272C727400D0AD9D /* OnboardingNameInputView.swift in Sources */,
 				84AFC3CE27269A2E00B9244E /* TabBarController.swift in Sources */,
 				840F19552729EA78009BC1ED /* BaseService.swift in Sources */,
 				8477773827292D130054E15D /* SearchRestaurantCell.swift in Sources */,
