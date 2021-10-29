@@ -10,15 +10,18 @@ import ReactorKit
 final class OnboardingReactor: Reactor {
     enum Action {
         case createUser
+        case createGroup
         case updateName(String?)
         case startApp
     }
     enum Mutation {
         case setUser(User)
+        case setGroup(Group)
     }
 
     struct State {
         var user: User?
+        var group: Group?
     }
 
     let initialState: State
@@ -33,6 +36,8 @@ final class OnboardingReactor: Reactor {
         switch action {
         case .createUser:
             return createUser().map(Mutation.setUser)
+        case .createGroup:
+            return createGroup().map(Mutation.setGroup)
         case let .updateName(name):
             guard let name = name else { return .empty() }
             return updateUserName(name: name).map(Mutation.setUser)
@@ -48,6 +53,10 @@ final class OnboardingReactor: Reactor {
         return provider.userService.createUser().asObservable()
     }
 
+    private func createGroup() -> Observable<Group> {
+        return .just(TestData.group())
+    }
+
     private func updateUserName(name: String) -> Observable<User> {
         return provider.userService.updateMyName(name: name).asObservable()
     }
@@ -58,6 +67,9 @@ final class OnboardingReactor: Reactor {
         case let .setUser(user):
             state.user = user
             logger.debug("user: \(user)")
+        case let .setGroup(group):
+            state.group = group
+            logger.debug("group: \(group)")
         }
         return state
     }

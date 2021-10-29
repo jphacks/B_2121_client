@@ -69,5 +69,11 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
             .disposed(by: disposeBag)
 
         // State
+        reactor.state.map { $0.user }
+            .distinctUntilChanged()
+            .filterNil()
+            .map { _ in Reactor.Action.createGroup }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 }
