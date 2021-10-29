@@ -52,7 +52,11 @@ final class GroupReactor: Reactor {
             return .concat(
                 .just(.setBookmarkApiStatus(.loading)),
                 updateBookmark(currentIsBookmarked: currentState.isBookmarked)
-                    .map(Mutation.setIsBookmarked),
+                    .map(Mutation.setIsBookmarked)
+                    .catchError { error in
+                        logger.error(error)
+                        return .just(.setBookmarkApiStatus(.failed))
+                    },
                 .just(.setBookmarkApiStatus(.pending))
             )
         }
