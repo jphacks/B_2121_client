@@ -17,14 +17,19 @@ final class AddRestaurantToGroupReactor: Reactor {
 
     struct State {
         var groupCellReactors: [AddRestaurantToGroupCellReactor] = []
+        let restaurantId: Int64
+
+        init(restaurantId: Int64) {
+            self.restaurantId = restaurantId
+        }
     }
 
     let initialState: State
     private let provider: ServiceProviderType
 
-    init(provider: ServiceProviderType) {
+    init(provider: ServiceProviderType, restaurantId: Int64) {
         self.provider = provider
-        initialState = State()
+        initialState = State(restaurantId: restaurantId)
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
