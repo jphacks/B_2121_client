@@ -11,6 +11,7 @@ final class OnboardingReactor: Reactor {
     enum Action {
         case createUser
         case updateName(String?)
+        case startApp
     }
     enum Mutation {
         case setUser(User)
@@ -35,6 +36,11 @@ final class OnboardingReactor: Reactor {
         case let .updateName(name):
             guard let name = name else { return .empty() }
             return updateUserName(name: name).map(Mutation.setUser)
+        case .startApp:
+            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                sceneDelegate.setMainPage(type: .tabBar)
+            }
+            return .empty()
         }
     }
 
