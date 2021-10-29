@@ -88,11 +88,25 @@ final class AddRestaurantToGroupViewController: UIViewController, View, ViewCons
             }
             .disposed(by: disposeBag)
 
+        collectionView.rx.itemSelected
+            .map { Reactor.Action.didItemSelect($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.groupCellReactors }
             .distinctUntilChanged()
             .bind(to: collectionView.rx.items(Reusable.groupCell)) { _, reactor, cell in
                 cell.reactor = reactor
+            }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                if apiStatus == .succeeded {
+                    self?.dismiss(animated: true, completion: nil)
+                }
             }
             .disposed(by: disposeBag)
     }

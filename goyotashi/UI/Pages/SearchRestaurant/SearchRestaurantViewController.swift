@@ -94,6 +94,12 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
             }
             .disposed(by: disposeBag)
 
+        searchBar.rx.searchButtonClicked
+            .bind { [weak self] in
+                self?.searchBar.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
+
         searchBar.rx.cancelButtonClicked
             .bind { [weak self] in
                 self?.searchBar.text = ""
