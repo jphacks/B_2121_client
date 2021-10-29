@@ -64,4 +64,9 @@ final class RestaurantReactor: Reactor {
     func createAddRestaurantToGroupReactor() -> AddRestaurantToGroupReactor {
         return AddRestaurantToGroupReactor(provider: provider)
     }
+
+    func createGroupReactor(indexPath: IndexPath) -> GroupReactor {
+        let groupId = currentState.groupCellReactors [indexPath.row].currentState.restaurantOtherGroup.groupId
+        return GroupReactor(provider: provider, groupId: groupId)
+    }
 }
