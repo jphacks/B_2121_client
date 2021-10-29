@@ -54,6 +54,16 @@ final class GroupActionButton: UIButton {
         }
     }
 
+    override var isSelected: Bool {
+        didSet {
+            if actionType == .bookmark {
+                actionImageView.image = isSelected ? R.image.bookmark_filled() : R.image.bookmark_empty()
+            }
+        }
+    }
+
+    private let actionType: ActionType
+
     // MARK: - Views
     private let imageBackgroundView = UIView().then {
         $0.backgroundColor = Color.gray06
@@ -79,6 +89,7 @@ final class GroupActionButton: UIButton {
 
     // MARK: - Initializers
     init(actionType: ActionType) {
+        self.actionType = actionType
         super.init(frame: .zero)
 
         setupViews()
