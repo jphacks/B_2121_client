@@ -90,5 +90,17 @@ final class OrganizeRestaurantViewController: UIViewController, View, ViewConstr
                 cell.reactor = reactor
             }
             .disposed(by: disposeBag)
+
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                if apiStatus == .succeeded {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+                if apiStatus == .failed {
+                    logger.error("failed to create a group")
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
