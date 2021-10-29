@@ -9,15 +9,33 @@ import RxSwift
 import OpenAPIClient
 
 protocol GroupServiceType {
-    func createGroup(group: Group) -> Single<Group>
+    func createGroup(name: String, description: String, isPublic: Bool) -> Single<Group>
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]>
     func getGroup(id: String) -> Single<Group>
     func getUsers(groupId: String) -> Single<[User]>
 }
 
 final class GroupService: BaseService, GroupServiceType {
-    func createGroup(group: Group) -> Single<Group> {
-        return .just(TestData.group())
+    func createGroup(name: String, description: String, isPublic: Bool) -> Single<Group> {
+        let geoPoint = TestData.camphorGeoPoint()
+        let request = CreateCommunityRequest(
+            name: name,
+            description: description,
+            location: Location(lat: geoPoint.latitude, lng: geoPoint.longitude)
+        )
+        return CommunityAPI.newCommunity(createCommunityRequest: request)
+            .map { (community: Community) in
+                Group(
+                    id: community.id,
+                    name: community.name,
+                    description: community.description ?? "",
+                    memberCount: 1,
+                    restaurantCount: 0,
+                    members: [],
+                    isPublic: isPublic
+                )
+            }
+            .asSingle()
     }
 
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]> {
