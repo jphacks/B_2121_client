@@ -44,9 +44,9 @@ final class RestaurantInformationView: UIView, ViewConstructor {
         addSubview(titleLabel)
         addSubview(informationRowStackView)
         informationRowStackView.addArrangedSubview(restaurantNameRow)
-        informationRowStackView.addArrangedSubview(addressRow)
-        informationRowStackView.addArrangedSubview(phoneNumberRow)
-        informationRowStackView.addArrangedSubview(openingHoursRow)
+        //        informationRowStackView.addArrangedSubview(addressRow)
+        //        informationRowStackView.addArrangedSubview(phoneNumberRow)
+        //        informationRowStackView.addArrangedSubview(openingHoursRow)
     }
 
     func setupViewConstraints() {
