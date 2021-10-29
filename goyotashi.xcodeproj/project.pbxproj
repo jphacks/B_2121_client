@@ -391,6 +391,13 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		84195A62272C725400D0AD9D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		84777712272861600054E15D /* OrganizeRestaurant */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +660,7 @@
 		84AFC3B5272672EE00B9244E /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				84195A62272C725400D0AD9D /* Onboarding */,
 				80C6F3FB272987FA00EEF467 /* Member */,
 				84777746272947E20054E15D /* AddRestaurantToGroup */,
 				84AFC40D2727A69F00B9244E /* Group */,
