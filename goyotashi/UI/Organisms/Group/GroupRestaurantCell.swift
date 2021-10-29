@@ -15,7 +15,7 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         static let aspectRatio: CGFloat = 1.42
         static let imageViewWidth: CGFloat = (DeviceSize.screenWidth - 32 - 8) / 2
         static let imageViewHeight: CGFloat = imageViewWidth / aspectRatio
-        static let cellWidth: CGFloat = imageViewWidth - 8
+        static let cellWidth: CGFloat = imageViewWidth
         static let cellHeight: CGFloat = imageViewHeight + 28
         static let itemSize: CGSize = CGSize(width: cellWidth, height: cellHeight)
     }
@@ -60,9 +60,8 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
             $0.width.equalTo(Const.imageViewWidth)
         }
         restaurantNameLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().inset(8)
+            $0.left.right.equalToSuperview().inset(8)
             $0.bottom.equalToSuperview()
-            $0.width.equalTo(Const.cellWidth)
         }
     }
 
