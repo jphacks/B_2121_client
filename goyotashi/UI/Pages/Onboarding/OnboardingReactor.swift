@@ -18,6 +18,7 @@ final class OnboardingReactor: Reactor {
 
     struct State {
         var name: String = ""
+        var user: User?
     }
 
     let initialState: State
