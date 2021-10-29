@@ -16,11 +16,13 @@ final class OrganizeRestaurantReactor: Reactor {
     enum Mutation {
         case setRestaurantCellReactors([GroupRestaurant])
         case delete(Void)
+        case setApiStatus(APIStatus)
     }
 
     struct State {
         var restaurantCellReactors: [OrganizeRestaurantCellReactor] = []
         let groupId: Int64
+        var apiStatus: APIStatus = .pending
     }
 
     let initialState: State
@@ -39,13 +41,18 @@ final class OrganizeRestaurantReactor: Reactor {
             currentState.restaurantCellReactors[indexPath.row].action.onNext(.toggleIsRemovable)
             return .empty()
         case .remove:
+            if currentState.apiStatus != .pending { return .empty() }
             let restaurants: [GroupRestaurant] = currentState.restaurantCellReactors
                 .filter {
                     $0.currentState.isRemovable == true
                 }
                 .map { $0.currentState.groupRestaurant }
             let obs = removeRestaurants(restaurants: restaurants)
-            return Observable.concat(obs).map(Mutation.delete)
+            return Observable.concat(obs)
+                .map(Mutation.delete)
+                .catchError { _ in
+                    return .just(.setApiStatus(.failed))
+                }
         }
     }
 
@@ -64,9 +71,10 @@ final class OrganizeRestaurantReactor: Reactor {
         switch mutation {
         case let .setRestaurantCellReactors(groupRestaurants):
             state.restaurantCellReactors = groupRestaurants.map { OrganizeRestaurantCellReactor(groupRestaurant: $0) }
-            break
         case .delete:
-            break
+            state.apiStatus = .succeeded
+        case let .setApiStatus(apiStatus):
+            state.apiStatus = apiStatus
         }
         return state
     }
