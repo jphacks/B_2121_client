@@ -30,7 +30,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.backgroundColor = .white
             self.window = window
             window.makeKeyAndVisible()
-            setMainPage(type: .tabBar)
+
+            if let _ = provider.storeService.authStore.authInfo {
+                setMainPage(type: .tabBar)
+            } else {
+                setMainPage(type: .onboarding)
+            }
         }
     }
 
