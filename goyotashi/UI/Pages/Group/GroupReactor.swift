@@ -17,6 +17,7 @@ final class GroupReactor: Reactor {
         case setGroup(Group)
         case setUsers([User])
         case setRestaurantCellReactors([GroupRestaurant])
+        case setIsBookmarked(Bool)
     }
 
     struct State {
@@ -45,8 +46,8 @@ final class GroupReactor: Reactor {
                 getRestaurants().map(Mutation.setRestaurantCellReactors)
             )
         case .tapBookmarkButton:
-            logger.debug("tapBookmarkButton")
-            return .empty()
+            let isBookmarked = !currentState.isBookmarked
+            return .just(.setIsBookmarked(isBookmarked))
         }
     }
 
@@ -77,6 +78,8 @@ final class GroupReactor: Reactor {
             }
         case let .setRestaurantCellReactors(groupRestaurants):
             state.restaurantCellReactors = groupRestaurants.map { GroupRestaurantCellReactor(groupRestaurant: $0) }
+        case let .setIsBookmarked(isBookmarked):
+            state.isBookmarked = isBookmarked
         }
         return state
     }
