@@ -93,6 +93,12 @@ final class SearchRestaurantViewController: UIViewController, View, ViewConstruc
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        searchBar.rx.textDidBeginEditing
+            .bind { [weak self] in
+                self?.searchBar.setShowsCancelButton(true, animated: true)
+            }
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.keyword }
             .distinctUntilChanged()
