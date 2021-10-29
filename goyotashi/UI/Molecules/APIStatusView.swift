@@ -34,14 +34,12 @@ final class APIStatusView: UIView, ViewConstructor {
 
     private let statusImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
-        $0.image = R.image.report()
     }
 
     private let statusLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 15, color: Color.gray02)
         $0.numberOfLines = 0
         $0.textAlignment = .center
-        $0.text = "失敗しちゃった...\nごめんね。"
     }
 
     // MARK: - Initializers
@@ -93,12 +91,19 @@ final class APIStatusView: UIView, ViewConstructor {
         case .loading:
             isHidden = false
             activityIndicatorView.startAnimating()
+            stackView.isHidden = true
         case .succeeded:
             isHidden = false
             activityIndicatorView.stopAnimating()
+            stackView.isHidden = false
+            statusImageView.image = R.image.check()
+            statusLabel.text = "作れたよ！"
         case .failed:
             isHidden = false
             activityIndicatorView.stopAnimating()
+            stackView.isHidden = false
+            statusImageView.image = R.image.report()
+            statusLabel.text = "失敗しちゃった...\nごめんね。"
         }
     }
 }
