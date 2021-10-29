@@ -157,7 +157,6 @@ final class GroupViewController: UIViewController, View, ViewConstructor {
         reactor.state.map { $0.group }
             .filterNil()
             .bind { [weak self] group in
-                logger.debug(group)
                 self?.setupHeaderHeight()
             }
             .disposed(by: disposeBag)
