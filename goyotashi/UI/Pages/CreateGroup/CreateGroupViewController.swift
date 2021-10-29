@@ -164,6 +164,8 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: CreateGroupReactor) {
         // Action
+        reactor.action.onNext(.setUser)
+
         createButton.rx.tap
             .map { Reactor.Action.create }
             .bind(to: reactor.action)
