@@ -16,17 +16,22 @@ final class InviteMemberReactor: Reactor {
     }
 
     struct State {
+        let groupId: Int64
         let members: [User] = TestData.users(count: 8)
         var memberCellReactors: [InviteMemberCellReactor] = (0 ..< 8).map { _ in InviteMemberCellReactor() }
         var invitationToken: String = ""
+
+        init(groupId: Int64) {
+            self.groupId = groupId
+        }
     }
 
     let initialState: State
     private let provider: ServiceProviderType
 
-    init(provider: ServiceProviderType) {
+    init(provider: ServiceProviderType, groupId: Int64) {
         self.provider = provider
-        initialState = State()
+        initialState = State(groupId: groupId)
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
