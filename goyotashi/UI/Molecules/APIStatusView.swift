@@ -16,7 +16,7 @@ final class APIStatusView: UIView, ViewConstructor {
     }
 
     // MARK: - Views
-    private let activityIndicator = UIActivityIndicatorView().then {
+    private let activityIndicatorView = UIActivityIndicatorView().then {
         $0.style = .large
     }
 
@@ -41,7 +41,7 @@ final class APIStatusView: UIView, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         addSubview(messageView)
-        messageView.addSubview(activityIndicator)
+        messageView.addSubview(activityIndicatorView)
 
         backgroundColor = Color.gray01.withAlphaComponent(0.3)
     }
@@ -51,7 +51,7 @@ final class APIStatusView: UIView, ViewConstructor {
             $0.center.equalToSuperview()
             $0.size.equalTo(Const.messageViewSize)
         }
-        activityIndicator.snp.makeConstraints {
+        activityIndicatorView.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
     }
@@ -64,13 +64,13 @@ final class APIStatusView: UIView, ViewConstructor {
             isHidden = true
         case .loading:
             isHidden = false
-            activityIndicator.startAnimating()
+            activityIndicatorView.startAnimating()
         case .succeeded:
             isHidden = false
-            activityIndicator.stopAnimating()
+            activityIndicatorView.stopAnimating()
         case .failed:
             isHidden = false
-            activityIndicator.stopAnimating()
+            activityIndicatorView.stopAnimating()
         }
     }
 }
