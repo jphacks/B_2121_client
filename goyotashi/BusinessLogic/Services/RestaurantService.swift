@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import OpenAPIClient
 
 protocol RestaurantServiceType {
     func getRestaurants(groupId: String) -> Single<[GroupRestaurant]>
@@ -30,7 +31,28 @@ final class RestaurantService: BaseService, RestaurantServiceType {
     }
 
     func searchRestaurants(keyword: String, location: Location?) -> Single<[Restaurant]> {
-        return .just(TestData.restaurants(count: 8))
+        // TODO: get description
+        // TODO: get address
+        // TODO: get phoneNumber
+        // TODO: get openingHours
+        return RestaurantAPI.searchRestaurants(keyword: keyword, after: nil, centerLat: location?.latitude, centerLng: location?.longitude)
+            .map { (response: SearchRestaurantResponse) -> [Restaurant] in
+                guard let responseRestaurants = response.restaurants else { return [] }
+                let restaurants = responseRestaurants.map { restaurant in
+                    return Restaurant(
+                        id: restaurant.id,
+                        imageUrl: restaurant.imageUrl,
+                        name: restaurant.name,
+                        description: "",
+                        address: "",
+                        phoneNumber: "",
+                        openingHours: "",
+                        location: Location(latitude: restaurant.location.lat, longitude: restaurant.location.lng)
+                    )
+                }
+                return restaurants
+            }
+            .asSingle()
     }
 
     func getRestaurant(restaurantId: String) -> Single<Restaurant> {
