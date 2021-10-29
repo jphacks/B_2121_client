@@ -19,7 +19,7 @@ final class InviteMemberReactor: Reactor {
     struct State {
         let groupId: Int64
         let members: [User] = TestData.users(count: 8)
-        var memberCellReactors: [InviteMemberCellReactor] = (0 ..< 8).map { _ in InviteMemberCellReactor() }
+        var memberCellReactors: [InviteMemberCellReactor] = []
         var invitationToken: String = ""
         var getTokenApiStatus: APIStatus = .pending
 
