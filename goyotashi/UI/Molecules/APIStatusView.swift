@@ -11,9 +11,19 @@ import RxCocoa
 
 final class APIStatusView: UIView, ViewConstructor {
 
+    struct Const {
+        static let messageViewSize: CGFloat = 160
+    }
+
     // MARK: - Views
     private let activityIndicator = UIActivityIndicatorView().then {
         $0.style = .large
+    }
+
+    private let messageView = UIView().then {
+        $0.backgroundColor = Color.white
+        $0.layer.cornerRadius = 16
+        $0.layer.masksToBounds = true
     }
 
     // MARK: - Initializers
@@ -30,12 +40,19 @@ final class APIStatusView: UIView, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
-        addSubview(activityIndicator)
+        addSubview(messageView)
+        messageView.addSubview(activityIndicator)
+
+        backgroundColor = Color.gray01.withAlphaComponent(0.3)
     }
 
     func setupViewConstraints() {
+        messageView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.size.equalTo(Const.messageViewSize)
+        }
         activityIndicator.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.center.equalToSuperview()
         }
     }
 
