@@ -9,6 +9,8 @@ import RxSwift
 import OpenAPIClient
 
 protocol RestaurantServiceType {
+    var event: PublishSubject<RestaurantEvent> { get }
+
     func getRestaurants(groupId: Int64) -> Single<[GroupRestaurant]>
     func addRestaurantToGroup(restaurantId: String, groupId: String) -> Single<Void>
     func removeRestaurantFromGroup(restaurantId: Int64, groupId: Int64) -> Single<Void>
@@ -18,6 +20,8 @@ protocol RestaurantServiceType {
 }
 
 final class RestaurantService: BaseService, RestaurantServiceType {
+    let event: PublishSubject<RestaurantEvent> = PublishSubject<RestaurantEvent>()
+
     func getRestaurants(groupId: Int64) -> Single<[GroupRestaurant]> {
         let id = Int(groupId)
         return RestaurantAPI.listCommunityRestaurants(id: id)

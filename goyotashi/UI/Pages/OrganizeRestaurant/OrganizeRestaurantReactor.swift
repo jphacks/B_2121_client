@@ -73,6 +73,7 @@ final class OrganizeRestaurantReactor: Reactor {
             state.restaurantCellReactors = groupRestaurants.map { OrganizeRestaurantCellReactor(groupRestaurant: $0) }
         case .delete:
             state.apiStatus = .succeeded
+            provider.restaurantService.event.onNext(.didDelete)
         case let .setApiStatus(apiStatus):
             state.apiStatus = apiStatus
         }
