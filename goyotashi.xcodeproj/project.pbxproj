@@ -54,6 +54,7 @@
 		84A18FAC272B0CE50073C770 /* AuthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18FAB272B0CE50073C770 /* AuthInfo.swift */; };
 		84A18FAE272B13860073C770 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18FAD272B13860073C770 /* AuthStore.swift */; };
 		84A18FB0272B144B0073C770 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18FAF272B144B0073C770 /* StoreService.swift */; };
+		84A18FB2272B791A0073C770 /* LoggerFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A18FB1272B791A0073C770 /* LoggerFormatter.swift */; };
 		84AFC3762725D40600B9244E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3752725D40600B9244E /* AppDelegate.swift */; };
 		84AFC3782725D40600B9244E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3772725D40600B9244E /* SceneDelegate.swift */; };
 		84AFC37A2725D40600B9244E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFC3792725D40600B9244E /* ViewController.swift */; };
@@ -185,6 +186,7 @@
 		84A18FAB272B0CE50073C770 /* AuthInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInfo.swift; sourceTree = "<group>"; };
 		84A18FAD272B13860073C770 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
 		84A18FAF272B144B0073C770 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
+		84A18FB1272B791A0073C770 /* LoggerFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerFormatter.swift; sourceTree = "<group>"; };
 		84AFC3722725D40600B9244E /* goyotashi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goyotashi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AFC3752725D40600B9244E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AFC3772725D40600B9244E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 			children = (
 				84AFC3AB27266F2100B9244E /* DeviceSize.swift */,
 				84AFC3AD27266F5100B9244E /* ViewConstructor.swift */,
+				84A18FB1272B791A0073C770 /* LoggerFormatter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1138,6 +1141,7 @@
 				84B88DE4272816E1004EB87D /* RestaurantOtherGroupCell.swift in Sources */,
 				84777757272979610054E15D /* RecommendGroupViewController.swift in Sources */,
 				847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */,
+				84A18FB2272B791A0073C770 /* LoggerFormatter.swift in Sources */,
 				84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */,
 				84AFC3D82726CE7800B9244E /* HomeViewController.swift in Sources */,
 				847777412729473B0054E15D /* AddRestaurantToGroupViewController.swift in Sources */,
