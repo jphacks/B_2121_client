@@ -82,6 +82,10 @@ struct TestData {
             geoPoint: geoPoint()
         )
     }
+    
+    static func camphorGeoPoint() -> GeoPoint {
+        return GeoPoint(latitude: 35.02488258885156, longitude: 135.77692591466467)
+    }
 
     static func restaurants(count: Int) -> [Restaurant] {
         return (0 ..< count).map { _ in restaurant() }
