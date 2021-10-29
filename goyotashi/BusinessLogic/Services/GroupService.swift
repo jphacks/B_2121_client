@@ -9,15 +9,15 @@ import RxSwift
 import OpenAPIClient
 
 protocol GroupServiceType {
-    func createGroup(group: Group) -> Single<Void>
+    func createGroup(group: Group) -> Single<Group>
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]>
     func getGroup(id: String) -> Single<Group>
     func getUsers(groupId: String) -> Single<[User]>
 }
 
 final class GroupService: BaseService, GroupServiceType {
-    func createGroup(group: Group) -> Single<Void> {
-        return .just(())
+    func createGroup(group: Group) -> Single<Group> {
+        return .just(TestData.group())
     }
 
     func searchGroup(keyword: String, location: Location?) -> Single<[GroupSummary]> {
