@@ -28,13 +28,13 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
         $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
     }
 
-    private let editProfileButton = RoundBorderButton().then {
-        $0.set(title: "プロフィールを編集")
-    }
-
     private let moreButton = RoundBorderDotsButton()
 
     let plusButton = PlusButton()
+
+    let editProfileButton = RoundBorderButton().then {
+        $0.set(title: "プロフィールを編集")
+    }
 
     // MARK: - Initializers
     override init(frame: CGRect) {

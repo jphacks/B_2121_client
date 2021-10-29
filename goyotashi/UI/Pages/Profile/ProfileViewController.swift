@@ -73,6 +73,14 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
             }
             .disposed(by: disposeBag)
 
+        header.editProfileButton.rx.tapGesture()
+            .when(.ended)
+            .bind { [weak self] _ in
+                let viewController = ProfileEditViewController()
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+
         // State
     }
 
