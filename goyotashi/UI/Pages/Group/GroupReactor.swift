@@ -52,7 +52,7 @@ final class GroupReactor: Reactor {
 
     private func getUsers() -> Observable<[User]> {
         let groupId = currentState.groupId
-        return .just(TestData.users(count: 9))
+        return provider.groupService.getUsers(groupId: groupId).asObservable()
     }
 
     private func getRestaurants() -> Observable<[GroupRestaurant]> {
