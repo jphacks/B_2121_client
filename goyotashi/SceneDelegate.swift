@@ -79,7 +79,7 @@ extension SceneDelegate {
         OpenAPIClient.credential = credential
     }
 
-    private func setMainPage(type: PageType) {
+    func setMainPage(type: PageType) {
         let viewController: UIViewController
         switch type {
         case .onboarding:
