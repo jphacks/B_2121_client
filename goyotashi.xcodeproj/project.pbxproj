@@ -21,6 +21,7 @@
 		840F195F272A6439009BC1ED /* Observable+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F195E272A6439009BC1ED /* Observable+Optional.swift */; };
 		840F1962272A8BF9009BC1ED /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F1961272A8BF9009BC1ED /* PlaceholderTextView.swift */; };
 		84195A51272B898200D0AD9D /* GeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A50272B898200D0AD9D /* GeoPoint.swift */; };
+		84195A53272B956000D0AD9D /* APIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A52272B956000D0AD9D /* APIStatus.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -153,6 +154,7 @@
 		840F195E272A6439009BC1ED /* Observable+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Optional.swift"; sourceTree = "<group>"; };
 		840F1961272A8BF9009BC1ED /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		84195A50272B898200D0AD9D /* GeoPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPoint.swift; sourceTree = "<group>"; };
+		84195A52272B956000D0AD9D /* APIStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStatus.swift; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -733,6 +735,7 @@
 				8477774B2729628D0054E15D /* GroupSummary.swift */,
 				84A18FAB272B0CE50073C770 /* AuthInfo.swift */,
 				84195A50272B898200D0AD9D /* GeoPoint.swift */,
+				84195A52272B956000D0AD9D /* APIStatus.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1151,6 +1154,7 @@
 				84AFC3AE27266F5100B9244E /* ViewConstructor.swift in Sources */,
 				84AFC40F2727A6C600B9244E /* GroupHeaderView.swift in Sources */,
 				84AFC3D42726A4EF00B9244E /* R.generated.swift in Sources */,
+				84195A53272B956000D0AD9D /* APIStatus.swift in Sources */,
 				84195A51272B898200D0AD9D /* GeoPoint.swift in Sources */,
 				84AFC3F12727173100B9244E /* ProfileHeaderView.swift in Sources */,
 				80C6F3FF2729893C00EEF467 /* MemberCellReactor.swift in Sources */,
