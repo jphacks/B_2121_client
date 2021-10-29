@@ -20,6 +20,13 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
         $0.image = R.image.link()
     }
 
+    private let linkCopyButton = UIButton().then {
+        $0.titleLabel?.apply(fontStyle: .medium, size: 16)
+        $0.setTitle("招待コードをコピーする", for: .normal)
+        $0.setTitleColor(Color.blue, for: .normal)
+        $0.setTitleColor(Color.blue.withAlphaComponent(0.3), for: .highlighted)
+    }
+
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -35,6 +42,7 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         addSubview(linkImageView)
+        addSubview(linkCopyButton)
     }
 
     func setupViewConstraints() {
@@ -45,6 +53,12 @@ final class InvitationLinkCopyView: UIView, ViewConstructor {
             $0.centerY.equalToSuperview()
             $0.left.equalToSuperview().inset(24)
             $0.size.equalTo(32)
+        }
+        linkCopyButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.left.equalTo(linkImageView.snp.right).offset(8)
+            $0.height.equalTo(32)
+            $0.width.equalTo(200)
         }
     }
 }
