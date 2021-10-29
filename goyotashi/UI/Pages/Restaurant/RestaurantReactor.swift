@@ -17,6 +17,7 @@ final class RestaurantReactor: Reactor {
     }
 
     struct State {
+        let restaurantId: Int64
         var restaurant: Restaurant?
         var groupCellReactors: [RestaurantOtherGroupCellReactor] = []
     }
@@ -24,9 +25,9 @@ final class RestaurantReactor: Reactor {
     let initialState: State
     private let provider: ServiceProviderType
 
-    init(provider: ServiceProviderType) {
+    init(provider: ServiceProviderType, restaurantId: Int64) {
         self.provider = provider
-        initialState = State()
+        initialState = State(restaurantId: restaurantId)
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -40,11 +41,11 @@ final class RestaurantReactor: Reactor {
     }
 
     private func getRestaurant() -> Observable<Restaurant> {
-        return provider.restaurantService.getRestaurant(restaurantId: "restaurantId").asObservable()
+        return provider.restaurantService.getRestaurant(restaurantId: currentState.restaurantId).asObservable()
     }
 
     private func getOtherGroups() -> Observable<[RestaurantOtherGroup]> {
-        return provider.restaurantService.getOtherGroups(restaurantId: "restaurantId").asObservable()
+        return provider.restaurantService.getOtherGroups(restaurantId: currentState.restaurantId).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {

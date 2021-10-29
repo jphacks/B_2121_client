@@ -13,8 +13,8 @@ protocol RestaurantServiceType {
     func addRestaurantToGroup(restaurantId: String, groupId: String) -> Single<Void>
     func removeRestaurantFromGroup(restaurantId: String, groupId: String) -> Single<Void>
     func searchRestaurants(keyword: String, geoPoint: GeoPoint?) -> Single<[Restaurant]>
-    func getRestaurant(restaurantId: String) -> Single<Restaurant>
-    func getOtherGroups(restaurantId: String) -> Single<[RestaurantOtherGroup]>
+    func getRestaurant(restaurantId: Int64) -> Single<Restaurant>
+    func getOtherGroups(restaurantId: Int64) -> Single<[RestaurantOtherGroup]>
 }
 
 final class RestaurantService: BaseService, RestaurantServiceType {
@@ -68,11 +68,24 @@ final class RestaurantService: BaseService, RestaurantServiceType {
             .asSingle()
     }
 
-    func getRestaurant(restaurantId: String) -> Single<Restaurant> {
-        return .just(TestData.restaurant())
+    func getRestaurant(restaurantId: Int64) -> Single<Restaurant> {
+        return RestaurantAPI.restaurantIdGet(id: restaurantId)
+            .map {restaurant in
+                return Restaurant(
+                    id: restaurant.id,
+                    imageUrl: restaurant.imageUrl,
+                    name: restaurant.name,
+                    description: "",
+                    address: "",
+                    phoneNumber: "",
+                    openingHours: "",
+                    geoPoint: GeoPoint(latitude: restaurant.location.lat, longitude: restaurant.location.lng)
+                )
+            }
+            .asSingle()
     }
 
-    func getOtherGroups(restaurantId: String) -> Single<[RestaurantOtherGroup]> {
+    func getOtherGroups(restaurantId: Int64) -> Single<[RestaurantOtherGroup]> {
         return .just(TestData.restaurantOtherGroups(count: 5))
     }
 }
