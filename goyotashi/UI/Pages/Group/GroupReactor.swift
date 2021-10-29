@@ -150,7 +150,8 @@ final class GroupReactor: Reactor {
     }
 
     func createRestaurantReactor(indexPath: IndexPath) -> RestaurantReactor {
-        return RestaurantReactor(provider: provider)
+        let restaurantId = self.currentState.restaurantCellReactors[indexPath.row].currentState.groupRestaurant.restaurantId
+        return RestaurantReactor(provider: provider, restaurantId: restaurantId, groupId: currentState.groupId)
     }
 
     func memberListReactor() -> MemberListReactor {
