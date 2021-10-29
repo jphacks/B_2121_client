@@ -27,6 +27,20 @@ final class ProfileReactor: Reactor {
         initialState = State()
     }
 
+    func transform(action: Observable<Action>) -> Observable<Action> {
+        let userEventAction = provider.userService.event
+            .flatMap { event -> Observable<Action> in
+                switch event {
+                case .didUpdateUser:
+                    return .just(.refresh)
+                }
+            }
+        return .merge(
+            action,
+            userEventAction
+        )
+    }
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
@@ -54,5 +68,9 @@ final class ProfileReactor: Reactor {
 
     func createCreateGroupReactor() -> CreateGroupReactor {
         return CreateGroupReactor(provider: provider)
+    }
+
+    func createProfileEditReactor() -> ProfileEditReactor {
+        return ProfileEditReactor(provider: provider)
     }
 }

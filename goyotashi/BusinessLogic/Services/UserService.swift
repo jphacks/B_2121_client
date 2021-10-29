@@ -9,12 +9,19 @@ import RxSwift
 import OpenAPIClient
 
 protocol UserServiceType {
+    // MARK: - Event
+    var event: PublishSubject<UserEvent> { get }
+
     func createUser() -> Single<Void>
     func getMyProfile() -> Single<User>
+    func updateMyName(name: String) -> Single<User>
     func getMyGroups(userId: Int64) -> Single<[GroupSummary]>
 }
 
 final class UserService: BaseService, UserServiceType {
+    // MARK: - Event
+    let event: PublishSubject<UserEvent> = PublishSubject<UserEvent>()
+
     func createUser() -> Single<Void> {
         // TODO: remove name "Gohan Daisuki"
         // TODO: remove vendor: .anonymous
@@ -58,6 +65,19 @@ final class UserService: BaseService, UserServiceType {
                     )
                 }
                 return groups
+            }
+            .asSingle()
+    }
+
+    func updateMyName(name: String) -> Single<User> {
+        let request = PutUserMeRequest(name: name)
+        return UserAPI.userMePut(putUserMeRequest: request)
+            .map { resp in
+                return User(
+                    id: resp.id,
+                    name: resp.name,
+                    profileImageUrl: resp.profileImageUrl
+                )
             }
             .asSingle()
     }
