@@ -10,7 +10,7 @@ import OpenAPIClient
 
 protocol BookmarkServiceType {
     func getBookmarkedGroups(userId: Int64) -> Single<[GroupSummary]>
-    func createBookmark(userId: String, groupId: String) -> Single<Void>
+    func createBookmark(userId: Int64, groupId: Int64) -> Single<Bool>
     func removeBookmark(userId: String, groupId: String) -> Single<Void>
 }
 
@@ -37,8 +37,8 @@ final class BookmarkService: BaseService, BookmarkServiceType {
             .asSingle()
     }
 
-    func createBookmark(userId: String, groupId: String) -> Single<Void> {
-        return .just(())
+    func createBookmark(userId: Int64, groupId: Int64) -> Single<Bool> {
+        return .just(true)
     }
 
     func removeBookmark(userId: String, groupId: String) -> Single<Void> {
