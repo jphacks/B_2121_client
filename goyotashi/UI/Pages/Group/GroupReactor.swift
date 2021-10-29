@@ -23,7 +23,7 @@ final class GroupReactor: Reactor {
         var group: Group?
         var users: [User] = []
         var restaurantCellReactors: [GroupRestaurantCellReactor] = []
-        let isMember: Bool = true
+        var isMember: Bool = false
     }
 
     let initialState: State
@@ -67,6 +67,9 @@ final class GroupReactor: Reactor {
             state.group = group
         case let .setUsers(users):
             state.users = users
+            if let userId = provider.storeService.authStore.user?.id {
+                state.isMember = users.map { $0.id }.contains(userId)
+            }
         case let .setRestaurantCellReactors(groupRestaurants):
             state.restaurantCellReactors = groupRestaurants.map { GroupRestaurantCellReactor(groupRestaurant: $0) }
         }
