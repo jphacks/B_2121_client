@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**listCommunityRestaurants**](RestaurantAPI.md#listcommunityrestaurants) | **GET** /community/{id}/restaurants | List restaurants in a community
 [**removeRestaurantFromCommunity**](RestaurantAPI.md#removerestaurantfromcommunity) | **DELETE** /community/{id}/restaurants/{restaurant_id} | Remove a restrant from the specified community
 [**restaurantIdGet**](RestaurantAPI.md#restaurantidget) | **GET** /restaurant/{id} | Get information about the speicifed restaurant.
+[**restaurantIdOtherGet**](RestaurantAPI.md#restaurantidotherget) | **GET** /restaurant/{id}/other | Get other communities which have the secified in thier lists
 [**searchRestaurants**](RestaurantAPI.md#searchrestaurants) | **GET** /restaurant/search | Search restaurants using keyword and location
 
 
@@ -157,6 +158,46 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Restaurant**](Restaurant.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **restaurantIdOtherGet**
+```swift
+    open class func restaurantIdOtherGet(id: Int64, communityId: Int64) -> Observable<GetOtherCommunityResponse>
+```
+
+Get other communities which have the secified in thier lists
+
+### Example 
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import OpenAPIClient
+
+let id = 987 // Int64 | 
+let communityId = 987 // Int64 | 
+
+// TODO RxSwift sample code not yet implemented. To contribute, please open a ticket via http://github.com/OpenAPITools/openapi-generator/issues/new
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int64** |  | 
+ **communityId** | **Int64** |  | 
+
+### Return type
+
+[**GetOtherCommunityResponse**](GetOtherCommunityResponse.md)
 
 ### Authorization
 

@@ -14,6 +14,58 @@ import AnyCodable
 open class CommunityAPI {
 
     /**
+     Get an invite token
+     
+     - parameter id: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Observable<GetCommunityIdTokenResponse>
+     */
+    open class func communityIdTokenGet(id: Int, apiResponseQueue: DispatchQueue = OpenAPIClient.apiResponseQueue) -> Observable<GetCommunityIdTokenResponse> {
+        return Observable.create { observer -> Disposable in
+            communityIdTokenGetWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+                switch result {
+                case let .success(response):
+                    observer.onNext(response.body!)
+                case let .failure(error):
+                    observer.onError(error)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
+    /**
+     Get an invite token
+     - GET /community/{id}/token
+     - API Key:
+       - type: apiKey Authorization 
+       - name: token
+     - parameter id: (path)  
+     - returns: RequestBuilder<GetCommunityIdTokenResponse> 
+     */
+    open class func communityIdTokenGetWithRequestBuilder(id: Int) -> RequestBuilder<GetCommunityIdTokenResponse> {
+        var localVariablePath = "/community/{id}/token"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = OpenAPIClient.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<GetCommunityIdTokenResponse>.Type = OpenAPIClient.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
      Get a community by id
      
      - parameter id: (path)  
