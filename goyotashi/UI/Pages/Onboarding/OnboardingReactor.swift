@@ -37,7 +37,10 @@ final class OnboardingReactor: Reactor {
             return createUser().map(Mutation.setUser)
         case let .updateName(name):
             guard let name = name else { return .empty() }
-            return updateUserName(name: name).map(Mutation.setUser)
+            return .merge(
+                updateUserName(name: name).map(Mutation.setUser),
+                createGroup(userName: name).map(Mutation.setGroup)
+            )
         case .startApp:
             if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                 sceneDelegate.setMainPage(type: .tabBar)
@@ -50,14 +53,10 @@ final class OnboardingReactor: Reactor {
         return provider.userService.createUser().asObservable()
     }
 
-    private func createGroup() -> Observable<Group> {
+    private func createGroup(userName: String) -> Observable<Group> {
         let name = groupName()
         let description: String
-        if let name = currentState.user?.name {
-            description = "\(name)さんのはじめてのグループです！"
-        } else {
-            description = "はじめてのグループだよ！"
-        }
+        description = "\(userName)さんのはじめてのグループです！"
         return provider.groupService.createGroup(name: name, description: description, isPublic: true).asObservable()
     }
 
