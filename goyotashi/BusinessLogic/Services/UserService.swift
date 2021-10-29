@@ -26,7 +26,8 @@ final class UserService: BaseService, UserServiceType {
                 self.provider.storeService.authStore.authInfo = authInfo
                 self.provider.storeService.authStore.user = user
 
-                print("response: \(response)")
+                logger.verbose("success to create user: \(user)")
+                logger.verbose("authInfo is \(authInfo)")
                 return
             }
             .asSingle()
