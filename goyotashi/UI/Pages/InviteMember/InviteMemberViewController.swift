@@ -117,6 +117,26 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        searchBar.rx.textDidBeginEditing
+            .bind { [weak self] in
+                self?.searchBar.setShowsCancelButton(true, animated: true)
+            }
+            .disposed(by: disposeBag)
+
+        searchBar.rx.searchButtonClicked
+            .bind { [weak self] in
+                self?.searchBar.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
+
+        searchBar.rx.cancelButtonClicked
+            .bind { [weak self] in
+                self?.searchBar.text = ""
+                self?.searchBar.resignFirstResponder()
+                self?.searchBar.setShowsCancelButton(false, animated: true)
+            }
+            .disposed(by: disposeBag)
+
         // State
         reactor.state.map { $0.getTokenApiStatus }
             .distinctUntilChanged()
