@@ -17,6 +17,12 @@ protocol GroupServiceType {
 
 final class GroupService: BaseService, GroupServiceType {
     func createGroup(name: String, description: String, isPublic: Bool) -> Single<Group> {
+        // TODO: replace geoPoint with user location
+        // TODO: send isPublic
+        // TODO: get memberCount
+        // TODO: get restaurantCount
+        // TODO: get members
+        // TODO: get isPublic
         let geoPoint = TestData.camphorGeoPoint()
         let request = CreateCommunityRequest(
             name: name,
