@@ -13,12 +13,10 @@ final class OnboardingReactor: Reactor {
         case updateName(String?)
     }
     enum Mutation {
-        case setName(String)
         case setUser(User)
     }
 
     struct State {
-        var name: String = ""
         var user: User?
     }
 
@@ -36,7 +34,7 @@ final class OnboardingReactor: Reactor {
             return createUser().map(Mutation.setUser)
         case let .updateName(name):
             guard let name = name else { return .empty() }
-            return .just(.setName(name))
+            return updateUserName(name: name).map(Mutation.setUser)
         }
     }
 
@@ -44,12 +42,13 @@ final class OnboardingReactor: Reactor {
         return provider.userService.createUser().asObservable()
     }
 
+    private func updateUserName(name: String) -> Observable<User> {
+        return provider.userService.updateMyName(name: name).asObservable()
+    }
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case let .setName(name):
-            state.name = name
-            logger.debug("name: \(name)")
         case let .setUser(user):
             state.user = user
             logger.debug("user: \(user)")
