@@ -31,6 +31,10 @@ final class RecommendGroupViewController: UIViewController, View, ViewConstructo
         $0.alwaysBounceVertical = true
     }
 
+    let refreshControl = UIRefreshControl().then {
+        $0.tintColor = Color.gray05
+    }
+
     private let header = RecommendGroupHeaderView()
 
     // MARK: - Lify Cycles
@@ -45,6 +49,7 @@ final class RecommendGroupViewController: UIViewController, View, ViewConstructo
     func setupViews() {
         view.addSubview(collectionView)
         collectionView.addSubview(header)
+        collectionView.refreshControl = refreshControl
     }
 
     func setupViewConstraints() {
@@ -62,6 +67,10 @@ final class RecommendGroupViewController: UIViewController, View, ViewConstructo
         // Action
         reactor.action.onNext(.refresh)
 
+        refreshControl.rx.controlEvent(.valueChanged)
+            .bind { reactor.action.onNext(.refresh) }
+            .disposed(by: disposeBag)
+
         collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
                 let viewController = GroupViewController().then {
@@ -76,6 +85,20 @@ final class RecommendGroupViewController: UIViewController, View, ViewConstructo
             .distinctUntilChanged()
             .bind(to: collectionView.rx.items(Reusable.groupCell)) { _, reactor, cell in
                 cell.reactor = reactor
+            }
+            .disposed(by: disposeBag)
+
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                switch apiStatus {
+                case .refreshing:
+                    self?.refreshControl.beginRefreshing()
+                case .pending:
+                    self?.refreshControl.endRefreshing()
+                default:
+                    break
+                }
             }
             .disposed(by: disposeBag)
     }

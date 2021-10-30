@@ -13,10 +13,12 @@ final class RecommendGroupReactor: Reactor {
     }
     enum Mutation {
         case setGroupCellReactors([GroupSummary])
+        case setApiStatus(APIStatus)
     }
 
     struct State {
         var groupCellReactors: [HomeGroupCellReactor] = []
+        var apiStatus: APIStatus = .pending
     }
 
     let initialState: State
@@ -46,7 +48,12 @@ final class RecommendGroupReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            return getGroups().map(Mutation.setGroupCellReactors)
+            if currentState.apiStatus == .refreshing { return .empty() }
+            return .concat(
+                .just(.setApiStatus(.refreshing)),
+                getGroups().map(Mutation.setGroupCellReactors),
+                .just(.setApiStatus(.pending))
+            )
         }
     }
 
@@ -59,6 +66,8 @@ final class RecommendGroupReactor: Reactor {
         switch mutation {
         case let .setGroupCellReactors(groupSummaries):
             state.groupCellReactors = groupSummaries.map { HomeGroupCellReactor(groupSummary: $0) }
+        case let .setApiStatus(apiStatus):
+            state.apiStatus = apiStatus
         }
         return state
     }
