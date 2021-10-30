@@ -40,6 +40,8 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         $0.setTitleColor(Color.blue.withAlphaComponent(0.3), for: .highlighted)
     }
 
+    private let activityIndicatorView = UIActivityIndicatorView()
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +58,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         scrollView.addSubview(invitationCodeTitleLabel)
         scrollView.addSubview(invitationCodeTextField)
         scrollView.addSubview(joinButton)
+        scrollView.addSubview(activityIndicatorView)
     }
 
     func setupViewConstraints() {
@@ -75,6 +78,10 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
             $0.left.equalToSuperview().inset(16)
             $0.height.equalTo(32)
             $0.width.equalTo(160)
+        }
+        activityIndicatorView.snp.makeConstraints {
+            $0.centerY.equalTo(joinButton)
+            $0.right.equalToSuperview().inset(32)
         }
     }
 
