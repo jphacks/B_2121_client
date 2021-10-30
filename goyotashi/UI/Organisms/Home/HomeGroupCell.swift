@@ -138,7 +138,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
                     if index == 0 {
                         self?.largeImageView.setImageWithHPGUrl(urlString: imageUrls[0])
                     } else {
-                        self?.smallImageViews[index - 1].setImageWithHPGUrl(urlString: imageUrls[index])
+                        self?.smallImageViews[index - 1].setImageWithHPGUrl(urlString: imageUrls[index], sizeType: .small)
                     }
                 }
             }
