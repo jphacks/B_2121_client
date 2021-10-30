@@ -22,6 +22,11 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         $0.alwaysBounceVertical = true
     }
 
+    private let invitationCodeTitleLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
+        $0.text = "招待コード"
+    }
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +40,16 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
 
         view.addSubview(scrollView)
+        scrollView.addSubview(invitationCodeTitleLabel)
     }
 
     func setupViewConstraints() {
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        invitationCodeTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(24)
+            $0.left.equalToSuperview().inset(16)
         }
     }
 
