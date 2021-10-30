@@ -7,4 +7,5 @@
 
 enum UserEvent {
     case didUpdateUser
+    case didJoinGroup
 }
