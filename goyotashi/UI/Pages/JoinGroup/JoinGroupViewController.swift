@@ -44,7 +44,6 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
 
     private let doneImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
-        $0.image = R.image.check()
         $0.isHidden = true
     }
 
@@ -128,6 +127,10 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
                     self?.activityIndicatorView.startAnimating()
                     self?.doneImageView.isHidden = true
                 case .succeeded:
+                    self?.doneImageView.image = R.image.check()
+                    self?.doneImageView.isHidden = false
+                case .failed:
+                    self?.doneImageView.image = R.image.report()
                     self?.doneImageView.isHidden = false
                 default:
                     break
