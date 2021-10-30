@@ -42,6 +42,11 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
 
     private let activityIndicatorView = UIActivityIndicatorView()
 
+    private let doneImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+        $0.image = R.image.check()
+    }
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +64,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         scrollView.addSubview(invitationCodeTextField)
         scrollView.addSubview(joinButton)
         scrollView.addSubview(activityIndicatorView)
+        scrollView.addSubview(doneImageView)
     }
 
     func setupViewConstraints() {
@@ -81,7 +87,11 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         }
         activityIndicatorView.snp.makeConstraints {
             $0.centerY.equalTo(joinButton)
-            $0.right.equalToSuperview().inset(32)
+            $0.right.equalTo(view).inset(32)
+        }
+        doneImageView.snp.makeConstraints {
+            $0.center.equalTo(activityIndicatorView)
+            $0.size.equalTo(24)
         }
     }
 
