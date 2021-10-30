@@ -82,7 +82,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         }
         joinButton.snp.makeConstraints {
             $0.top.equalTo(invitationCodeTextField.snp.bottom).offset(40)
-            $0.left.equalToSuperview().inset(16)
+            $0.left.equalToSuperview().inset(8)
             $0.height.equalTo(32)
             $0.width.equalTo(160)
         }
