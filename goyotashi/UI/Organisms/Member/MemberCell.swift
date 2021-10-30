@@ -12,10 +12,9 @@ import Kingfisher
 final class MemberCell: UICollectionViewCell, View, ViewConstructor {
 
     struct Const {
-        static let imageViewWidth: CGFloat = 44
-        static let imageViewHeight: CGFloat = 44
+        static let imageViewSize: CGFloat = 44
         static let cellWidth: CGFloat = DeviceSize.screenWidth - 32
-        static let cellHeight: CGFloat = imageViewHeight + 16
+        static let cellHeight: CGFloat = imageViewSize + 16
         static let itemSize: CGSize = CGSize(width: cellWidth, height: cellHeight)
     }
 
@@ -23,8 +22,10 @@ final class MemberCell: UICollectionViewCell, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
-    private let memberIconView: MemberIconView = MemberIconView().then {
-        $0.isUserInteractionEnabled = false
+    private let memberIconView = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.layer.cornerRadius = Const.imageViewSize / 2
+        $0.layer.masksToBounds = true
     }
 
     private let memberNameLabel = UILabel().then {
@@ -51,13 +52,12 @@ final class MemberCell: UICollectionViewCell, View, ViewConstructor {
 
     func setupViewConstraints() {
         memberIconView.snp.makeConstraints {
-            $0.top.bottom.left.equalToSuperview()
-            $0.height.equalTo(Const.imageViewHeight)
-            $0.width.equalTo(Const.imageViewWidth)
+            $0.left.centerY.equalToSuperview()
+            $0.height.width.equalTo(Const.imageViewSize)
         }
         memberNameLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.left.equalToSuperview().inset(48)
+            $0.left.equalTo(memberIconView.snp.right).offset(8)
         }
     }
 
@@ -70,7 +70,7 @@ final class MemberCell: UICollectionViewCell, View, ViewConstructor {
             .distinctUntilChanged()
             .filterNil()
             .bind { [weak self] urlString in
-                self?.memberIconView.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
+                self?.memberIconView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
             }
             .disposed(by: disposeBag)
 
@@ -82,51 +82,5 @@ final class MemberCell: UICollectionViewCell, View, ViewConstructor {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-    }
-}
-
-fileprivate final class MemberIconView: UIView, ViewConstructor {
-    struct Const {
-        static let size: CGFloat = 46
-        static let imageViewSize: CGFloat = 44
-    }
-
-    // MARK: - Views
-
-    let imageView = UIImageView().then {
-        $0.contentMode = .scaleAspectFill
-        $0.layer.cornerRadius = Const.imageViewSize / 2
-        $0.layer.masksToBounds = true
-    }
-
-    // MARK: - Initializers
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-
-        setupViews()
-        setupViewConstraints()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Setup Methods
-    func setupViews() {
-        backgroundColor = Color.white
-        layer.cornerRadius = Const.size / 2
-        layer.masksToBounds = true
-
-        addSubview(imageView)
-    }
-
-    func setupViewConstraints() {
-        snp.makeConstraints {
-            $0.size.equalTo(Const.size)
-        }
-        imageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.size.equalTo(Const.imageViewSize)
-        }
     }
 }
