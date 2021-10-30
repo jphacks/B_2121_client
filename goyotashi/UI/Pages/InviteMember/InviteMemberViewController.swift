@@ -29,11 +29,11 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
 
     private let invitationLinkCopyView = InvitationLinkCopyView()
 
-    private let searchBar = UISearchBar().then {
-        $0.placeholder = "キーワード"
-        $0.backgroundImage = UIImage()
-        $0.tintColor = Color.gray01
-    }
+    //    private let searchBar = UISearchBar().then {
+    //        $0.placeholder = "キーワード"
+    //        $0.backgroundImage = UIImage()
+    //        $0.tintColor = Color.gray01
+    //    }
 
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize =  InviteMemberCell.Const.itemSize
@@ -72,7 +72,7 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
         navigationItem.rightBarButtonItem = doneButton
 
         view.addSubview(invitationLinkCopyView)
-        view.addSubview(searchBar)
+        //        view.addSubview(searchBar)
         view.addSubview(collectionView)
     }
 
@@ -81,12 +81,12 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
             $0.top.equalToSuperview()
             $0.left.right.equalToSuperview()
         }
-        searchBar.snp.makeConstraints {
-            $0.top.equalTo(invitationLinkCopyView.snp.bottom)
-            $0.left.right.equalToSuperview().inset(8)
-        }
+        //        searchBar.snp.makeConstraints {
+        //            $0.top.equalTo(invitationLinkCopyView.snp.bottom)
+        //            $0.left.right.equalToSuperview().inset(8)
+        //        }
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom)
+            //            $0.top.equalTo(searchBar.snp.bottom)
             $0.left.right.bottom.equalToSuperview()
         }
     }
@@ -111,31 +111,31 @@ final class InviteMemberViewController: UIViewController, View, ViewConstructor 
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
-        searchBar.rx.text
-            .distinctUntilChanged()
-            .map { Reactor.Action.updateKeyword($0) }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
+        //        searchBar.rx.text
+        //            .distinctUntilChanged()
+        //            .map { Reactor.Action.updateKeyword($0) }
+        //            .bind(to: reactor.action)
+        //            .disposed(by: disposeBag)
 
-        searchBar.rx.textDidBeginEditing
-            .bind { [weak self] in
-                self?.searchBar.setShowsCancelButton(true, animated: true)
-            }
-            .disposed(by: disposeBag)
-
-        searchBar.rx.searchButtonClicked
-            .bind { [weak self] in
-                self?.searchBar.resignFirstResponder()
-            }
-            .disposed(by: disposeBag)
-
-        searchBar.rx.cancelButtonClicked
-            .bind { [weak self] in
-                self?.searchBar.text = ""
-                self?.searchBar.resignFirstResponder()
-                self?.searchBar.setShowsCancelButton(false, animated: true)
-            }
-            .disposed(by: disposeBag)
+        //        searchBar.rx.textDidBeginEditing
+        //            .bind { [weak self] in
+        //                self?.searchBar.setShowsCancelButton(true, animated: true)
+        //            }
+        //            .disposed(by: disposeBag)
+        //
+        //        searchBar.rx.searchButtonClicked
+        //            .bind { [weak self] in
+        //                self?.searchBar.resignFirstResponder()
+        //            }
+        //            .disposed(by: disposeBag)
+        //
+        //        searchBar.rx.cancelButtonClicked
+        //            .bind { [weak self] in
+        //                self?.searchBar.text = ""
+        //                self?.searchBar.resignFirstResponder()
+        //                self?.searchBar.setShowsCancelButton(false, animated: true)
+        //            }
+        //            .disposed(by: disposeBag)
 
         // State
         reactor.state.map { $0.getTokenApiStatus }
