@@ -14,10 +14,7 @@ final class HomeGroupCellReactor: Reactor {
     struct State {
         let groupSummary: GroupSummary
         var description: String {
-            return """
-                \(groupSummary.restaurantCount)件のお店 / \(groupSummary.memberCount)人のメンバー
-                \(groupSummary.groupDescription)
-            """
+            return "\(groupSummary.restaurantCount)件のお店 / \(groupSummary.memberCount)人のメンバー\n\(groupSummary.groupDescription)"
         }
 
         init(groupSummary: GroupSummary) {
