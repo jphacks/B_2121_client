@@ -15,6 +15,7 @@ final class TabBarController: UITabBarController {
     }
 
     private let provider: ServiceProviderType
+    private var isFirstOpen: Bool = true
 
     // MARK: - Initializers
     init(provider: ServiceProviderType) {
@@ -33,6 +34,15 @@ final class TabBarController: UITabBarController {
         setupViewControllers()
 
         UINavigationBar.appearance().tintColor = Color.gray01
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if isFirstOpen {
+            self.selectedIndex = 1
+            isFirstOpen = false
+        }
     }
 
     // MARK: - Setup Methods
