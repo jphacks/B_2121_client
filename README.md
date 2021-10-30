@@ -3,6 +3,12 @@
 サーバサイドは[こちら](https://github.com/jphacks/B_2121_server)
 
 <img src="https://user-images.githubusercontent.com/44559810/139521245-ca0d4cfd-e5fc-422b-9c40-3ffaadca06a0.png" alt="goyotashi-LPicture" width="100%">
+<p align="center">
+<div style="display:flex">
+  <img style="flex-grow:1" src="https://gyazo.com/5a83d324e5bb8d6230770784bb826e30.gif" width="49%">
+  <img style="flex-grow:1" src="https://gyazo.com/48635363b4836a78fa7fe7753bfe6644.gif" width="49%">
+</div>
+</p>
 
 ## 製品概要
 
