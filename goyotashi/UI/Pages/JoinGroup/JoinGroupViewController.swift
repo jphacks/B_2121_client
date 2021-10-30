@@ -111,5 +111,21 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
             .disposed(by: disposeBag)
 
         // State
+        reactor.state.map { $0.apiStatus }
+            .distinctUntilChanged()
+            .bind { [weak self] apiStatus in
+                switch apiStatus {
+                case .pending:
+                    self?.activityIndicatorView.stopAnimating()
+                case .loading:
+                    self?.activityIndicatorView.startAnimating()
+                    self?.doneImageView.isHidden = true
+                case .succeeded:
+                    self?.doneImageView.isHidden = false
+                default:
+                    break
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
