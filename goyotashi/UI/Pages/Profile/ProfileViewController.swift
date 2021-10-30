@@ -34,6 +34,10 @@ final class ProfileViewController: SegementSlideDefaultViewController, View, Vie
         return config
     }
 
+    override var bouncesType: BouncesType {
+        return .child
+    }
+
     // MARK: - Views
     private let header = ProfileHeaderView()
 
