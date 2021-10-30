@@ -135,9 +135,9 @@ final class RestaurantOtherGroupCell: UICollectionViewCell, View, ViewConstructo
                 let max = min(imageUrls.count, 6)
                 for index in 0 ..< max {
                     if index == 0 {
-                        self?.largeImageView.kf.setImage(with: URL(string: imageUrls[0]), placeholder: R.image.dish())
+                        self?.largeImageView.setImageWithHPGUrl(urlString: imageUrls[0])
                     } else {
-                        self?.smallImageViews[index - 1].kf.setImage(with: URL(string: imageUrls[index]), placeholder: R.image.dish())
+                        self?.smallImageViews[index - 1].setImageWithHPGUrl(urlString: imageUrls[index], sizeType: .small)
                     }
                 }
             }

@@ -34,6 +34,7 @@
 		84195A66272CA61500D0AD9D /* InvitationLinkCopyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A65272CA61500D0AD9D /* InvitationLinkCopyView.swift */; };
 		84195A69272CCDD200D0AD9D /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A68272CCDD200D0AD9D /* JoinGroupViewController.swift */; };
 		84195A6B272CCDDB00D0AD9D /* JoinGroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A6A272CCDDB00D0AD9D /* JoinGroupReactor.swift */; };
+		84195A6D272D710D00D0AD9D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A6C272D710D00D0AD9D /* UIImageView+Extension.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -180,6 +181,7 @@
 		84195A65272CA61500D0AD9D /* InvitationLinkCopyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationLinkCopyView.swift; sourceTree = "<group>"; };
 		84195A68272CCDD200D0AD9D /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
 		84195A6A272CCDDB00D0AD9D /* JoinGroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupReactor.swift; sourceTree = "<group>"; };
+		84195A6C272D710D00D0AD9D /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 				84AFC3B8272674A800B9244E /* UIColor+Extension.swift */,
 				84AFC3C5272682F900B9244E /* UILabel+Extension.swift */,
 				840F195E272A6439009BC1ED /* Observable+Optional.swift */,
+				84195A6C272D710D00D0AD9D /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1246,6 +1249,7 @@
 				84AFC3F12727173100B9244E /* ProfileHeaderView.swift in Sources */,
 				80C6F3FF2729893C00EEF467 /* MemberCellReactor.swift in Sources */,
 				84B88DF3272837A4004EB87D /* CreateGroupReactor.swift in Sources */,
+				84195A6D272D710D00D0AD9D /* UIImageView+Extension.swift in Sources */,
 				840F195B272A44F1009BC1ED /* GroupService.swift in Sources */,
 				84AFC3DA2726CE8300B9244E /* HomeReactor.swift in Sources */,
 				84AFC3BB272676AE00B9244E /* Color.swift in Sources */,

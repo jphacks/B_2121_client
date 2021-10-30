@@ -94,7 +94,7 @@ final class SearchRestaurantCell: UICollectionViewCell, View, ViewConstructor {
             .distinctUntilChanged()
             .filterNil()
             .bind { [weak self] urlString in
-                self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
+                self?.imageView.setImageWithHPGUrl(urlString: urlString, sizeType: .medium)
             }
             .disposed(by: disposeBag)
 

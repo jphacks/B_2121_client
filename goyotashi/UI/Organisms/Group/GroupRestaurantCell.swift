@@ -73,7 +73,7 @@ final class GroupRestaurantCell: UICollectionViewCell, View, ViewConstructor {
         reactor.state.map { $0.groupRestaurant.imageUrl }
             .distinctUntilChanged()
             .bind { [weak self] urlString in
-                self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
+                self?.imageView.setImageWithHPGUrl(urlString: urlString)
             }
             .disposed(by: disposeBag)
 
