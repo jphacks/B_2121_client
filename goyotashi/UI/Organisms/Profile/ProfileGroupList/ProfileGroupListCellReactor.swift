@@ -31,6 +31,12 @@ final class ProfileGroupListCellReactor: Reactor {
 
 extension ProfileGroupListCellReactor: Equatable {
     static func == (lhs: ProfileGroupListCellReactor, rhs: ProfileGroupListCellReactor) -> Bool {
-        return lhs.currentState.groupSummary.groupId == rhs.currentState.groupSummary.groupId
+        let isSameId = lhs.currentState.groupSummary.groupId == rhs.currentState.groupSummary.groupId
+        let isSameName = lhs.currentState.groupSummary.groupName == rhs.currentState.groupSummary.groupName
+        let isSameDescription = lhs.currentState.groupSummary.groupDescription == rhs.currentState.groupSummary.groupDescription
+        let isSameRestaurantCount = lhs.currentState.groupSummary.restaurantCount == rhs.currentState.groupSummary.restaurantCount
+        let isSameMemberCount = lhs.currentState.groupSummary.memberCount == rhs.currentState.groupSummary.memberCount
+        let isSameImageUrls = lhs.currentState.groupSummary.imageUrls == rhs.currentState.groupSummary.imageUrls
+        return isSameId && isSameName && isSameDescription && isSameRestaurantCount && isSameMemberCount && isSameImageUrls
     }
 }
