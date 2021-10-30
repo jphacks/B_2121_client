@@ -18,6 +18,10 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         $0.setImage(R.image.close(), for: .normal)
     }
 
+    private let doneButton = UIBarButtonItem(title: "完了", style: .done, target: nil, action: nil).then {
+        $0.tintColor = Color.gray01
+    }
+
     private let scrollView = UIScrollView().then {
         $0.alwaysBounceVertical = true
     }
@@ -59,6 +63,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
     func setupViews() {
         view.backgroundColor = Color.white
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+        navigationItem.rightBarButtonItem = doneButton
         title = "グループに参加する"
 
         view.addSubview(scrollView)
@@ -106,6 +111,12 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
+        doneButton.rx.tap
+            .bind { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
+
         invitationCodeTextField.rx.text
             .distinctUntilChanged()
             .map { Reactor.Action.updateInvitationCode($0) }
@@ -130,7 +141,6 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
                 case .succeeded:
                     self?.doneImageView.image = R.image.check()
                     self?.doneImageView.isHidden = false
-                    self?.dismiss(animated: true, completion: nil)
                 case .failed:
                     self?.doneImageView.image = R.image.report()
                     self?.doneImageView.isHidden = false
