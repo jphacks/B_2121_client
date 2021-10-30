@@ -37,14 +37,14 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         $0.adjustsFontSizeToFitWidth = true
     }
 
-    private let groupMemberLabel = UILabel().then {
-        $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
-        $0.text = "グループのメンバー"
-    }
+    //    private let groupMemberLabel = UILabel().then {
+    //        $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
+    //        $0.text = "グループのメンバー"
+    //    }
 
-    private let countableGroupMemberButton = CountableGroupMemberButton()
+    //    private let countableGroupMemberButton = CountableGroupMemberButton()
 
-    private let addMemberButton = AddMemberButton()
+    //    private let addMemberButton = AddMemberButton()
 
     private let groupDescriptionLabel = UILabel().then {
         $0.apply(fontStyle: .regular, size: 15, color: Color.gray01)
@@ -94,9 +94,9 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
         view.addSubview(scrollView)
         scrollView.addSubview(groupNameLabel)
         scrollView.addSubview(groupNameTextField)
-        scrollView.addSubview(groupMemberLabel)
-        scrollView.addSubview(countableGroupMemberButton)
-        scrollView.addSubview(addMemberButton)
+        //        scrollView.addSubview(groupMemberLabel)
+        //        scrollView.addSubview(countableGroupMemberButton)
+        //        scrollView.addSubview(addMemberButton)
         scrollView.addSubview(groupDescriptionLabel)
         scrollView.addSubview(groupDescriptionTextView)
         scrollView.addSubview(privacyTitleLabel)
@@ -118,20 +118,21 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
             $0.top.equalTo(groupNameLabel.snp.bottom).offset(8)
             $0.left.right.equalTo(view).inset(16)
         }
-        groupMemberLabel.snp.makeConstraints {
-            $0.top.equalTo(groupNameTextField.snp.bottom).offset(40)
-            $0.left.equalToSuperview().inset(16)
-        }
-        countableGroupMemberButton.snp.makeConstraints {
-            $0.top.equalTo(groupMemberLabel.snp.bottom).offset(8)
-            $0.left.equalToSuperview().inset(16)
-        }
-        addMemberButton.snp.makeConstraints {
-            $0.centerY.equalTo(countableGroupMemberButton)
-            $0.right.equalTo(view).inset(16)
-        }
+        //        groupMemberLabel.snp.makeConstraints {
+        //            $0.top.equalTo(groupNameTextField.snp.bottom).offset(40)
+        //            $0.left.equalToSuperview().inset(16)
+        //        }
+        //        countableGroupMemberButton.snp.makeConstraints {
+        //            $0.top.equalTo(groupMemberLabel.snp.bottom).offset(8)
+        //            $0.left.equalToSuperview().inset(16)
+        //        }
+        //        addMemberButton.snp.makeConstraints {
+        //            $0.centerY.equalTo(countableGroupMemberButton)
+        //            $0.right.equalTo(view).inset(16)
+        //        }
         groupDescriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(addMemberButton.snp.bottom).offset(40)
+            //            $0.top.equalTo(addMemberButton.snp.bottom).offset(40)
+            $0.top.equalTo(groupNameTextField.snp.bottom).offset(40)
             $0.left.equalToSuperview().inset(16)
         }
         groupDescriptionTextView.snp.makeConstraints {
@@ -196,10 +197,10 @@ final class CreateGroupViewController: UIViewController, View, ViewConstructor {
             .disposed(by: disposeBag)
 
         // State
-        reactor.state.map { $0.members }
-            .distinctUntilChanged()
-            .bind(to: countableGroupMemberButton.rx.members)
-            .disposed(by: disposeBag)
+        //        reactor.state.map { $0.members }
+        //            .distinctUntilChanged()
+        //            .bind(to: countableGroupMemberButton.rx.members)
+        //            .disposed(by: disposeBag)
 
         reactor.state.map { $0.isPublic }
             .distinctUntilChanged()
