@@ -15,7 +15,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         static let largeImageSize: CGFloat = (DeviceSize.screenWidth - 32 - 4) / 2
         static let smallImageSize: CGFloat = (largeImageSize - 4) / 2
         static let cellWidth: CGFloat = DeviceSize.screenWidth - 32
-        static let cellHeight: CGFloat = largeImageSize + 60
+        static let cellHeight: CGFloat = largeImageSize + 74
         static let itemSize: CGSize = CGSize(width: cellWidth, height: cellHeight)
     }
 
@@ -52,6 +52,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
 
     private let descriptionLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 14, color: Color.gray03)
+        $0.numberOfLines = 2
     }
 
     // MARK: - Initializers
