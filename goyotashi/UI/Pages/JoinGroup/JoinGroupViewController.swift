@@ -14,6 +14,9 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
     var disposeBag = DisposeBag()
 
     // MARK: - Views
+    private let closeButton = UIButton().then {
+        $0.setImage(R.image.close(), for: .normal)
+    }
 
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -25,7 +28,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
-
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
     }
 
     func setupViewConstraints() {
@@ -35,6 +38,11 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: JoinGroupReactor) {
         // Action
+        closeButton.rx.tap
+            .bind { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            }
+            .disposed(by: disposeBag)
 
         // State
     }
