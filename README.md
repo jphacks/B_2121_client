@@ -10,6 +10,8 @@
 </div>
 </p>
 
+【画像提供：ホットペッパー グルメ】
+
 ## 製品概要
 
 ### eat\*Tech
@@ -110,3 +112,6 @@ Open Workspace
 ```zsh
 $ open goyotashi.xcworkspace
 ```
+
+
+Powered by <a href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a>
