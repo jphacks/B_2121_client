@@ -18,10 +18,12 @@ final class ProfileGroupListReactor: Reactor {
     }
     enum Mutation {
         case setGroupCellReactors([GroupSummary])
+        case setApiStatus(APIStatus)
     }
 
     struct State {
         var groupCellReactors: [ProfileGroupListCellReactor] = []
+        var apiStatus: APIStatus = .pending
     }
 
     let initialState: State
@@ -84,7 +86,12 @@ final class ProfileGroupListReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
-            return refresh().map(Mutation.setGroupCellReactors)
+            if currentState.apiStatus == .refreshing { return .empty() }
+            return .concat(
+                .just(.setApiStatus(.refreshing)),
+                refresh().map(Mutation.setGroupCellReactors),
+                .just(.setApiStatus(.pending))
+            )
         }
     }
 
@@ -104,6 +111,8 @@ final class ProfileGroupListReactor: Reactor {
         switch mutation {
         case let .setGroupCellReactors(groupSummaries):
             state.groupCellReactors = groupSummaries.map { ProfileGroupListCellReactor(groupSummary: $0) }
+        case let .setApiStatus(apiStatus):
+            state.apiStatus = apiStatus
         }
         return state
     }
