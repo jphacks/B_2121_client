@@ -45,6 +45,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
     private let doneImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
         $0.image = R.image.check()
+        $0.isHidden = true
     }
 
     // MARK: - Lify Cycles
@@ -107,6 +108,11 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         invitationCodeTextField.rx.text
             .distinctUntilChanged()
             .map { Reactor.Action.updateInvitationCode($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        joinButton.rx.tap
+            .map { Reactor.Action.join }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
