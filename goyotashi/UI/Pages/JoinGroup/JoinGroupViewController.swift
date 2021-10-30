@@ -59,6 +59,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+        title = "グループに参加する"
 
         view.addSubview(scrollView)
         scrollView.addSubview(invitationCodeTitleLabel)
