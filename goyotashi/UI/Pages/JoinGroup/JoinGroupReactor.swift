@@ -22,7 +22,13 @@ final class JoinGroupReactor: Reactor {
         var apiStatus: APIStatus = .pending
     }
 
-    let initialState: State = State()
+    let initialState: State
+    private let provider: ServiceProviderType
+
+    init(provider: ServiceProviderType) {
+        self.provider = provider
+        initialState = State()
+    }
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
@@ -33,14 +39,19 @@ final class JoinGroupReactor: Reactor {
             if currentState.apiStatus != .pending { return .empty() }
             return .concat(
                 .just(.setApiStatus(.loading)),
-                join().map { _ in .setApiStatus(.succeeded) },
+                join().map { _ in .setApiStatus(.succeeded) }
+                    .catchError { error in
+                        logger.error(error)
+                        return .just(.setApiStatus(.failed))
+                    },
                 .just(.setApiStatus(.pending))
             )
         }
     }
 
     private func join() -> Observable<Void> {
-        return .empty()
+        let token = currentState.invitationCode
+        return provider.userService.joinGroup(token: token).asObservable()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
