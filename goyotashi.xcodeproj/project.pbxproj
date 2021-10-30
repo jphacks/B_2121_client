@@ -32,6 +32,8 @@
 		84195A61272C713200D0AD9D /* OnboardingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A60272C713200D0AD9D /* OnboardingReactor.swift */; };
 		84195A64272C727400D0AD9D /* OnboardingNameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A63272C727400D0AD9D /* OnboardingNameInputView.swift */; };
 		84195A66272CA61500D0AD9D /* InvitationLinkCopyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A65272CA61500D0AD9D /* InvitationLinkCopyView.swift */; };
+		84195A69272CCDD200D0AD9D /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A68272CCDD200D0AD9D /* JoinGroupViewController.swift */; };
+		84195A6B272CCDDB00D0AD9D /* JoinGroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84195A6A272CCDDB00D0AD9D /* JoinGroupReactor.swift */; };
 		8477770F272847E90054E15D /* CountableGroupMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477770E272847E90054E15D /* CountableGroupMemberButton.swift */; };
 		8477771127285C670054E15D /* AddMemberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477771027285C670054E15D /* AddMemberButton.swift */; };
 		847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */; };
@@ -176,6 +178,8 @@
 		84195A60272C713200D0AD9D /* OnboardingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingReactor.swift; sourceTree = "<group>"; };
 		84195A63272C727400D0AD9D /* OnboardingNameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNameInputView.swift; sourceTree = "<group>"; };
 		84195A65272CA61500D0AD9D /* InvitationLinkCopyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationLinkCopyView.swift; sourceTree = "<group>"; };
+		84195A68272CCDD200D0AD9D /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
+		84195A6A272CCDDB00D0AD9D /* JoinGroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupReactor.swift; sourceTree = "<group>"; };
 		8477770E272847E90054E15D /* CountableGroupMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountableGroupMemberButton.swift; sourceTree = "<group>"; };
 		8477771027285C670054E15D /* AddMemberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberButton.swift; sourceTree = "<group>"; };
 		847777132728618B0054E15D /* OrganizeRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizeRestaurantViewController.swift; sourceTree = "<group>"; };
@@ -401,6 +405,15 @@
 				84195A63272C727400D0AD9D /* OnboardingNameInputView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		84195A67272CCDB600D0AD9D /* JoinGroup */ = {
+			isa = PBXGroup;
+			children = (
+				84195A68272CCDD200D0AD9D /* JoinGroupViewController.swift */,
+				84195A6A272CCDDB00D0AD9D /* JoinGroupReactor.swift */,
+			);
+			path = JoinGroup;
 			sourceTree = "<group>";
 		};
 		84777712272861600054E15D /* OrganizeRestaurant */ = {
@@ -683,6 +696,7 @@
 		84AFC3B62726730D00B9244E /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				84195A67272CCDB600D0AD9D /* JoinGroup */,
 				84195A5D272C710D00D0AD9D /* Onboarding */,
 				80C6F3F627290FE800EEF467 /* MemberList */,
 				8477773B2729468E0054E15D /* AddRestaurantToGroup */,
@@ -1215,6 +1229,7 @@
 				847777142728618B0054E15D /* OrganizeRestaurantViewController.swift in Sources */,
 				84A18FB2272B791A0073C770 /* LoggerFormatter.swift in Sources */,
 				84AFC40327273E8100B9244E /* RoundBorderDotsButton.swift in Sources */,
+				84195A6B272CCDDB00D0AD9D /* JoinGroupReactor.swift in Sources */,
 				84AFC3D82726CE7800B9244E /* HomeViewController.swift in Sources */,
 				847777412729473B0054E15D /* AddRestaurantToGroupViewController.swift in Sources */,
 				84195A55272B9D4400D0AD9D /* APIStatusView.swift in Sources */,
@@ -1275,6 +1290,7 @@
 				8477772D27291CED0054E15D /* SearchRestaurantViewController.swift in Sources */,
 				84AFC4172727D59D00B9244E /* GroupRestaurantCellReactor.swift in Sources */,
 				84A18FAA272B0BF40073C770 /* DefaultKeys.swift in Sources */,
+				84195A69272CCDD200D0AD9D /* JoinGroupViewController.swift in Sources */,
 				84B88DE2272810B9004EB87D /* OpenMapButton.swift in Sources */,
 				84AFC4132727BC0600B9244E /* GroupActionButton.swift in Sources */,
 				84AFC4252728030800B9244E /* AddRestaurantButton.swift in Sources */,

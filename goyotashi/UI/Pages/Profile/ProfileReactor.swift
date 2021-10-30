@@ -33,6 +33,8 @@ final class ProfileReactor: Reactor {
                 switch event {
                 case .didUpdateUser:
                     return .just(.refresh)
+                case .didJoinGroup:
+                    return .empty()
                 }
             }
         return .merge(
@@ -72,5 +74,9 @@ final class ProfileReactor: Reactor {
 
     func createProfileEditReactor() -> ProfileEditReactor {
         return ProfileEditReactor(provider: provider)
+    }
+
+    func createJoinGroupReactor() -> JoinGroupReactor {
+        return JoinGroupReactor(provider: provider)
     }
 }

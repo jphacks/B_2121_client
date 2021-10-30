@@ -54,6 +54,15 @@ final class ProfileGroupListReactor: Reactor {
                     }
                 }
             }
+        let userEventAction = provider.userService.event
+            .flatMap { event -> Observable<Action> in
+                switch event {
+                case .didUpdateUser:
+                    return .empty()
+                case .didJoinGroup:
+                    return .just(.refresh)
+                }
+            }
 
         let restaurantEventAction = provider.restaurantService.event
             .flatMap { event -> Observable<Action> in
@@ -67,6 +76,7 @@ final class ProfileGroupListReactor: Reactor {
             action,
             groupEventAction,
             bookmarkEventAction,
+            userEventAction,
             restaurantEventAction
         )
     }

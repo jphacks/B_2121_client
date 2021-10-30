@@ -16,6 +16,7 @@ protocol UserServiceType {
     func getMyProfile() -> Single<User>
     func updateMyName(name: String) -> Single<User>
     func getMyGroups(userId: Int64) -> Single<[GroupSummary]>
+    func joinGroup(token: String) -> Single<Void>
 }
 
 final class UserService: BaseService, UserServiceType {
@@ -80,6 +81,12 @@ final class UserService: BaseService, UserServiceType {
                     profileImageUrl: resp.profileImageUrl
                 )
             }
+            .asSingle()
+    }
+
+    func joinGroup(token: String) -> Single<Void> {
+        let request = JoinCommunityRequest(inviteToken: token)
+        return UserAPI.userMeCommunitiesPost(joinCommunityRequest: request)
             .asSingle()
     }
 }
