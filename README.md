@@ -15,14 +15,14 @@
 そんなときに見る便利なリストが欲しかった。
 実際にユーザーにインタビューをしたところ、以下のような意見が得られた。
 
-<img width="100%" alt="ユーザーインタビュー" src="https://user-images.githubusercontent.com/44559810/139521569-c65a5b7e-de0e-4c65-ac94-f4ba799a79f5.png">
+<img width="100%" alt="ユーザーインタビュー" src="https://user-images.githubusercontent.com/44559810/139523305-718f9156-bab7-409e-9a11-0765ba102e28.png">
+
 
 ### 製品説明（具体的な製品の説明）
 定期的にご飯を食べる人達(**グループ**)でよく行くお店リストを集約・可視化し、飲食店選びのコストを下げてくれるiOSアプリ。  
 リストはグループ外にも公開され、副作用として他のグループ御用達の、信頼できる飲食店を知ることができる。
 
-<img width="100%" alt="スクリーンショット 2021-10-30 15 02 58" src="https://user-images.githubusercontent.com/44559810/139522386-bba21823-e2ee-4303-892c-9122d6568d04.png">
-
+<img width="100%" alt="スクリーンショット 2021-10-30 15 02 58" src="https://user-images.githubusercontent.com/44559810/139523279-7355b480-5b8e-4160-97fb-eede0470c650.png">
 
 ### 特長
 #### 1. 知っている飲食店の中から選ぶので、選択肢が多くなくて選びやすい！
