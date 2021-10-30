@@ -31,8 +31,10 @@ final class ProfileReactor: Reactor {
         let userEventAction = provider.userService.event
             .flatMap { event -> Observable<Action> in
                 switch event {
-                case .didUpdateUser, .didJoinGroup:
+                case .didUpdateUser:
                     return .just(.refresh)
+                case .didJoinGroup:
+                    return .empty()
                 }
             }
         return .merge(
