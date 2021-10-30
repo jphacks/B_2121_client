@@ -66,6 +66,14 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Functions
+    func clearImage() {
+        largeImageView.image = R.image.dish()
+        smallImageViews.forEach { imageView in
+            imageView.image = R.image.dish()
+        }
+    }
+
     // MARK: - Setup Methods
     func setupViews() {
         imagesView.addSubview(largeImageView)
@@ -123,6 +131,7 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         reactor.state.map { $0.groupSummary.imageUrls }
             .distinctUntilChanged()
             .bind { [weak self] imageUrls in
+                self?.clearImage()
                 let max = min(imageUrls.count, 5)
                 for index in 0 ..< max {
                     if index == 0 {
