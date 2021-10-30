@@ -18,6 +18,10 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         $0.setImage(R.image.close(), for: .normal)
     }
 
+    private let scrollView = UIScrollView().then {
+        $0.alwaysBounceVertical = true
+    }
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +33,14 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
+
+        view.addSubview(scrollView)
     }
 
     func setupViewConstraints() {
-
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
     // MARK: - Bind Method
