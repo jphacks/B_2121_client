@@ -28,7 +28,9 @@ final class ProfileHeaderView: UIView, View, ViewConstructor {
         $0.apply(fontStyle: .bold, size: 24, color: Color.gray01)
     }
 
-    let moreButton = RoundBorderDotsButton()
+    let moreButton = RoundBorderButton().then {
+        $0.set(title: "グループに参加")
+    }
 
     let plusButton = PlusButton()
 
