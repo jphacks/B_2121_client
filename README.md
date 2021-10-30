@@ -62,7 +62,8 @@
 #### フレームワーク・ライブラリ・モジュール
 * SnapKit
 * ReactorKit
-* ReusableKit/RxSwift
+* RxSwift
+* ReusableKit
 * SwiftLint
 
 #### デバイス
