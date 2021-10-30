@@ -33,6 +33,13 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         $0.adjustsFontSizeToFitWidth = true
     }
 
+    private let joinButton = UIButton().then {
+        $0.titleLabel?.apply(fontStyle: .medium, size: 16)
+        $0.setTitle("グループに参加する", for: .normal)
+        $0.setTitleColor(Color.blue, for: .normal)
+        $0.setTitleColor(Color.blue.withAlphaComponent(0.3), for: .highlighted)
+    }
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +55,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         view.addSubview(scrollView)
         scrollView.addSubview(invitationCodeTitleLabel)
         scrollView.addSubview(invitationCodeTextField)
+        scrollView.addSubview(joinButton)
     }
 
     func setupViewConstraints() {
@@ -61,6 +69,12 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         invitationCodeTextField.snp.makeConstraints {
             $0.top.equalTo(invitationCodeTitleLabel.snp.bottom).offset(8)
             $0.left.right.equalTo(view).inset(16)
+        }
+        joinButton.snp.makeConstraints {
+            $0.top.equalTo(invitationCodeTextField.snp.bottom).offset(40)
+            $0.left.equalToSuperview().inset(16)
+            $0.height.equalTo(32)
+            $0.width.equalTo(160)
         }
     }
 
