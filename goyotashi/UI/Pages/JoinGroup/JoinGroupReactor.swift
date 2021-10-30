@@ -62,6 +62,9 @@ final class JoinGroupReactor: Reactor {
             logger.debug(code)
         case let .setApiStatus(apiStatus):
             state.apiStatus = apiStatus
+            if apiStatus == .succeeded {
+                provider.userService.event.onNext(.didJoinGroup)
+            }
         }
         return state
     }
