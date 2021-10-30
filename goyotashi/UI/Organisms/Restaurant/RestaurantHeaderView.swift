@@ -163,7 +163,7 @@ final class RestaurantHeaderView: UIView, View, ViewConstructor {
             .distinctUntilChanged()
             .filterNil()
             .bind { [weak self] urlString in
-                self?.imageView.kf.setImage(with: URL(string: urlString), placeholder: R.image.dish())
+                self?.imageView.setImageWithHPGUrl(urlString: urlString)
             }
             .disposed(by: disposeBag)
 
