@@ -17,16 +17,16 @@ final class OnboardingReactor: Reactor {
         case setUser(User)
         case updateUser(User)
         case setGroup(Group)
+        case updateUserName(String)
     }
 
     struct State {
         var user: User?
         var group: Group?
         var canStartApp: Bool {
-            didUpdateName && didCreateGroup
+            didUpdateName
         }
         var didUpdateName: Bool = false
-        var didCreateGroup: Bool = false
     }
 
     let initialState: State
@@ -43,15 +43,15 @@ final class OnboardingReactor: Reactor {
             return createUser().map(Mutation.setUser)
         case let .updateName(name):
             guard let name = name else { return .empty() }
-            return .merge(
-                updateUserName(name: name).map(Mutation.updateUser),
-                createGroup(userName: name).map(Mutation.setGroup)
-            )
+            return .just(Mutation.updateUserName(name))
         case .startApp:
             if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
                 sceneDelegate.setMainPage(type: .tabBar)
             }
-            return .empty()
+            return .merge(
+                updateUserName().map(Mutation.updateUser),
+                createGroup().map(Mutation.setGroup)
+            )
         }
     }
 
@@ -59,15 +59,24 @@ final class OnboardingReactor: Reactor {
         return provider.userService.createUser().asObservable()
     }
 
-    private func createGroup(userName: String) -> Observable<Group> {
-        let name = groupName()
-        let description: String
-        description = "\(userName)さんのはじめてのグループです！"
-        return provider.groupService.createGroup(name: name, description: description, isPublic: true).asObservable()
+    private func createGroup() -> Observable<Group> {
+        if let user = currentState.user {
+            let userName = user.name
+            let name = groupName()
+            let description: String
+            description = "\(userName)さんのはじめてのグループです！"
+            return provider.groupService.createGroup(name: name, description: description, isPublic: true).asObservable()
+        } else {
+            return .empty()
+        }
     }
 
-    private func updateUserName(name: String) -> Observable<User> {
-        return provider.userService.updateMyName(name: name).asObservable()
+    private func updateUserName() -> Observable<User> {
+        if let user = currentState.user {
+            return provider.userService.updateMyName(name: user.name).asObservable()
+        } else {
+            return .empty()
+        }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -78,11 +87,21 @@ final class OnboardingReactor: Reactor {
             logger.debug("user: \(user)")
         case let .updateUser(user):
             logger.debug("updated user: \(user)")
-            state.didUpdateName = true
+            provider.userService.event.onNext(.didUpdateUser)
         case let .setGroup(group):
             state.group = group
-            state.didCreateGroup = true
             logger.debug("group: \(group)")
+            provider.userService.event.onNext(.didUpdateUser)
+        case let .updateUserName(name):
+            if let user = state.user {
+                let newUser = User(
+                    id: user.id,
+                    name: name,
+                    profileImageUrl: user.profileImageUrl)
+                state.user = newUser
+                state.didUpdateName = true
+                logger.debug("updated user name: \(newUser)")
+            }
         }
         return state
     }

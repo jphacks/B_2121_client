@@ -50,10 +50,10 @@ final class OnboardingViewController: UIViewController, View, ViewConstructor {
         // Action
         reactor.action.onNext(.createUser)
 
-        nameInputView.nameTextField.rx.controlEvent(.editingDidEndOnExit)
-            .bind { [weak self] _ in
-                let name = self?.nameInputView.nameTextField.text
-                reactor.action.onNext(.updateName(name))
+        nameInputView.nameTextField.rx.text
+            .distinctUntilChanged()
+            .bind { text in
+                reactor.action.onNext(.updateName(text))
             }
             .disposed(by: disposeBag)
 

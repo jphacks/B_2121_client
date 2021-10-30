@@ -63,11 +63,21 @@ final class ProfileGroupListReactor: Reactor {
                     return .just(.refresh)
                 }
             }
+
+        let restaurantEventAction = provider.restaurantService.event
+            .flatMap { event -> Observable<Action> in
+                switch event {
+                case .didDelete,
+                     .didAdd:
+                    return .just(.refresh)
+                }
+            }
         return .merge(
             action,
             groupEventAction,
             bookmarkEventAction,
-            userEventAction
+            userEventAction,
+            restaurantEventAction
         )
     }
 
