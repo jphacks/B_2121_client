@@ -22,6 +22,7 @@ final class ProfileGroupListReactor: Reactor {
 
     struct State {
         var groupCellReactors: [ProfileGroupListCellReactor] = []
+        var groups: [GroupSummary] = []
     }
 
     let initialState: State
@@ -54,10 +55,20 @@ final class ProfileGroupListReactor: Reactor {
                     }
                 }
             }
+
+        let restaurantEventAction = provider.restaurantService.event
+            .flatMap { event -> Observable<Action> in
+                switch event {
+                case .didDelete,
+                     .didAdd:
+                    return .just(.refresh)
+                }
+            }
         return .merge(
             action,
             groupEventAction,
-            bookmarkEventAction
+            bookmarkEventAction,
+            restaurantEventAction
         )
     }
 
@@ -83,7 +94,10 @@ final class ProfileGroupListReactor: Reactor {
         var state = state
         switch mutation {
         case let .setGroupCellReactors(groupSummaries):
+            logger.verbose("refresh")
+            state.groups = groupSummaries
             state.groupCellReactors = groupSummaries.map { ProfileGroupListCellReactor(groupSummary: $0) }
+            print(state.groups)
         }
         return state
     }
@@ -92,5 +106,9 @@ final class ProfileGroupListReactor: Reactor {
     func createGroupReactor(indexPath: IndexPath) -> GroupReactor {
         let groupId = currentState.groupCellReactors[indexPath.row].currentState.groupSummary.groupId
         return GroupReactor(provider: provider, groupId: groupId)
+    }
+
+    func createProfileGroupListCellReactor(group: GroupSummary) -> ProfileGroupListCellReactor {
+        return ProfileGroupListCellReactor(groupSummary: group)
     }
 }
