@@ -32,7 +32,6 @@ final class RecommendGroupReactor: Reactor {
             .flatMap { event -> Observable<Action> in
                 switch event {
                 case .didJoinGroup:
-                    print("joind")
                     return .just(.refresh)
                 case .didUpdateUser:
                     return .empty()
