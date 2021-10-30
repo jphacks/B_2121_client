@@ -124,7 +124,7 @@ final class AddRestaurantToGroupCell: UICollectionViewCell, View, ViewConstructo
             .bind { [weak self] imageUrls in
                 let max = min(imageUrls.count, 4)
                 for index in 0 ..< max {
-                    self?.imageViews[index].kf.setImage(with: URL(string: imageUrls[index]), placeholder: R.image.dish())
+                    self?.imageViews[index].setImageWithHPGUrl(urlString: imageUrls[index], sizeType: .medium)
                 }
             }
             .disposed(by: disposeBag)
