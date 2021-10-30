@@ -131,7 +131,6 @@ final class HomeGroupCell: UICollectionViewCell, View, ViewConstructor {
         reactor.state.map { $0.groupSummary.imageUrls }
             .distinctUntilChanged()
             .bind { [weak self] imageUrls in
-                print(imageUrls)
                 self?.clearImage()
                 let max = min(imageUrls.count, 5)
                 for index in 0 ..< max {
