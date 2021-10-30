@@ -27,6 +27,12 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         $0.text = "招待コード"
     }
 
+    private let invitationCodeTextField = UITextField().then {
+        $0.placeholder = "招待コードを入力"
+        $0.font = UIFont(name: FontStyle.bold.rawValue, size: 18)
+        $0.adjustsFontSizeToFitWidth = true
+    }
+
     // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +47,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
 
         view.addSubview(scrollView)
         scrollView.addSubview(invitationCodeTitleLabel)
+        scrollView.addSubview(invitationCodeTextField)
     }
 
     func setupViewConstraints() {
@@ -50,6 +57,10 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
         invitationCodeTitleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(24)
             $0.left.equalToSuperview().inset(16)
+        }
+        invitationCodeTextField.snp.makeConstraints {
+            $0.top.equalTo(invitationCodeTitleLabel.snp.bottom).offset(8)
+            $0.left.right.equalTo(view).inset(16)
         }
     }
 
