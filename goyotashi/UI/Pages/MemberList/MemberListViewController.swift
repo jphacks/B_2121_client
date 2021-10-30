@@ -26,6 +26,7 @@ final class MemberListViewController: UIViewController, View, ViewConstructor {
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize =  MemberCell.Const.itemSize
         $0.scrollDirection = .vertical
+        $0.minimumLineSpacing = 0
     }).then {
         $0.register(Reusable.memberCell)
         $0.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 56, right: 16)
