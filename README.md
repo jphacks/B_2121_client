@@ -1,12 +1,72 @@
-# B_2121_client
+# goyotashi - クライアントサイド (B_2121_client)
 
 サーバサイドは[こちら](https://github.com/jphacks/B_2121_server)
 
-## Required Dependency
+<img src="https://user-images.githubusercontent.com/44559810/139521245-ca0d4cfd-e5fc-422b-9c40-3ffaadca06a0.png" alt="goyotashi-LPicture" width="100%">
+
+## 製品概要
+
+### eat\*Tech
+グループでよく行く飲食店のリストを共有する *eat\*Tech*（消費者の食行動\*Tech）SNS 「**goyotashi**」
+
+### 背景(製品開発のきっかけ、課題等）
+グループや個人で飲食店に行くとき、「どこでもいい」と言いながら決まらないという面倒な問題がある。  
+人は既知の飲食店から行き先を選ぶ際、無意識によく行く飲食店リストを思い出そうとし、これでもない、あれでもないと悩む。  
+そんなときに見る便利なリストが欲しかった。
+実際にユーザーにインタビューをしたところ、以下のような意見が得られた。
+
+<img width="100%" alt="ユーザーインタビュー" src="https://user-images.githubusercontent.com/44559810/139521569-c65a5b7e-de0e-4c65-ac94-f4ba799a79f5.png">
+
+### 製品説明（具体的な製品の説明）
+定期的にご飯を食べる人達(**グループ**)でよく行くお店リストを集約・可視化し、飲食店選びのコストを下げてくれるiOSアプリ。  
+リストはグループ外にも公開され、副作用として他のグループ御用達の、信頼できる飲食店を知ることができる。
+
+### 特長
+#### 1. 知っている飲食店の中から選ぶので、選択肢が多くなくて選びやすい！
+
+#### 2. すぐに思い出せないが、今の気分にあっている飲食店が見つかる！
+
+#### 3. 自分が属していない近くのグループや、似たような嗜好性のグループ御用達の飲食店を見ることで、選択肢が広がる！ 
+
+### 解決出来ること
+「どこでもいい」と言いながらも、潜在的には食べたいものの気分がある。  
+そんなときに検索に変わるより低コストな手段として、飲食店選びを解決する。
+
+### 今後の展望
+グループが公開されることによる副作用をより活かす(ex. グループ・嗜好性情報の拡充)
+
+### 注力したこと（こだわり等）
+* 課題の吟味、深掘り
+* ユーザーインタビューやユースケースの具体化
+* 既存のグルメアプリとの差別化
+
+## 開発技術
+
+サーバサイドは[こちら](https://github.com/jphacks/B_2121_server)
+
+### 活用した技術
+* Swift
+
+#### フレームワーク・ライブラリ・モジュール
+* SnapKit
+* ReactorKit
+* ReusableKit/RxSwift
+* SwiftLint
+
+#### デバイス
+動作確認済みのデバイスは以下の通りです。
+* iPhone12 Pro Max, iOS 15.0
+
+### 独自技術
+#### ハッカソンで開発した独自機能・技術
+* アプリ、API、BDやAPIの設計、全てこの期間で開発しています
+
+## 手元でビルドする
+### Required Dependency
 
 - **Cocoa Pods** — https://guides.cocoapods.org/using/getting-started.html
 
-## Getting Started
+### Getting Started
 
 ⚠️ M1 Mac の場合、「Finder > アプリケーション > ユーティリティ > ターミナル > 情報をみる > Rosetta を使用して開く」
 にチェックしてからターミナルアプリを開く（再起動等でチェックが勝手に外れることがあるので注意）。 以下ターミナルアプリで実行する。
@@ -24,7 +84,7 @@ Install `cocoapods`:
 $ gem install cocoapods -v 1.10.1
 ```
 
-`You don't have write permissions for the /Library/Ruby/Gems/2.6.0 directory` などと怒られる時は、`sudo` をつける。
+`You don't have write permissions for the /Library/Ruby/Gems/2.6.0 directory` などと怒られる時は、`sudo` をつける。
 
 Install Dependencies:
 
