@@ -129,6 +129,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
                 case .succeeded:
                     self?.doneImageView.image = R.image.check()
                     self?.doneImageView.isHidden = false
+                    self?.dismiss(animated: true, completion: nil)
                 case .failed:
                     self?.doneImageView.image = R.image.report()
                     self?.doneImageView.isHidden = false
