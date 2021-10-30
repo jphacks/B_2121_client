@@ -104,6 +104,12 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
             }
             .disposed(by: disposeBag)
 
+        invitationCodeTextField.rx.text
+            .distinctUntilChanged()
+            .map { Reactor.Action.updateInvitationCode($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         // State
     }
 }
