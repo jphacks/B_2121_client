@@ -57,6 +57,7 @@ final class JoinGroupViewController: UIViewController, View, ViewConstructor {
 
     // MARK: - Setup Methods
     func setupViews() {
+        view.backgroundColor = Color.white
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: closeButton)
         title = "グループに参加する"
 
