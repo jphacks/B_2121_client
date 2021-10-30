@@ -27,6 +27,23 @@ final class RecommendGroupReactor: Reactor {
         initialState = State()
     }
 
+    func transform(action: Observable<Action>) -> Observable<Action> {
+        let userEventAction = provider.userService.event
+            .flatMap { event -> Observable<Action> in
+                switch event {
+                case .didJoinGroup:
+                    print("joind")
+                    return .just(.refresh)
+                case .didUpdateUser:
+                    return .empty()
+                }
+            }
+        return .merge(
+            action,
+            userEventAction
+        )
+    }
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .refresh:
