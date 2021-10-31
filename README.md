@@ -2,6 +2,12 @@
 
 サーバサイドは[こちら](https://github.com/jphacks/B_2121_server)
 
+## ドキュメントなど
+[server side Wiki](https://github.com/jphacks/B_2121_server/wiki)  
+[client side Wiki](https://github.com/jphacks/B_2121_client/wiki)
+
+[発表資料](https://docs.google.com/presentation/d/1oU93MItpDkqEni_x4t5PMh3QPij3ZHZhbPva-IOwYPQ/)
+
 <img src="https://user-images.githubusercontent.com/44559810/139521245-ca0d4cfd-e5fc-422b-9c40-3ffaadca06a0.png" alt="goyotashi-LPicture" width="100%">
 <p align="center">
 <div style="display:flex">
